@@ -31,7 +31,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               </linearGradient>
             </defs>
           </svg>
-          <span className="logo-text">SEO<span className="text-gradient">Leads</span></span>
+          <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
         </Link>
 
         {/* NAVIGATION LINKS (Desktop) */}
@@ -71,7 +71,7 @@ const Navbar = ({ theme, toggleTheme }) => {
       <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header flex-between container">
           <Link to="/" className="logo-wrapper" onClick={() => setMobileMenuOpen(false)}>
-            <span className="logo-text">SEO<span className="text-gradient">Leads</span></span>
+            <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
           </Link>
           <button 
             className="mobile-drawer-close" 

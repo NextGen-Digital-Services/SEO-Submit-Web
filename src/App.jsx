@@ -56,6 +56,7 @@ function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
+      aria-label="Scroll to top — SEO Submit Web"
       style={{
         position: 'fixed',
         bottom: '24px',
@@ -104,6 +105,27 @@ const SectionWrapper = ({ id, bg = C.white, children, style = {} }) => (
   </section>
 );
 
+const routeTitles = {
+  '/': 'SEO Submit Web — Buy Exclusive SEO Leads',
+  '/about': 'About Us — SEO Submit Web',
+  '/seo-leads': 'Buy SEO Leads — SEO Submit Web',
+  '/web-design-leads': 'Web Design Leads — SEO Submit Web',
+  '/appointment-leads': 'Appointment Leads — SEO Submit Web',
+  '/blog': 'Blog — SEO Submit Web',
+  '/testimonials': 'Testimonials — SEO Submit Web',
+  '/contact': 'Contact Us — SEO Submit Web',
+};
+
+const RouteTitle = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.title = routeTitles[pathname] || 'SEO Submit Web';
+  }, [pathname]);
+
+  return null;
+};
+
 // NAVBAR COMPONENT
 const Navbar = ({ isMobile }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -143,8 +165,8 @@ const Navbar = ({ isMobile }) => {
         display: 'flex',
         alignItems: 'center',
       }}>
-        <span style={{ color: C.yellow }}>NEXUS</span>
-        <span style={{ color: C.white }}>DIGITAL</span>
+        <span style={{ color: C.yellow }}>SEO SUBMIT</span>
+        <span style={{ color: C.white }}>WEB</span>
       </Link>
 
       {!isMobile && (
@@ -217,11 +239,11 @@ const Footer = ({ isMobile }) => {
         {/* Col 1 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', letterSpacing: '1px' }}>
-            <span style={{ color: C.yellow }}>NEXUS</span>
-            <span style={{ color: C.white }}>DIGITAL</span>
+            <span style={{ color: C.yellow }}>SEO SUBMIT</span>
+            <span style={{ color: C.white }}>WEB</span>
           </div>
           <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: '280px' }}>
-            India's #1 Lead Generation Company Since 2009. Supplying verified high-converting opportunities.
+            India's #1 SEO Lead Generation Company Since 2009. Supplying verified high-converting opportunities.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
@@ -234,7 +256,7 @@ const Footer = ({ isMobile }) => {
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-mail" />
               </div>
-              <span>info@nexusdigital.com</span>
+              <span>info@seosubmitweb.com</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
@@ -316,7 +338,7 @@ const Footer = ({ isMobile }) => {
         gap: '10px',
       }}>
         <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontFamily: F.body }}>
-          © 2025 NexusDigital. All Rights Reserved.
+          © 2025 SEO Submit Web. All Rights Reserved.
         </span>
         <div style={{ display: 'flex', gap: '15px' }}>
           <a href="#" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontFamily: F.body }}>Privacy Policy</a>
@@ -374,7 +396,7 @@ const HomePage = ({ isMobile }) => {
             alignSelf: 'flex-start',
             borderRadius: 0,
           }}>
-            INDIA'S #1 SEO & LEAD GENERATION COMPANY
+            INDIA'S #1 SEO LEAD GENERATION COMPANY
           </div>
           <h1 style={{
             fontFamily: F.display,
@@ -604,18 +626,18 @@ const HomePage = ({ isMobile }) => {
         <div>
           <img
             src="https://picsum.photos/seed/nexusteam/700/500"
-            alt="NexusDigital Team"
+            alt="SEO Submit Web Team"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         </div>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
-          <Eyebrow label="ABOUT NEXUSDIGITAL" />
+          <Eyebrow label="ABOUT SEO SUBMIT WEB" />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
             16 Years of Delivering Leads That <span style={{ color: C.blue }}>Convert Into Revenue</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
-            Founded in 2009, NexusDigital has grown from a small lead generation startup to India's most trusted exclusive lead supplier. We work with over 5,000 SEO agencies and web design firms across 40+ countries.
+            Founded in 2009, SEO Submit Web has grown from a small lead generation startup to India's most trusted exclusive lead supplier. We work with over 5,000 SEO agencies and web design firms across 40+ countries.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '24px' }}>
             Our proprietary lead generation technology captures real-time intent signals from business owners actively searching for digital services — delivering you hot, verified leads the moment they're generated.
@@ -774,7 +796,7 @@ const HomePage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.navy, textAlign: 'left' }}>
           <Eyebrow label="WHY CHOOSE US" labelColor={C.yellow} />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '20px' }}>
-            What Makes NexusDigital <span style={{ color: C.yellow }}>The #1 Choice</span>
+            What Makes SEO Submit Web <span style={{ color: C.yellow }}>The #1 Choice</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px', lineHeight: 1.6 }}>
             We qualify our opportunities through active search optimization channels. No shared listings, no outdated databases.
@@ -785,7 +807,7 @@ const HomePage = ({ isMobile }) => {
               { title: 'C-Level Data Only', desc: 'Direct contact details of CEOs, Founders, and senior decision makers.' },
               { title: 'Replacement Guarantee', desc: 'Any lead with incorrect contact credentials is automatically replaced.' },
               { title: 'Real Time Sourcing', desc: 'Leads route straight to your inbox the moment prospect verification completes.' },
-              { title: 'Dedicated Manager', desc: 'Continuous campaign assistance from a dedicated Nexus project manager.' },
+              { title: 'Dedicated Manager', desc: 'Continuous campaign assistance from a dedicated SEO Submit Web project manager.' },
             ].map((feat, idx) => (
               <div key={idx} style={{ borderLeft: `3px solid ${C.yellow}`, padding: '12px 16px', background: 'rgba(255,255,255,0.05)', textAlign: 'left' }}>
                 <h4 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '13px', color: C.white, marginBottom: '4px' }}>
@@ -818,7 +840,7 @@ const HomePage = ({ isMobile }) => {
         <div>
           <img
             src="https://picsum.photos/seed/nexussuccess/700/600"
-            alt="NexusDigital Growth"
+            alt="SEO Submit Web Growth"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -882,7 +904,7 @@ const HomePage = ({ isMobile }) => {
 
         <img
           src="https://picsum.photos/seed/nexusoffice/1200/200"
-          alt="Nexus Collaboration"
+          alt="SEO Submit Web Collaboration"
           loading="lazy"
           style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', marginTop: '32px' }}
         />
@@ -954,7 +976,7 @@ const HomePage = ({ isMobile }) => {
         <div>
           <img
             src="https://picsum.photos/seed/nexusdata/700/500"
-            alt="Nexus Stats Chart"
+            alt="SEO Submit Web Stats Chart"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -990,8 +1012,8 @@ const HomePage = ({ isMobile }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
           {[
-            { name: 'Rajesh Sharma', comp: 'TechSEO Solutions', img: 'https://picsum.photos/seed/client1/80/80', txt: 'Nexus leads convert at 3x the rate of other lists. The phone validation ensures we talk to founders ready to buy SEO services.', badge: 'SEO Leads' },
-            { name: 'Priya Kulkarni', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/client2/80/80', txt: 'I support Nexus leads fully. When a disconnected number popped up, support replaced it in 2 hours with no hassle.', badge: 'Web Design Leads' },
+            { name: 'Rajesh Sharma', comp: 'TechSEO Solutions', img: 'https://picsum.photos/seed/client1/80/80', txt: 'SEO Submit Web leads convert at 3x the rate of other lists. The phone validation ensures we talk to founders ready to buy SEO services.', badge: 'SEO Leads' },
+            { name: 'Priya Kulkarni', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/client2/80/80', txt: 'I support SEO Submit Web leads fully. When a disconnected number popped up, support replaced it in 2 hours with no hassle.', badge: 'Web Design Leads' },
             { name: 'Amit Mehta', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/client3/80/80', txt: 'Our monthly sales retainers doubled in 90 days since boarding their calendar fixed appt leads. Saving SDR calling hours.', badge: 'Appointments' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: C.white, padding: '24px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
@@ -1310,7 +1332,7 @@ const AboutPage = ({ isMobile }) => {
         }}>
           <img
             src="https://picsum.photos/seed/abouthero/1400/400"
-            alt="Nexus Office Background"
+            alt="SEO Submit Web Office Background"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
           />
         </div>
@@ -1339,7 +1361,7 @@ const AboutPage = ({ isMobile }) => {
             lineHeight: 1.15,
             marginBottom: '16px',
           }}>
-            The Company Behind <span style={{ color: C.yellow }}>India's Best Leads</span>
+            The Company Behind <span style={{ color: C.yellow }}>India's Best SEO Leads</span>
           </h1>
           <p style={{
             fontFamily: F.body,
@@ -1348,7 +1370,7 @@ const AboutPage = ({ isMobile }) => {
             lineHeight: 1.8,
             marginBottom: '28px',
           }}>
-            Founded in 2009, NexusDigital has been at the forefront of exclusive lead generation for over 16 years, helping thousands of agencies grow their client base with verified, real-time leads.
+            Founded in 2009, SEO Submit Web has been at the forefront of exclusive lead generation for over 16 years, helping thousands of agencies grow their client base with verified, real-time leads.
           </p>
 
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -1377,13 +1399,13 @@ const AboutPage = ({ isMobile }) => {
             From a Small Startup to <span style={{ color: C.blue }}>India's #1 Lead Supplier</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            NexusDigital was founded in 2009 by Rahul Sharma, a digital marketing veteran who saw a massive gap in the market — agencies needed quality leads, but all available options were either shared, outdated, or simply fake. He set out to build India's first truly exclusive, real-time lead generation system.
+            SEO Submit Web was founded in 2009 by Rahul Sharma, a digital marketing veteran who saw a massive gap in the market — agencies needed quality leads, but all available options were either shared, outdated, or simply fake. He set out to build India's first truly exclusive, real-time lead generation system.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
             What started as a 2-person operation from a small Delhi office has grown into a 50+ member powerhouse serving 5,000+ clients across 40 countries. Every lead we generate is verified by our 3-step quality control process before it reaches your inbox.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '24px' }}>
-            Today, NexusDigital is the most trusted name in SEO leads, web design leads, and appointment fixed lead generation — with a track record of 50,000+ leads delivered and a 98% client retention rate.
+            Today, SEO Submit Web is the most trusted name in SEO leads, web design leads, and appointment fixed lead generation — with a track record of 50,000+ leads delivered and a 98% client retention rate.
           </p>
           <button
             onClick={() => {
@@ -1497,7 +1519,7 @@ const AboutPage = ({ isMobile }) => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
           {[
-            { year: '2009', title: 'NexusDigital Founded', desc: 'Started with SEO leads for 10 clients' },
+            { year: '2009', title: 'SEO Submit Web Founded', desc: 'Started with SEO leads for 10 clients' },
             { year: '2011', title: 'Expanded to Web Design Leads', desc: 'Grew to 100+ active agency clients' },
             { year: '2013', title: 'Launched Appointment Fixed Leads', desc: 'Game changer for digital sales teams' },
             { year: '2015', title: 'Crossed 1,000 Active Clients', desc: 'Opened second corporate operations office' },
@@ -1561,7 +1583,7 @@ const AboutPage = ({ isMobile }) => {
         <div>
           <img
             src="https://picsum.photos/seed/culture1/700/450"
-            alt="Nexus Culture"
+            alt="SEO Submit Web Culture"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -1673,7 +1695,7 @@ const AboutPage = ({ isMobile }) => {
               {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
             </div>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#333', lineHeight: 1.8, marginBottom: '14px', fontStyle: 'italic' }}>
-              "NexusDigital completely transformed how we acquire clients. Before them, we were spending 40 hours a week cold calling with a 2% success rate. Now we receive 20 exclusive, pre-verified leads every week and our close rate is 35%. They are not just a vendor — they are a genuine growth partner."
+              "SEO Submit Web completely transformed how we acquire clients. Before them, we were spending 40 hours a week cold calling with a 2% success rate. Now we receive 20 exclusive, pre-verified leads every week and our close rate is 35%. They are not just a vendor — they are a genuine growth partner."
             </p>
             <div>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy }}>Arjun Kapoor</h4>
@@ -1689,7 +1711,7 @@ const AboutPage = ({ isMobile }) => {
           Ready to Grow Your Agency With Exclusive Leads?
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '14px', color: '#333', marginBottom: '24px' }}>
-          Join 5,000+ agencies who trust NexusDigital for their lead generation needs.
+          Join 5,000+ agencies who trust SEO Submit Web for their lead generation needs.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
@@ -2039,8 +2061,8 @@ const SeoLeadsPage = ({ isMobile }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
             { name: 'Sunita Patel', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/seoclient1/80/80', txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
-            { name: 'Vikram Nair', comp: 'RankBoost India', img: 'https://picsum.photos/seed/seoclient2/80/80', txt: 'We tried several scrapers and list providers. Nexus leads are verified, saving our reps hours of cold-calling.' },
-            { name: 'Arjun Kapoor', comp: 'SEOStar Agency', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to Nexus leads, we went from 3 to 27 SEO clients in just 6 months.' },
+            { name: 'Vikram Nair', comp: 'RankBoost India', img: 'https://picsum.photos/seed/seoclient2/80/80', txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
+            { name: 'Arjun Kapoor', comp: 'SEOStar Agency', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={test.img} alt={test.name} style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', display: 'block', marginBottom: '12px', border: '3px solid #FFD600' }} />
@@ -2441,7 +2463,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
           {[
             { name: 'Priya Kulkarni', comp: 'WebCraft Agency', txt: 'The project details are incredibly thorough. We knew the client\'s budget and timeline before the initial discovery call.' },
             { name: 'Meera Joshi', comp: 'ContentCraft', txt: 'Their customer support is stellar. Any disconnected number gets replaced in our dashboard within a few hours.' },
-            { name: 'Deepa Iyer', comp: 'NetBuild Studio', txt: 'Nexus leads helped us close 3 major e-commerce contracts in our first month. The ROI was clear in week 1.' },
+            { name: 'Deepa Iyer', comp: 'NetBuild Studio', txt: 'SEO Submit Web leads helped us close 3 major e-commerce contracts in our first month. The ROI was clear in week 1.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '20px', border: '1px solid rgba(255,255,255,0.2)' }}>
               <span style={{ fontSize: '28px', color: C.yellow, display: 'block', lineHeight: 1 }}>“</span>
@@ -2461,7 +2483,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
           Start Getting Web Design Leads
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
-          Partner with Nexus and scale your design agency pipeline with high-value web leads.
+          Partner with SEO Submit Web and scale your design agency pipeline with high-value web leads.
         </p>
         <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
           GET FREE SAMPLE LEADS →
@@ -2762,7 +2784,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
                   <th style={{ padding: '16px', fontFamily: F.display, fontWeight: 800, fontSize: '13px' }}>Feature</th>
                   <th style={{ padding: '16px', fontFamily: F.display, fontWeight: 800, fontSize: '13px' }}>Cold Email List</th>
                   <th style={{ padding: '16px', fontFamily: F.display, fontWeight: 800, fontSize: '13px' }}>Shared Leads</th>
-                  <th style={{ padding: '16px', fontFamily: F.display, fontWeight: 800, fontSize: '13px', background: C.blue, color: C.white }}>Nexus Appointments</th>
+                  <th style={{ padding: '16px', fontFamily: F.display, fontWeight: 800, fontSize: '13px', background: C.blue, color: C.white }}>SEO Submit Web Appointments</th>
                 </tr>
               </thead>
               <tbody>
@@ -2851,7 +2873,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
           Pre-Book Your Client Calls Today
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
-          Partner with Nexus and scale your pipeline with direct bookings on your calendar.
+          Partner with SEO Submit Web and scale your pipeline with direct bookings on your calendar.
         </p>
         <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
           GET STARTED →
@@ -3040,7 +3062,7 @@ const BlogPage = ({ isMobile }) => {
             Get Weekly Lead Generation Tips In Your Inbox
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>
-            Join 3,000+ agency owners who get our private client templates and compliance checklists.
+            Join 3,000+ agency owners who trust SEO Submit Web.
           </p>
           <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '10px' }}>
             <input
@@ -3092,7 +3114,7 @@ const TestimonialsPage = ({ isMobile }) => {
     { name: 'Priya Kulkarni', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
     { name: 'Amit Mehta', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
     { name: 'Sunita Patel', role: 'COO', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/testi4/80/80', txt: 'Appointment leads saved us. We scaled our operations directly without allocating massive budgets to cold calls.' },
-    { name: 'Vikram Nair', role: 'CEO', comp: 'RankBoost India', img: 'https://picsum.photos/seed/testi5/80/80', txt: 'Tried 5 providers, nothing beats this. Nexus qualifies real decision makers rather than low-tier employees.' },
+            { name: 'Vikram Nair', role: 'CEO', comp: 'RankBoost India', img: 'https://picsum.photos/seed/testi5/80/80', txt: 'Tried 5 providers, nothing beats this. SEO Submit Web qualifies real decision makers rather than low-tier employees.' },
     { name: 'Ananya Singh', role: 'Founder', comp: 'DigiFirst Agency', img: 'https://picsum.photos/seed/testi6/80/80', txt: 'The lead quality is outstanding. We sync details straight into HubSpot and start the call sequence.' },
     { name: 'Ravi Krishnan', role: 'Director', comp: 'WebWave Co', img: 'https://picsum.photos/seed/testi7/80/80', txt: 'ROI was visible in week 1. We closed two $5k contracts from our first leads batch.' },
     { name: 'Meera Joshi', role: 'Founder', comp: 'ContentCraft', img: 'https://picsum.photos/seed/testi8/80/80', txt: 'Replacement policy works perfectly. Disconnected numbers get replaced without complex verification audits.' },
@@ -3162,7 +3184,7 @@ const TestimonialsPage = ({ isMobile }) => {
               {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
             </div>
             <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-              "Nexus leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+              "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
             </p>
             <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Arjun Kapoor</h4>
             <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • SEOStar Agency</span>
@@ -3179,7 +3201,7 @@ const TestimonialsPage = ({ isMobile }) => {
               {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
             </div>
             <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-              "Nexus leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+              "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
             </p>
             <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Arjun Kapoor</h4>
             <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • SEOStar Agency</span>
@@ -3352,7 +3374,7 @@ const TestimonialsPage = ({ isMobile }) => {
       {/* [G] TRUST BADGES */}
       <section style={{ background: C.yellow, padding: '32px 24px', textAlign: 'center' }}>
         <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '20px' }}>
-          Why Clients Trust NexusDigital
+          Why Clients Trust SEO Submit Web
         </h3>
         <div style={{
           display: 'flex',
@@ -3444,7 +3466,7 @@ const ContactPage = ({ isMobile }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
             { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+1 631 629 5324', note: 'Available 24 hours a day' },
-            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'info@nexusdigital.com', note: 'Reply within 2 hours' },
+            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'info@seosubmitweb.com', note: 'Reply within 2 hours' },
             { border: C.navy, icon: 'ti-map-pin', title: 'Delhi Office HQ', val: '123 Business Hub, Delhi NCR', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
             <div key={idx} style={{ background: C.white, borderTop: `4px solid ${item.border}`, padding: '24px 20px', textAlign: 'center', border: '1px solid #dde3f0' }}>
@@ -3460,7 +3482,7 @@ const ContactPage = ({ isMobile }) => {
       {/* Image Strip above form */}
       <img
         src="https://picsum.photos/seed/contactbanner/1200/150"
-        alt="Nexus support team"
+        alt="SEO Submit Web support team"
         style={{ width: '100%', height: '150px', objectFit: 'cover', display: 'block' }}
       />
 
@@ -3752,6 +3774,7 @@ function App() {
   return (
     <HashRouter>
       <ScrollToTopOnMount />
+      <RouteTitle />
       <div style={{
         margin: 0,
         padding: 0,

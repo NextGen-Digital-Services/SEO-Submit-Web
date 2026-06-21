@@ -36,7 +36,7 @@ const Footer = () => {
                   </linearGradient>
                 </defs>
               </svg>
-              <span className="logo-text">SEO<span className="text-gradient">Leads</span></span>
+              <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
             </Link>
             
             <p className="brand-pitch">
@@ -115,7 +115,7 @@ const Footer = () => {
         {/* BOTTOM BAR */}
         <div className="footer-bottom-bar">
           <p className="copyright-text">
-            © 2026 SEOLeads.me. All Rights Reserved.
+            © 2025 SEO Submit Web. All Rights Reserved.
           </p>
           <div className="footer-bottom-links">
             <Link to="/contact#privacy">Privacy Policy</Link>
