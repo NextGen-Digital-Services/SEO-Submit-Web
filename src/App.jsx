@@ -79,6 +79,163 @@ function ScrollToTopButton() {
   );
 }
 
+// REUSABLE FORM HANDLER FUNCTION
+const handleFormSubmit = (formData, formType) => {
+  // BUILD WHATSAPP MESSAGE
+  const waMessage = `
+🔔 NEW LEAD FROM SEO SUBMIT WEB WEBSITE
+
+📋 Form Type: ${formType}
+👤 Name: ${formData.name || (formData.firstName || formData.lastName ? (formData.firstName || '') + ' ' + (formData.lastName || '') : '') || 'Not provided'}
+📧 Email: ${formData.email || 'Not provided'}
+📱 Phone: ${formData.phone || 'Not provided'}
+🏢 Company: ${formData.company || 'Not provided'}
+🎯 Service Interested In: ${formData.service || 'Not provided'}
+💰 Budget: ${formData.budget || 'Not provided'}
+💬 Message: ${formData.message || 'Not provided'}
+
+⏰ Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+🌐 Source: Website Contact Form
+  `.trim();
+
+  // OPEN WHATSAPP
+  const encodedMessage = encodeURIComponent(waMessage);
+  const whatsappURL = `https://wa.me/917738907685?text=${encodedMessage}`;
+  window.open(whatsappURL, '_blank');
+
+  // SEND EMAIL VIA EMAILJS
+  if (window.emailjs) {
+    window.emailjs.send(
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
+      {
+        form_type: formType,
+        from_name: formData.name || (formData.firstName || formData.lastName ? (formData.firstName || '') + ' ' + (formData.lastName || '') : '') || 'Not provided',
+        from_email: formData.email,
+        phone: formData.phone || 'Not provided',
+        company: formData.company || 'Not provided',
+        service: formData.service || 'Not provided',
+        budget: formData.budget || 'Not provided',
+        message: formData.message || 'Not provided',
+        to_email: 'Seosubmitweb@gmail.com',
+        reply_to: formData.email,
+      }
+    ).then(() => {
+      console.log('Email sent successfully');
+    }).catch((error) => {
+      console.log('Email error:', error);
+    });
+  }
+};
+
+// SUCCESS MESSAGE COMPONENT
+const SuccessMessage = ({ onClose }) => (
+  <div style={{
+    position: 'fixed',
+    top: 0, left: 0, right: 0, bottom: 0,
+    background: 'rgba(0,0,0,0.7)',
+    zIndex: 9999,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}>
+    <div style={{
+      background: '#fff',
+      padding: '48px 40px',
+      maxWidth: '480px',
+      width: '90%',
+      textAlign: 'center',
+      borderTop: '6px solid #FFD600',
+    }}>
+      <div style={{
+        width: '72px', height: '72px',
+        background: '#FFD600',
+        borderRadius: '50%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: '0 auto 20px',
+      }}>
+        <i className="ti ti-check" style={{ fontSize: '36px', color: '#0A1628' }}></i>
+      </div>
+      <h2 style={{
+        fontFamily: "'Montserrat', sans-serif",
+        fontWeight: 900, fontSize: '22px',
+        color: '#0A1628', marginBottom: '12px',
+      }}>
+        Message Sent Successfully!
+      </h2>
+      <p style={{
+        fontSize: '14px', color: '#555',
+        lineHeight: 1.7, marginBottom: '8px',
+      }}>
+        Thank you for contacting SEO Submit Web.
+        We have received your enquiry and will 
+        get back to you within 2 hours.
+      </p>
+      <p style={{
+        fontSize: '13px', color: '#0057FF',
+        fontWeight: 600, marginBottom: '24px',
+      }}>
+        WhatsApp message also opened — 
+        send it to reach us instantly!
+      </p>
+      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+        <button
+          onClick={onClose}
+          style={{
+            background: '#0A1628', color: '#fff',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 800, fontSize: '12px',
+            letterSpacing: '1px', padding: '12px 24px',
+            border: 'none', cursor: 'pointer',
+          }}>
+          CLOSE
+        </button>
+        <a
+          href="https://wa.me/917738907685"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            background: '#25D366', color: '#fff',
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 800, fontSize: '12px',
+            letterSpacing: '1px', padding: '12px 24px',
+            textDecoration: 'none', display: 'inline-block',
+          }}>
+          💬 OPEN WHATSAPP
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// FLOATING WHATSAPP BUTTON
+const WhatsAppFloat = () => (
+  <a
+    href="https://wa.me/917738907685?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+    target="_blank"
+    rel="noreferrer"
+    style={{
+      position: 'fixed',
+      bottom: '80px',
+      right: '24px',
+      width: '56px',
+      height: '56px',
+      background: '#25D366',
+      borderRadius: '50%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 9998,
+      textDecoration: 'none',
+      boxShadow: '0 4px 12px rgba(37,211,102,0.4)',
+    }}>
+    <i className="ti ti-brand-whatsapp" 
+       style={{ fontSize: '28px', color: '#fff' }}></i>
+  </a>
+);
+
 // Eyebrow Component
 const Eyebrow = ({ label, labelColor = C.blue, barColor = C.yellow }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
@@ -202,23 +359,46 @@ const Navbar = ({ isMobile }) => {
         </div>
       )}
 
-      <button
-        onClick={() => navigate('/contact')}
-        style={{
-          background: C.yellow,
-          color: C.navy,
-          fontFamily: F.display,
-          fontWeight: 800,
-          fontSize: '11px',
-          padding: '10px 14px',
-          border: 'none',
-          cursor: 'pointer',
-          borderRadius: 0,
-          letterSpacing: '1px',
-        }}
-      >
-        FREE SAMPLE
-      </button>
+      {/* Group right-side actions to maintain spacing */}
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        {/* WhatsApp icon link */}
+        <a
+          href="https://wa.me/917738907685"
+          target="_blank"
+          rel="noreferrer"
+          title="WhatsApp Us"
+          style={{
+            width: '40px',
+            height: '36px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: '#25D366',
+            textDecoration: 'none',
+            marginRight: '8px',
+          }}
+        >
+          <i className="ti ti-brand-whatsapp" style={{ fontSize: '22px', color: '#fff' }} />
+        </a>
+
+        <button
+          onClick={() => navigate('/contact')}
+          style={{
+            background: C.yellow,
+            color: C.navy,
+            fontFamily: F.display,
+            fontWeight: 800,
+            fontSize: '11px',
+            padding: '10px 14px',
+            border: 'none',
+            cursor: 'pointer',
+            borderRadius: 0,
+            letterSpacing: '1px',
+          }}
+        >
+          FREE SAMPLE
+        </button>
+      </div>
     </nav>
   );
 };
@@ -250,13 +430,28 @@ const Footer = ({ isMobile }) => {
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-phone" />
               </div>
-              <span>+1 631 629 5324</span>
+              <a href="tel:+917738907685" style={{ color: 'inherit', textDecoration: 'none' }}>
+                +91 77389 07685
+              </a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
+              <div style={{ width: '24px', height: '24px', background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.white, borderRadius: 0 }}>
+                <i className="ti ti-brand-whatsapp" />
+              </div>
+              <span>
+                <strong>WhatsApp Us: </strong>
+                <a href="https://wa.me/917738907685" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  +91 77389 07685
+                </a>
+              </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-mail" />
               </div>
-              <span>info@seosubmitweb.com</span>
+              <a href="mailto:Seosubmitweb@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                Seosubmitweb@gmail.com
+              </a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
@@ -357,16 +552,54 @@ const Footer = ({ isMobile }) => {
 // ==========================================
 const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', service: 'SEO Leads' });
+  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '', company: '', service: 'Select Service' });
+  const [heroSuccess, setHeroSuccess] = useState(false);
+  const [heroErrors, setHeroErrors] = useState({});
+  const [heroLoading, setHeroLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFormSubmit = (e) => {
+  const handleHeroSubmit = (e) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.name}! Your sample request for ${formData.service} has been submitted.`);
-    setFormData({ name: '', email: '', phone: '', company: '', service: 'SEO Leads' });
+    const errors = {};
+    if (!heroForm.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    if (!heroForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(heroForm.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    if (!heroForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
+      if (!phoneRegex.test(heroForm.phone)) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (!heroForm.company.trim()) {
+      errors.company = 'Company is required';
+    }
+    if (heroForm.service === 'Select Service' || !heroForm.service) {
+      errors.service = 'Please select a service';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setHeroErrors(errors);
+      return;
+    }
+
+    setHeroErrors({});
+    setHeroLoading(true);
+
+    setTimeout(() => {
+      setHeroLoading(false);
+      handleFormSubmit(heroForm, 'Hero - Free Sample Request');
+      setHeroSuccess(true);
+      setHeroForm({ name: '', email: '', phone: '', company: '', service: 'Select Service' });
+    }, 1000);
   };
 
   return (
@@ -456,7 +689,7 @@ const HomePage = ({ isMobile }) => {
               GET FREE SAMPLES
             </button>
             <button
-              onClick={() => window.location.href = 'tel:+16316295324'}
+              onClick={() => window.location.href = 'tel:+917738907685'}
               style={{
                 background: 'transparent',
                 color: C.yellow,
@@ -470,8 +703,32 @@ const HomePage = ({ isMobile }) => {
                 borderRadius: 0,
               }}
             >
-              📞 +1 631 629 5324
+              📞 +91 77389 07685
             </button>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20and%20Web%20Design%20Leads.%20Please%20send%20details."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 24px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT ON WHATSAPP
+            </a>
           </div>
         </div>
 
@@ -526,57 +783,121 @@ const HomePage = ({ isMobile }) => {
               No payment. No commitment. Just proof.
             </p>
 
-            <form onSubmit={handleFormSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                value={formData.name}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px 12px', border: `2px solid ${C.navy}`, background: C.white, fontSize: '13px', marginBottom: '10px', fontFamily: F.body, borderRadius: 0 }}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Work Email"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px 12px', border: `2px solid ${C.navy}`, background: C.white, fontSize: '13px', marginBottom: '10px', fontFamily: F.body, borderRadius: 0 }}
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px 12px', border: `2px solid ${C.navy}`, background: C.white, fontSize: '13px', marginBottom: '10px', fontFamily: F.body, borderRadius: 0 }}
-              />
-              <input
-                type="text"
-                name="company"
-                placeholder="Company Name"
-                required
-                value={formData.company}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px 12px', border: `2px solid ${C.navy}`, background: C.white, fontSize: '13px', marginBottom: '10px', fontFamily: F.body, borderRadius: 0 }}
-              />
-              <select
-                name="service"
-                value={formData.service}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '10px 12px', border: `2px solid ${C.navy}`, background: C.white, fontSize: '13px', marginBottom: '14px', fontFamily: F.body, borderRadius: 0, color: C.navy }}
-              >
-                <option>SEO Leads</option>
-                <option>Web Design Leads</option>
-                <option>Appointment Leads</option>
-              </select>
+            <form onSubmit={handleHeroSubmit} noValidate>
+              <div style={{ marginBottom: '10px' }}>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={heroForm.name}
+                  onChange={(e) => {
+                    setHeroForm({ ...heroForm, name: e.target.value });
+                    if (heroErrors.name) setHeroErrors({ ...heroErrors, name: '' });
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.name ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                />
+                {heroErrors.name && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {heroErrors.name}
+                  </span>
+                )}
+              </div>
 
-              <button type="submit" style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '13px', border: 'none', cursor: 'pointer', width: '100%', borderRadius: 0 }}>
-                SEND ME FREE SAMPLES →
+              <div style={{ marginBottom: '10px' }}>
+                <input
+                  type="email"
+                  placeholder="Work Email"
+                  value={heroForm.email}
+                  onChange={(e) => {
+                    setHeroForm({ ...heroForm, email: e.target.value });
+                    if (heroErrors.email) setHeroErrors({ ...heroErrors, email: '' });
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.email ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                />
+                {heroErrors.email && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {heroErrors.email}
+                  </span>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '10px' }}>
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={heroForm.phone}
+                  onChange={(e) => {
+                    setHeroForm({ ...heroForm, phone: e.target.value });
+                    if (heroErrors.phone) setHeroErrors({ ...heroErrors, phone: '' });
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.phone ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                />
+                {heroErrors.phone && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {heroErrors.phone}
+                  </span>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '10px' }}>
+                <input
+                  type="text"
+                  placeholder="Company Name"
+                  value={heroForm.company}
+                  onChange={(e) => {
+                    setHeroForm({ ...heroForm, company: e.target.value });
+                    if (heroErrors.company) setHeroErrors({ ...heroErrors, company: '' });
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.company ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                />
+                {heroErrors.company && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {heroErrors.company}
+                  </span>
+                )}
+              </div>
+
+              <div style={{ marginBottom: '14px' }}>
+                <select
+                  value={heroForm.service}
+                  onChange={(e) => {
+                    setHeroForm({ ...heroForm, service: e.target.value });
+                    if (heroErrors.service) setHeroErrors({ ...heroErrors, service: '' });
+                  }}
+                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.service ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0, color: C.navy }}
+                >
+                  <option value="Select Service">Select Service</option>
+                  <option value="SEO Leads">SEO Leads</option>
+                  <option value="Web Design Leads">Web Design Leads</option>
+                  <option value="Appointment Leads">Appointment Leads</option>
+                  <option value="All Three">All Three</option>
+                </select>
+                {heroErrors.service && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {heroErrors.service}
+                  </span>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                disabled={heroLoading}
+                style={{
+                  background: heroLoading ? '#cccccc' : C.blue,
+                  color: heroLoading ? '#666666' : C.white,
+                  fontFamily: F.display,
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '13px',
+                  border: 'none',
+                  cursor: heroLoading ? 'not-allowed' : 'pointer',
+                  width: '100%',
+                  borderRadius: 0
+                }}
+              >
+                {heroLoading ? 'SENDING...' : 'SEND ME FREE SAMPLES →'}
               </button>
+              {heroSuccess && <SuccessMessage onClose={() => setHeroSuccess(false)} />}
               <span style={{ display: 'block', fontSize: '10px', color: '#666', textAlign: 'center', marginTop: '10px' }}>
                 🔒 Your info is 100% private & secure
               </span>
@@ -1296,6 +1617,30 @@ const HomePage = ({ isMobile }) => {
             >
               SCHEDULE A CALL
             </button>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 28px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT ON WHATSAPP
+            </a>
           </div>
         </div>
       </section>
@@ -1721,6 +2066,30 @@ const AboutPage = ({ isMobile }) => {
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             CONTACT US
           </button>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '12px',
+              letterSpacing: '1px',
+              padding: '13px 28px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
         </div>
       </section>
     </div>
@@ -1733,6 +2102,56 @@ const AboutPage = ({ isMobile }) => {
 // ==========================================
 const SeoLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
+  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [seoSuccess, setSeoSuccess] = useState(false);
+  const [seoErrors, setSeoErrors] = useState({});
+  const [seoLoading, setSeoLoading] = useState(false);
+
+  const handleSeoSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!seoForm.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    if (!seoForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(seoForm.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    if (!seoForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
+      if (!phoneRegex.test(seoForm.phone)) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (!seoForm.company.trim()) {
+      errors.company = 'Company is required';
+    }
+    if (seoForm.budget === 'Select Monthly Budget' || !seoForm.budget) {
+      errors.budget = 'Please select a budget';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setSeoErrors(errors);
+      return;
+    }
+
+    setSeoErrors({});
+    setSeoLoading(true);
+
+    setTimeout(() => {
+      setSeoLoading(false);
+      handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry');
+      setSeoSuccess(true);
+      setSeoForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+    }, 1000);
+  };
+
   return (
     <div style={{ width: '100%' }}>
       {/* [A] PAGE HERO */}
@@ -1801,6 +2220,30 @@ const SeoLeadsPage = ({ isMobile }) => {
             <button onClick={() => window.location.href = '#seo-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
               VIEW PRICING
             </button>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 24px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT ON WHATSAPP
+            </a>
           </div>
         </div>
 
@@ -1879,7 +2322,7 @@ const SeoLeadsPage = ({ isMobile }) => {
                 <div><strong>First Name:</strong> Rajesh</div>
                 <div><strong>Last Name:</strong> Sharma</div>
                 <div><strong>Email:</strong> r.sharma@techseosol.com</div>
-                <div><strong>Phone:</strong> +1 (631) 629-5324</div>
+                <div><strong>Phone:</strong> +91 77389 07685</div>
                 <div><strong>Company:</strong> TechSEO Solutions</div>
                 <div><strong>Website:</strong> techseosolutions.com</div>
                 <div><strong>Monthly Budget:</strong> $2,500 - $5,000</div>
@@ -2077,6 +2520,138 @@ const SeoLeadsPage = ({ isMobile }) => {
         </div>
       </section>
 
+      {/* [G] SEO LEADS ENQUIRY FORM */}
+      <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.yellow}` }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
+            Get SEO Leads Now — Fill The Form Below
+          </h2>
+          <form onSubmit={handleSeoSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={seoForm.name}
+                onChange={(e) => {
+                  setSeoForm({ ...seoForm, name: e.target.value });
+                  if (seoErrors.name) setSeoErrors({ ...seoErrors, name: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: seoErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {seoErrors.name && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {seoErrors.name}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={seoForm.email}
+                onChange={(e) => {
+                  setSeoForm({ ...seoForm, email: e.target.value });
+                  if (seoErrors.email) setSeoErrors({ ...seoErrors, email: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: seoErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {seoErrors.email && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {seoErrors.email}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={seoForm.phone}
+                onChange={(e) => {
+                  setSeoForm({ ...seoForm, phone: e.target.value });
+                  if (seoErrors.phone) setSeoErrors({ ...seoErrors, phone: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: seoErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {seoErrors.phone && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {seoErrors.phone}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Company Name"
+                value={seoForm.company}
+                onChange={(e) => {
+                  setSeoForm({ ...seoForm, company: e.target.value });
+                  if (seoErrors.company) setSeoErrors({ ...seoErrors, company: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: seoErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {seoErrors.company && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {seoErrors.company}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <select
+                value={seoForm.budget}
+                onChange={(e) => {
+                  setSeoForm({ ...seoForm, budget: e.target.value });
+                  if (seoErrors.budget) setSeoErrors({ ...seoErrors, budget: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: seoErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              >
+                <option value="Select Monthly Budget">Select Monthly Budget</option>
+                <option value="Under $200/month">Under $200/month</option>
+                <option value="$200 - $500/month">$200 - $500/month</option>
+                <option value="$500 - $1000/month">$500 - $1000/month</option>
+                <option value="$1000+/month">$1000+/month</option>
+              </select>
+              {seoErrors.budget && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {seoErrors.budget}
+                </span>
+              )}
+            </div>
+
+            <textarea
+              placeholder="Describe your target client profile..."
+              rows="4"
+              value={seoForm.message}
+              onChange={(e) => setSeoForm({ ...seoForm, message: e.target.value })}
+              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
+            ></textarea>
+
+            <button
+              type="submit"
+              disabled={seoLoading}
+              style={{
+                background: seoLoading ? '#cccccc' : C.yellow,
+                color: seoLoading ? '#666666' : C.navy,
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '14px',
+                border: 'none',
+                cursor: seoLoading ? 'not-allowed' : 'pointer',
+                borderRadius: 0
+              }}
+            >
+              {seoLoading ? 'SENDING...' : 'GET SEO LEADS NOW →'}
+            </button>
+            {seoSuccess && <SuccessMessage onClose={() => setSeoSuccess(false)} />}
+          </form>
+        </div>
+      </section>
+
       {/* [H] BOTTOM CTA */}
       <section style={{ background: C.yellow, padding: '40px 24px', textAlign: 'center' }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy, marginBottom: '8px' }}>
@@ -2092,6 +2667,30 @@ const SeoLeadsPage = ({ isMobile }) => {
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             DISCUSS INTEGRATION
           </button>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '12px',
+              letterSpacing: '1px',
+              padding: '13px 24px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
         </div>
       </section>
     </div>
@@ -2104,6 +2703,56 @@ const SeoLeadsPage = ({ isMobile }) => {
 // ==========================================
 const WebDesignLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
+  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [webSuccess, setWebSuccess] = useState(false);
+  const [webErrors, setWebErrors] = useState({});
+  const [webLoading, setWebLoading] = useState(false);
+
+  const handleWebSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!webForm.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    if (!webForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(webForm.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    if (!webForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
+      if (!phoneRegex.test(webForm.phone)) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (!webForm.company.trim()) {
+      errors.company = 'Company is required';
+    }
+    if (webForm.budget === 'Select Monthly Budget' || !webForm.budget) {
+      errors.budget = 'Please select a budget';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setWebErrors(errors);
+      return;
+    }
+
+    setWebErrors({});
+    setWebLoading(true);
+
+    setTimeout(() => {
+      setWebLoading(false);
+      handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry');
+      setWebSuccess(true);
+      setWebForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+    }, 1000);
+  };
+
   return (
     <div style={{ width: '100%' }}>
       {/* [A] PAGE HERO */}
@@ -2172,6 +2821,30 @@ const WebDesignLeadsPage = ({ isMobile }) => {
             <button onClick={() => window.location.href = '#web-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
               VIEW PRICING
             </button>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 24px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT ON WHATSAPP
+            </a>
           </div>
         </div>
 
@@ -2478,17 +3151,175 @@ const WebDesignLeadsPage = ({ isMobile }) => {
         </div>
       </section>
 
+      {/* [H] WEB DESIGN LEADS ENQUIRY FORM */}
+      <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.blue}` }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
+            Get Web Design Leads — Fill The Form Below
+          </h2>
+          <form onSubmit={handleWebSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={webForm.name}
+                onChange={(e) => {
+                  setWebForm({ ...webForm, name: e.target.value });
+                  if (webErrors.name) setWebErrors({ ...webErrors, name: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: webErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {webErrors.name && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {webErrors.name}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={webForm.email}
+                onChange={(e) => {
+                  setWebForm({ ...webForm, email: e.target.value });
+                  if (webErrors.email) setWebErrors({ ...webErrors, email: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: webErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {webErrors.email && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {webErrors.email}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={webForm.phone}
+                onChange={(e) => {
+                  setWebForm({ ...webForm, phone: e.target.value });
+                  if (webErrors.phone) setWebErrors({ ...webErrors, phone: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: webErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {webErrors.phone && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {webErrors.phone}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Company Name"
+                value={webForm.company}
+                onChange={(e) => {
+                  setWebForm({ ...webForm, company: e.target.value });
+                  if (webErrors.company) setWebErrors({ ...webErrors, company: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: webErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {webErrors.company && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {webErrors.company}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <select
+                value={webForm.budget}
+                onChange={(e) => {
+                  setWebForm({ ...webForm, budget: e.target.value });
+                  if (webErrors.budget) setWebErrors({ ...webErrors, budget: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: webErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              >
+                <option value="Select Monthly Budget">Select Monthly Budget</option>
+                <option value="Under $200/month">Under $200/month</option>
+                <option value="$200 - $500/month">$200 - $500/month</option>
+                <option value="$500 - $1000/month">$500 - $1000/month</option>
+                <option value="$1000+/month">$1000+/month</option>
+              </select>
+              {webErrors.budget && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {webErrors.budget}
+                </span>
+              )}
+            </div>
+
+            <textarea
+              placeholder="Describe your target client profile..."
+              rows="4"
+              value={webForm.message}
+              onChange={(e) => setWebForm({ ...webForm, message: e.target.value })}
+              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
+            ></textarea>
+
+            <button
+              type="submit"
+              disabled={webLoading}
+              style={{
+                background: webLoading ? '#cccccc' : C.yellow,
+                color: webLoading ? '#666666' : C.navy,
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '14px',
+                border: 'none',
+                cursor: webLoading ? 'not-allowed' : 'pointer',
+                borderRadius: 0
+              }}
+            >
+              {webLoading ? 'SENDING...' : 'GET WEB DESIGN LEADS →'}
+            </button>
+            {webSuccess && <SuccessMessage onClose={() => setWebSuccess(false)} />}
+          </form>
+        </div>
+      </section>
+
       {/* [I] BOTTOM CTA */}
-      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center' }}>
+      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
           Start Getting Web Design Leads
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
           Partner with SEO Submit Web and scale your design agency pipeline with high-value web leads.
         </p>
-        <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-          GET FREE SAMPLE LEADS →
-        </button>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
+            GET FREE SAMPLE LEADS →
+          </button>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '12px',
+              letterSpacing: '1px',
+              padding: '13px 24px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
+        </div>
       </section>
     </div>
   );
@@ -2500,6 +3331,56 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 // ==========================================
 const AppointmentLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
+  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [appSuccess, setAppSuccess] = useState(false);
+  const [appErrors, setAppErrors] = useState({});
+  const [appLoading, setAppLoading] = useState(false);
+
+  const handleAppSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!appForm.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    if (!appForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(appForm.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    if (!appForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
+      if (!phoneRegex.test(appForm.phone)) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (!appForm.company.trim()) {
+      errors.company = 'Company is required';
+    }
+    if (appForm.budget === 'Select Monthly Budget' || !appForm.budget) {
+      errors.budget = 'Please select a budget';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setAppErrors(errors);
+      return;
+    }
+
+    setAppErrors({});
+    setAppLoading(true);
+
+    setTimeout(() => {
+      setAppLoading(false);
+      handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry');
+      setAppSuccess(true);
+      setAppForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+    }, 1000);
+  };
+
   return (
     <div style={{ width: '100%' }}>
       {/* [A] PAGE HERO */}
@@ -2553,6 +3434,30 @@ const AppointmentLeadsPage = ({ isMobile }) => {
             <button onClick={() => window.location.href = '#appt-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
               VIEW PRICING
             </button>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 24px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT ON WHATSAPP
+            </a>
           </div>
         </div>
 
@@ -2868,17 +3773,175 @@ const AppointmentLeadsPage = ({ isMobile }) => {
         </div>
       </section>
 
+      {/* [H] APPOINTMENT LEADS ENQUIRY FORM */}
+      <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.blue}` }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
+            Book Your Appointment Leads — Fill The Form
+          </h2>
+          <form onSubmit={handleAppSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={appForm.name}
+                onChange={(e) => {
+                  setAppForm({ ...appForm, name: e.target.value });
+                  if (appErrors.name) setAppErrors({ ...appErrors, name: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: appErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {appErrors.name && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {appErrors.name}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={appForm.email}
+                onChange={(e) => {
+                  setAppForm({ ...appForm, email: e.target.value });
+                  if (appErrors.email) setAppErrors({ ...appErrors, email: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: appErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {appErrors.email && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {appErrors.email}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={appForm.phone}
+                onChange={(e) => {
+                  setAppForm({ ...appForm, phone: e.target.value });
+                  if (appErrors.phone) setAppErrors({ ...appErrors, phone: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: appErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {appErrors.phone && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {appErrors.phone}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Company Name"
+                value={appForm.company}
+                onChange={(e) => {
+                  setAppForm({ ...appForm, company: e.target.value });
+                  if (appErrors.company) setAppErrors({ ...appErrors, company: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: appErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {appErrors.company && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {appErrors.company}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <select
+                value={appForm.budget}
+                onChange={(e) => {
+                  setAppForm({ ...appForm, budget: e.target.value });
+                  if (appErrors.budget) setAppErrors({ ...appErrors, budget: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: appErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              >
+                <option value="Select Monthly Budget">Select Monthly Budget</option>
+                <option value="Under $200/month">Under $200/month</option>
+                <option value="$200 - $500/month">$200 - $500/month</option>
+                <option value="$500 - $1000/month">$500 - $1000/month</option>
+                <option value="$1000+/month">$1000+/month</option>
+              </select>
+              {appErrors.budget && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {appErrors.budget}
+                </span>
+              )}
+            </div>
+
+            <textarea
+              placeholder="Describe your target client profile..."
+              rows="4"
+              value={appForm.message}
+              onChange={(e) => setAppForm({ ...appForm, message: e.target.value })}
+              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
+            ></textarea>
+
+            <button
+              type="submit"
+              disabled={appLoading}
+              style={{
+                background: appLoading ? '#cccccc' : C.yellow,
+                color: appLoading ? '#666666' : C.navy,
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '14px',
+                border: 'none',
+                cursor: appLoading ? 'not-allowed' : 'pointer',
+                borderRadius: 0
+              }}
+            >
+              {appLoading ? 'SENDING...' : 'BOOK APPOINTMENT LEADS →'}
+            </button>
+            {appSuccess && <SuccessMessage onClose={() => setAppSuccess(false)} />}
+          </form>
+        </div>
+      </section>
+
       {/* [I] BOTTOM CTA */}
-      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center' }}>
+      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
           Pre-Book Your Client Calls Today
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
           Partner with SEO Submit Web and scale your pipeline with direct bookings on your calendar.
         </p>
-        <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-          GET STARTED →
-        </button>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
+            GET STARTED →
+          </button>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '12px',
+              letterSpacing: '1px',
+              padding: '13px 24px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
+        </div>
       </section>
     </div>
   );
@@ -2891,7 +3954,10 @@ const AppointmentLeadsPage = ({ isMobile }) => {
 const BlogPage = ({ isMobile }) => {
   const navigate = useNavigate();
   const [filter, setFilter] = useState('All');
-  const [email, setEmail] = useState('');
+  const [blogEmail, setBlogEmail] = useState('');
+  const [blogSuccess, setBlogSuccess] = useState(false);
+  const [blogErrors, setBlogErrors] = useState({});
+  const [blogLoading, setBlogLoading] = useState(false);
 
   const blogPosts = [
     { cat: 'SEO', title: '10 Proven Ways to Convert SEO Leads Faster in 2025', border: C.yellow, img: 'https://picsum.photos/seed/blogpost1/600/200', desc: 'Understand high-converting proposal scopes, audit formats, and scripts to double your sales closing percentage.' },
@@ -2909,12 +3975,35 @@ const BlogPage = ({ isMobile }) => {
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    alert(`Thank you! Subscription confirmed for ${email}.`);
-    setEmail('');
+    const errors = {};
+    if (!blogEmail.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(blogEmail)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setBlogErrors(errors);
+      return;
+    }
+
+    setBlogErrors({});
+    setBlogLoading(true);
+
+    setTimeout(() => {
+      setBlogLoading(false);
+      handleFormSubmit({ email: blogEmail }, 'Blog Newsletter - Subscription Request');
+      setBlogSuccess(true);
+      setBlogEmail('');
+    }, 1000);
   };
 
   return (
     <div style={{ width: '100%' }}>
+      {blogSuccess && <SuccessMessage onClose={() => setBlogSuccess(false)} />}
       {/* [A] BLOG HERO */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
@@ -3065,26 +4154,52 @@ const BlogPage = ({ isMobile }) => {
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>
             Join 3,000+ agency owners who trust SEO Submit Web.
           </p>
-          <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '10px' }}>
-            <input
-              type="email"
-              placeholder="Your Work Email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+          <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '10px' }} noValidate>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+              <input
+                type="email"
+                placeholder="Your Work Email"
+                value={blogEmail}
+                onChange={(e) => {
+                  setBlogEmail(e.target.value);
+                  if (blogErrors.email) setBlogErrors({ ...blogErrors, email: '' });
+                }}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  background: '#1A2A4A',
+                  border: blogErrors.email ? '2px solid #ff3333' : '1px solid #2A3D6A',
+                  color: C.white,
+                  fontSize: '13px',
+                  borderRadius: 0,
+                  outline: 'none',
+                }}
+              />
+              {blogErrors.email && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  {blogErrors.email}
+                </span>
+              )}
+            </div>
+            <button
+              type="submit"
+              disabled={blogLoading}
               style={{
-                flex: 1,
-                padding: '12px',
-                background: '#1A2A4A',
-                border: '1px solid #2A3D6A',
-                color: C.white,
-                fontSize: '13px',
+                background: C.yellow,
+                color: C.navy,
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '12px 24px',
+                border: 'none',
+                cursor: 'pointer',
                 borderRadius: 0,
-                outline: 'none',
+                height: '42px',
+                opacity: blogLoading ? 0.7 : 1,
               }}
-            />
-            <button type="submit" style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-              SUBSCRIBE NOW
+            >
+              {blogLoading ? 'SENDING...' : 'SUBSCRIBE NOW'}
             </button>
           </form>
         </div>
@@ -3095,9 +4210,35 @@ const BlogPage = ({ isMobile }) => {
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '14px' }}>
           Ready to buy leads instead of waiting for them?
         </h2>
-        <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '11px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-          GET STARTED
-        </button>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '11px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
+            GET STARTED
+          </button>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '11px',
+              letterSpacing: '1px',
+              padding: '13px 28px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
+        </div>
       </section>
     </div>
   );
@@ -3109,6 +4250,56 @@ const BlogPage = ({ isMobile }) => {
 // ==========================================
 const TestimonialsPage = ({ isMobile }) => {
   const navigate = useNavigate();
+  const [reviewForm, setReviewForm] = useState({
+    name: '',
+    company: '',
+    service: 'SEO Leads',
+    rating: '5 Stars',
+    review: ''
+  });
+  const [reviewSuccess, setReviewSuccess] = useState(false);
+  const [reviewErrors, setReviewErrors] = useState({});
+  const [reviewLoading, setReviewLoading] = useState(false);
+
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+    if (!reviewForm.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    if (!reviewForm.company.trim()) {
+      errors.company = 'Company name is required';
+    }
+    if (!reviewForm.review.trim()) {
+      errors.review = 'Review message is required';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setReviewErrors(errors);
+      return;
+    }
+
+    setReviewErrors({});
+    setReviewLoading(true);
+
+    setTimeout(() => {
+      setReviewLoading(false);
+      handleFormSubmit({
+        name: reviewForm.name,
+        company: reviewForm.company,
+        service: reviewForm.service,
+        message: `Rating: ${reviewForm.rating} | Review: ${reviewForm.review}`
+      }, 'Testimonials Page - Leave a Review');
+      setReviewSuccess(true);
+      setReviewForm({
+        name: '',
+        company: '',
+        service: 'SEO Leads',
+        rating: '5 Stars',
+        review: ''
+      });
+    }, 1000);
+  };
 
   const reviewsList = [
     { name: 'Rajesh Sharma', role: 'CEO', comp: 'TechSEO Solutions', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
@@ -3127,6 +4318,7 @@ const TestimonialsPage = ({ isMobile }) => {
 
   return (
     <div style={{ width: '100%' }}>
+      {reviewSuccess && <SuccessMessage onClose={() => setReviewSuccess(false)} />}
       {/* [A] PAGE HERO */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
@@ -3403,17 +4595,156 @@ const TestimonialsPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [H] LEAVE A REVIEW CTA */}
-      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
-          Happy with our leads? Share your experience!
-        </h2>
-        <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '20px' }}>
-          Your feedback keeps us optimization standards aligned. Tell us how we are doing.
-        </p>
-        <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '11px', letterSpacing: '2px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-          LEAVE A REVIEW
-        </button>
+      {/* [H] LEAVE A REVIEW FORM */}
+      <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center', borderTop: `3px solid ${C.yellow}` }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', background: C.deepNavy, border: `2px solid ${C.blue}`, padding: '32px 24px', textAlign: 'left' }}>
+          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.yellow, marginBottom: '8px', textAlign: 'center' }}>
+            Leave a Review
+          </h2>
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px', textAlign: 'center' }}>
+            Share your experience working with SEO Submit Web.
+          </p>
+
+          <form onSubmit={handleReviewSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Your Name</label>
+              <input
+                type="text"
+                placeholder="John Doe"
+                value={reviewForm.name}
+                onChange={(e) => {
+                  setReviewForm({ ...reviewForm, name: e.target.value });
+                  if (reviewErrors.name) setReviewErrors({ ...reviewErrors, name: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: reviewErrors.name ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {reviewErrors.name && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                  {reviewErrors.name}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Company Name</label>
+              <input
+                type="text"
+                placeholder="TechSEO Solutions"
+                value={reviewForm.company}
+                onChange={(e) => {
+                  setReviewForm({ ...reviewForm, company: e.target.value });
+                  if (reviewErrors.company) setReviewErrors({ ...reviewErrors, company: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: reviewErrors.company ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              />
+              {reviewErrors.company && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                  {reviewErrors.company}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Service Used</label>
+              <select
+                value={reviewForm.service}
+                onChange={(e) => setReviewForm({ ...reviewForm, service: e.target.value })}
+                style={{ width: '100%', padding: '12px', border: '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              >
+                <option value="SEO Leads">SEO Leads</option>
+                <option value="Web Design Leads">Web Design Leads</option>
+                <option value="Appointment Leads">Appointment Leads</option>
+              </select>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Rating</label>
+              <select
+                value={reviewForm.rating}
+                onChange={(e) => setReviewForm({ ...reviewForm, rating: e.target.value })}
+                style={{ width: '100%', padding: '12px', border: '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+              >
+                <option value="5 Stars">5 Stars</option>
+                <option value="4 Stars">4 Stars</option>
+                <option value="3 Stars">3 Stars</option>
+              </select>
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Your Review</label>
+              <textarea
+                placeholder="Write your experience..."
+                rows="4"
+                value={reviewForm.review}
+                onChange={(e) => {
+                  setReviewForm({ ...reviewForm, review: e.target.value });
+                  if (reviewErrors.review) setReviewErrors({ ...reviewErrors, review: '' });
+                }}
+                style={{ width: '100%', padding: '12px', border: reviewErrors.review ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'vertical' }}
+              />
+              {reviewErrors.review && (
+                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                  {reviewErrors.review}
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={reviewLoading}
+              style={{
+                background: C.yellow,
+                color: C.navy,
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '12px',
+                letterSpacing: '2px',
+                padding: '14px 28px',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+                marginTop: '12px',
+                width: '100%',
+                opacity: reviewLoading ? 0.7 : 1,
+              }}
+            >
+              {reviewLoading ? 'SENDING...' : 'SUBMIT REVIEW'}
+            </button>
+          </form>
+
+          {/* Green WhatsApp Contact Button */}
+          <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', textAlign: 'center' }}>
+            <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginBottom: '12px' }}>
+              Want to speak to support instead?
+            </p>
+            <a
+              href="https://wa.me/917738907685?text=Hi%20I%20have%20feedback%20or%20questions%20about%20your%20leads."
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: F.display,
+                fontWeight: 800,
+                fontSize: '11px',
+                letterSpacing: '1px',
+                padding: '12px 24px',
+                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 0,
+                width: '100%',
+                justifyContent: 'center',
+              }}
+            >
+              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+              CHAT WITH SUPPORT ON WHATSAPP
+            </a>
+          </div>
+        </div>
       </section>
     </div>
   );
@@ -3424,16 +4755,75 @@ const TestimonialsPage = ({ isMobile }) => {
 // PAGE 8: CONTACT PAGE ( /contact )
 // ==========================================
 const ContactPage = ({ isMobile }) => {
-  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', service: 'SEO Leads', budget: '$1,000 - $3,000', message: '' });
+  const [contactForm, setContactForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: 'Select Service Interested In',
+    budget: 'Select Monthly Budget',
+    message: ''
+  });
+  const [contactSuccess, setContactSuccess] = useState(false);
+  const [contactErrors, setContactErrors] = useState({});
+  const [contactLoading, setContactLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleFormSubmit = (e) => {
+  const handleContactSubmit = (e) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.firstName}! We will reply within 2 business hours.`);
-    setFormData({ firstName: '', lastName: '', email: '', phone: '', company: '', service: 'SEO Leads', budget: '$1,000 - $3,000', message: '' });
+    const errors = {};
+    if (!contactForm.firstName.trim()) {
+      errors.firstName = 'First name is required';
+    }
+    if (!contactForm.email.trim()) {
+      errors.email = 'Email is required';
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(contactForm.email)) {
+        errors.email = 'Please enter a valid email address';
+      }
+    }
+    if (!contactForm.phone.trim()) {
+      errors.phone = 'Phone number is required';
+    } else {
+      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
+      if (!phoneRegex.test(contactForm.phone)) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+    }
+    if (contactForm.service === 'Select Service Interested In' || !contactForm.service) {
+      errors.service = 'Please select a service';
+    }
+    if (contactForm.budget === 'Select Monthly Budget' || !contactForm.budget) {
+      errors.budget = 'Please select a budget';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setContactErrors(errors);
+      return;
+    }
+
+    setContactErrors({});
+    setContactLoading(true);
+
+    setTimeout(() => {
+      setContactLoading(false);
+      handleFormSubmit({
+        ...contactForm,
+        name: contactForm.firstName + ' ' + contactForm.lastName
+      }, 'Contact Page - Main Enquiry');
+      setContactSuccess(true);
+      setContactForm({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: 'Select Service Interested In',
+        budget: 'Select Monthly Budget',
+        message: ''
+      });
+    }, 1000);
   };
 
   return (
@@ -3466,17 +4856,47 @@ const ContactPage = ({ isMobile }) => {
       <section style={{ background: C.lightBg, padding: '32px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+1 631 629 5324', note: 'Available 24 hours a day' },
-            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'info@seosubmitweb.com', note: 'Reply within 2 hours' },
-            { border: C.navy, icon: 'ti-map-pin', title: 'Delhi Office HQ', val: '123 Business Hub, Delhi NCR', note: 'Mon–Sun Open Operations' },
+            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+91 77389 07685', note: 'Available 24 hours a day', link: 'tel:+917738907685' },
+            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'Seosubmitweb@gmail.com', note: 'Reply within 2 hours', link: 'mailto:Seosubmitweb@gmail.com' },
+            { border: C.navy, icon: 'ti-map-pin', title: 'Delhi Office HQ', val: '123 Business Hub, Sector 18, Delhi NCR — 110001', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
             <div key={idx} style={{ background: C.white, borderTop: `4px solid ${item.border}`, padding: '24px 20px', textAlign: 'center', border: '1px solid #dde3f0' }}>
               <i className={`ti ${item.icon}`} style={{ fontSize: '32px', color: item.border, display: 'block', marginBottom: '12px' }} />
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '6px' }}>{item.title}</h4>
-              <span style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: C.navy, marginBottom: '4px' }}>{item.val}</span>
+              <span style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: C.navy, marginBottom: '4px' }}>
+                {item.link ? (
+                  <a href={item.link} style={{ color: 'inherit', textDecoration: 'none' }}>{item.val}</a>
+                ) : item.val}
+              </span>
               <span style={{ fontSize: '11px', color: '#888' }}>{item.note}</span>
             </div>
           ))}
+        </div>
+        <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
+          <a
+            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#25D366',
+              color: '#fff',
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '12px',
+              letterSpacing: '1px',
+              padding: '13px 24px',
+              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              borderRadius: 0,
+            }}
+          >
+            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+            CHAT ON WHATSAPP
+          </a>
         </div>
       </section>
 
@@ -3495,105 +4915,164 @@ const ContactPage = ({ isMobile }) => {
             <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.navy, marginBottom: '20px' }}>
               Send Us a Message
             </h2>
-            <form onSubmit={handleFormSubmit} style={{ display: 'grid', gap: '10px' }}>
+            <form onSubmit={handleContactSubmit} style={{ display: 'grid', gap: '10px' }} noValidate>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    value={contactForm.firstName}
+                    onChange={(e) => {
+                      setContactForm({ ...contactForm, firstName: e.target.value });
+                      if (contactErrors.firstName) setContactErrors({ ...contactErrors, firstName: '' });
+                    }}
+                    style={{ width: '100%', padding: '12px', border: contactErrors.firstName ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  />
+                  {contactErrors.firstName && (
+                    <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                      {contactErrors.firstName}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    value={contactForm.lastName}
+                    onChange={(e) => setContactForm({ ...contactForm, lastName: e.target.value })}
+                    style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  />
+                </div>
+              </div>
+
+              <div>
                 <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  required
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  type="email"
+                  placeholder="Email Address"
+                  value={contactForm.email}
+                  onChange={(e) => {
+                    setContactForm({ ...contactForm, email: e.target.value });
+                    if (contactErrors.email) setContactErrors({ ...contactErrors, email: '' });
+                  }}
+                  style={{ width: '100%', padding: '12px', border: contactErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
                 />
+                {contactErrors.email && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {contactErrors.email}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <input
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={contactForm.phone}
+                  onChange={(e) => {
+                    setContactForm({ ...contactForm, phone: e.target.value });
+                    if (contactErrors.phone) setContactErrors({ ...contactErrors, phone: '' });
+                  }}
+                  style={{ width: '100%', padding: '12px', border: contactErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                />
+                {contactErrors.phone && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {contactErrors.phone}
+                  </span>
+                )}
+              </div>
+
+              <div>
                 <input
                   type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  required
-                  value={formData.lastName}
-                  onChange={handleInputChange}
+                  placeholder="Company Name"
+                  value={contactForm.company}
+                  onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
                   style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
                 />
               </div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                value={formData.email}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Phone Number"
-                required
-                value={formData.phone}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
-              />
-              <input
-                type="text"
-                name="company"
-                placeholder="Company Name"
-                required
-                value={formData.company}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
-              />
 
               {/* Service interested in */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left' }}>
                 <label style={{ fontSize: '11px', fontWeight: 'bold', color: C.navy, fontFamily: F.display }}>Service Interested In</label>
                 <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  value={contactForm.service}
+                  onChange={(e) => {
+                    setContactForm({ ...contactForm, service: e.target.value });
+                    if (contactErrors.service) setContactErrors({ ...contactErrors, service: '' });
+                  }}
+                  style={{ width: '100%', padding: '12px', border: contactErrors.service ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
                 >
-                  <option>SEO Leads</option>
-                  <option>Web Design Leads</option>
-                  <option>Appointment Leads</option>
-                  <option>All Three</option>
+                  <option value="Select Service Interested In">Select Service Interested In</option>
+                  <option value="SEO Leads">SEO Leads</option>
+                  <option value="Web Design Leads">Web Design Leads</option>
+                  <option value="Appointment Fixed Leads">Appointment Fixed Leads</option>
+                  <option value="All Three Services">All Three Services</option>
                 </select>
+                {contactErrors.service && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {contactErrors.service}
+                  </span>
+                )}
               </div>
 
               {/* Monthly budget */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left' }}>
                 <label style={{ fontSize: '11px', fontWeight: 'bold', color: C.navy, fontFamily: F.display }}>Monthly Budget</label>
                 <select
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleInputChange}
-                  style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  value={contactForm.budget}
+                  onChange={(e) => {
+                    setContactForm({ ...contactForm, budget: e.target.value });
+                    if (contactErrors.budget) setContactErrors({ ...contactErrors, budget: '' });
+                  }}
+                  style={{ width: '100%', padding: '12px', border: contactErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
                 >
-                  <option>$1,000 - $3,000</option>
-                  <option>$3,000 - $5,000</option>
-                  <option>$5,000 - $10,000</option>
-                  <option>$10,000+</option>
+                  <option value="Select Monthly Budget">Select Monthly Budget</option>
+                  <option value="Under $200/month">Under $200/month</option>
+                  <option value="$200 - $500/month">$200 - $500/month</option>
+                  <option value="$500 - $1000/month">$500 - $1000/month</option>
+                  <option value="$1000+/month">$1000+/month</option>
                 </select>
+                {contactErrors.budget && (
+                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    {contactErrors.budget}
+                  </span>
+                )}
               </div>
 
               <textarea
-                name="message"
                 placeholder="Describe your target client profile..."
                 rows="4"
-                required
-                value={formData.message}
-                onChange={handleInputChange}
+                value={contactForm.message}
+                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                 style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
               ></textarea>
 
-              <button type="submit" style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                SEND MESSAGE →
+              <button
+                type="submit"
+                disabled={contactLoading}
+                style={{
+                  background: contactLoading ? '#cccccc' : C.yellow,
+                  color: contactLoading ? '#666666' : C.navy,
+                  fontFamily: F.display,
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '14px',
+                  border: 'none',
+                  cursor: contactLoading ? 'not-allowed' : 'pointer',
+                  borderRadius: 0
+                }}
+              >
+                {contactLoading ? 'SENDING...' : 'SEND MESSAGE →'}
               </button>
+              {contactSuccess && <SuccessMessage onClose={() => setContactSuccess(false)} />}
             </form>
 
             <div style={{ marginTop: '24px', textAlign: 'left' }}>
               <span style={{ fontSize: '12px', color: '#666', display: 'block' }}>Or call us directly:</span>
-              <span style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display }}>+1 631 629 5324</span>
+              <a href="tel:+917738907685" style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display, textDecoration: 'none' }}>
+                +91 77389 07685
+              </a>
             </div>
           </div>
 
@@ -3765,6 +5244,14 @@ function App() {
     `;
     document.head.appendChild(style);
 
+    // 4. Inject EmailJS CDN
+    const emailScript = document.createElement('script');
+    emailScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+    emailScript.onload = () => {
+      window.emailjs.init('YOUR_PUBLIC_KEY');
+    };
+    document.head.appendChild(emailScript);
+
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -3803,6 +5290,7 @@ function App() {
 
         <Footer isMobile={isMobile} />
         <ScrollToTopButton />
+        <WhatsAppFloat />
       </div>
     </HashRouter>
   );
