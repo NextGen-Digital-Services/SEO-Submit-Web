@@ -552,7 +552,7 @@ const Footer = ({ isMobile }) => {
 // ==========================================
 const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '', company: '', service: 'Select Service' });
+  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '', company: '', service: '' });
   const [heroSuccess, setHeroSuccess] = useState(false);
   const [heroErrors, setHeroErrors] = useState({});
   const [heroLoading, setHeroLoading] = useState(false);
@@ -561,29 +561,29 @@ const HomePage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!heroForm.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = "⚠ Please enter your full name so we can address you properly";
     }
     if (!heroForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(heroForm.email)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
     if (!heroForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(heroForm.phone)) {
-        errors.phone = 'Please enter a valid phone number';
+        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!heroForm.company.trim()) {
-      errors.company = 'Company is required';
+      errors.company = "⚠ Please enter your company or agency name";
     }
-    if (heroForm.service === 'Select Service' || !heroForm.service) {
-      errors.service = 'Please select a service';
+    if (!heroForm.service) {
+      errors.service = "⚠ Please select which type of leads you need";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -598,7 +598,7 @@ const HomePage = ({ isMobile }) => {
       setHeroLoading(false);
       handleFormSubmit(heroForm, 'Hero - Free Sample Request');
       setHeroSuccess(true);
-      setHeroForm({ name: '', email: '', phone: '', company: '', service: 'Select Service' });
+      setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
     }, 1000);
   };
 
@@ -783,96 +783,111 @@ const HomePage = ({ isMobile }) => {
               No payment. No commitment. Just proof.
             </p>
 
-            <form onSubmit={handleHeroSubmit} noValidate>
-              <div style={{ marginBottom: '10px' }}>
+            <form onSubmit={handleHeroSubmit} className="light-form" noValidate>
+              <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Your Full Name *
+                </label>
                 <input
                   type="text"
-                  placeholder="Your Name"
+                  placeholder="e.g. Rahul Sharma"
                   value={heroForm.name}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, name: e.target.value });
                     if (heroErrors.name) setHeroErrors({ ...heroErrors, name: '' });
                   }}
-                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.name ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.name ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {heroErrors.name && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {heroErrors.name}
                   </span>
                 )}
               </div>
 
-              <div style={{ marginBottom: '10px' }}>
+              <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Email Address *
+                </label>
                 <input
                   type="email"
-                  placeholder="Work Email"
+                  placeholder="e.g. rahul@youragency.com"
                   value={heroForm.email}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, email: e.target.value });
                     if (heroErrors.email) setHeroErrors({ ...heroErrors, email: '' });
                   }}
-                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.email ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.email ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {heroErrors.email && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {heroErrors.email}
                   </span>
                 )}
               </div>
 
-              <div style={{ marginBottom: '10px' }}>
+              <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Phone / WhatsApp Number *
+                </label>
                 <input
                   type="tel"
-                  placeholder="Phone Number"
+                  placeholder="e.g. +91 98765 43210"
                   value={heroForm.phone}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, phone: e.target.value });
                     if (heroErrors.phone) setHeroErrors({ ...heroErrors, phone: '' });
                   }}
-                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.phone ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.phone ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {heroErrors.phone && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {heroErrors.phone}
                   </span>
                 )}
               </div>
 
-              <div style={{ marginBottom: '10px' }}>
+              <div style={{ marginBottom: '10px', textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Company / Agency Name
+                </label>
                 <input
                   type="text"
-                  placeholder="Company Name"
+                  placeholder="e.g. TechSEO Solutions"
                   value={heroForm.company}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, company: e.target.value });
                     if (heroErrors.company) setHeroErrors({ ...heroErrors, company: '' });
                   }}
-                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.company ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.company ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {heroErrors.company && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {heroErrors.company}
                   </span>
                 )}
               </div>
 
-              <div style={{ marginBottom: '14px' }}>
+              <div style={{ marginBottom: '14px', textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Service You Need *
+                </label>
                 <select
                   value={heroForm.service}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, service: e.target.value });
                     if (heroErrors.service) setHeroErrors({ ...heroErrors, service: '' });
                   }}
-                  style={{ width: '100%', padding: '10px 12px', border: heroErrors.service ? '2px solid #ff3333' : `2px solid ${C.navy}`, background: C.white, fontSize: '13px', fontFamily: F.body, borderRadius: 0, color: C.navy }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.service ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
-                  <option value="Select Service">Select Service</option>
-                  <option value="SEO Leads">SEO Leads</option>
-                  <option value="Web Design Leads">Web Design Leads</option>
-                  <option value="Appointment Leads">Appointment Leads</option>
-                  <option value="All Three">All Three</option>
+                  <option value="">-- Select a Service --</option>
+                  <option value="SEO Leads">🔍 SEO Leads</option>
+                  <option value="Web Design Leads">💻 Web Design Leads</option>
+                  <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
+                  <option value="All Three">⭐ All Three Services</option>
                 </select>
                 {heroErrors.service && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {heroErrors.service}
                   </span>
                 )}
@@ -895,7 +910,7 @@ const HomePage = ({ isMobile }) => {
                   borderRadius: 0
                 }}
               >
-                {heroLoading ? 'SENDING...' : 'SEND ME FREE SAMPLES →'}
+                {heroLoading ? 'SENDING...' : '🚀 SEND ME FREE SAMPLES →'}
               </button>
               {heroSuccess && <SuccessMessage onClose={() => setHeroSuccess(false)} />}
               <span style={{ display: 'block', fontSize: '10px', color: '#666', textAlign: 'center', marginTop: '10px' }}>
@@ -2102,7 +2117,7 @@ const AboutPage = ({ isMobile }) => {
 // ==========================================
 const SeoLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [seoSuccess, setSeoSuccess] = useState(false);
   const [seoErrors, setSeoErrors] = useState({});
   const [seoLoading, setSeoLoading] = useState(false);
@@ -2111,29 +2126,29 @@ const SeoLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!seoForm.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = "⚠ Please enter your full name so we can address you properly";
     }
     if (!seoForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(seoForm.email)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
     if (!seoForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(seoForm.phone)) {
-        errors.phone = 'Please enter a valid phone number';
+        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!seoForm.company.trim()) {
-      errors.company = 'Company is required';
+      errors.company = "⚠ Please enter your company or agency name";
     }
-    if (seoForm.budget === 'Select Monthly Budget' || !seoForm.budget) {
-      errors.budget = 'Please select a budget';
+    if (!seoForm.budget) {
+      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -2148,7 +2163,7 @@ const SeoLeadsPage = ({ isMobile }) => {
       setSeoLoading(false);
       handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry');
       setSeoSuccess(true);
-      setSeoForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+      setSeoForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -2527,107 +2542,127 @@ const SeoLeadsPage = ({ isMobile }) => {
             Get SEO Leads Now — Fill The Form Below
           </h2>
           <form onSubmit={handleSeoSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Full Name *
+              </label>
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder="e.g. Priya Mehta"
                 value={seoForm.name}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, name: e.target.value });
                   if (seoErrors.name) setSeoErrors({ ...seoErrors, name: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: seoErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.name ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {seoErrors.name && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {seoErrors.name}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Business Email Address *
+              </label>
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="e.g. priya@seoagency.com"
                 value={seoForm.email}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, email: e.target.value });
                   if (seoErrors.email) setSeoErrors({ ...seoErrors, email: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: seoErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.email ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {seoErrors.email && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {seoErrors.email}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                WhatsApp / Phone Number *
+              </label>
               <input
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="e.g. +91 98765 43210"
                 value={seoForm.phone}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, phone: e.target.value });
                   if (seoErrors.phone) setSeoErrors({ ...seoErrors, phone: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: seoErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.phone ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {seoErrors.phone && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {seoErrors.phone}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your SEO Agency Name
+              </label>
               <input
                 type="text"
-                placeholder="Company Name"
+                placeholder="e.g. RankBoost Digital Agency"
                 value={seoForm.company}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, company: e.target.value });
                   if (seoErrors.company) setSeoErrors({ ...seoErrors, company: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: seoErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.company ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {seoErrors.company && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {seoErrors.company}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Monthly Lead Budget *
+              </label>
               <select
                 value={seoForm.budget}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, budget: e.target.value });
                   if (seoErrors.budget) setSeoErrors({ ...seoErrors, budget: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: seoErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.budget ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="Select Monthly Budget">Select Monthly Budget</option>
-                <option value="Under $200/month">Under $200/month</option>
-                <option value="$200 - $500/month">$200 - $500/month</option>
-                <option value="$500 - $1000/month">$500 - $1000/month</option>
-                <option value="$1000+/month">$1000+/month</option>
+                <option value="">-- How much do you want to invest? --</option>
+                <option value="Starter $199">Starter — $199/month (20 Leads)</option>
+                <option value="Standard $449">Standard — $449/month (50 Leads)</option>
+                <option value="Premium $899">Premium — $899/month (120 Leads)</option>
+                <option value="Custom">Custom — I need a custom package</option>
               </select>
               {seoErrors.budget && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {seoErrors.budget}
                 </span>
               )}
             </div>
 
-            <textarea
-              placeholder="Describe your target client profile..."
-              rows="4"
-              value={seoForm.message}
-              onChange={(e) => setSeoForm({ ...seoForm, message: e.target.value })}
-              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
-            ></textarea>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Any Specific Requirements?
+              </label>
+              <textarea
+                placeholder="e.g. I need SEO leads from USA and Canada, with a monthly budget of $5,000+. Please share sample leads first."
+                rows={3}
+                value={seoForm.message}
+                onChange={(e) => setSeoForm({ ...seoForm, message: e.target.value })}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0, resize: 'vertical' }}
+              />
+            </div>
 
             <button
               type="submit"
@@ -2645,7 +2680,7 @@ const SeoLeadsPage = ({ isMobile }) => {
                 borderRadius: 0
               }}
             >
-              {seoLoading ? 'SENDING...' : 'GET SEO LEADS NOW →'}
+              {seoLoading ? 'SENDING...' : '🔍 GET SEO LEADS NOW →'}
             </button>
             {seoSuccess && <SuccessMessage onClose={() => setSeoSuccess(false)} />}
           </form>
@@ -2703,7 +2738,7 @@ const SeoLeadsPage = ({ isMobile }) => {
 // ==========================================
 const WebDesignLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [webSuccess, setWebSuccess] = useState(false);
   const [webErrors, setWebErrors] = useState({});
   const [webLoading, setWebLoading] = useState(false);
@@ -2712,29 +2747,29 @@ const WebDesignLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!webForm.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = "⚠ Please enter your full name so we can address you properly";
     }
     if (!webForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(webForm.email)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
     if (!webForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(webForm.phone)) {
-        errors.phone = 'Please enter a valid phone number';
+        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!webForm.company.trim()) {
-      errors.company = 'Company is required';
+      errors.company = "⚠ Please enter your company or agency name";
     }
-    if (webForm.budget === 'Select Monthly Budget' || !webForm.budget) {
-      errors.budget = 'Please select a budget';
+    if (!webForm.budget) {
+      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -2749,7 +2784,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
       setWebLoading(false);
       handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry');
       setWebSuccess(true);
-      setWebForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+      setWebForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -3158,107 +3193,127 @@ const WebDesignLeadsPage = ({ isMobile }) => {
             Get Web Design Leads — Fill The Form Below
           </h2>
           <form onSubmit={handleWebSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Full Name *
+              </label>
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder="e.g. Vikram Singh"
                 value={webForm.name}
                 onChange={(e) => {
                   setWebForm({ ...webForm, name: e.target.value });
                   if (webErrors.name) setWebErrors({ ...webErrors, name: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: webErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.name ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {webErrors.name && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {webErrors.name}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Business Email Address *
+              </label>
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="e.g. vikram@webstudio.com"
                 value={webForm.email}
                 onChange={(e) => {
                   setWebForm({ ...webForm, email: e.target.value });
                   if (webErrors.email) setWebErrors({ ...webErrors, email: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: webErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.email ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {webErrors.email && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {webErrors.email}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                WhatsApp / Phone Number *
+              </label>
               <input
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="e.g. +91 98765 43210"
                 value={webForm.phone}
                 onChange={(e) => {
                   setWebForm({ ...webForm, phone: e.target.value });
                   if (webErrors.phone) setWebErrors({ ...webErrors, phone: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: webErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.phone ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {webErrors.phone && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {webErrors.phone}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Web Design Agency Name
+              </label>
               <input
                 type="text"
-                placeholder="Company Name"
+                placeholder="e.g. PixelForge Web Studio"
                 value={webForm.company}
                 onChange={(e) => {
                   setWebForm({ ...webForm, company: e.target.value });
                   if (webErrors.company) setWebErrors({ ...webErrors, company: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: webErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.company ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {webErrors.company && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {webErrors.company}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Monthly Lead Budget *
+              </label>
               <select
                 value={webForm.budget}
                 onChange={(e) => {
                   setWebForm({ ...webForm, budget: e.target.value });
                   if (webErrors.budget) setWebErrors({ ...webErrors, budget: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: webErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.budget ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="Select Monthly Budget">Select Monthly Budget</option>
-                <option value="Under $200/month">Under $200/month</option>
-                <option value="$200 - $500/month">$200 - $500/month</option>
-                <option value="$500 - $1000/month">$500 - $1000/month</option>
-                <option value="$1000+/month">$1000+/month</option>
+                <option value="">-- Select your monthly budget --</option>
+                <option value="Starter $199">Starter — $199/month (20 Leads)</option>
+                <option value="Standard $449">Standard — $449/month (50 Leads)</option>
+                <option value="Premium $899">Premium — $899/month (120 Leads)</option>
+                <option value="Custom">Custom Package</option>
               </select>
               {webErrors.budget && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {webErrors.budget}
                 </span>
               )}
             </div>
 
-            <textarea
-              placeholder="Describe your target client profile..."
-              rows="4"
-              value={webForm.message}
-              onChange={(e) => setWebForm({ ...webForm, message: e.target.value })}
-              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
-            ></textarea>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Tell Us Your Requirements
+              </label>
+              <textarea
+                placeholder="e.g. I run a web design firm in Mumbai and need 30 fresh leads per month from small businesses in India who need new websites. Budget $500–$2000."
+                rows={3}
+                value={webForm.message}
+                onChange={(e) => setWebForm({ ...webForm, message: e.target.value })}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0, resize: 'vertical' }}
+              />
+            </div>
 
             <button
               type="submit"
@@ -3276,7 +3331,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
                 borderRadius: 0
               }}
             >
-              {webLoading ? 'SENDING...' : 'GET WEB DESIGN LEADS →'}
+              {webLoading ? 'SENDING...' : '💻 GET WEB DESIGN LEADS →'}
             </button>
             {webSuccess && <SuccessMessage onClose={() => setWebSuccess(false)} />}
           </form>
@@ -3331,7 +3386,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 // ==========================================
 const AppointmentLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [appSuccess, setAppSuccess] = useState(false);
   const [appErrors, setAppErrors] = useState({});
   const [appLoading, setAppLoading] = useState(false);
@@ -3340,29 +3395,29 @@ const AppointmentLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!appForm.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = "⚠ Please enter your full name so we can address you properly";
     }
     if (!appForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(appForm.email)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
     if (!appForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(appForm.phone)) {
-        errors.phone = 'Please enter a valid phone number';
+        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!appForm.company.trim()) {
-      errors.company = 'Company is required';
+      errors.company = "⚠ Please enter your company or agency name";
     }
-    if (appForm.budget === 'Select Monthly Budget' || !appForm.budget) {
-      errors.budget = 'Please select a budget';
+    if (!appForm.budget) {
+      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -3377,7 +3432,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
       setAppLoading(false);
       handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry');
       setAppSuccess(true);
-      setAppForm({ name: '', email: '', phone: '', company: '', budget: 'Select Monthly Budget', message: '' });
+      setAppForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -3780,107 +3835,127 @@ const AppointmentLeadsPage = ({ isMobile }) => {
             Book Your Appointment Leads — Fill The Form
           </h2>
           <form onSubmit={handleAppSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Full Name *
+              </label>
               <input
                 type="text"
-                placeholder="Your Name"
+                placeholder="e.g. Ananya Patel"
                 value={appForm.name}
                 onChange={(e) => {
                   setAppForm({ ...appForm, name: e.target.value });
                   if (appErrors.name) setAppErrors({ ...appErrors, name: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: appErrors.name ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: appErrors.name ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {appErrors.name && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {appErrors.name}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Business Email Address *
+              </label>
               <input
                 type="email"
-                placeholder="Email Address"
+                placeholder="e.g. ananya@growthagency.com"
                 value={appForm.email}
                 onChange={(e) => {
                   setAppForm({ ...appForm, email: e.target.value });
                   if (appErrors.email) setAppErrors({ ...appErrors, email: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: appErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: appErrors.email ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {appErrors.email && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {appErrors.email}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                WhatsApp / Phone Number *
+              </label>
               <input
                 type="tel"
-                placeholder="Phone Number"
+                placeholder="e.g. +91 98765 43210"
                 value={appForm.phone}
                 onChange={(e) => {
                   setAppForm({ ...appForm, phone: e.target.value });
                   if (appErrors.phone) setAppErrors({ ...appErrors, phone: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: appErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: appErrors.phone ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {appErrors.phone && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {appErrors.phone}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Agency / Company Name
+              </label>
               <input
                 type="text"
-                placeholder="Company Name"
+                placeholder="e.g. GrowthMark Digital Agency"
                 value={appForm.company}
                 onChange={(e) => {
                   setAppForm({ ...appForm, company: e.target.value });
                   if (appErrors.company) setAppErrors({ ...appErrors, company: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: appErrors.company ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: appErrors.company ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {appErrors.company && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {appErrors.company}
                 </span>
               )}
             </div>
 
-            <div>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Monthly Appointment Lead Budget *
+              </label>
               <select
                 value={appForm.budget}
                 onChange={(e) => {
                   setAppForm({ ...appForm, budget: e.target.value });
                   if (appErrors.budget) setAppErrors({ ...appErrors, budget: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: appErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: appErrors.budget ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="Select Monthly Budget">Select Monthly Budget</option>
-                <option value="Under $200/month">Under $200/month</option>
-                <option value="$200 - $500/month">$200 - $500/month</option>
-                <option value="$500 - $1000/month">$500 - $1000/month</option>
-                <option value="$1000+/month">$1000+/month</option>
+                <option value="">-- How many appointments do you need? --</option>
+                <option value="10 Appointments">10 Appointments/month</option>
+                <option value="25 Appointments">25 Appointments/month</option>
+                <option value="50 Appointments">50 Appointments/month</option>
+                <option value="Custom">Custom Volume</option>
               </select>
               {appErrors.budget && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {appErrors.budget}
                 </span>
               )}
             </div>
 
-            <textarea
-              placeholder="Describe your target client profile..."
-              rows="4"
-              value={appForm.message}
-              onChange={(e) => setAppForm({ ...appForm, message: e.target.value })}
-              style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
-            ></textarea>
+            <div style={{ textAlign: 'left' }}>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Describe Your Target Client
+              </label>
+              <textarea
+                placeholder="e.g. I need appointment leads with business owners who have a monthly digital marketing budget of $1,000+ and are looking for SEO services in the US market."
+                rows="3"
+                value={appForm.message}
+                onChange={(e) => setAppForm({ ...appForm, message: e.target.value })}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0, resize: 'vertical' }}
+              ></textarea>
+            </div>
 
             <button
               type="submit"
@@ -3895,10 +3970,11 @@ const AppointmentLeadsPage = ({ isMobile }) => {
                 padding: '14px',
                 border: 'none',
                 cursor: appLoading ? 'not-allowed' : 'pointer',
-                borderRadius: 0
+                borderRadius: 0,
+                width: '100%'
               }}
             >
-              {appLoading ? 'SENDING...' : 'BOOK APPOINTMENT LEADS →'}
+              {appLoading ? 'SENDING...' : '📅 BOOK APPOINTMENT LEADS →'}
             </button>
             {appSuccess && <SuccessMessage onClose={() => setAppSuccess(false)} />}
           </form>
@@ -3977,11 +4053,11 @@ const BlogPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!blogEmail.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(blogEmail)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
 
@@ -4154,11 +4230,23 @@ const BlogPage = ({ isMobile }) => {
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px' }}>
             Join 3,000+ agency owners who trust SEO Submit Web.
           </p>
-          <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '10px' }} noValidate>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+          <form onSubmit={handleSubscribe} style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'flex-end', gap: '10px' }} noValidate>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
+              <label style={{
+                display: 'block',
+                fontFamily: F.display,
+                fontWeight: 700,
+                fontSize: '11px',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                color: '#FFD600',
+                marginBottom: '6px',
+              }}>
+                Enter Your Email to Subscribe
+              </label>
               <input
                 type="email"
-                placeholder="Your Work Email"
+                placeholder="e.g. yourname@agency.com"
                 value={blogEmail}
                 onChange={(e) => {
                   setBlogEmail(e.target.value);
@@ -4166,17 +4254,19 @@ const BlogPage = ({ isMobile }) => {
                 }}
                 style={{
                   width: '100%',
-                  padding: '12px',
-                  background: '#1A2A4A',
-                  border: blogErrors.email ? '2px solid #ff3333' : '1px solid #2A3D6A',
-                  color: C.white,
+                  padding: '12px 14px',
                   fontSize: '13px',
-                  borderRadius: 0,
+                  fontFamily: F.body,
+                  border: blogErrors.email ? '2px solid #ff4444' : '2px solid #2a3d6a',
+                  background: '#1a2a4a',
+                  color: '#ffffff',
+                  marginBottom: '4px',
                   outline: 'none',
+                  borderRadius: 0,
                 }}
               />
               {blogErrors.email && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {blogErrors.email}
                 </span>
               )}
@@ -4185,23 +4275,27 @@ const BlogPage = ({ isMobile }) => {
               type="submit"
               disabled={blogLoading}
               style={{
-                background: C.yellow,
-                color: C.navy,
+                background: blogLoading ? '#cccccc' : C.yellow,
+                color: blogLoading ? '#666666' : C.navy,
                 fontFamily: F.display,
                 fontWeight: 800,
                 fontSize: '12px',
                 letterSpacing: '1px',
-                padding: '12px 24px',
+                padding: '14px 24px',
                 border: 'none',
-                cursor: 'pointer',
+                cursor: blogLoading ? 'not-allowed' : 'pointer',
                 borderRadius: 0,
-                height: '42px',
-                opacity: blogLoading ? 0.7 : 1,
+                height: '46px',
+                marginBottom: '4px',
+                width: isMobile ? '100%' : 'auto',
               }}
             >
-              {blogLoading ? 'SENDING...' : 'SUBSCRIBE NOW'}
+              {blogLoading ? 'SENDING...' : '📧 SUBSCRIBE FOR FREE →'}
             </button>
           </form>
+          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '6px', textAlign: 'left' }}>
+            Join 3,000+ agency owners. No spam. Unsubscribe anytime.
+          </p>
         </div>
       </section>
 
@@ -4253,8 +4347,8 @@ const TestimonialsPage = ({ isMobile }) => {
   const [reviewForm, setReviewForm] = useState({
     name: '',
     company: '',
-    service: 'SEO Leads',
-    rating: '5 Stars',
+    service: '',
+    rating: '5',
     review: ''
   });
   const [reviewSuccess, setReviewSuccess] = useState(false);
@@ -4265,13 +4359,16 @@ const TestimonialsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!reviewForm.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = "⚠ Please enter your full name so we can address you properly";
     }
     if (!reviewForm.company.trim()) {
-      errors.company = 'Company name is required';
+      errors.company = "⚠ Please enter your company or agency name";
     }
-    if (!reviewForm.review.trim()) {
-      errors.review = 'Review message is required';
+    if (!reviewForm.service) {
+      errors.service = "⚠ Please select which type of leads you need";
+    }
+    if (reviewForm.review.trim().length < 20) {
+      errors.review = "⚠ Please write your review — minimum 20 characters";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -4288,14 +4385,14 @@ const TestimonialsPage = ({ isMobile }) => {
         name: reviewForm.name,
         company: reviewForm.company,
         service: reviewForm.service,
-        message: `Rating: ${reviewForm.rating} | Review: ${reviewForm.review}`
+        message: `Rating: ${reviewForm.rating} Stars | Review: ${reviewForm.review}`
       }, 'Testimonials Page - Leave a Review');
       setReviewSuccess(true);
       setReviewForm({
         name: '',
         company: '',
-        service: 'SEO Leads',
-        rating: '5 Stars',
+        service: '',
+        rating: '5',
         review: ''
       });
     }, 1000);
@@ -4607,83 +4704,103 @@ const TestimonialsPage = ({ isMobile }) => {
 
           <form onSubmit={handleReviewSubmit} style={{ display: 'grid', gap: '12px' }} noValidate>
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Your Name</label>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Full Name *
+              </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="e.g. Rajesh Sharma"
                 value={reviewForm.name}
                 onChange={(e) => {
                   setReviewForm({ ...reviewForm, name: e.target.value });
                   if (reviewErrors.name) setReviewErrors({ ...reviewErrors, name: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: reviewErrors.name ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: reviewErrors.name ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {reviewErrors.name && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {reviewErrors.name}
                 </span>
               )}
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Company Name</label>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Company / Agency Name *
+              </label>
               <input
                 type="text"
-                placeholder="TechSEO Solutions"
+                placeholder="e.g. TechSEO Solutions"
                 value={reviewForm.company}
                 onChange={(e) => {
                   setReviewForm({ ...reviewForm, company: e.target.value });
                   if (reviewErrors.company) setReviewErrors({ ...reviewErrors, company: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: reviewErrors.company ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: reviewErrors.company ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               />
               {reviewErrors.company && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {reviewErrors.company}
                 </span>
               )}
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Service Used</label>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Which Service Did You Use? *
+              </label>
               <select
                 value={reviewForm.service}
-                onChange={(e) => setReviewForm({ ...reviewForm, service: e.target.value })}
-                style={{ width: '100%', padding: '12px', border: '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                onChange={(e) => {
+                  setReviewForm({ ...reviewForm, service: e.target.value });
+                  if (reviewErrors.service) setReviewErrors({ ...reviewErrors, service: '' });
+                }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: reviewErrors.service ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="SEO Leads">SEO Leads</option>
-                <option value="Web Design Leads">Web Design Leads</option>
-                <option value="Appointment Leads">Appointment Leads</option>
+                <option value="">-- Select the service you used --</option>
+                <option value="SEO Leads">🔍 SEO Leads</option>
+                <option value="Web Design Leads">💻 Web Design Leads</option>
+                <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
+                <option value="All Services">⭐ All Services</option>
               </select>
+              {reviewErrors.service && (
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  {reviewErrors.service}
+                </span>
+              )}
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Rating</label>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Your Rating *
+              </label>
               <select
                 value={reviewForm.rating}
                 onChange={(e) => setReviewForm({ ...reviewForm, rating: e.target.value })}
-                style={{ width: '100%', padding: '12px', border: '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="5 Stars">5 Stars</option>
-                <option value="4 Stars">4 Stars</option>
-                <option value="3 Stars">3 Stars</option>
+                <option value="5">⭐⭐⭐⭐⭐ 5 Stars — Excellent</option>
+                <option value="4">⭐⭐⭐⭐ 4 Stars — Very Good</option>
+                <option value="3">⭐⭐⭐ 3 Stars — Good</option>
               </select>
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: C.white, marginBottom: '4px', fontFamily: F.body }}>Your Review</label>
+              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
+                Write Your Review *
+              </label>
               <textarea
-                placeholder="Write your experience..."
+                placeholder="Share your honest experience with SEO Submit Web. How did our leads help your agency grow? What results did you see? How was the quality and support? (Minimum 50 words)"
                 rows="4"
                 value={reviewForm.review}
                 onChange={(e) => {
                   setReviewForm({ ...reviewForm, review: e.target.value });
                   if (reviewErrors.review) setReviewErrors({ ...reviewErrors, review: '' });
                 }}
-                style={{ width: '100%', padding: '12px', border: reviewErrors.review ? '2px solid #ff3333' : '1px solid #2a3d6a', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'vertical' }}
+                style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: reviewErrors.review ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0, resize: 'vertical' }}
               />
               {reviewErrors.review && (
-                <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block' }}>
+                <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                   {reviewErrors.review}
                 </span>
               )}
@@ -4693,32 +4810,31 @@ const TestimonialsPage = ({ isMobile }) => {
               type="submit"
               disabled={reviewLoading}
               style={{
-                background: C.yellow,
-                color: C.navy,
+                background: reviewLoading ? '#cccccc' : C.yellow,
+                color: reviewLoading ? '#666666' : C.navy,
                 fontFamily: F.display,
                 fontWeight: 800,
                 fontSize: '12px',
                 letterSpacing: '2px',
                 padding: '14px 28px',
                 border: 'none',
-                cursor: 'pointer',
+                cursor: reviewLoading ? 'not-allowed' : 'pointer',
                 borderRadius: 0,
                 marginTop: '12px',
                 width: '100%',
-                opacity: reviewLoading ? 0.7 : 1,
               }}
             >
-              {reviewLoading ? 'SENDING...' : 'SUBMIT REVIEW'}
+              {reviewLoading ? 'SENDING...' : '⭐ SUBMIT YOUR REVIEW →'}
             </button>
           </form>
 
           {/* Green WhatsApp Contact Button */}
           <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', textAlign: 'center' }}>
-            <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.6)', marginBottom: '12px' }}>
+            <p style={{ textAlign: 'center', fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '12px', marginBottom: '12px' }}>
               Want to speak to support instead?
             </p>
             <a
-              href="https://wa.me/917738907685?text=Hi%20I%20have%20feedback%20or%20questions%20about%20your%20leads."
+              href="https://wa.me/917738907685"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -4761,8 +4877,8 @@ const ContactPage = ({ isMobile }) => {
     email: '',
     phone: '',
     company: '',
-    service: 'Select Service Interested In',
-    budget: 'Select Monthly Budget',
+    service: '',
+    budget: '',
     message: ''
   });
   const [contactSuccess, setContactSuccess] = useState(false);
@@ -4773,29 +4889,29 @@ const ContactPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!contactForm.firstName.trim()) {
-      errors.firstName = 'First name is required';
+      errors.firstName = "⚠ Please enter your full name so we can address you properly";
     }
     if (!contactForm.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(contactForm.email)) {
-        errors.email = 'Please enter a valid email address';
+        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
       }
     }
     if (!contactForm.phone.trim()) {
-      errors.phone = 'Phone number is required';
+      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(contactForm.phone)) {
-        errors.phone = 'Please enter a valid phone number';
+        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
       }
     }
-    if (contactForm.service === 'Select Service Interested In' || !contactForm.service) {
-      errors.service = 'Please select a service';
+    if (!contactForm.service) {
+      errors.service = "⚠ Please select which type of leads you need";
     }
-    if (contactForm.budget === 'Select Monthly Budget' || !contactForm.budget) {
-      errors.budget = 'Please select a budget';
+    if (!contactForm.budget) {
+      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -4819,8 +4935,8 @@ const ContactPage = ({ isMobile }) => {
         email: '',
         phone: '',
         company: '',
-        service: 'Select Service Interested In',
-        budget: 'Select Monthly Budget',
+        service: '',
+        budget: '',
         message: ''
       });
     }, 1000);
@@ -4915,137 +5031,159 @@ const ContactPage = ({ isMobile }) => {
             <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.navy, marginBottom: '20px' }}>
               Send Us a Message
             </h2>
-            <form onSubmit={handleContactSubmit} style={{ display: 'grid', gap: '10px' }} noValidate>
+            <form onSubmit={handleContactSubmit} className="light-form" style={{ display: 'grid', gap: '10px' }} noValidate>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                <div>
+                <div style={{ textAlign: 'left' }}>
+                  <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                    First Name *
+                  </label>
                   <input
                     type="text"
-                    placeholder="First Name"
+                    placeholder="e.g. Rahul"
                     value={contactForm.firstName}
                     onChange={(e) => {
                       setContactForm({ ...contactForm, firstName: e.target.value });
                       if (contactErrors.firstName) setContactErrors({ ...contactErrors, firstName: '' });
                     }}
-                    style={{ width: '100%', padding: '12px', border: contactErrors.firstName ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                    style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.firstName ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                   />
                   {contactErrors.firstName && (
-                    <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                    <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                       {contactErrors.firstName}
                     </span>
                   )}
                 </div>
-                <div>
+                <div style={{ textAlign: 'left' }}>
+                  <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                    Last Name *
+                  </label>
                   <input
                     type="text"
-                    placeholder="Last Name"
+                    placeholder="e.g. Sharma"
                     value={contactForm.lastName}
                     onChange={(e) => setContactForm({ ...contactForm, lastName: e.target.value })}
-                    style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                    style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                   />
                 </div>
               </div>
 
-              <div>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Your Email Address *
+                </label>
                 <input
                   type="email"
-                  placeholder="Email Address"
+                  placeholder="e.g. rahul@youragency.com"
                   value={contactForm.email}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, email: e.target.value });
                     if (contactErrors.email) setContactErrors({ ...contactErrors, email: '' });
                   }}
-                  style={{ width: '100%', padding: '12px', border: contactErrors.email ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.email ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {contactErrors.email && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {contactErrors.email}
                   </span>
                 )}
               </div>
 
-              <div>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Phone / WhatsApp Number *
+                </label>
                 <input
                   type="tel"
-                  placeholder="Phone Number"
+                  placeholder="e.g. +91 98765 43210"
                   value={contactForm.phone}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, phone: e.target.value });
                     if (contactErrors.phone) setContactErrors({ ...contactErrors, phone: '' });
                   }}
-                  style={{ width: '100%', padding: '12px', border: contactErrors.phone ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.phone ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
                 {contactErrors.phone && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {contactErrors.phone}
                   </span>
                 )}
               </div>
 
-              <div>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Company / Agency Name
+                </label>
                 <input
                   type="text"
-                  placeholder="Company Name"
+                  placeholder="e.g. TechSEO Solutions Pvt Ltd"
                   value={contactForm.company}
                   onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
-                  style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 />
               </div>
 
-              {/* Service interested in */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left' }}>
-                <label style={{ fontSize: '11px', fontWeight: 'bold', color: C.navy, fontFamily: F.display }}>Service Interested In</label>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Service You Are Interested In *
+                </label>
                 <select
                   value={contactForm.service}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, service: e.target.value });
                     if (contactErrors.service) setContactErrors({ ...contactErrors, service: '' });
                   }}
-                  style={{ width: '100%', padding: '12px', border: contactErrors.service ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.service ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
-                  <option value="Select Service Interested In">Select Service Interested In</option>
-                  <option value="SEO Leads">SEO Leads</option>
-                  <option value="Web Design Leads">Web Design Leads</option>
-                  <option value="Appointment Fixed Leads">Appointment Fixed Leads</option>
-                  <option value="All Three Services">All Three Services</option>
+                  <option value="">-- Select a Service --</option>
+                  <option value="SEO Leads">🔍 SEO Leads</option>
+                  <option value="Web Design Leads">💻 Web Design Leads</option>
+                  <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
+                  <option value="All Three">⭐ All Three Services</option>
                 </select>
                 {contactErrors.service && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {contactErrors.service}
                   </span>
                 )}
               </div>
 
-              {/* Monthly budget */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left' }}>
-                <label style={{ fontSize: '11px', fontWeight: 'bold', color: C.navy, fontFamily: F.display }}>Monthly Budget</label>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Your Monthly Budget *
+                </label>
                 <select
                   value={contactForm.budget}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, budget: e.target.value });
                     if (contactErrors.budget) setContactErrors({ ...contactErrors, budget: '' });
                   }}
-                  style={{ width: '100%', padding: '12px', border: contactErrors.budget ? '2px solid #ff3333' : '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0 }}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.budget ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
-                  <option value="Select Monthly Budget">Select Monthly Budget</option>
-                  <option value="Under $200/month">Under $200/month</option>
-                  <option value="$200 - $500/month">$200 - $500/month</option>
-                  <option value="$500 - $1000/month">$500 - $1000/month</option>
-                  <option value="$1000+/month">$1000+/month</option>
+                  <option value="">-- Select Your Budget --</option>
+                  <option value="Under $200">💰 Under $200 / month</option>
+                  <option value="$200-$500">💰 $200 – $500 / month</option>
+                  <option value="$500-$1000">💰 $500 – $1,000 / month</option>
+                  <option value="$1000+">💰 $1,000+ / month</option>
                 </select>
                 {contactErrors.budget && (
-                  <span style={{ fontSize: '11px', color: '#ff3333', marginTop: '4px', display: 'block', textAlign: 'left' }}>
+                  <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                     {contactErrors.budget}
                   </span>
                 )}
               </div>
 
-              <textarea
-                placeholder="Describe your target client profile..."
-                rows="4"
-                value={contactForm.message}
-                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                style={{ width: '100%', padding: '12px', border: '1px solid #cbd5e1', background: C.white, color: C.navy, fontSize: '13px', borderRadius: 0, resize: 'none' }}
-              ></textarea>
+              <div style={{ textAlign: 'left' }}>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
+                  Your Message
+                </label>
+                <textarea
+                  placeholder="Tell us about your agency, how many leads you need per month, which cities or countries you target, and any other details that will help us serve you better..."
+                  rows={4}
+                  value={contactForm.message}
+                  onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                  style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0, resize: 'vertical' }}
+                />
+              </div>
 
               <button
                 type="submit"
@@ -5060,10 +5198,11 @@ const ContactPage = ({ isMobile }) => {
                   padding: '14px',
                   border: 'none',
                   cursor: contactLoading ? 'not-allowed' : 'pointer',
-                  borderRadius: 0
+                  borderRadius: 0,
+                  marginTop: '8px'
                 }}
               >
-                {contactLoading ? 'SENDING...' : 'SEND MESSAGE →'}
+                {contactLoading ? 'SENDING...' : '📨 SEND MESSAGE →'}
               </button>
               {contactSuccess && <SuccessMessage onClose={() => setContactSuccess(false)} />}
             </form>
@@ -5237,10 +5376,34 @@ function App() {
     const style = document.createElement('style');
     style.textContent = `
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.4); }
       body { overflow-x: hidden; background: #0A1628; }
       .hide-scrollbar::-webkit-scrollbar { display: none; }
       .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      input::placeholder { 
+        color: rgba(255, 255, 255, 0.5) !important; 
+        font-size: 12px;
+        font-family: 'Inter', sans-serif;
+      }
+      textarea::placeholder { 
+        color: rgba(255, 255, 255, 0.5) !important;
+        font-size: 12px;
+        font-family: 'Inter', sans-serif;
+      }
+      select option {
+        background: #0A1628;
+        color: #ffffff;
+      }
+      input:focus, 
+      select:focus, 
+      textarea:focus {
+        border-color: #FFD600 !important;
+        outline: none !important;
+        background: #1f3055 !important;
+      }
+      .light-form input::placeholder,
+      .light-form textarea::placeholder {
+        color: rgba(10,22,40,0.4) !important;
+      }
     `;
     document.head.appendChild(style);
 
