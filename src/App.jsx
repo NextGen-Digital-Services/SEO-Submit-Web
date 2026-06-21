@@ -488,8 +488,9 @@ const HomePage = ({ isMobile }) => {
         }}>
           {/* Background image overlay */}
           <img 
-            src="https://picsum.photos/seed/nexushero/600/500" 
-            alt="Hero BG" 
+            src="/assets/lead-generation-hero.png"
+            alt="Digital marketing team reviewing incoming qualified leads"
+            fetchPriority="high"
             style={{ 
               position: 'absolute', 
               top: 0, left: 0, 
@@ -625,8 +626,8 @@ const HomePage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div>
           <img
-            src="https://picsum.photos/seed/nexusteam/700/500"
-            alt="SEO Submit Web Team"
+            src="/assets/lead-generation-hero.png"
+            alt="Agency team collaborating on lead generation"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -687,7 +688,7 @@ const HomePage = ({ isMobile }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '20px' }}>
           {[
             {
-              img: 'https://picsum.photos/seed/seoleads/600/220',
+              img: '/assets/seo-analytics-leads.png',
               border: C.yellow,
               icon: 'ti-search',
               title: 'Exclusive SEO Leads',
@@ -696,7 +697,7 @@ const HomePage = ({ isMobile }) => {
               path: '/seo-leads',
             },
             {
-              img: 'https://picsum.photos/seed/webdesign/600/220',
+              img: '/assets/lead-generation-hero.png',
               border: C.blue,
               icon: 'ti-layout',
               title: 'Web Design Leads',
@@ -705,7 +706,7 @@ const HomePage = ({ isMobile }) => {
               path: '/web-design-leads',
             },
             {
-              img: 'https://picsum.photos/seed/appointment/600/220',
+              img: '/assets/seo-analytics-leads.png',
               border: C.navy,
               icon: 'ti-calendar-check',
               title: 'Appointment Fixed Leads',
@@ -839,8 +840,8 @@ const HomePage = ({ isMobile }) => {
         </div>
         <div>
           <img
-            src="https://picsum.photos/seed/nexussuccess/700/600"
-            alt="SEO Submit Web Growth"
+            src="/assets/seo-analytics-leads.png"
+            alt="Marketing analytics and sales pipeline growth"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -903,8 +904,8 @@ const HomePage = ({ isMobile }) => {
         </div>
 
         <img
-          src="https://picsum.photos/seed/nexusoffice/1200/200"
-          alt="SEO Submit Web Collaboration"
+          src="/assets/lead-generation-hero.png"
+          alt="Lead generation team in a modern digital workspace"
           loading="lazy"
           style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', marginTop: '32px' }}
         />
@@ -975,8 +976,8 @@ const HomePage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div>
           <img
-            src="https://picsum.photos/seed/nexusdata/700/500"
-            alt="SEO Submit Web Stats Chart"
+            src="/assets/seo-analytics-leads.png"
+            alt="SEO analytics dashboard and qualified lead pipeline"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -1331,7 +1332,7 @@ const AboutPage = ({ isMobile }) => {
           zIndex: 1,
         }}>
           <img
-            src="https://picsum.photos/seed/abouthero/1400/400"
+            src="/assets/lead-generation-hero.png"
             alt="SEO Submit Web Office Background"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
           />
@@ -1430,7 +1431,7 @@ const AboutPage = ({ isMobile }) => {
         </div>
         <div>
           <img
-            src="https://picsum.photos/seed/aboutstory/700/600"
+            src="/assets/seo-analytics-leads.png"
             alt="Startup Delhi Office"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -1582,7 +1583,7 @@ const AboutPage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%', background: C.lightBg }}>
         <div>
           <img
-            src="https://picsum.photos/seed/culture1/700/450"
+            src="/assets/lead-generation-hero.png"
             alt="SEO Submit Web Culture"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -1816,7 +1817,7 @@ const SeoLeadsPage = ({ isMobile }) => {
         }}>
           {/* Stats Image Background */}
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
-            <img src="https://picsum.photos/seed/seohero/600/400" alt="SEO Analysis bg" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }} />
+            <img src="/assets/seo-analytics-leads.png" alt="SEO analytics and high-intent lead dashboard" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }} />
           </div>
 
           <div style={{ position: 'relative', zIndex: 2 }}>
@@ -1869,7 +1870,7 @@ const SeoLeadsPage = ({ isMobile }) => {
 
           {/* Right Lead Card Mockup */}
           <div style={{ background: C.yellow, color: C.navy, border: `2px solid ${C.navy}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="https://picsum.photos/seed/seocard/500/350" alt="SEO Lead mockup" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/seo-analytics-leads.png" alt="SEO lead qualification dashboard" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px', borderBottom: `2px solid ${C.navy}`, paddingBottom: '6px' }}>
                 Verified SEO Lead Mockup
@@ -2189,7 +2190,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
           {/* Background Image */}
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
             <img
-              src="https://picsum.photos/seed/webhero/600/400"
+              src="/assets/lead-generation-hero.png"
               alt="Web Design Background"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
             />
@@ -2244,7 +2245,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 
           {/* Sample Lead Card Mockup */}
           <div style={{ background: C.white, border: `3px solid ${C.blue}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="https://picsum.photos/seed/webcard/500/350" alt="Web Design Lead mockup" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.blue, textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px', borderBottom: `2px solid ${C.blue}`, paddingBottom: '6px' }}>
                 Verified Web Lead
@@ -2569,7 +2570,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
           {/* Background Image */}
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
             <img
-              src="https://picsum.photos/seed/apphero/600/400"
+              src="/assets/seo-analytics-leads.png"
               alt="Handshake meeting appt"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
             />
@@ -2620,7 +2621,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
 
           {/* Right Timeline Booking Process */}
           <div style={{ background: C.lightBg, border: `1px solid #dde3f0`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="https://picsum.photos/seed/appprocess/700/400" alt="Appointment Booking Process" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/seo-analytics-leads.png" alt="Appointment booking and lead qualification dashboard" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '14px', textTransform: 'uppercase' }}>
                 Booking Flow
@@ -2984,7 +2985,7 @@ const BlogPage = ({ isMobile }) => {
           </div>
           <div>
             <img
-              src="https://picsum.photos/seed/blogfeatured/1200/400"
+              src="/assets/seo-analytics-leads.png"
               alt="Marketing Success"
               style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
             />
@@ -3481,7 +3482,7 @@ const ContactPage = ({ isMobile }) => {
 
       {/* Image Strip above form */}
       <img
-        src="https://picsum.photos/seed/contactbanner/1200/150"
+        src="/assets/lead-generation-hero.png"
         alt="SEO Submit Web support team"
         style={{ width: '100%', height: '150px', objectFit: 'cover', display: 'block' }}
       />
