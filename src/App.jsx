@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
+import HeroImage from './assets/Hero/HeroSection.jpeg';
 
 // COLOR TOKENS
 const C = {
@@ -610,125 +611,169 @@ const HomePage = ({ isMobile }) => {
         <div style={{
           flex: 1,
           padding: isMobile ? '32px 16px' : '56px 40px',
-          background: `linear-gradient(135deg, #0057FF 0%, #0A1628 65%)`,
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '500px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          textAlign: 'left',
         }}>
+
+          {/* Background Image */}
+          <img
+            src={HeroImage}
+            alt="SEO Submit Web Hero"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              zIndex: 0,
+            }}
+          />
+
+          {/* Dark overlay so text stays readable */}
           <div style={{
-            background: C.yellow,
-            color: C.navy,
-            fontFamily: F.display,
-            fontWeight: 800,
-            fontSize: '9px',
-            letterSpacing: '2px',
-            padding: '6px 14px',
-            display: 'inline-block',
-            marginBottom: '16px',
-            alignSelf: 'flex-start',
-            borderRadius: 0,
-          }}>
-            INDIA'S #1 SEO LEAD GENERATION COMPANY
-          </div>
-          <h1 style={{
-            fontFamily: F.display,
-            fontWeight: 900,
-            fontSize: isMobile ? '30px' : '40px',
-            color: C.white,
-            lineHeight: 1.15,
-            marginBottom: '14px',
-          }}>
-            Get Exclusive <span style={{ color: C.yellow }}>SEO & Web Design</span> Leads That Actually Convert Into Paying Clients
-          </h1>
-          <p style={{
-            fontFamily: F.body,
-            fontSize: '15px',
-            color: 'rgba(255,255,255,0.85)',
-            lineHeight: 1.8,
-            marginBottom: '24px',
-            maxWidth: '480px',
-          }}>
-            Real-time. Exclusive. Guaranteed. 16+ years supplying premium verified leads to SEO agencies and web design firms across India, USA, UK, Australia & Canada. Every lead is exclusive to you — never resold.
-          </p>
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(135deg, rgba(0,87,255,0.75) 0%, rgba(10,22,40,0.88) 65%)',
+            zIndex: 1,
+          }} />
 
-          {/* Trust Pills */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '24px' }}>
-            {["✓ 100% Exclusive", "✓ Real-Time Delivery", "✓ Bad Lead Replaced"].map((pill) => (
-              <span key={pill} style={{
-                background: C.yellow,
-                color: C.navy,
-                fontFamily: F.display,
-                fontWeight: 700,
-                fontSize: '11px',
-                padding: '7px 16px',
-                borderRadius: 0,
-              }}>
-                {pill}
-              </span>
-            ))}
-          </div>
+          {/* All existing hero content goes here — zIndex 2 */}
+          <div style={{ position: 'relative', zIndex: 2 }}>
 
-          {/* Buttons */}
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <button
-              onClick={() => navigate('/contact')}
-              style={{
-                background: C.yellow,
-                color: C.navy,
-                fontFamily: F.display,
-                fontWeight: 800,
-                fontSize: '12px',
-                letterSpacing: '1px',
-                padding: '14px 24px',
-                border: 'none',
-                cursor: 'pointer',
-                borderRadius: 0,
-              }}
-            >
-              GET FREE SAMPLES
-            </button>
-            <button
-              onClick={() => window.location.href = 'tel:+917738907685'}
-              style={{
+            {/* Yellow badge */}
+            <div style={{
+              background: '#FFD600',
+              color: '#0A1628',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 800,
+              fontSize: '10px',
+              letterSpacing: '2px',
+              padding: '6px 14px',
+              display: 'inline-block',
+              marginBottom: '16px',
+              textTransform: 'uppercase',
+            }}>
+              INDIA'S #1 SEO LEAD GENERATION COMPANY
+            </div>
+
+            {/* H1 heading */}
+            <h1 style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 900,
+              fontSize: isMobile ? '30px' : '40px',
+              color: '#ffffff',
+              lineHeight: 1.15,
+              marginBottom: '16px',
+            }}>
+              Get Exclusive{' '}
+              <span style={{ color: '#FFD600' }}>SEO & Web Design</span>
+              {' '}Leads That Actually Convert Into Paying Clients
+            </h1>
+
+            {/* Paragraph */}
+            <p style={{
+              fontSize: '15px',
+              color: 'rgba(255,255,255,0.85)',
+              lineHeight: 1.8,
+              marginBottom: '24px',
+              maxWidth: '480px',
+            }}>
+              Real-time. Exclusive. Guaranteed. 16+ years supplying premium
+              verified leads to SEO agencies and web design firms across India,
+              USA, UK, Australia & Canada. Every lead is exclusive to you —
+              never resold.
+            </p>
+
+            {/* Trust pills */}
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '28px' }}>
+              {['✓ 100% Exclusive', '✓ Real-Time Delivery', '✓ Bad Lead Replaced'].map(pill => (
+                <div key={pill} style={{
+                  background: '#FFD600',
+                  color: '#0A1628',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '11px',
+                  padding: '7px 16px',
+                }}>
+                  {pill}
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              
+              {/* GET FREE SAMPLES button */}
+              <button 
+                onClick={() => navigate('/contact')}
+                style={{
+                  background: '#FFD600',
+                  color: '#0A1628',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '14px 24px',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                GET FREE SAMPLES
+              </button>
+
+              {/* Phone button */}
+              <a href="tel:+917738907685" style={{
                 background: 'transparent',
-                color: C.yellow,
-                fontFamily: F.display,
-                fontWeight: 700,
-                fontSize: '12px',
-                letterSpacing: '1px',
-                padding: '12px 24px',
-                border: `2px solid ${C.yellow}`,
-                cursor: 'pointer',
-                borderRadius: 0,
-              }}
-            >
-              📞 +91 77389 07685
-            </button>
-            <a
-              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20and%20Web%20Design%20Leads.%20Please%20send%20details."
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#25D366',
-                color: '#fff',
+                color: '#FFD600',
                 fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 800,
+                fontWeight: 700,
                 fontSize: '12px',
                 letterSpacing: '1px',
                 padding: '13px 24px',
-                textDecoration: 'none',
-                border: 'none',
+                border: '2px solid #FFD600',
                 cursor: 'pointer',
-                borderRadius: 0,
-              }}
-            >
-              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-              CHAT ON WHATSAPP
-            </a>
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}>
+                <i className="ti ti-phone" style={{ fontSize: '16px' }}></i>
+                +91 77389 07685
+              </a>
+
+              {/* WhatsApp button */}
+              <a
+                href="https://wa.me/917738907685?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  background: '#25D366',
+                  color: '#ffffff',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '13px 24px',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}>
+                <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+                CHAT ON WHATSAPP
+              </a>
+
+            </div>
+
           </div>
         </div>
 
