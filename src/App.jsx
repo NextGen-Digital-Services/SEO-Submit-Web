@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import HeroImage from './assets/Hero/HeroSection.jpeg';
 import BookAppointmentImg from './assets/All Images/Bookappointment.jpeg';
+import SeoLeadsImg from './assets/All Images/Seoleads.avif';
 
 // COLOR TOKENS
 const C = {
@@ -632,6 +633,7 @@ const HomePage = ({ isMobile }) => {
               height: '100%',
               objectFit: 'cover',
               objectPosition: 'center center',
+              opacity: 0.70,
               zIndex: 0,
             }}
           />
@@ -643,7 +645,7 @@ const HomePage = ({ isMobile }) => {
             left: 0,
             width: '100%',
             height: '100%',
-            background: 'linear-gradient(135deg, rgba(0,87,255,0.75) 0%, rgba(10,22,40,0.88) 65%)',
+            background: 'rgba(10, 22, 40, 0.45)',
             zIndex: 1,
           }} />
 
@@ -2227,94 +2229,137 @@ const SeoLeadsPage = ({ isMobile }) => {
     <div style={{ width: '100%' }}>
       {/* [A] PAGE HERO */}
       <section style={{
-        background: `linear-gradient(135deg, ${C.blue} 0%, ${C.navy} 100%)`,
-        padding: isMobile ? '32px 16px' : '48px 24px',
         display: 'flex',
         flexDirection: isMobile ? 'column' : 'row',
-        gap: '32px',
+        alignItems: 'stretch',
+        minHeight: '450px',
+        position: 'relative',
+        overflow: 'hidden',
+        width: '100%',
       }}>
         {/* Left Column */}
-        <div style={{ flex: 1, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{
+          flex: 1,
+          padding: isMobile ? '32px 16px' : '56px 40px',
+          position: 'relative',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          textAlign: 'left',
+        }}>
+
+          {/* Background image */}
+          <img
+            src={SeoLeadsImg}
+            alt="SEO Leads"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center center',
+              opacity: 0.45,
+              zIndex: 0,
+            }}
+          />
+
+          {/* Gradient overlay */}
           <div style={{
-            background: C.yellow,
-            color: C.navy,
-            fontFamily: F.display,
-            fontWeight: 800,
-            fontSize: '9px',
-            letterSpacing: '2px',
-            padding: '6px 14px',
-            alignSelf: 'flex-start',
-            marginBottom: '16px',
-          }}>
-            EXCLUSIVE SEO LEADS
-          </div>
-          <h1 style={{
-            fontFamily: F.display,
-            fontWeight: 900,
-            fontSize: isMobile ? '28px' : '38px',
-            color: C.white,
-            lineHeight: 1.15,
-            marginBottom: '14px',
-          }}>
-            Buy <span style={{ color: C.yellow }}>Exclusive Real-Time</span> SEO Leads That Convert Into Paying Clients
-          </h1>
-          <p style={{
-            fontFamily: F.body,
-            fontSize: '14px',
-            color: 'rgba(255,255,255,0.9)',
-            lineHeight: 1.7,
-            marginBottom: '24px',
-            maxWidth: '540px',
-          }}>
-            Direct client queries from validated companies actively seeking search optimization, local SEO, content strategies, and ranking optimization.
-          </p>
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'rgba(10, 22, 40, 0.58)',
+            zIndex: 1,
+          }} />
 
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
-            {["100% Exclusive", "Real-Time", "C-Level Data", "Guaranteed"].map((t) => (
-              <span key={t} style={{
-                background: 'rgba(255,255,255,0.15)',
-                color: C.white,
-                fontFamily: F.display,
-                fontWeight: 700,
-                fontSize: '11px',
-                padding: '6px 14px',
-              }}>
-                ✓ {t}
-              </span>
-            ))}
-          </div>
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <div style={{
+              background: C.yellow,
+              color: C.navy,
+              fontFamily: F.display,
+              fontWeight: 800,
+              fontSize: '9px',
+              letterSpacing: '2px',
+              padding: '6px 14px',
+              alignSelf: 'flex-start',
+              marginBottom: '16px',
+              display: 'inline-block',
+            }}>
+              EXCLUSIVE SEO LEADS
+            </div>
+            <h1 style={{
+              fontFamily: F.display,
+              fontWeight: 900,
+              fontSize: isMobile ? '28px' : '38px',
+              color: C.white,
+              lineHeight: 1.15,
+              marginBottom: '14px',
+            }}>
+              Buy <span style={{ color: C.yellow }}>Exclusive Real-Time</span> SEO Leads That Convert Into Paying Clients
+            </h1>
+            <p style={{
+              fontFamily: F.body,
+              fontSize: '14px',
+              color: 'rgba(255,255,255,0.9)',
+              lineHeight: 1.7,
+              marginBottom: '24px',
+              maxWidth: '540px',
+            }}>
+              Direct client queries from validated companies actively seeking search optimization, local SEO, content strategies, and ranking optimization.
+            </p>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-              GET FREE SAMPLES
-            </button>
-            <button onClick={() => window.location.href = '#seo-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
-              VIEW PRICING
-            </button>
-            <a
-              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#25D366',
-                color: '#fff',
-                fontFamily: F.display,
-                fontWeight: 800,
-                fontSize: '12px',
-                letterSpacing: '1px',
-                padding: '13px 24px',
-                textDecoration: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                borderRadius: 0,
-              }}
-            >
-              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-              CHAT ON WHATSAPP
-            </a>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
+              {["100% Exclusive", "Real-Time", "C-Level Data", "Guaranteed"].map((t) => (
+                <span key={t} style={{
+                  background: 'rgba(255,255,255,0.15)',
+                  color: C.white,
+                  fontFamily: F.display,
+                  fontWeight: 700,
+                  fontSize: '11px',
+                  padding: '6px 14px',
+                }}>
+                  ✓ {t}
+                </span>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
+                GET FREE SAMPLES
+              </button>
+              <button onClick={() => window.location.href = '#seo-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+                VIEW PRICING
+              </button>
+              <a
+                href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  background: '#25D366',
+                  color: '#fff',
+                  fontFamily: F.display,
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '13px 24px',
+                  textDecoration: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  borderRadius: 0,
+                }}
+              >
+                <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
+                CHAT ON WHATSAPP
+              </a>
+            </div>
           </div>
         </div>
 
