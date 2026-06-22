@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import HeroImage from './assets/Hero/HeroSection.jpeg';
+import BookAppointmentImg from './assets/All Images/Bookappointment.jpeg';
 
 // COLOR TOKENS
 const C = {
@@ -1097,7 +1098,17 @@ const HomePage = ({ isMobile }) => {
             },
           ].map((srv, idx) => (
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${srv.border}`, display: 'flex', flexDirection: 'column' }}>
-              <img src={srv.img} alt={srv.title} style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img
+                src={srv.title === 'Appointment Fixed Leads' ? BookAppointmentImg : srv.img}
+                alt={srv.title}
+                style={{
+                  width: '100%',
+                  height: '200px',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                }}
+              />
               <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
                 <div style={{
                   width: '40px',
