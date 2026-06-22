@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import Logo from '../../assets/Logo/Logo1.png';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,19 +20,32 @@ const Navbar = ({ theme, toggleTheme }) => {
     <nav className="glass-navbar">
       <div className="container nav-container">
         {/* LOGO */}
-        <Link to="/" className="logo-wrapper">
-          <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#navbar-logo-glow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 17L12 22L22 17" stroke="url(#navbar-logo-glow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="url(#navbar-logo-glow)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <defs>
-              <linearGradient id="navbar-logo-glow" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                <stop stopColor="var(--primary)" />
-                <stop offset="1" stopColor="var(--secondary)" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
+        <Link to="/" style={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          gap: '10px',
+          textDecoration: 'none',
+        }}>
+          <img
+            src={Logo}
+            alt="SEO Submit Web"
+            style={{
+              height: '38px',
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+            }}
+          />
+          <span style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 900,
+            fontSize: '18px',
+            letterSpacing: '0.5px',
+            color: '#FFD600',
+            whiteSpace: 'nowrap',
+          }}>
+            SEO SUBMIT<span style={{ color: '#ffffff' }}> WEB</span>
+          </span>
         </Link>
 
         {/* NAVIGATION LINKS (Desktop) */}
@@ -70,8 +84,32 @@ const Navbar = ({ theme, toggleTheme }) => {
       {/* Mobile Drawer Navigation (Full screen overlay with smooth slide-down) */}
       <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header flex-between container">
-          <Link to="/" className="logo-wrapper" onClick={() => setMobileMenuOpen(false)}>
-            <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
+          <Link to="/" style={{ 
+            display: 'flex', 
+            alignItems: 'center',
+            gap: '10px',
+            textDecoration: 'none',
+          }} onClick={() => setMobileMenuOpen(false)}>
+            <img
+              src={Logo}
+              alt="SEO Submit Web"
+              style={{
+                height: '38px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+            <span style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 900,
+              fontSize: '18px',
+              letterSpacing: '0.5px',
+              color: '#FFD600',
+              whiteSpace: 'nowrap',
+            }}>
+              SEO SUBMIT<span style={{ color: '#ffffff' }}> WEB</span>
+            </span>
           </Link>
           <button 
             className="mobile-drawer-close" 

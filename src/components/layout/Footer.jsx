@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Logo from '../../assets/Logo/Logo1.png';
 
 const Footer = () => {
   return (
@@ -24,20 +25,32 @@ const Footer = () => {
           
           {/* Column 1: Logo & Brand Info */}
           <div className="footer-col brand-col">
-            <Link to="/" className="footer-logo">
-              <svg className="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#footer-logo-grad-new)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17" stroke="url(#footer-logo-grad-new)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="url(#footer-logo-grad-new)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <defs>
-                  <linearGradient id="footer-logo-grad-new" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="var(--primary)" />
-                    <stop offset="1" stopColor="var(--secondary)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span className="logo-text">SEO SUBMIT<span className="text-gradient">WEB</span></span>
-            </Link>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              marginBottom: '12px',
+            }}>
+              <img
+                src={Logo}
+                alt="SEO Submit Web"
+                style={{
+                  height: '34px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+              <span style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 900,
+                fontSize: '16px',
+                color: '#FFD600',
+                whiteSpace: 'nowrap',
+              }}>
+                SEO SUBMIT<span style={{ color: '#ffffff' }}> WEB</span>
+              </span>
+            </div>
             
             <p className="brand-pitch">
               Exclusive, pre-qualified SEO and Web Design leads generated for digital agencies and marketing companies. Vetted budgets, double-verified contact data, and direct CRM sync.

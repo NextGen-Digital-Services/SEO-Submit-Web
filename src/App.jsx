@@ -8,6 +8,7 @@ import AppointmentImg from './assets/All Images/AppointmentsLeads.jpg';
 import BlogImg from './assets/All Images/Blog.png';
 import TestimonialImg from './assets/All Images/Testimonial.jpg';
 import ContactImg from './assets/All Images/Contact.jpg';
+import Logo from './assets/Logo/Logo1.png';
 
 // COLOR TOKENS
 const C = {
@@ -321,17 +322,32 @@ const Navbar = ({ isMobile }) => {
       justifyContent: 'space-between',
       padding: '0 24px',
     }}>
-      <Link to="/" style={{
-        fontFamily: F.display,
-        fontWeight: 900,
-        fontSize: '20px',
-        letterSpacing: '1px',
-        textDecoration: 'none',
-        display: 'flex',
+      <Link to="/" style={{ 
+        display: 'flex', 
         alignItems: 'center',
+        gap: '10px',
+        textDecoration: 'none',
       }}>
-        <span style={{ color: C.yellow }}>SEO SUBMIT</span>
-        <span style={{ color: C.white }}>WEB</span>
+        <img
+          src={Logo}
+          alt="SEO Submit Web"
+          style={{
+            height: '38px',
+            width: 'auto',
+            objectFit: 'contain',
+            display: 'block',
+          }}
+        />
+        <span style={{
+          fontFamily: "'Montserrat', sans-serif",
+          fontWeight: 900,
+          fontSize: '18px',
+          letterSpacing: '0.5px',
+          color: '#FFD600',
+          whiteSpace: 'nowrap',
+        }}>
+          SEO SUBMIT<span style={{ color: '#ffffff' }}> WEB</span>
+        </span>
       </Link>
 
       {!isMobile && (
@@ -426,9 +442,31 @@ const Footer = ({ isMobile }) => {
       }}>
         {/* Col 1 */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', letterSpacing: '1px' }}>
-            <span style={{ color: C.yellow }}>SEO SUBMIT</span>
-            <span style={{ color: C.white }}>WEB</span>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            marginBottom: '12px',
+          }}>
+            <img
+              src={Logo}
+              alt="SEO Submit Web"
+              style={{
+                height: '34px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+            <span style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 900,
+              fontSize: '16px',
+              color: '#FFD600',
+              whiteSpace: 'nowrap',
+            }}>
+              SEO SUBMIT<span style={{ color: '#ffffff' }}> WEB</span>
+            </span>
           </div>
           <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: '280px' }}>
             India's #1 SEO Lead Generation Company Since 2009. Supplying verified high-converting opportunities.
