@@ -13,3 +13,41 @@
   padding: 0;
   border: none;
 }
+
+input, select, textarea {
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+  border: 1.5px solid #D1D5DB;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #6B21FF;
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+  box-shadow: 0 0 0 3px rgba(107, 33, 255, 0.12);
+}
+
+/* Fix browser autofill blue background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+  -webkit-text-fill-color: #111111 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+select option {
+  background-color: #FFFFFF;
+  color: #111111;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+

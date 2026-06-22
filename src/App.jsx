@@ -9,6 +9,7 @@ import BlogImg from './assets/All Images/Blog.png';
 import TestimonialImg from './assets/All Images/Testimonial.jpg';
 import ContactImg from './assets/All Images/Contact.jpg';
 import Logo from './assets/Logo/Logo1.png';
+import ExitIntentPopup from './components/ExitIntentPopup';
 
 // COLOR TOKENS
 const C = {
@@ -92,19 +93,19 @@ function ScrollToTopButton() {
 const handleFormSubmit = (formData, formType) => {
   // BUILD WHATSAPP MESSAGE
   const waMessage = `
-🔔 NEW LEAD FROM SEO SUBMIT WEB WEBSITE
+NEW LEAD FROM SEO SUBMIT WEB WEBSITE
 
-📋 Form Type: ${formType}
-👤 Name: ${formData.name || (formData.firstName || formData.lastName ? (formData.firstName || '') + ' ' + (formData.lastName || '') : '') || 'Not provided'}
-📧 Email: ${formData.email || 'Not provided'}
-📱 Phone: ${formData.phone || 'Not provided'}
-🏢 Company: ${formData.company || 'Not provided'}
-🎯 Service Interested In: ${formData.service || 'Not provided'}
-💰 Budget: ${formData.budget || 'Not provided'}
-💬 Message: ${formData.message || 'Not provided'}
+Form Type: ${formType}
+Name: ${formData.name || (formData.firstName || formData.lastName ? (formData.firstName || '') + ' ' + (formData.lastName || '') : '') || 'Not provided'}
+Email: ${formData.email || 'Not provided'}
+Phone: ${formData.phone || 'Not provided'}
+Company: ${formData.company || 'Not provided'}
+Service Interested In: ${formData.service || 'Not provided'}
+Budget: ${formData.budget || 'Not provided'}
+Message: ${formData.message || 'Not provided'}
 
-⏰ Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-🌐 Source: Website Contact Form
+Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+Source: Website Contact Form
   `.trim();
 
   // OPEN WHATSAPP
@@ -212,7 +213,10 @@ const SuccessMessage = ({ onClose }) => (
             letterSpacing: '1px', padding: '12px 24px',
             textDecoration: 'none', display: 'inline-block',
           }}>
-          💬 OPEN WHATSAPP
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            OPEN WHATSAPP
+          </span>
         </a>
       </div>
     </div>
@@ -399,29 +403,10 @@ const Navbar = ({ isMobile }) => {
             justifyContent: 'center',
             background: '#25D366',
             textDecoration: 'none',
-            marginRight: '8px',
           }}
         >
           <i className="ti ti-brand-whatsapp" style={{ fontSize: '22px', color: '#fff' }} />
         </a>
-
-        <button
-          onClick={() => navigate('/contact')}
-          style={{
-            background: C.yellow,
-            color: C.navy,
-            fontFamily: F.display,
-            fontWeight: 800,
-            fontSize: '11px',
-            padding: '10px 14px',
-            border: 'none',
-            cursor: 'pointer',
-            borderRadius: 0,
-            letterSpacing: '1px',
-          }}
-        >
-          FREE SAMPLE
-        </button>
       </div>
     </nav>
   );
@@ -607,29 +592,29 @@ const HomePage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!heroForm.name.trim()) {
-      errors.name = "⚠ Please enter your full name so we can address you properly";
+      errors.name = "Please enter your full name so we can address you properly";
     }
     if (!heroForm.email.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(heroForm.email)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
     if (!heroForm.phone.trim()) {
-      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(heroForm.phone)) {
-        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!heroForm.company.trim()) {
-      errors.company = "⚠ Please enter your company or agency name";
+      errors.company = "Please enter your company or agency name";
     }
     if (!heroForm.service) {
-      errors.service = "⚠ Please select which type of leads you need";
+      errors.service = "Please select which type of leads you need";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -642,7 +627,7 @@ const HomePage = ({ isMobile }) => {
 
     setTimeout(() => {
       setHeroLoading(false);
-      handleFormSubmit(heroForm, 'Hero - Free Sample Request');
+      handleFormSubmit(heroForm, 'Hero - Verified Lead Request');
       setHeroSuccess(true);
       setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
     }, 1000);
@@ -741,7 +726,7 @@ const HomePage = ({ isMobile }) => {
 
             {/* Trust pills */}
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '28px' }}>
-              {['✓ 100% Exclusive', '✓ Real-Time Delivery', '✓ Bad Lead Replaced'].map(pill => (
+              {['100% Exclusive', 'Real-Time Delivery', 'Bad Lead Replaced'].map(pill => (
                 <div key={pill} style={{
                   background: '#FFD600',
                   color: '#0A1628',
@@ -749,7 +734,11 @@ const HomePage = ({ isMobile }) => {
                   fontWeight: 700,
                   fontSize: '11px',
                   padding: '7px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}>
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   {pill}
                 </div>
               ))}
@@ -758,7 +747,7 @@ const HomePage = ({ isMobile }) => {
             {/* CTA Buttons */}
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               
-              {/* GET FREE SAMPLES button */}
+              {/* VIEW LEAD SAMPLES button */}
               <button 
                 onClick={() => navigate('/contact')}
                 style={{
@@ -773,7 +762,7 @@ const HomePage = ({ isMobile }) => {
                   cursor: 'pointer',
                 }}
               >
-                GET FREE SAMPLES
+                VIEW LEAD SAMPLES
               </button>
 
               {/* Phone button */}
@@ -868,10 +857,10 @@ const HomePage = ({ isMobile }) => {
 
           <div style={{ position: 'relative', zIndex: 2 }}>
             <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '4px' }}>
-              Get 5 FREE Sample Leads
+              Get Exclusive Leads For Your Agency
             </h2>
             <p style={{ fontFamily: F.body, fontSize: '12px', color: '#333', marginBottom: '16px' }}>
-              No payment. No commitment. Just proof.
+              Real-time. Verified. 100% exclusive — never resold to anyone else.
             </p>
 
             <form onSubmit={handleHeroSubmit} className="light-form" noValidate>
@@ -881,7 +870,7 @@ const HomePage = ({ isMobile }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Rahul Sharma"
+                  placeholder="e.g. John Smith"
                   value={heroForm.name}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, name: e.target.value });
@@ -902,7 +891,7 @@ const HomePage = ({ isMobile }) => {
                 </label>
                 <input
                   type="email"
-                  placeholder="e.g. rahul@youragency.com"
+                  placeholder="e.g. john@youragency.com"
                   value={heroForm.email}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, email: e.target.value });
@@ -944,7 +933,7 @@ const HomePage = ({ isMobile }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. TechSEO Solutions"
+                  placeholder="e.g. Smith Digital Agency"
                   value={heroForm.company}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, company: e.target.value });
@@ -971,11 +960,11 @@ const HomePage = ({ isMobile }) => {
                   }}
                   style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: heroErrors.service ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
-                  <option value="">-- Select a Service --</option>
-                  <option value="SEO Leads">🔍 SEO Leads</option>
-                  <option value="Web Design Leads">💻 Web Design Leads</option>
-                  <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
-                  <option value="All Three">⭐ All Three Services</option>
+                  <option value="">Which service are you looking for?</option>
+                  <option value="SEO Leads">SEO Leads</option>
+                  <option value="Web Design Leads">Web Design Leads</option>
+                  <option value="Appointment Leads">Appointment Fixed Leads</option>
+                  <option value="All Three">All Three Services</option>
                 </select>
                 {heroErrors.service && (
                   <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -1001,11 +990,17 @@ const HomePage = ({ isMobile }) => {
                   borderRadius: 0
                 }}
               >
-                {heroLoading ? 'SENDING...' : '🚀 SEND ME FREE SAMPLES →'}
+                {heroLoading ? 'SENDING...' : (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                    SEND ME VERIFIED LEADS
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                )}
               </button>
               {heroSuccess && <SuccessMessage onClose={() => setHeroSuccess(false)} />}
-              <span style={{ display: 'block', fontSize: '10px', color: '#666', textAlign: 'center', marginTop: '10px' }}>
-                🔒 Your info is 100% private & secure
+              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '10px', color: '#666', textAlign: 'center', marginTop: '10px' }}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Your info is 100% private & secure
               </span>
             </form>
           </div>
@@ -1307,7 +1302,7 @@ const HomePage = ({ isMobile }) => {
           )}
 
           {[
-            { num: '01', bg: C.blue, color: C.white, title: 'Request Sample', desc: 'Fill out our inquiry form. We will deliver free sample leads in 24 hours so you can inspect quality.' },
+            { num: '01', bg: C.blue, color: C.white, title: 'Request Sample', desc: 'Fill out our inquiry form. We will deliver verified lead samples in 24 hours so you can inspect quality.' },
             { num: '02', bg: C.yellow, color: C.navy, title: 'Choose Package', desc: 'Select the target channel, volume scale, and delivery speeds that align with your growth target.' },
             { num: '03', bg: C.blue, color: C.white, title: 'Leads Go Live', desc: 'Leads are pushed live straight to your inbox or CRM the moment prospects request quotes.' },
             { num: '04', bg: C.yellow, color: C.navy, title: 'Scale & Grow', desc: 'Convert buyers, replace bad records, scale supply, and grow your agency sales numbers.' },
@@ -1714,7 +1709,7 @@ const HomePage = ({ isMobile }) => {
                 borderRadius: 0,
               }}
             >
-              GET FREE SAMPLE LEADS
+              VIEW SAMPLE LEADS
             </button>
             <button
               onClick={() => navigate('/contact')}
@@ -2177,7 +2172,7 @@ const AboutPage = ({ isMobile }) => {
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-            GET FREE SAMPLES
+            VIEW LEAD SAMPLES
           </button>
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             CONTACT US
@@ -2227,29 +2222,29 @@ const SeoLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!seoForm.name.trim()) {
-      errors.name = "⚠ Please enter your full name so we can address you properly";
+      errors.name = "Please enter your full name so we can address you properly";
     }
     if (!seoForm.email.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(seoForm.email)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
     if (!seoForm.phone.trim()) {
-      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(seoForm.phone)) {
-        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!seoForm.company.trim()) {
-      errors.company = "⚠ Please enter your company or agency name";
+      errors.company = "Please enter your company or agency name";
     }
     if (!seoForm.budget) {
-      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
+      errors.budget = "Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -2365,15 +2360,19 @@ const SeoLeadsPage = ({ isMobile }) => {
                   fontWeight: 700,
                   fontSize: '11px',
                   padding: '6px 14px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}>
-                  ✓ {t}
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {t}
                 </span>
               ))}
             </div>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                GET FREE SAMPLES
+                VIEW LEAD SAMPLES
               </button>
               <button onClick={() => window.location.href = '#seo-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
@@ -2426,7 +2425,7 @@ const SeoLeadsPage = ({ isMobile }) => {
             {[
               { val: '15,000+', lbl: 'SEO Leads Sold' },
               { val: '92%', lbl: 'Contact Rate' },
-              { val: '4.8★', lbl: 'Average Rating' },
+              { val: '4.8 / 5', lbl: 'Average Rating' },
               { val: '48hr', lbl: 'Max Delivery Window' },
             ].map((item, idx) => (
               <div key={idx} style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(10,22,40,0.1)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
@@ -2824,7 +2823,12 @@ const SeoLeadsPage = ({ isMobile }) => {
                 borderRadius: 0
               }}
             >
-              {seoLoading ? 'SENDING...' : '🔍 GET SEO LEADS NOW →'}
+              {seoLoading ? 'SENDING...' : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  GET SEO LEADS NOW →
+                </span>
+              )}
             </button>
             {seoSuccess && <SuccessMessage onClose={() => setSeoSuccess(false)} />}
           </form>
@@ -2891,29 +2895,29 @@ const WebDesignLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!webForm.name.trim()) {
-      errors.name = "⚠ Please enter your full name so we can address you properly";
+      errors.name = "Please enter your full name so we can address you properly";
     }
     if (!webForm.email.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(webForm.email)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
     if (!webForm.phone.trim()) {
-      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(webForm.phone)) {
-        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!webForm.company.trim()) {
-      errors.company = "⚠ Please enter your company or agency name";
+      errors.company = "Please enter your company or agency name";
     }
     if (!webForm.budget) {
-      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
+      errors.budget = "Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -3026,15 +3030,19 @@ const WebDesignLeadsPage = ({ isMobile }) => {
                   fontWeight: 700,
                   fontSize: '11px',
                   padding: '6px 14px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
                 }}>
-                  ✓ {t}
+                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  {t}
                 </span>
               ))}
             </div>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                GET FREE SAMPLES
+                VIEW LEAD SAMPLES
               </button>
               <button onClick={() => window.location.href = '#web-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
@@ -3092,7 +3100,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
             {[
               { val: '12,000+', lbl: 'Web Leads Sold' },
               { val: '89%', lbl: 'Contact Rate' },
-              { val: '4.7★', lbl: 'Average Rating' },
+              { val: '4.7 / 5', lbl: 'Average Rating' },
               { val: 'Real-Time', lbl: 'Delivery Pipeline' },
             ].map((item, idx) => (
               <div key={idx} style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(255,255,255,0.15)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
@@ -3515,7 +3523,12 @@ const WebDesignLeadsPage = ({ isMobile }) => {
                 borderRadius: 0
               }}
             >
-              {webLoading ? 'SENDING...' : '💻 GET WEB DESIGN LEADS →'}
+              {webLoading ? 'SENDING...' : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  GET WEB DESIGN LEADS →
+                </span>
+              )}
             </button>
             {webSuccess && <SuccessMessage onClose={() => setWebSuccess(false)} />}
           </form>
@@ -3532,7 +3545,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-            GET FREE SAMPLE LEADS →
+            VIEW SAMPLE LEADS →
           </button>
           <a
             href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
@@ -3579,29 +3592,29 @@ const AppointmentLeadsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!appForm.name.trim()) {
-      errors.name = "⚠ Please enter your full name so we can address you properly";
+      errors.name = "Please enter your full name so we can address you properly";
     }
     if (!appForm.email.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(appForm.email)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
     if (!appForm.phone.trim()) {
-      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(appForm.phone)) {
-        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!appForm.company.trim()) {
-      errors.company = "⚠ Please enter your company or agency name";
+      errors.company = "Please enter your company or agency name";
     }
     if (!appForm.budget) {
-      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
+      errors.budget = "Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -4198,7 +4211,12 @@ const AppointmentLeadsPage = ({ isMobile }) => {
                 width: '100%'
               }}
             >
-              {appLoading ? 'SENDING...' : '📅 BOOK APPOINTMENT LEADS →'}
+              {appLoading ? 'SENDING...' : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  BOOK APPOINTMENT LEADS →
+                </span>
+              )}
             </button>
             {appSuccess && <SuccessMessage onClose={() => setAppSuccess(false)} />}
           </form>
@@ -4277,11 +4295,11 @@ const BlogPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!blogEmail.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(blogEmail)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
 
@@ -4551,7 +4569,12 @@ const BlogPage = ({ isMobile }) => {
                 width: isMobile ? '100%' : 'auto',
               }}
             >
-              {blogLoading ? 'SENDING...' : '📧 SUBSCRIBE FOR FREE →'}
+              {blogLoading ? 'SENDING...' : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  SUBSCRIBE NOW →
+                </span>
+              )}
             </button>
           </form>
           <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '6px', textAlign: 'left' }}>
@@ -4620,16 +4643,16 @@ const TestimonialsPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!reviewForm.name.trim()) {
-      errors.name = "⚠ Please enter your full name so we can address you properly";
+      errors.name = "Please enter your full name so we can address you properly";
     }
     if (!reviewForm.company.trim()) {
-      errors.company = "⚠ Please enter your company or agency name";
+      errors.company = "Please enter your company or agency name";
     }
     if (!reviewForm.service) {
-      errors.service = "⚠ Please select which type of leads you need";
+      errors.service = "Please select which type of leads you need";
     }
     if (reviewForm.review.trim().length < 20) {
-      errors.review = "⚠ Please write your review — minimum 20 characters";
+      errors.review = "Please write your review — minimum 20 characters";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -4724,7 +4747,7 @@ const TestimonialsPage = ({ isMobile }) => {
 
           {/* Stat Pills */}
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {["500+ Happy Clients", "4.9★ Average Rating", "98% Would Recommend"].map((pill) => (
+            {["500+ Happy Clients", "4.9 / 5 Average Rating", "98% Would Recommend"].map((pill) => (
               <span key={pill} style={{
                 background: C.yellow,
                 color: C.navy,
@@ -5056,10 +5079,10 @@ const TestimonialsPage = ({ isMobile }) => {
                 style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: reviewErrors.service ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
                 <option value="">-- Select the service you used --</option>
-                <option value="SEO Leads">🔍 SEO Leads</option>
-                <option value="Web Design Leads">💻 Web Design Leads</option>
-                <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
-                <option value="All Services">⭐ All Services</option>
+                <option value="SEO Leads">SEO Leads</option>
+                <option value="Web Design Leads">Web Design Leads</option>
+                <option value="Appointment Leads">Appointment Fixed Leads</option>
+                <option value="All Services">All Services</option>
               </select>
               {reviewErrors.service && (
                 <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -5077,9 +5100,9 @@ const TestimonialsPage = ({ isMobile }) => {
                 onChange={(e) => setReviewForm({ ...reviewForm, rating: e.target.value })}
                 style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
-                <option value="5">⭐⭐⭐⭐⭐ 5 Stars — Excellent</option>
-                <option value="4">⭐⭐⭐⭐ 4 Stars — Very Good</option>
-                <option value="3">⭐⭐⭐ 3 Stars — Good</option>
+                <option value="5">5 Stars — Excellent</option>
+                <option value="4">4 Stars — Very Good</option>
+                <option value="3">3 Stars — Good</option>
               </select>
             </div>
 
@@ -5122,7 +5145,12 @@ const TestimonialsPage = ({ isMobile }) => {
                 width: '100%',
               }}
             >
-              {reviewLoading ? 'SENDING...' : '⭐ SUBMIT YOUR REVIEW →'}
+              {reviewLoading ? 'SENDING...' : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  SUBMIT YOUR REVIEW →
+                </span>
+              )}
             </button>
           </form>
 
@@ -5187,29 +5215,29 @@ const ContactPage = ({ isMobile }) => {
     e.preventDefault();
     const errors = {};
     if (!contactForm.firstName.trim()) {
-      errors.firstName = "⚠ Please enter your full name so we can address you properly";
+      errors.firstName = "Please enter your full name so we can address you properly";
     }
     if (!contactForm.email.trim()) {
-      errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+      errors.email = "Please enter a valid email — we'll send your verified lead samples here";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(contactForm.email)) {
-        errors.email = "⚠ Please enter a valid email — we'll send your free samples here";
+        errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
     if (!contactForm.phone.trim()) {
-      errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
     } else {
       const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
       if (!phoneRegex.test(contactForm.phone)) {
-        errors.phone = "⚠ Please enter your WhatsApp number — we'll send leads details here";
+        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
       }
     }
     if (!contactForm.service) {
-      errors.service = "⚠ Please select which type of leads you need";
+      errors.service = "Please select which type of leads you need";
     }
     if (!contactForm.budget) {
-      errors.budget = "⚠ Please select your monthly budget so we can recommend the right package";
+      errors.budget = "Please select your monthly budget so we can recommend the right package";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -5294,8 +5322,12 @@ const ContactPage = ({ isMobile }) => {
                 fontWeight: 700,
                 fontSize: '11px',
                 padding: '6px 14px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
               }}>
-                ✓ {pill}
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                {pill}
               </span>
             ))}
           </div>
@@ -5469,10 +5501,10 @@ const ContactPage = ({ isMobile }) => {
                   style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.service ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
                   <option value="">-- Select a Service --</option>
-                  <option value="SEO Leads">🔍 SEO Leads</option>
-                  <option value="Web Design Leads">💻 Web Design Leads</option>
-                  <option value="Appointment Leads">📅 Appointment Fixed Leads</option>
-                  <option value="All Three">⭐ All Three Services</option>
+                  <option value="SEO Leads">SEO Leads</option>
+                  <option value="Web Design Leads">Web Design Leads</option>
+                  <option value="Appointment Leads">Appointment Fixed Leads</option>
+                  <option value="All Three">All Three Services</option>
                 </select>
                 {contactErrors.service && (
                   <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -5494,10 +5526,10 @@ const ContactPage = ({ isMobile }) => {
                   style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: contactErrors.budget ? '2px solid #ff4444' : '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
                 >
                   <option value="">-- Select Your Budget --</option>
-                  <option value="Under $200">💰 Under $200 / month</option>
-                  <option value="$200-$500">💰 $200 – $500 / month</option>
-                  <option value="$500-$1000">💰 $500 – $1,000 / month</option>
-                  <option value="$1000+">💰 $1,000+ / month</option>
+                  <option value="Under $200">Under $200 / month</option>
+                  <option value="$200-$500">$200 – $500 / month</option>
+                  <option value="$500-$1000">$500 – $1,000 / month</option>
+                  <option value="$1000+">$1,000+ / month</option>
                 </select>
                 {contactErrors.budget && (
                   <span style={{ color: '#ff4444', fontSize: '11px', fontFamily: F.body, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -5536,7 +5568,12 @@ const ContactPage = ({ isMobile }) => {
                   marginTop: '8px'
                 }}
               >
-                {contactLoading ? 'SENDING...' : '📨 SEND MESSAGE →'}
+                {contactLoading ? 'SENDING...' : (
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center', width: '100%' }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    SEND MESSAGE →
+                  </span>
+                )}
               </button>
               {contactSuccess && <SuccessMessage onClose={() => setContactSuccess(false)} />}
             </form>
@@ -5713,30 +5750,40 @@ function App() {
       body { overflow-x: hidden; background: #0A1628; }
       .hide-scrollbar::-webkit-scrollbar { display: none; }
       .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      input::placeholder { 
-        color: rgba(255, 255, 255, 0.5) !important; 
-        font-size: 12px;
-        font-family: 'Inter', sans-serif;
-      }
+      input::placeholder,
       textarea::placeholder { 
-        color: rgba(255, 255, 255, 0.5) !important;
-        font-size: 12px;
+        color: #999999 !important; 
+        opacity: 1 !important;
+        font-size: 13px;
         font-family: 'Inter', sans-serif;
       }
-      select option {
-        background: #0A1628;
-        color: #ffffff;
+      input, select, textarea {
+        background-color: #FFFFFF !important;
+        color: #111111 !important;
+        border: 1.5px solid #D1D5DB;
+        border-radius: 4px;
+        font-size: 14px;
       }
       input:focus, 
       select:focus, 
       textarea:focus {
-        border-color: #FFD600 !important;
+        border-color: #6B21FF !important;
         outline: none !important;
-        background: #1f3055 !important;
+        background-color: #FFFFFF !important;
+        color: #111111 !important;
+        box-shadow: 0 0 0 3px rgba(107, 33, 255, 0.12) !important;
       }
-      .light-form input::placeholder,
-      .light-form textarea::placeholder {
-        color: rgba(10,22,40,0.4) !important;
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #FFFFFF inset !important;
+        -webkit-text-fill-color: #111111 !important;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+      select option {
+        background-color: #FFFFFF !important;
+        color: #111111 !important;
       }
     `;
     document.head.appendChild(style);
@@ -5788,6 +5835,7 @@ function App() {
         <Footer isMobile={isMobile} />
         <ScrollToTopButton />
         <WhatsAppFloat />
+        <ExitIntentPopup onSubmit={(data) => handleFormSubmit(data, 'Exit Intent Popup - Lead Request')} />
       </div>
     </HashRouter>
   );
