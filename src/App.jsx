@@ -5,6 +5,9 @@ import BookAppointmentImg from './assets/All Images/Bookappointment.jpeg';
 import SeoLeadsImg from './assets/All Images/Seoleads.avif';
 import WebDesignImg from './assets/All Images/WebDesginLeads.jpeg';
 import AppointmentImg from './assets/All Images/AppointmentsLeads.jpg';
+import BlogImg from './assets/All Images/Blog.png';
+import TestimonialImg from './assets/All Images/Testimonial.jpg';
+import ContactImg from './assets/All Images/Contact.jpg';
 
 // COLOR TOKENS
 const C = {
@@ -4264,38 +4267,75 @@ const BlogPage = ({ isMobile }) => {
     <div style={{ width: '100%' }}>
       {blogSuccess && <SuccessMessage onClose={() => setBlogSuccess(false)} />}
       {/* [A] BLOG HERO */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
-          Latest Tips, Guides & <span style={{ color: C.yellow }}>Industry Insights</span>
-        </h1>
-        <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
-          Learn our insider methods for closing SEO retainers, scaling app dev contracts, and managing sales campaigns.
-        </p>
+      <div style={{
+        flex: 1,
+        padding: '56px 40px',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        minHeight: '300px',
+      }}>
+        <img
+          src={BlogImg}
+          alt="Blog"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            opacity: 0.45,
+            zIndex: 0,
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'rgba(10, 22, 40, 0.45)',
+          zIndex: 1,
+        }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
+            Latest Tips, Guides & <span style={{ color: C.yellow }}>Industry Insights</span>
+          </h1>
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
+            Learn our insider methods for closing SEO retainers, scaling app dev contracts, and managing sales campaigns.
+          </p>
 
-        {/* Filters */}
-        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          {['All', 'SEO', 'Web Design', 'Lead Gen', 'Business Growth'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              style={{
-                background: filter === cat ? C.yellow : C.navy,
-                color: filter === cat ? C.navy : C.white,
-                fontFamily: F.display,
-                fontWeight: 700,
-                fontSize: '11px',
-                padding: '8px 16px',
-                border: 'none',
-                cursor: 'pointer',
-                borderRadius: 0,
-                transition: 'background 0.2s ease',
-              }}
-            >
-              {cat}
-            </button>
-          ))}
+          {/* Filters */}
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {['All', 'SEO', 'Web Design', 'Lead Gen', 'Business Growth'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                style={{
+                  background: filter === cat ? C.yellow : C.navy,
+                  color: filter === cat ? C.navy : C.white,
+                  fontFamily: F.display,
+                  fontWeight: 700,
+                  fontSize: '11px',
+                  padding: '8px 16px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  borderRadius: 0,
+                  transition: 'background 0.2s ease',
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* [B] FEATURED POST */}
       <section style={{ background: C.yellow, padding: '32px 24px' }}>
@@ -4600,30 +4640,67 @@ const TestimonialsPage = ({ isMobile }) => {
     <div style={{ width: '100%' }}>
       {reviewSuccess && <SuccessMessage onClose={() => setReviewSuccess(false)} />}
       {/* [A] PAGE HERO */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
-          Real Results From <span style={{ color: C.yellow }}>Real Clients</span>
-        </h1>
-        <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
-          Hear from agency owners who scaled their client count and billing retainers using our exclusive leads.
-        </p>
+      <div style={{
+        flex: 1,
+        padding: '56px 40px',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        minHeight: '300px',
+      }}>
+        <img
+          src={TestimonialImg}
+          alt="Testimonials"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            opacity: 0.45,
+            zIndex: 0,
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'rgba(10, 22, 40, 0.45)',
+          zIndex: 1,
+        }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
+            Real Results From <span style={{ color: C.yellow }}>Real Clients</span>
+          </h1>
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
+            Hear from agency owners who scaled their client count and billing retainers using our exclusive leads.
+          </p>
 
-        {/* Stat Pills */}
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          {["500+ Happy Clients", "4.9★ Average Rating", "98% Would Recommend"].map((pill) => (
-            <span key={pill} style={{
-              background: C.yellow,
-              color: C.navy,
-              fontFamily: F.display,
-              fontWeight: 700,
-              fontSize: '11px',
-              padding: '8px 16px',
-            }}>
-              {pill}
-            </span>
-          ))}
+          {/* Stat Pills */}
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {["500+ Happy Clients", "4.9★ Average Rating", "98% Would Recommend"].map((pill) => (
+              <span key={pill} style={{
+                background: C.yellow,
+                color: C.navy,
+                fontFamily: F.display,
+                fontWeight: 700,
+                fontSize: '11px',
+                padding: '8px 16px',
+              }}>
+                {pill}
+              </span>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* [B] OVERALL RATINGS BAND */}
       <section style={{ background: C.yellow, padding: '24px' }}>
@@ -5128,28 +5205,64 @@ const ContactPage = ({ isMobile }) => {
   return (
     <div style={{ width: '100%' }}>
       {/* [A] CONTACT HERO */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
-          Let's <span style={{ color: C.yellow }}>Start Your</span> Lead Generation Journey
-        </h1>
-        <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
-          Reach our team for webhook configuration questions, custom geo filters, or sample inquiries.
-        </p>
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          {["Available 24/7", "Reply in 2 hours", "CRM Integrations Supported"].map((pill) => (
-            <span key={pill} style={{
-              background: C.yellow,
-              color: C.navy,
-              fontFamily: F.display,
-              fontWeight: 700,
-              fontSize: '11px',
-              padding: '6px 14px',
-            }}>
-              ✓ {pill}
-            </span>
-          ))}
+      <div style={{
+        padding: '56px 40px',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        minHeight: '300px',
+      }}>
+        <img
+          src={ContactImg}
+          alt="Contact"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            opacity: 0.45,
+            zIndex: 0,
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'rgba(10, 22, 40, 0.45)',
+          zIndex: 1,
+        }} />
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
+            Let's <span style={{ color: C.yellow }}>Start Your</span> Lead Generation Journey
+          </h1>
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
+            Reach our team for webhook configuration questions, custom geo filters, or sample inquiries.
+          </p>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            {["Available 24/7", "Reply in 2 hours", "CRM Integrations Supported"].map((pill) => (
+              <span key={pill} style={{
+                background: C.yellow,
+                color: C.navy,
+                fontFamily: F.display,
+                fontWeight: 700,
+                fontSize: '11px',
+                padding: '6px 14px',
+              }}>
+                ✓ {pill}
+              </span>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* [B] CONTACT GRID */}
       <section style={{ background: C.lightBg, padding: '32px 24px' }}>
