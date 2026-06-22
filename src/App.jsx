@@ -583,7 +583,7 @@ const Footer = ({ isMobile }) => {
 // ==========================================
 const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '', company: '', service: '' });
+  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '+1', company: '', service: '' });
   const [heroSuccess, setHeroSuccess] = useState(false);
   const [heroErrors, setHeroErrors] = useState({});
   const [heroLoading, setHeroLoading] = useState(false);
@@ -602,12 +602,14 @@ const HomePage = ({ isMobile }) => {
         errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
-    if (!heroForm.phone.trim()) {
-      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+    if (!heroForm.phone.trim() || heroForm.phone.trim() === '+1') {
+      errors.phone = "Please enter your phone number — we'll send leads details here";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(heroForm.phone)) {
-        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = heroForm.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(heroForm.phone) || isIndian) {
+        errors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!heroForm.company.trim()) {
@@ -629,7 +631,7 @@ const HomePage = ({ isMobile }) => {
       setHeroLoading(false);
       handleFormSubmit(heroForm, 'Hero - Verified Lead Request');
       setHeroSuccess(true);
-      setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
+      setHeroForm({ name: '', email: '', phone: '+1', company: '', service: '' });
     }, 1000);
   };
 
@@ -912,7 +914,7 @@ const HomePage = ({ isMobile }) => {
                 </label>
                 <input
                   type="tel"
-                  placeholder="e.g. +91 98765 43210"
+                  placeholder="e.g. +1 (555) 123-4567"
                   value={heroForm.phone}
                   onChange={(e) => {
                     setHeroForm({ ...heroForm, phone: e.target.value });
@@ -2213,7 +2215,7 @@ const AboutPage = ({ isMobile }) => {
 // ==========================================
 const SeoLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
   const [seoSuccess, setSeoSuccess] = useState(false);
   const [seoErrors, setSeoErrors] = useState({});
   const [seoLoading, setSeoLoading] = useState(false);
@@ -2232,12 +2234,14 @@ const SeoLeadsPage = ({ isMobile }) => {
         errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
-    if (!seoForm.phone.trim()) {
-      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+    if (!seoForm.phone.trim() || seoForm.phone.trim() === '+1') {
+      errors.phone = "Please enter your phone number — we'll send leads details here";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(seoForm.phone)) {
-        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = seoForm.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(seoForm.phone) || isIndian) {
+        errors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!seoForm.company.trim()) {
@@ -2259,7 +2263,7 @@ const SeoLeadsPage = ({ isMobile }) => {
       setSeoLoading(false);
       handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry');
       setSeoSuccess(true);
-      setSeoForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      setSeoForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -2691,7 +2695,7 @@ const SeoLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Priya Mehta"
+                placeholder="e.g. Sarah Jenkins"
                 value={seoForm.name}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, name: e.target.value });
@@ -2712,7 +2716,7 @@ const SeoLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="email"
-                placeholder="e.g. priya@seoagency.com"
+                placeholder="e.g. sarah@seoagency.com"
                 value={seoForm.email}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, email: e.target.value });
@@ -2733,7 +2737,7 @@ const SeoLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="tel"
-                placeholder="e.g. +91 98765 43210"
+                placeholder="e.g. +1 (555) 123-4567"
                 value={seoForm.phone}
                 onChange={(e) => {
                   setSeoForm({ ...seoForm, phone: e.target.value });
@@ -2886,7 +2890,7 @@ const SeoLeadsPage = ({ isMobile }) => {
 // ==========================================
 const WebDesignLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
   const [webSuccess, setWebSuccess] = useState(false);
   const [webErrors, setWebErrors] = useState({});
   const [webLoading, setWebLoading] = useState(false);
@@ -2905,12 +2909,14 @@ const WebDesignLeadsPage = ({ isMobile }) => {
         errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
-    if (!webForm.phone.trim()) {
-      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+    if (!webForm.phone.trim() || webForm.phone.trim() === '+1') {
+      errors.phone = "Please enter your phone number — we'll send leads details here";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(webForm.phone)) {
-        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = webForm.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(webForm.phone) || isIndian) {
+        errors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!webForm.company.trim()) {
@@ -2932,7 +2938,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
       setWebLoading(false);
       handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry');
       setWebSuccess(true);
-      setWebForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      setWebForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -3391,7 +3397,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Vikram Singh"
+                placeholder="e.g. David Miller"
                 value={webForm.name}
                 onChange={(e) => {
                   setWebForm({ ...webForm, name: e.target.value });
@@ -3412,7 +3418,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="email"
-                placeholder="e.g. vikram@webstudio.com"
+                placeholder="e.g. david@webstudio.com"
                 value={webForm.email}
                 onChange={(e) => {
                   setWebForm({ ...webForm, email: e.target.value });
@@ -3433,7 +3439,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="tel"
-                placeholder="e.g. +91 98765 43210"
+                placeholder="e.g. +1 (555) 123-4567"
                 value={webForm.phone}
                 onChange={(e) => {
                   setWebForm({ ...webForm, phone: e.target.value });
@@ -3499,7 +3505,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
                 Tell Us Your Requirements
               </label>
               <textarea
-                placeholder="e.g. I run a web design firm in Mumbai and need 30 fresh leads per month from small businesses in India who need new websites. Budget $500–$2000."
+                placeholder="e.g. I run a web design firm in Chicago and need 30 fresh leads per month from small businesses in the US who need new websites. Budget $1500–$5000."
                 rows={3}
                 value={webForm.message}
                 onChange={(e) => setWebForm({ ...webForm, message: e.target.value })}
@@ -3583,7 +3589,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 // ==========================================
 const AppointmentLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
   const [appSuccess, setAppSuccess] = useState(false);
   const [appErrors, setAppErrors] = useState({});
   const [appLoading, setAppLoading] = useState(false);
@@ -3602,12 +3608,14 @@ const AppointmentLeadsPage = ({ isMobile }) => {
         errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
-    if (!appForm.phone.trim()) {
-      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+    if (!appForm.phone.trim() || appForm.phone.trim() === '+1') {
+      errors.phone = "Please enter your phone number — we'll send leads details here";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(appForm.phone)) {
-        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = appForm.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(appForm.phone) || isIndian) {
+        errors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!appForm.company.trim()) {
@@ -3629,7 +3637,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
       setAppLoading(false);
       handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry');
       setAppSuccess(true);
-      setAppForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      setAppForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -4078,7 +4086,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Ananya Patel"
+                placeholder="e.g. Emily Davis"
                 value={appForm.name}
                 onChange={(e) => {
                   setAppForm({ ...appForm, name: e.target.value });
@@ -4099,7 +4107,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="email"
-                placeholder="e.g. ananya@growthagency.com"
+                placeholder="e.g. emily@growthagency.com"
                 value={appForm.email}
                 onChange={(e) => {
                   setAppForm({ ...appForm, email: e.target.value });
@@ -4120,7 +4128,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
               </label>
               <input
                 type="tel"
-                placeholder="e.g. +91 98765 43210"
+                placeholder="e.g. +1 (555) 123-4567"
                 value={appForm.phone}
                 onChange={(e) => {
                   setAppForm({ ...appForm, phone: e.target.value });
@@ -5030,7 +5038,7 @@ const TestimonialsPage = ({ isMobile }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Rajesh Sharma"
+                placeholder="e.g. Robert Miller"
                 value={reviewForm.name}
                 onChange={(e) => {
                   setReviewForm({ ...reviewForm, name: e.target.value });
@@ -5051,7 +5059,7 @@ const TestimonialsPage = ({ isMobile }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. TechSEO Solutions"
+                placeholder="e.g. TechSEO Solutions LLC"
                 value={reviewForm.company}
                 onChange={(e) => {
                   setReviewForm({ ...reviewForm, company: e.target.value });
@@ -5201,7 +5209,7 @@ const ContactPage = ({ isMobile }) => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
+    phone: '+1',
     company: '',
     service: '',
     budget: '',
@@ -5225,12 +5233,14 @@ const ContactPage = ({ isMobile }) => {
         errors.email = "Please enter a valid email — we'll send your verified lead samples here";
       }
     }
-    if (!contactForm.phone.trim()) {
-      errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+    if (!contactForm.phone.trim() || contactForm.phone.trim() === '+1') {
+      errors.phone = "Please enter your phone number — we'll send leads details here";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(contactForm.phone)) {
-        errors.phone = "Please enter your WhatsApp number — we'll send leads details here";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = contactForm.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(contactForm.phone) || isIndian) {
+        errors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!contactForm.service) {
@@ -5259,7 +5269,7 @@ const ContactPage = ({ isMobile }) => {
         firstName: '',
         lastName: '',
         email: '',
-        phone: '',
+        phone: '+1',
         company: '',
         service: '',
         budget: '',
@@ -5405,7 +5415,7 @@ const ContactPage = ({ isMobile }) => {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Rahul"
+                    placeholder="e.g. Robert"
                     value={contactForm.firstName}
                     onChange={(e) => {
                       setContactForm({ ...contactForm, firstName: e.target.value });
@@ -5425,7 +5435,7 @@ const ContactPage = ({ isMobile }) => {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Sharma"
+                    placeholder="e.g. Miller"
                     value={contactForm.lastName}
                     onChange={(e) => setContactForm({ ...contactForm, lastName: e.target.value })}
                     style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
@@ -5439,7 +5449,7 @@ const ContactPage = ({ isMobile }) => {
                 </label>
                 <input
                   type="email"
-                  placeholder="e.g. rahul@youragency.com"
+                  placeholder="e.g. robert@youragency.com"
                   value={contactForm.email}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, email: e.target.value });
@@ -5460,7 +5470,7 @@ const ContactPage = ({ isMobile }) => {
                 </label>
                 <input
                   type="tel"
-                  placeholder="e.g. +91 98765 43210"
+                  placeholder="e.g. +1 (555) 123-4567"
                   value={contactForm.phone}
                   onChange={(e) => {
                     setContactForm({ ...contactForm, phone: e.target.value });
@@ -5481,7 +5491,7 @@ const ContactPage = ({ isMobile }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. TechSEO Solutions Pvt Ltd"
+                  placeholder="e.g. TechSEO Solutions LLC"
                   value={contactForm.company}
                   onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
                   style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: '2px solid #dde3f0', background: '#ffffff', color: '#0A1628', marginBottom: '4px', outline: 'none', borderRadius: 0 }}

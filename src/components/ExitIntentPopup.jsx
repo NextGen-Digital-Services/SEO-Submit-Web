@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function ExitIntentPopup({ onSubmit }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '+1', service: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -77,12 +77,14 @@ export default function ExitIntentPopup({ onSubmit }) {
         newErrors.email = "Please enter a valid email address";
       }
     }
-    if (!form.phone.trim()) {
+    if (!form.phone.trim() || form.phone.trim() === '+1') {
       newErrors.phone = "Please enter your phone number";
     } else {
-      const phoneRegex = /^[\d\s\+\-\(\)]{8,15}$/;
-      if (!phoneRegex.test(form.phone)) {
-        newErrors.phone = "Please enter a valid phone/WhatsApp number";
+      const phoneRegex = /^(?:\+?1[-. ]?)?\(?[0-9]{3}\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
+      const cleanPhone = form.phone.replace(/[^0-9+]/g, '');
+      const isIndian = cleanPhone.startsWith('+91') || (cleanPhone.startsWith('91') && cleanPhone.length === 12);
+      if (!phoneRegex.test(form.phone) || isIndian) {
+        newErrors.phone = "Please enter a valid USA phone number";
       }
     }
     if (!form.service) {
@@ -262,7 +264,7 @@ export default function ExitIntentPopup({ onSubmit }) {
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="e.g. +91 98765 43210"
+                  placeholder="e.g. +1 (555) 123-4567"
                   value={form.phone}
                   onChange={handleInputChange}
                   style={{
