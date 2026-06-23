@@ -1076,9 +1076,9 @@ Stop competing for the same tired leads. Start closing exclusively yours.
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '28px' }}>
             {[
               { val: '16+ Years', lbl: 'Experience' },
-              { val: '5,000+ Clients', lbl: 'Trust Us' },
-              { val: '50K+ Leads', lbl: 'Delivered' },
-              { val: '40+ Countries', lbl: 'Served' },
+              { val: '500+ Clients', lbl: 'Trust Us' },
+              { val: '10K+ Leads', lbl: 'Delivered' },
+              { val: '15+ Countries', lbl: 'Served' },
             ].map((p, idx) => (
               <div key={idx} style={{ background: C.yellow, padding: '12px', textAlign: 'center' }}>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy }}>{p.val}</span>
@@ -1429,10 +1429,10 @@ Stop competing for the same tired leads. Start closing exclusively yours.
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             {[
-              { val: '$2M+', lbl: 'Revenue Generated' },
+              { val: '100$ k+', lbl: 'Revenue Generated' },
               { val: '10,000+', lbl: 'Total Leads Delivered' },
-              { val: '500+', lbl: 'Active Monthly Clients' },
-              { val: '40+', lbl: 'Countries Served' },
+              { val: '50+', lbl: 'Active Monthly Clients' },
+              { val: '15+', lbl: 'Countries Served' },
             ].map((box, idx) => (
               <div key={idx} style={{ background: C.blue, padding: '20px', textAlign: 'center' }}>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '32px', color: C.white, marginBottom: '4px' }}>{box.val}</span>
@@ -1862,16 +1862,19 @@ const AboutPage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '56px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="HOW WE STARTED" />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            From a Small Startup to a <span style={{ color: C.blue }}>Premium Lead Sourcing Desk</span>
+            Welcome to SEOSubmitWeb <span style={{ color: C.blue }}>where exclusive leads meet real results.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            SEO Submit Web was founded in 2011 by Alexander Vance, a digital marketing veteran who saw a massive gap in the market — agencies needed quality leads, but all available options were either shared, outdated, or simply fake. He set out to build the first truly exclusive, real-time lead generation system.
+            Founded in 2016, SEOSubmitWeb was built on a simple but powerful belief: businesses deserve better than recycled, shared leads that go cold before you even make the first call.
+For nearly a decade, we have been in the business of connecting agencies, consultants, and service providers with prospects who are actively searching for SEO services, web design solutions, and professional appointments — not just browsing.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            What started as a 2-person operation from a small Chicago office has grown into a 50+ member powerhouse serving 5,000+ clients across 40 countries. Every lead we generate is verified by our 3-step quality control process before it reaches your inbox.
+            We started with a clear mission — to eliminate the frustration of chasing unqualified leads and replace it with a pipeline of high-intent prospects delivered exclusively to one client at a time.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '24px' }}>
-            Today, SEO Submit Web is the most trusted name in SEO leads, web design leads, and appointment fixed lead generation — with a track record of 50,000+ leads delivered and a 98% client retention rate.
+            Exclusivity is not a feature we offer — it is the foundation everything we do is built on.
+Every lead generated under the SEOSubmitWeb name is sourced, qualified, and delivered fresh to a single buyer — meaning when you receive a lead from us, no competitor is getting that same contact.
+Our portfolio spans three core lead categories exclusive.
           </p>
           <button
             onClick={() => {
