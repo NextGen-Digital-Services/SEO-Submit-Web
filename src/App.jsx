@@ -2216,7 +2216,7 @@ const AboutPage = ({ isMobile }) => {
 // ==========================================
 // PAGE 3: SEO LEADS PAGE ( /seo-leads )
 // ==========================================
-const SeoLeadsPage = ({ isMobile }) => {
+const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
   const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [seoSuccess, setSeoSuccess] = useState(false);
@@ -2381,7 +2381,7 @@ const SeoLeadsPage = ({ isMobile }) => {
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
                 VIEW LEAD SAMPLES
               </button>
-              <button onClick={() => window.location.href = '#seo-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+              <button onClick={() => onViewPricing && onViewPricing('SEO Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
               </button>
               <a
@@ -2891,7 +2891,7 @@ const SeoLeadsPage = ({ isMobile }) => {
 // ==========================================
 // PAGE 4: WEB DESIGN LEADS PAGE ( /web-design-leads )
 // ==========================================
-const WebDesignLeadsPage = ({ isMobile }) => {
+const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
   const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [webSuccess, setWebSuccess] = useState(false);
@@ -3053,7 +3053,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
                 VIEW LEAD SAMPLES
               </button>
-              <button onClick={() => window.location.href = '#web-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+              <button onClick={() => onViewPricing && onViewPricing('Web Design Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
               </button>
               <a
@@ -3590,7 +3590,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 // ==========================================
 // PAGE 5: APPOINTMENT LEADS PAGE ( /appointment-leads )
 // ==========================================
-const AppointmentLeadsPage = ({ isMobile }) => {
+const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
   const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [appSuccess, setAppSuccess] = useState(false);
@@ -3733,7 +3733,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
                 GET BOOKED CALLS
               </button>
-              <button onClick={() => window.location.href = '#appt-pricing'} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+              <button onClick={() => onViewPricing && onViewPricing('Appointment Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
               </button>
               <a
@@ -4649,6 +4649,33 @@ const TestimonialsPage = ({ isMobile }) => {
   const [reviewSuccess, setReviewSuccess] = useState(false);
   const [reviewErrors, setReviewErrors] = useState({});
   const [reviewLoading, setReviewLoading] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (selectedVideo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedVideo]);
+
+  React.useEffect(() => {
+    if (selectedVideo && videoRef.current) {
+      videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Autoplay failed/prevented:", error);
+        });
+      }
+    }
+  }, [selectedVideo]);
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
@@ -4697,15 +4724,6 @@ const TestimonialsPage = ({ isMobile }) => {
     { name: 'Sarah Jenkins', role: 'CEO', comp: 'TechSEO Solutions LLC', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
     { name: 'Diana Ross', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
     { name: 'Adam Vance', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
-    { name: 'Emily Davis', role: 'COO', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/testi4/80/80', txt: 'Appointment leads saved us. We scaled our operations directly without allocating massive budgets to cold calls.' },
-    { name: 'David Miller', role: 'CEO', comp: 'RankBoost Agency', img: 'https://picsum.photos/seed/testi5/80/80', txt: 'Tried 5 providers, nothing beats this. SEO Submit Web qualifies real decision makers rather than low-tier employees.' },
-    { name: 'Sarah Chen', role: 'Founder', comp: 'DigiFirst Agency', img: 'https://picsum.photos/seed/testi6/80/80', txt: 'The lead quality is outstanding. We sync details straight into HubSpot and start the call sequence.' },
-    { name: 'Marcus Brody', role: 'Director', comp: 'WebWave Co', img: 'https://picsum.photos/seed/testi7/80/80', txt: 'ROI was visible in week 1. We closed two $5k contracts from our first leads batch.' },
-    { name: 'Megan Adams', role: 'Founder', comp: 'ContentCraft', img: 'https://picsum.photos/seed/testi8/80/80', txt: 'Replacement policy works perfectly. Disconnected numbers get replaced without complex verification audits.' },
-    { name: 'Ashley Vance', role: 'Partner', comp: 'Apex Digital', img: 'https://picsum.photos/seed/testi9/80/80', txt: 'Scaled from 3 to 27 clients in 6 months using local search lead campaigns.' },
-    { name: 'Diana Cole', role: 'COO', comp: 'NetBuild Studio', img: 'https://picsum.photos/seed/testi10/80/80', txt: 'Every lead had verified contact info. The dashboard is clean and lead delivery pipeline is fast.' },
-    { name: 'Kevin Anderson', role: 'Director', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/testi11/80/80', txt: 'Appointment leads close 3x faster than normal form fills. Strongly recommend.' },
-    { name: 'Nicole Anderson', role: 'Founder', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/testi12/80/80', txt: 'Been with them 3 years now. Lead consistency keeps our pipeline stable.' },
   ];
 
   return (
@@ -4901,33 +4919,128 @@ const TestimonialsPage = ({ isMobile }) => {
           Watch What Our Clients Say
         </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
+        <div className="testimonial-video-grid">
           {[
-            { name: 'Sarah Jenkins', title: 'TechSEO Solutions LLC', img: 'https://picsum.photos/seed/video1/400/220' },
-            { name: 'Diana Ross', title: 'WebCraft Agency', img: 'https://picsum.photos/seed/video2/400/220' },
-            { name: 'Adam Vance', title: 'GrowthMark Digital', img: 'https://picsum.photos/seed/video3/400/220' },
+            {
+              name: 'Sarah Jenkins',
+              title: 'TechSEO Solutions LLC',
+              videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.mp4',
+              thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.jpg',
+            },
+            {
+              name: 'Diana Ross',
+              title: 'WebCraft Agency',
+              videoUrl: 'https://res.cloudinary.com/demo/video/upload/elephants.mp4',
+              thumbnail: 'https://res.cloudinary.com/demo/video/upload/elephants.jpg',
+            },
+            {
+              name: 'Adam Vance',
+              title: 'GrowthMark Digital',
+              videoUrl: 'https://res.cloudinary.com/demo/video/upload/sea_turtle.mp4',
+              thumbnail: 'https://res.cloudinary.com/demo/video/upload/sea_turtle.jpg',
+            }
           ].map((video, idx) => (
-            <div key={idx} style={{
-              background: C.deepNavy,
-              border: `1px solid ${C.blue}`,
-              position: 'relative',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: '220px',
-              overflow: 'hidden',
-            }}>
-              <img src={video.img} alt={video.name} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.3 }} />
-              <div style={{ position: 'relative', zIndex: 2, padding: '20px' }}>
-                <i className="ti ti-brand-youtube" style={{ fontSize: '48px', color: C.yellow, marginBottom: '16px', cursor: 'pointer', display: 'inline-block' }} onClick={() => alert('Video player loading...')} />
-                <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '4px' }}>{video.name}</h4>
-                <p style={{ fontFamily: F.body, fontSize: '10px', color: 'rgba(255,255,255,0.8)' }}>{video.title}</p>
+            <div 
+              key={idx} 
+              style={{
+                background: C.deepNavy,
+                border: `1px solid ${C.blue}`,
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden',
+                cursor: 'pointer',
+              }} 
+              onClick={() => setSelectedVideo(video)}
+            >
+              {/* Thumbnail Container */}
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '16/9',
+                overflow: 'hidden',
+                background: '#000',
+              }}>
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.name} 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    display: 'block',
+                  }} 
+                  className="video-thumbnail-img"
+                />
+                {/* Play Button Overlay */}
+                <div 
+                  className="video-play-overlay"
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    background: 'rgba(10, 22, 40, 0.8)',
+                    borderRadius: '50%',
+                    width: '60px',
+                    height: '60px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: `2px solid ${C.yellow}`,
+                  }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill={C.yellow} style={{ marginLeft: '2px' }}>
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+              
+              {/* Client Info below thumbnail */}
+              <div style={{ padding: '16px', textAlign: 'left' }}>
+                <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '4px' }}>
+                  {video.name}
+                </h4>
+                <p style={{ fontFamily: F.body, fontSize: '11px', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+                  {video.title}
+                </p>
               </div>
             </div>
           ))}
         </div>
+
+        <style>{`
+          .testimonial-video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+          @media (min-width: 640px) {
+            .testimonial-video-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (min-width: 1024px) {
+            .testimonial-video-grid {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+          .video-thumbnail-img {
+            transition: transform 0.3s ease;
+          }
+          .video-play-overlay {
+            transition: all 0.2s ease;
+          }
+          .testimonial-video-grid > div:hover .video-thumbnail-img {
+            transform: scale(1.05);
+          }
+          .testimonial-video-grid > div:hover .video-play-overlay {
+            background-color: ${C.yellow} !important;
+            transform: translate(-50%, -50%) scale(1.1) !important;
+          }
+          .testimonial-video-grid > div:hover .video-play-overlay svg {
+            fill: ${C.navy} !important;
+          }
+        `}</style>
       </SectionWrapper>
 
       {/* [F] CASE STUDIES */}
@@ -5199,6 +5312,106 @@ const TestimonialsPage = ({ isMobile }) => {
           </div>
         </div>
       </section>
+
+      {/* Video Modal / Dialog */}
+      {selectedVideo && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(6, 16, 32, 0.95)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 99999,
+            padding: '20px',
+          }}
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div 
+            style={{
+              background: C.deepNavy,
+              border: `1px solid ${C.blue}`,
+              width: isMobile ? '90vw' : '100%',
+              maxWidth: '420px',
+              maxHeight: '80vh',
+              borderRadius: '16px',
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              overflow: 'hidden',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button in top-right */}
+            <button 
+              onClick={() => setSelectedVideo(null)}
+              style={{
+                position: 'absolute',
+                top: '12px',
+                right: '12px',
+                width: '32px',
+                height: '32px',
+                borderRadius: '50%',
+                background: 'rgba(10, 22, 40, 0.7)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: C.white,
+                fontSize: '20px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 100,
+                lineHeight: '1',
+                transition: 'background-color 0.2s, color 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = C.yellow;
+                e.currentTarget.style.color = C.navy;
+                e.currentTarget.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(10, 22, 40, 0.7)';
+                e.currentTarget.style.color = C.white;
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+              aria-label="Close video player"
+            >
+              &times;
+            </button>
+
+            {/* Video Container */}
+            <div style={{
+              width: '100%',
+              maxHeight: '80vh',
+              background: '#000',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <video 
+                ref={videoRef}
+                src={selectedVideo.videoUrl}
+                controls
+                preload="metadata"
+                playsInline
+                style={{
+                  width: '100%',
+                  maxHeight: '80vh',
+                  display: 'block',
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -5740,8 +5953,58 @@ const ContactPage = ({ isMobile }) => {
 // ==========================================
 // ROOT APP COMPONENT
 // ==========================================
+const LEAD_PRICING_DATA = {
+  'SEO Leads': [
+    { name: 'Basic SEO', price: '199', period: '20 Leads/mo', features: ['20 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+    { name: 'Standard SEO', price: '449', period: '50 Leads/mo', features: ['50 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook Integration', 'Dedicated Manager'], featured: true },
+    { name: 'Premium SEO', price: '899', period: '120 Leads/mo', features: ['120 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Integration', 'Priority 24/7 Phone Support'] },
+  ],
+  'Web Design Leads': [
+    { name: 'Starter Web', price: '199', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+    { name: 'Professional Web', price: '449', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
+    { name: 'Enterprise Web', price: '899', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
+  ],
+  'Appointment Leads': [
+    { name: 'Starter Appt', price: '499', period: '10 Calls/mo', features: ['10 Booked Meetings', 'Calendar Sync', 'Budget Validation', 'Email Support'] },
+    { name: 'Professional Appt', price: '999', period: '25 Calls/mo', features: ['25 Booked Meetings', 'Calendar Sync', 'Budget Validation', 'Dedicated Account Manager', 'Priority Support'], featured: true },
+    { name: 'Enterprise Appt', price: '1899', period: '60 Calls/mo', features: ['60 Booked Meetings', 'Calendar Sync', 'Budget Validation', 'Custom Targeting', '24/7 Phone Support'] },
+  ]
+};
+
 function App() {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
+  const [pricingFormData, setPricingFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    leadType: 'SEO Leads'
+  });
+  const [pricingFormErrors, setPricingFormErrors] = useState({});
+
+  const handleOpenPricingModal = (defaultType) => {
+    setPricingFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      leadType: defaultType || 'SEO Leads'
+    });
+    setPricingFormErrors({});
+    setIsPricingModalOpen(true);
+  };
+
+  useEffect(() => {
+    if (isPricingModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isPricingModalOpen]);
 
   useEffect(() => {
     // 1. Inject Fonts
@@ -5836,9 +6099,9 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage isMobile={isMobile} />} />
             <Route path="/about" element={<AboutPage isMobile={isMobile} />} />
-            <Route path="/seo-leads" element={<SeoLeadsPage isMobile={isMobile} />} />
-            <Route path="/web-design-leads" element={<WebDesignLeadsPage isMobile={isMobile} />} />
-            <Route path="/appointment-leads" element={<AppointmentLeadsPage isMobile={isMobile} />} />
+            <Route path="/seo-leads" element={<SeoLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
+            <Route path="/web-design-leads" element={<WebDesignLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
+            <Route path="/appointment-leads" element={<AppointmentLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
             <Route path="/blog" element={<BlogPage isMobile={isMobile} />} />
             <Route path="/testimonials" element={<TestimonialsPage isMobile={isMobile} />} />
             <Route path="/contact" element={<ContactPage isMobile={isMobile} />} />
@@ -5849,6 +6112,321 @@ function App() {
         <ScrollToTopButton />
         <WhatsAppFloat />
         <ExitIntentPopup onSubmit={(data) => handleFormSubmit(data, 'Exit Intent Popup - Lead Request')} />
+
+        {/* Pricing Modal / Dialog */}
+        {isPricingModalOpen && (
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(6, 16, 32, 0.95)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 99999,
+              padding: '20px',
+            }}
+            onClick={() => setIsPricingModalOpen(false)}
+          >
+            <div 
+              style={{
+                background: C.deepNavy,
+                border: `2px solid ${C.blue}`,
+                width: '100%',
+                maxWidth: '900px',
+                maxHeight: '90vh',
+                borderRadius: '16px',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                overflowY: 'auto',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                padding: isMobile ? '24px 16px' : '40px 32px',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setIsPricingModalOpen(false)}
+                style={{
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'rgba(10, 22, 40, 0.7)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: C.white,
+                  fontSize: '20px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 100,
+                  lineHeight: '1',
+                  transition: 'background-color 0.2s, color 0.2s, transform 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = C.yellow;
+                  e.currentTarget.style.color = C.navy;
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(10, 22, 40, 0.7)';
+                  e.currentTarget.style.color = C.white;
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+                aria-label="Close pricing details"
+              >
+                &times;
+              </button>
+
+              {/* Modal Header */}
+              <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: isMobile ? '20px' : '26px', color: C.yellow, marginBottom: '10px' }}>
+                  Get Verified Leads That Convert Into Paying Clients
+                </h2>
+                <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255, 255, 255, 0.85)', maxWidth: '600px', margin: '0 auto', lineHeight: 1.5 }}>
+                  See pricing and request a custom lead package. Our team will contact you immediately.
+                </p>
+              </div>
+
+              {/* Main Modal Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : '4.5fr 5.5fr',
+                gap: '32px',
+                alignItems: 'start',
+              }}>
+                {/* Left Side: Form */}
+                <form 
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const errors = {};
+                    if (!pricingFormData.name.trim()) errors.name = "Full name is required";
+                    if (!pricingFormData.company.trim()) errors.company = "Company name is required";
+                    if (!pricingFormData.email.trim()) {
+                      errors.email = "Email is required";
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(pricingFormData.email)) {
+                      errors.email = "Invalid email address";
+                    }
+                    if (!pricingFormData.phone.trim()) errors.phone = "Phone number is required";
+
+                    if (Object.keys(errors).length > 0) {
+                      setPricingFormErrors(errors);
+                      return;
+                    }
+
+                    const waMessage = `Name: ${pricingFormData.name}
+Company: ${pricingFormData.company}
+Email: ${pricingFormData.email}
+Phone: ${pricingFormData.phone}
+Lead Type: ${pricingFormData.leadType}
+
+I want pricing details and a callback.`;
+
+                    const encodedMessage = encodeURIComponent(waMessage);
+                    const whatsappURL = `https://wa.me/17165755447?text=${encodedMessage}`;
+                    window.open(whatsappURL, '_blank');
+
+                    setIsPricingModalOpen(false);
+                  }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '14px',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    padding: '24px 20px',
+                    borderRadius: '12px',
+                  }}
+                  noValidate
+                >
+                  <div>
+                    <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={pricingFormData.name}
+                      onChange={(e) => {
+                        setPricingFormData({ ...pricingFormData, name: e.target.value });
+                        if (pricingFormErrors.name) setPricingFormErrors({ ...pricingFormErrors, name: '' });
+                      }}
+                      placeholder="e.g. John Doe"
+                      style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.name ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
+                    />
+                    {pricingFormErrors.name && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.name}</span>}
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      value={pricingFormData.company}
+                      onChange={(e) => {
+                        setPricingFormData({ ...pricingFormData, company: e.target.value });
+                        if (pricingFormErrors.company) setPricingFormErrors({ ...pricingFormErrors, company: '' });
+                      }}
+                      placeholder="e.g. Apex Agency"
+                      style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.company ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
+                    />
+                    {pricingFormErrors.company && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.company}</span>}
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      value={pricingFormData.email}
+                      onChange={(e) => {
+                        setPricingFormData({ ...pricingFormData, email: e.target.value });
+                        if (pricingFormErrors.email) setPricingFormErrors({ ...pricingFormErrors, email: '' });
+                      }}
+                      placeholder="e.g. john@agency.com"
+                      style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.email ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
+                    />
+                    {pricingFormErrors.email && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.email}</span>}
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      value={pricingFormData.phone}
+                      onChange={(e) => {
+                        setPricingFormData({ ...pricingFormData, phone: e.target.value });
+                        if (pricingFormErrors.phone) setPricingFormErrors({ ...pricingFormErrors, phone: '' });
+                      }}
+                      placeholder="e.g. +1 (555) 019-2834"
+                      style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.phone ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
+                    />
+                    {pricingFormErrors.phone && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.phone}</span>}
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                      Lead Type *
+                    </label>
+                    <select
+                      value={pricingFormData.leadType}
+                      onChange={(e) => setPricingFormData({ ...pricingFormData, leadType: e.target.value })}
+                      style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
+                    >
+                      <option value="SEO Leads">SEO Leads</option>
+                      <option value="Web Design Leads">Web Design Leads</option>
+                      <option value="Appointment Leads">Appointment Leads</option>
+                    </select>
+                  </div>
+
+                  <button
+                    type="submit"
+                    style={{
+                      background: C.yellow,
+                      color: C.navy,
+                      fontFamily: F.display,
+                      fontWeight: 800,
+                      fontSize: '12px',
+                      letterSpacing: '1px',
+                      padding: '12px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      marginTop: '8px',
+                      width: '100%',
+                      borderRadius: 0,
+                    }}
+                  >
+                    REQUEST CALLBACK & WHATSAPP →
+                  </button>
+                </form>
+
+                {/* Right Side: Pricing Cards */}
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  width: '100%',
+                }}>
+                  <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.white, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', textAlign: 'left' }}>
+                    {pricingFormData.leadType} Packages
+                  </h3>
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}>
+                    {LEAD_PRICING_DATA[pricingFormData.leadType].map((pack) => (
+                      <div 
+                        key={pack.name} 
+                        style={{
+                          background: pack.featured ? C.blue : '#16233b',
+                          border: pack.featured ? `1.5px solid ${C.yellow}` : '1px solid rgba(255, 255, 255, 0.1)',
+                          padding: '16px 20px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          textAlign: 'left',
+                          position: 'relative',
+                        }}
+                      >
+                        {pack.featured && (
+                          <span style={{
+                            position: 'absolute',
+                            top: '0',
+                            right: '20px',
+                            background: C.yellow,
+                            color: C.navy,
+                            fontSize: '8px',
+                            fontWeight: 'bold',
+                            padding: '2px 8px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            fontFamily: F.display,
+                          }}>
+                            Popular
+                          </span>
+                        )}
+                        
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
+                          <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.white }}>
+                            {pack.name}
+                          </span>
+                          <div style={{ display: 'flex', alignItems: 'baseline', lineHeight: 1 }}>
+                            <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.white }}>
+                              ${pack.price}
+                            </span>
+                            <span style={{ fontSize: '9px', color: 'rgba(255,255,255,0.6)', marginLeft: '4px' }}>
+                              / {pack.period.replace(' Leads/mo', '').replace(' Calls/mo', '')}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 12px', fontSize: '10.5px', color: 'rgba(255, 255, 255, 0.8)', marginTop: '4px' }}>
+                          {pack.features.slice(0, 4).map((feat) => (
+                            <span key={feat} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                              <span style={{ color: C.yellow }}>✓</span> {feat}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </HashRouter>
   );
