@@ -583,7 +583,7 @@ const Footer = ({ isMobile }) => {
 // ==========================================
 const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '+1', company: '', service: '' });
+  const [heroForm, setHeroForm] = useState({ name: '', email: '', phone: '', company: '', service: '' });
   const [heroSuccess, setHeroSuccess] = useState(false);
   const [heroErrors, setHeroErrors] = useState({});
   const [heroLoading, setHeroLoading] = useState(false);
@@ -631,7 +631,7 @@ const HomePage = ({ isMobile }) => {
       setHeroLoading(false);
       handleFormSubmit(heroForm, 'Hero - Verified Lead Request');
       setHeroSuccess(true);
-      setHeroForm({ name: '', email: '', phone: '+1', company: '', service: '' });
+      setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
     }, 1000);
   };
 
@@ -2215,7 +2215,7 @@ const AboutPage = ({ isMobile }) => {
 // ==========================================
 const SeoLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+  const [seoForm, setSeoForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [seoSuccess, setSeoSuccess] = useState(false);
   const [seoErrors, setSeoErrors] = useState({});
   const [seoLoading, setSeoLoading] = useState(false);
@@ -2263,7 +2263,7 @@ const SeoLeadsPage = ({ isMobile }) => {
       setSeoLoading(false);
       handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry');
       setSeoSuccess(true);
-      setSeoForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+      setSeoForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -2890,7 +2890,7 @@ const SeoLeadsPage = ({ isMobile }) => {
 // ==========================================
 const WebDesignLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+  const [webForm, setWebForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [webSuccess, setWebSuccess] = useState(false);
   const [webErrors, setWebErrors] = useState({});
   const [webLoading, setWebLoading] = useState(false);
@@ -2938,7 +2938,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
       setWebLoading(false);
       handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry');
       setWebSuccess(true);
-      setWebForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+      setWebForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -3589,7 +3589,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
 // ==========================================
 const AppointmentLeadsPage = ({ isMobile }) => {
   const navigate = useNavigate();
-  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+  const [appForm, setAppForm] = useState({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
   const [appSuccess, setAppSuccess] = useState(false);
   const [appErrors, setAppErrors] = useState({});
   const [appLoading, setAppLoading] = useState(false);
@@ -3637,7 +3637,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
       setAppLoading(false);
       handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry');
       setAppSuccess(true);
-      setAppForm({ name: '', email: '', phone: '+1', company: '', budget: '', message: '' });
+      setAppForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
     }, 1000);
   };
 
@@ -5209,7 +5209,7 @@ const ContactPage = ({ isMobile }) => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: '+1',
+    phone: '',
     company: '',
     service: '',
     budget: '',
@@ -5269,7 +5269,7 @@ const ContactPage = ({ isMobile }) => {
         firstName: '',
         lastName: '',
         email: '',
-        phone: '+1',
+        phone: '',
         company: '',
         service: '',
         budget: '',

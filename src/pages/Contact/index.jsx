@@ -4,7 +4,7 @@ const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '+1',
+    phone: '',
     company: '',
     website: '',
     package: 'gold',
@@ -29,7 +29,7 @@ const ContactPage = () => {
       setFormData({
         name: '',
         email: '',
-        phone: '+1',
+        phone: '',
         company: '',
         website: '',
         package: 'gold',

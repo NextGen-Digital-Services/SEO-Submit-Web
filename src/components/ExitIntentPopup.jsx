@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function ExitIntentPopup({ onSubmit }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '+1', service: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
