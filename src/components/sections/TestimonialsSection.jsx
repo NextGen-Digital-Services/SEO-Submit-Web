@@ -50,7 +50,9 @@ const TestimonialsSection = () => {
 
               {/* Author Profiles */}
               <div className="testimonial-author">
-                <img src={test.avatar} alt={test.author} className="author-avatar" />
+                <div className="author-avatar-container">
+                  <img src={test.avatar} alt={test.author} className="author-avatar" />
+                </div>
                 <div className="author-details">
                   <span className="author-name">{test.author}</span>
                   <span className="author-meta">{test.role} • <strong>{test.company}</strong></span>
@@ -96,12 +98,27 @@ const TestimonialsSection = () => {
           border-top: 1px solid var(--border-light);
           padding-top: 20px;
         }
-        .author-avatar {
+        .author-avatar-container {
           width: 48px;
           height: 48px;
           border-radius: 50%;
-          object-fit: cover;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
           border: 2px solid var(--primary-light);
+          padding: 0;
+          margin: 0;
+        }
+        .author-avatar {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          padding: 0;
+          margin: 0;
         }
         .author-details {
           display: flex;

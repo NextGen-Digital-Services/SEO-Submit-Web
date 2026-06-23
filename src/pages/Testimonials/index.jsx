@@ -102,7 +102,9 @@ const TestimonialsPage = () => {
                 </div>
                 <p className="review-quote-paragraph">"{test.quote}"</p>
                 <div className="review-author-meta mt-4">
-                  <img src={test.avatar} alt={test.author} className="review-avatar" />
+                  <div className="review-avatar-container">
+                    <img src={test.avatar} alt={test.author} className="review-avatar" />
+                  </div>
                   <div className="review-author-info">
                     <strong>{test.author}</strong>
                     <span>{test.role} • {test.company}</span>
@@ -254,13 +256,26 @@ const TestimonialsPage = () => {
           border-top: 1px solid var(--border-light);
           padding-top: 20px;
         }
-        .review-avatar {
+        .review-avatar-container {
           width: 48px;
           height: 48px;
           border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          padding: 0;
+          margin: 0;
+        }
+        .review-avatar {
+          width: 100%;
+          height: 100%;
           object-fit: cover;
           object-position: center;
-          flex-shrink: 0;
+          display: block;
+          padding: 0;
+          margin: 0;
         }
         .review-author-info {
           display: flex;

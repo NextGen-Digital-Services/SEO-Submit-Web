@@ -1458,7 +1458,9 @@ const HomePage = ({ isMobile }) => {
           ].map((test, idx) => (
             <div key={idx} style={{ background: C.white, padding: '24px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                <img src={test.img} alt={test.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center', flexShrink: 0, display: 'block', border: '3px solid #FFD600' }} />
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: 0 }}>
+                  <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                </div>
                 <div style={{ textAlign: 'left' }}>
                   <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '2px' }}>{test.name}</h4>
                   <span style={{ fontSize: '11px', color: C.blue, display: 'block' }}>{test.comp}</span>
@@ -2676,7 +2678,9 @@ const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
             { name: 'Ashley Vance', comp: 'Apex Digital', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={test.img} alt={test.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center', flexShrink: 0, display: 'block', marginBottom: '12px', border: '3px solid #FFD600' }} />
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
+                <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+              </div>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic', flex: 1 }}>
                 "{test.txt}"
               </p>
@@ -4067,7 +4071,9 @@ const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             { name: 'Nicole Anderson', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/appclient3/80/80', txt: 'Synced calls keep our sales reps busy. Excellent team coordination.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <img src={test.img} alt={test.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center', flexShrink: 0, display: 'block', marginBottom: '12px', border: '3px solid #FFD600' }} />
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
+                <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+              </div>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic', flex: 1 }}>
                 "{test.txt}"
               </p>
@@ -4900,7 +4906,9 @@ const TestimonialsPage = ({ isMobile }) => {
                 "{test.txt}"
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #f0f3ff', paddingTop: '12px' }}>
-                <img src={test.img} alt={test.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center', flexShrink: 0, display: 'block' }} />
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0, margin: 0 }}>
+                  <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                </div>
                 <div style={{ textAlign: 'left' }}>
                   <h5 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.navy }}>{test.name}</h5>
                   <span style={{ fontSize: '10px', color: '#888' }}>{test.role} • {test.comp}</span>
@@ -4922,7 +4930,9 @@ const TestimonialsPage = ({ isMobile }) => {
           {reviewsList.map((test, idx) => (
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                <img src={test.img} alt={test.name} style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: 'center', flexShrink: 0, display: 'block' }} />
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0, margin: 0 }}>
+                  <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                </div>
                 <div style={{ textAlign: 'left' }}>
                   <h5 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.navy }}>{test.name}</h5>
                   <span style={{ fontSize: '10px', color: '#888' }}>{test.comp}</span>
