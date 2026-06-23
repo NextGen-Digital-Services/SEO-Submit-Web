@@ -709,9 +709,9 @@ const HomePage = ({ isMobile }) => {
               lineHeight: 1.15,
               marginBottom: '16px',
             }}>
-              Get Exclusive{' '}
-              <span style={{ color: '#FFD600' }}>SEO & Web Design</span>
-              {' '}Leads That Actually Convert Into Paying Clients
+              We deliver exclusive {' '}
+              <span style={{ color: '#FFD600' }}>SEO leads, web design leads, and appointment-set leads </span>
+              {' '}that come to you ready to buy — never shared, never resold.
             </h1>
 
             {/* Paragraph */}
@@ -722,10 +722,7 @@ const HomePage = ({ isMobile }) => {
               marginBottom: '24px',
               maxWidth: '480px',
             }}>
-              Real-time. Exclusive. Guaranteed. 16+ years supplying premium
-              verified leads to SEO agencies and web design firms across the
-              USA, UK, Australia & Canada. Every lead is exclusive to you —
-              never resold.
+              Since 2016, SEOSubmitWeb has helped agencies and service businesses close more deals — without chasing cold, recycled leads. Stop competing for the same tired leads. Start closing exclusively yours.
             </p>
 
             {/* Trust pills */}
@@ -1064,13 +1061,16 @@ const HomePage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="ABOUT SEO SUBMIT WEB" />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            16 Years of Delivering Leads That <span style={{ color: C.blue }}>Convert Into Revenue</span>
+            Since 2016, SEOSubmitWeb has helped agencies and service businesses close more deals  <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
-            Founded in 2009, SEO Submit Web has grown from a small lead generation startup to the USA's most trusted exclusive lead supplier. We work with over 5,000 SEO agencies and web design firms across 40+ countries.
+            We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never resold.
+Every lead is generated fresh for your business alone, so you're always the first call, not the fifth.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '24px' }}>
-            Our proprietary lead generation technology captures real-time intent signals from business owners actively searching for digital services — delivering you hot, verified leads the moment they're generated.
+            With nearly a decade of proven results, our clients don't just get leads — they get a predictable pipeline they can build a business on.
+Stop competing for the same tired leads. Start closing exclusively yours.
+
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '28px' }}>
