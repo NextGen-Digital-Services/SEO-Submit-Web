@@ -4715,7 +4715,7 @@ const TestimonialsPage = ({ isMobile }) => {
   };
 
   const reviewsList = [
-    { name: 'Sarah Jenkins', role: 'CEO', comp: 'TechSEO Solutions LLC', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
+    { name: 'Jared Diamond', role: 'CEO at Upcision', comp: 'apixdigital.co', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
     { name: 'Diana Ross', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
     { name: 'Adam Vance', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
   ];
@@ -4916,8 +4916,8 @@ const TestimonialsPage = ({ isMobile }) => {
         <div className="testimonial-video-grid">
           {[
             {
-              name: 'Sarah Jenkins',
-              title: 'TechSEO Solutions LLC',
+              name: 'Jared Diamond',
+              title: 'CEO at Upcision | apixdigital.co',
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.mp4',
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.jpg',
             },
