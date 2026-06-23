@@ -4839,7 +4839,7 @@ const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -4866,7 +4866,7 @@ const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
