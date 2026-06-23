@@ -4668,12 +4668,6 @@ const TestimonialsPage = ({ isMobile }) => {
     if (selectedVideo && videoRef.current) {
       videoRef.current.muted = false;
       videoRef.current.volume = 1.0;
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log("Autoplay failed/prevented:", error);
-        });
-      }
     }
   }, [selectedVideo]);
 
@@ -4930,14 +4924,8 @@ const TestimonialsPage = ({ isMobile }) => {
             {
               name: 'Diana Ross',
               title: 'WebCraft Agency',
-              videoUrl: 'https://res.cloudinary.com/demo/video/upload/elephants.mp4',
-              thumbnail: 'https://res.cloudinary.com/demo/video/upload/elephants.jpg',
-            },
-            {
-              name: 'Adam Vance',
-              title: 'GrowthMark Digital',
-              videoUrl: 'https://res.cloudinary.com/demo/video/upload/sea_turtle.mp4',
-              thumbnail: 'https://res.cloudinary.com/demo/video/upload/sea_turtle.jpg',
+              videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.mp4',
+              thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.jpg',
             }
           ].map((video, idx) => (
             <div 
@@ -5017,11 +5005,6 @@ const TestimonialsPage = ({ isMobile }) => {
           @media (min-width: 640px) {
             .testimonial-video-grid {
               grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          @media (min-width: 1024px) {
-            .testimonial-video-grid {
-              grid-template-columns: repeat(3, 1fr);
             }
           }
           .video-thumbnail-img {
@@ -5396,11 +5379,19 @@ const TestimonialsPage = ({ isMobile }) => {
               justifyContent: 'center',
             }}>
               <video 
-                ref={videoRef}
+                ref={(el) => {
+                  if (el) {
+                    el.muted = false;
+                    el.volume = 1.0;
+                  }
+                  videoRef.current = el;
+                }}
                 src={selectedVideo.videoUrl}
                 controls
                 preload="metadata"
                 playsInline
+                muted={false}
+                defaultMuted={false}
                 style={{
                   width: '100%',
                   maxHeight: '80vh',
