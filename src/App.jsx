@@ -640,14 +640,14 @@ const HomePage = ({ isMobile }) => {
   return (
     <div style={{ width: '100%' }}>
       {/* [SECTION A] HERO */}
-      <section style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', minHeight: '500px', width: '100%' }}>
+      <section style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', minHeight: isMobile ? 'auto' : '500px', width: '100%' }}>
         {/* Left Panel */}
         <div style={{
           flex: 1,
           padding: isMobile ? '32px 16px' : '56px 40px',
           position: 'relative',
           overflow: 'hidden',
-          minHeight: '500px',
+          minHeight: isMobile ? 'auto' : '500px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
