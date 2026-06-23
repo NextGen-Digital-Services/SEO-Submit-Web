@@ -1022,7 +1022,7 @@ const HomePage = ({ isMobile }) => {
       }}>
         {[
           { icon: 'ti-award', label: 'Founded', value: 'Since 2009' },
-          { icon: 'ti-users', label: 'Clients Served', value: '5,000+' },
+          { icon: 'ti-users', label: 'Clients Served', value: '500+' },
           { icon: 'ti-shield-check', label: 'Guarantee', value: 'Bad Lead Replaced' },
           { icon: 'ti-clock', label: 'Support', value: '24/7 Available' },
           { icon: 'ti-star', label: 'Avg Rating', value: '4.9 / 5.0' },
