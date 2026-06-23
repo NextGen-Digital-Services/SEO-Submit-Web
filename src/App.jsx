@@ -4823,8 +4823,8 @@ const TestimonialsPage = ({ isMobile }) => {
           {/* Card 1: Abe Rubarts */}
           <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
             <div style={{
-              width: '120px',
-              height: '120px',
+              width: '100px',
+              height: '100px',
               borderRadius: '50%',
               overflow: 'hidden',
               border: `4px solid ${C.navy}`,
@@ -4833,7 +4833,7 @@ const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', borderRadius: '50%' }} />
+              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -4850,8 +4850,8 @@ const TestimonialsPage = ({ isMobile }) => {
           {/* Card 2: Jared Diamond */}
           <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
             <div style={{
-              width: '120px',
-              height: '120px',
+              width: '100px',
+              height: '100px',
               borderRadius: '50%',
               overflow: 'hidden',
               border: `4px solid ${C.navy}`,
@@ -4860,7 +4860,7 @@ const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', borderRadius: '50%' }} />
+              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
