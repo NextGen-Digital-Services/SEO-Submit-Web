@@ -259,6 +259,8 @@ const TestimonialsPage = () => {
           height: 48px;
           border-radius: 50%;
           object-fit: cover;
+          object-position: center;
+          flex-shrink: 0;
         }
         .review-author-info {
           display: flex;
