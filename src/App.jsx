@@ -1509,9 +1509,9 @@ const HomePage = ({ isMobile }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '24px' : 0 }}>
           {[
-            { name: 'Starter', price: '199', period: '20 Leads/mo', features: ['20 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'], featured: false },
-            { name: 'Professional', price: '449', period: '50 Leads/mo', features: ['50 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Dedicated Manager', 'Priority Support'], featured: true },
-            { name: 'Enterprise', price: '899', period: '120 Leads/mo', features: ['120 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Custom Target Spec', 'Priority Support'], featured: false },
+            { name: 'Starter', price: '399', period: '20 Leads/mo', features: ['20 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'], featured: false },
+            { name: 'Professional', price: '999', period: '50 Leads/mo', features: ['50 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Dedicated Manager', 'Priority Support'], featured: true },
+            { name: 'Enterprise', price: '2,399', period: '120 Leads/mo', features: ['120 Exclusive Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Custom Target Spec', 'Priority Support'], featured: false },
           ].map((pack, idx, arr) => {
             const cardStyle = pack.featured ? {
               background: C.blue,
@@ -2537,9 +2537,9 @@ const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '24px' : 0 }}>
           {[
-            { name: 'Basic SEO', price: '199', period: '20 Leads/mo', features: ['20 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
-            { name: 'Standard SEO', price: '449', period: '50 Leads/mo', features: ['50 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook Integration', 'Dedicated Manager'], featured: true },
-            { name: 'Premium SEO', price: '899', period: '120 Leads/mo', features: ['120 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Integration', 'Priority 24/7 Phone Support'] },
+            { name: 'Basic SEO', price: '399', period: '20 Leads/mo', features: ['20 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+            { name: 'Standard SEO', price: '999', period: '50 Leads/mo', features: ['50 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook Integration', 'Dedicated Manager'], featured: true },
+            { name: 'Premium SEO', price: '2,399', period: '120 Leads/mo', features: ['120 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Integration', 'Priority 24/7 Phone Support'] },
           ].map((pack, idx, arr) => {
             const cardStyle = pack.featured ? {
               background: C.blue,
@@ -2795,9 +2795,9 @@ const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                 style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: seoErrors.budget ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
                 <option value="">-- How much do you want to invest? --</option>
-                <option value="Starter $199">Starter — $199/month (20 Leads)</option>
-                <option value="Standard $449">Standard — $449/month (50 Leads)</option>
-                <option value="Premium $899">Premium — $899/month (120 Leads)</option>
+                <option value="Starter $399">Starter — $399/month (20 Leads)</option>
+                <option value="Standard $999">Standard — $999/month (50 Leads)</option>
+                <option value="Premium $2,399">Premium — $2,399/month (120 Leads)</option>
                 <option value="Custom">Custom — I need a custom package</option>
               </select>
               {seoErrors.budget && (
@@ -3238,9 +3238,9 @@ const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '24px' : 0 }}>
           {[
-            { name: 'Starter Web', price: '199', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
-            { name: 'Professional Web', price: '449', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
-            { name: 'Enterprise Web', price: '899', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
+            { name: 'Starter Web', price: '399', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+            { name: 'Professional Web', price: '999', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
+            { name: 'Enterprise Web', price: '2,399', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
           ].map((pack, idx, arr) => {
             const cardStyle = pack.featured ? {
               background: C.blue,
@@ -3497,9 +3497,9 @@ const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
                 style={{ width: '100%', padding: '12px 14px', fontSize: '13px', fontFamily: F.body, border: webErrors.budget ? '2px solid #ff4444' : '2px solid #2a3d6a', background: '#1a2a4a', color: '#ffffff', marginBottom: '4px', outline: 'none', borderRadius: 0 }}
               >
                 <option value="">-- Select your monthly budget --</option>
-                <option value="Starter $199">Starter — $199/month (20 Leads)</option>
-                <option value="Standard $449">Standard — $449/month (50 Leads)</option>
-                <option value="Premium $899">Premium — $899/month (120 Leads)</option>
+                <option value="Starter $399">Starter — $399/month (20 Leads)</option>
+                <option value="Standard $999">Standard — $999/month (50 Leads)</option>
+                <option value="Premium $2,399">Premium — $2,399/month (120 Leads)</option>
                 <option value="Custom">Custom Package</option>
               </select>
               {webErrors.budget && (
@@ -5989,14 +5989,14 @@ const ContactPage = ({ isMobile }) => {
 // ==========================================
 const LEAD_PRICING_DATA = {
   'SEO Leads': [
-    { name: 'Basic SEO', price: '199', period: '20 Leads/mo', features: ['20 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
-    { name: 'Standard SEO', price: '449', period: '50 Leads/mo', features: ['50 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook Integration', 'Dedicated Manager'], featured: true },
-    { name: 'Premium SEO', price: '899', period: '120 Leads/mo', features: ['120 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Integration', 'Priority 24/7 Phone Support'] },
+    { name: 'Basic SEO', price: '399', period: '20 Leads/mo', features: ['20 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+    { name: 'Standard SEO', price: '999', period: '50 Leads/mo', features: ['50 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook Integration', 'Dedicated Manager'], featured: true },
+    { name: 'Premium SEO', price: '2,399', period: '120 Leads/mo', features: ['120 SEO Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Integration', 'Priority 24/7 Phone Support'] },
   ],
   'Web Design Leads': [
-    { name: 'Starter Web', price: '199', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
-    { name: 'Professional Web', price: '449', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
-    { name: 'Enterprise Web', price: '899', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
+    { name: 'Starter Web', price: '399', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
+    { name: 'Professional Web', price: '999', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
+    { name: 'Enterprise Web', price: '2,399', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
   ],
   'Appointment Leads': [
     { name: 'Starter Appt', price: '499', period: '10 Calls/mo', features: ['10 Booked Meetings', 'Calendar Sync', 'Budget Validation', 'Email Support'] },
