@@ -104,13 +104,13 @@ Service Interested In: ${formData.service || 'Not provided'}
 Budget: ${formData.budget || 'Not provided'}
 Message: ${formData.message || 'Not provided'}
 
-Time: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+Time: ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })}
 Source: Website Contact Form
   `.trim();
 
   // OPEN WHATSAPP
   const encodedMessage = encodeURIComponent(waMessage);
-  const whatsappURL = `https://wa.me/917738907685?text=${encodedMessage}`;
+  const whatsappURL = `https://wa.me/15551234567?text=${encodedMessage}`;
   window.open(whatsappURL, '_blank');
 
   // SEND EMAIL VIA EMAILJS
@@ -203,7 +203,7 @@ const SuccessMessage = ({ onClose }) => (
           CLOSE
         </button>
         <a
-          href="https://wa.me/917738907685"
+          href="https://wa.me/15551234567"
           target="_blank"
           rel="noreferrer"
           style={{
@@ -226,7 +226,7 @@ const SuccessMessage = ({ onClose }) => (
 // FLOATING WHATSAPP BUTTON
 const WhatsAppFloat = () => (
   <a
-    href="https://wa.me/917738907685?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+    href="https://wa.me/15551234567?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
     target="_blank"
     rel="noreferrer"
     style={{
@@ -391,7 +391,7 @@ const Navbar = ({ isMobile }) => {
       <div style={{ display: 'flex', alignItems: 'center' }}>
         {/* WhatsApp icon link */}
         <a
-          href="https://wa.me/917738907685"
+          href="https://wa.me/15551234567"
           target="_blank"
           rel="noreferrer"
           title="WhatsApp Us"
@@ -454,15 +454,15 @@ const Footer = ({ isMobile }) => {
             </span>
           </div>
           <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: '280px' }}>
-            India's #1 SEO Lead Generation Company Since 2009. Supplying verified high-converting opportunities.
+            USA's #1 SEO Lead Generation Company Since 2009. Supplying verified high-converting opportunities.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-phone" />
               </div>
-              <a href="tel:+917738907685" style={{ color: 'inherit', textDecoration: 'none' }}>
-                +91 77389 07685
+              <a href="tel:+15551234567" style={{ color: 'inherit', textDecoration: 'none' }}>
+                +1 (555) 123-4567
               </a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
@@ -471,8 +471,8 @@ const Footer = ({ isMobile }) => {
               </div>
               <span>
                 <strong>WhatsApp Us: </strong>
-                <a href="https://wa.me/917738907685" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  +91 77389 07685
+                <a href="https://wa.me/15551234567" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  +1 (555) 123-4567
                 </a>
               </span>
             </div>
@@ -488,7 +488,7 @@ const Footer = ({ isMobile }) => {
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-map-pin" />
               </div>
-              <span>123 Business Hub, Sector 18, Delhi NCR — 110001</span>
+              <span>123 Business Hub, Loop District, Chicago, IL 60601</span>
             </div>
           </div>
         </div>
@@ -695,7 +695,7 @@ const HomePage = ({ isMobile }) => {
               marginBottom: '16px',
               textTransform: 'uppercase',
             }}>
-              INDIA'S #1 SEO LEAD GENERATION COMPANY
+              USA'S #1 SEO LEAD GENERATION COMPANY
             </div>
 
             {/* H1 heading */}
@@ -721,7 +721,7 @@ const HomePage = ({ isMobile }) => {
               maxWidth: '480px',
             }}>
               Real-time. Exclusive. Guaranteed. 16+ years supplying premium
-              verified leads to SEO agencies and web design firms across India,
+              verified leads to SEO agencies and web design firms across the
               USA, UK, Australia & Canada. Every lead is exclusive to you —
               never resold.
             </p>
@@ -768,7 +768,7 @@ const HomePage = ({ isMobile }) => {
               </button>
 
               {/* Phone button */}
-              <a href="tel:+917738907685" style={{
+              <a href="tel:+15551234567" style={{
                 background: 'transparent',
                 color: '#FFD600',
                 fontFamily: "'Montserrat', sans-serif",
@@ -784,12 +784,12 @@ const HomePage = ({ isMobile }) => {
                 gap: '8px',
               }}>
                 <i className="ti ti-phone" style={{ fontSize: '16px' }}></i>
-                +91 77389 07685
+                +1 (555) 123-4567
               </a>
 
               {/* WhatsApp button */}
               <a
-                href="https://wa.me/917738907685?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
+                href="https://wa.me/15551234567?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -801,7 +801,10 @@ const HomePage = ({ isMobile }) => {
                   letterSpacing: '1px',
                   padding: '13px 24px',
                   textDecoration: 'none',
-                  display: 'flex',
+                  border: 'none',
+                  cursor: 'pointer',
+                  borderRadius: 0,
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
                 }}>
@@ -1062,7 +1065,7 @@ const HomePage = ({ isMobile }) => {
             16 Years of Delivering Leads That <span style={{ color: C.blue }}>Convert Into Revenue</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
-            Founded in 2009, SEO Submit Web has grown from a small lead generation startup to India's most trusted exclusive lead supplier. We work with over 5,000 SEO agencies and web design firms across 40+ countries.
+            Founded in 2009, SEO Submit Web has grown from a small lead generation startup to the USA's most trusted exclusive lead supplier. We work with over 5,000 SEO agencies and web design firms across 40+ countries.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '24px' }}>
             Our proprietary lead generation technology captures real-time intent signals from business owners actively searching for digital services — delivering you hot, verified leads the moment they're generated.
@@ -1820,7 +1823,7 @@ const AboutPage = ({ isMobile }) => {
             lineHeight: 1.15,
             marginBottom: '16px',
           }}>
-            The Company Behind <span style={{ color: C.yellow }}>India's Best SEO Leads</span>
+            The Team Behind <span style={{ color: C.yellow }}>High-Quality SEO & Web Design Leads</span>
           </h1>
           <p style={{
             fontFamily: F.body,
@@ -1855,13 +1858,13 @@ const AboutPage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '56px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="HOW WE STARTED" />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            From a Small Startup to <span style={{ color: C.blue }}>India's #1 Lead Supplier</span>
+            From a Small Startup to a <span style={{ color: C.blue }}>Premium Lead Sourcing Desk</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            SEO Submit Web was founded in 2009 by Rahul Sharma, a digital marketing veteran who saw a massive gap in the market — agencies needed quality leads, but all available options were either shared, outdated, or simply fake. He set out to build India's first truly exclusive, real-time lead generation system.
+            SEO Submit Web was founded in 2011 by Alexander Vance, a digital marketing veteran who saw a massive gap in the market — agencies needed quality leads, but all available options were either shared, outdated, or simply fake. He set out to build the first truly exclusive, real-time lead generation system.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            What started as a 2-person operation from a small Delhi office has grown into a 50+ member powerhouse serving 5,000+ clients across 40 countries. Every lead we generate is verified by our 3-step quality control process before it reaches your inbox.
+            What started as a 2-person operation from a small Chicago office has grown into a 50+ member powerhouse serving 5,000+ clients across 40 countries. Every lead we generate is verified by our 3-step quality control process before it reaches your inbox.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '24px' }}>
             Today, SEO Submit Web is the most trusted name in SEO leads, web design leads, and appointment fixed lead generation — with a track record of 50,000+ leads delivered and a 98% client retention rate.
@@ -2009,10 +2012,10 @@ const AboutPage = ({ isMobile }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
-              { name: 'Rahul Sharma', role: 'CEO & Founder', dep: 'Executive', border: C.yellow, img: 'https://picsum.photos/seed/team1/400/300', bio: 'Directs strategic planning. 15+ years in lead generation and growth marketing pipelines.' },
-              { name: 'Priya Mehta', role: 'Head of Lead Gen', dep: 'Operations', border: C.blue, img: 'https://picsum.photos/seed/team2/400/300', bio: 'Verifies qualification protocols and guarantees replacement parameters are strictly met.' },
-              { name: 'Vikram Singh', role: 'Chief Tech Officer', dep: 'Technology', border: C.navy, img: 'https://picsum.photos/seed/team3/400/300', bio: 'Maintains verification systems, secure APIs, and CRM webhook configurations.' },
-              { name: 'Ananya Patel', role: 'Client Success Director', dep: 'Support', border: C.yellow, img: 'https://picsum.photos/seed/team4/400/300', bio: 'Coordinates directly with agency owners to optimize campaign setups.' },
+              { name: 'Alexander Vance', role: 'CEO & Founder', dep: 'Executive', border: C.yellow, img: 'https://picsum.photos/seed/team1/400/300', bio: 'Former VP of Growth at Apex Digital with 18+ years of organic search and enterprise lead generation experience.' },
+              { name: 'Sarah Chen', role: 'Head of SEO Strategy', dep: 'Operations', border: C.blue, img: 'https://picsum.photos/seed/team2/400/300', bio: 'Recognized search architect specializing in algorithmic market intelligence, B2B intent validation, and scalable organic lead acquisition.' },
+              { name: 'Marcus Brody', role: 'Director of Web Architecture', dep: 'Technology', border: C.navy, img: 'https://picsum.photos/seed/team3/400/300', bio: 'Over a decade designing high-converting, mobile-first landers and technical schemas for Fortune 500 portals.' },
+              { name: 'Emily Davis', role: 'Client Success Director', dep: 'Support', border: C.yellow, img: 'https://picsum.photos/seed/team4/400/300', bio: 'Coordinates directly with agency owners to optimize campaign setups.' },
             ].map((member, idx) => (
               <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img src={member.img} alt={member.name} style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', border: '3px solid #FFD600' }} />
@@ -2120,7 +2123,7 @@ const AboutPage = ({ isMobile }) => {
           maxWidth: '1200px',
           margin: '0 auto',
         }}>
-          {["TechSEO India", "WebCraft Studio", "RankBoost Agency", "DigitalFirst Co", "GrowthMark", "PixelForge"].map((client) => (
+          {["TechSEO Solutions LLC", "WebCraft Studio", "RankBoost Agency", "DigitalFirst Co", "GrowthMark", "PixelForge"].map((client) => (
             <div key={client} style={{
               background: C.white,
               color: C.navy,
@@ -2144,7 +2147,7 @@ const AboutPage = ({ isMobile }) => {
           <div style={{ width: isMobile ? '100%' : '200px', flexShrink: 0 }}>
             <img
               src="https://picsum.photos/seed/featuredclient/200/200"
-              alt="Arjun Kapoor"
+              alt="David Miller"
               loading="lazy"
               style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', border: `3px solid ${C.yellow}` }}
             />
@@ -2157,8 +2160,8 @@ const AboutPage = ({ isMobile }) => {
               "SEO Submit Web completely transformed how we acquire clients. Before them, we were spending 40 hours a week cold calling with a 2% success rate. Now we receive 20 exclusive, pre-verified leads every week and our close rate is 35%. They are not just a vendor — they are a genuine growth partner."
             </p>
             <div>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy }}>Arjun Kapoor</h4>
-              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO, SEOStar Agency • Sourced SEO Leads</span>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy }}>David Miller</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO, RankBoost Agency • Sourced SEO Leads</span>
             </div>
           </div>
         </div>
@@ -2342,7 +2345,7 @@ const SeoLeadsPage = ({ isMobile }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              Buy <span style={{ color: C.yellow }}>Exclusive Real-Time</span> SEO Leads That Convert Into Paying Clients
+              High-Intent <span style={{ color: C.yellow }}>SEO Leads</span> Delivered Directly to Your Agency
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -2481,11 +2484,11 @@ const SeoLeadsPage = ({ isMobile }) => {
                 Verified SEO Lead Mockup
               </h4>
               <div style={{ display: 'grid', gap: '8px', fontSize: '12px', fontFamily: F.body }}>
-                <div><strong>First Name:</strong> Rajesh</div>
-                <div><strong>Last Name:</strong> Sharma</div>
-                <div><strong>Email:</strong> r.sharma@techseosol.com</div>
-                <div><strong>Phone:</strong> +91 77389 07685</div>
-                <div><strong>Company:</strong> TechSEO Solutions</div>
+                <div><strong>First Name:</strong> Sarah</div>
+                <div><strong>Last Name:</strong> Jenkins</div>
+                <div><strong>Email:</strong> sarah@seoagency.com</div>
+                <div><strong>Phone:</strong> +1 (555) 123-4567</div>
+                <div><strong>Company:</strong> TechSEO Solutions LLC</div>
                 <div><strong>Website:</strong> techseosolutions.com</div>
                 <div><strong>Monthly Budget:</strong> $2,500 - $5,000</div>
                 <div><strong>Decision Maker:</strong> Yes (CEO)</div>
@@ -2666,9 +2669,9 @@ const SeoLeadsPage = ({ isMobile }) => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { name: 'Sunita Patel', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/seoclient1/80/80', txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
-            { name: 'Vikram Nair', comp: 'RankBoost India', img: 'https://picsum.photos/seed/seoclient2/80/80', txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
-            { name: 'Arjun Kapoor', comp: 'SEOStar Agency', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
+            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/seoclient1/80/80', txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
+            { name: 'David Miller', comp: 'RankBoost Agency', img: 'https://picsum.photos/seed/seoclient2/80/80', txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
+            { name: 'Ashley Vance', comp: 'Apex Digital', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={test.img} alt={test.name} style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', display: 'block', marginBottom: '12px', border: '3px solid #FFD600' }} />
@@ -3014,7 +3017,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              Exclusive <span style={{ color: C.yellow }}>Web Design Leads</span> — Connect With Businesses Who Need A New Website
+              Exclusive <span style={{ color: C.yellow }}>Web Design Leads</span> for Agencies Ready to Grow
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -3368,9 +3371,9 @@ const WebDesignLeadsPage = ({ isMobile }) => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { name: 'Priya Kulkarni', comp: 'WebCraft Agency', txt: 'The project details are incredibly thorough. We knew the client\'s budget and timeline before the initial discovery call.' },
-            { name: 'Meera Joshi', comp: 'ContentCraft', txt: 'Their customer support is stellar. Any disconnected number gets replaced in our dashboard within a few hours.' },
-            { name: 'Deepa Iyer', comp: 'NetBuild Studio', txt: 'SEO Submit Web leads helped us close 3 major e-commerce contracts in our first month. The ROI was clear in week 1.' },
+            { name: 'Sarah Jenkins', comp: 'WebCraft Agency', txt: 'The project details are incredibly thorough. We knew the client\'s budget and timeline before the initial discovery call.' },
+            { name: 'Megan Adams', comp: 'ContentCraft', txt: 'Their customer support is stellar. Any disconnected number gets replaced in our dashboard within a few hours.' },
+            { name: 'Diana Cole', comp: 'NetBuild Studio', txt: 'SEO Submit Web leads helped us close 3 major e-commerce contracts in our first month. The ROI was clear in week 1.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '20px', border: '1px solid rgba(255,255,255,0.2)' }}>
               <span style={{ fontSize: '28px', color: C.yellow, display: 'block', lineHeight: 1 }}>“</span>
@@ -3713,7 +3716,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              Pre-Booked <span style={{ color: C.yellow }}>Appointment Fixed</span> Leads — Decision Makers Ready To Talk
+              Qualified Appointments <span style={{ color: C.yellow }}>Scheduled Directly</span> With Decision-Makers
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -4057,9 +4060,9 @@ const AppointmentLeadsPage = ({ isMobile }) => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { name: 'Sunita Patel', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/appclient1/80/80', txt: 'Appointment leads saved us. Stop cold outreach and book direct meetings.' },
-            { name: 'Karan Malhotra', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/appclient2/80/80', txt: 'Meetings closed 3x faster than traditional forms. Essential for agencies.' },
-            { name: 'Nisha Verma', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/appclient3/80/80', txt: 'Synced calls keep our sales reps busy. Excellent team coordination.' },
+            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/appclient1/80/80', txt: 'Appointment leads saved us. Stop cold outreach and book direct meetings.' },
+            { name: 'Kevin Anderson', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/appclient2/80/80', txt: 'Meetings closed 3x faster than traditional forms. Essential for agencies.' },
+            { name: 'Nicole Anderson', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/appclient3/80/80', txt: 'Synced calls keep our sales reps busy. Excellent team coordination.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <img src={test.img} alt={test.name} style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', display: 'block', marginBottom: '12px', border: '3px solid #FFD600' }} />
@@ -4369,7 +4372,7 @@ const BlogPage = ({ isMobile }) => {
         }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
-            Latest Tips, Guides & <span style={{ color: C.yellow }}>Industry Insights</span>
+            Industry Insights, <span style={{ color: C.yellow }}>Expert Guides</span> & Growth Strategies
           </h1>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
             Learn our insider methods for closing SEO retainers, scaling app dev contracts, and managing sales campaigns.
@@ -4691,18 +4694,18 @@ const TestimonialsPage = ({ isMobile }) => {
   };
 
   const reviewsList = [
-    { name: 'Rajesh Sharma', role: 'CEO', comp: 'TechSEO Solutions', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
-    { name: 'Priya Kulkarni', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
-    { name: 'Amit Mehta', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
-    { name: 'Sunita Patel', role: 'COO', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/testi4/80/80', txt: 'Appointment leads saved us. We scaled our operations directly without allocating massive budgets to cold calls.' },
-            { name: 'Vikram Nair', role: 'CEO', comp: 'RankBoost India', img: 'https://picsum.photos/seed/testi5/80/80', txt: 'Tried 5 providers, nothing beats this. SEO Submit Web qualifies real decision makers rather than low-tier employees.' },
-    { name: 'Ananya Singh', role: 'Founder', comp: 'DigiFirst Agency', img: 'https://picsum.photos/seed/testi6/80/80', txt: 'The lead quality is outstanding. We sync details straight into HubSpot and start the call sequence.' },
-    { name: 'Ravi Krishnan', role: 'Director', comp: 'WebWave Co', img: 'https://picsum.photos/seed/testi7/80/80', txt: 'ROI was visible in week 1. We closed two $5k contracts from our first leads batch.' },
-    { name: 'Meera Joshi', role: 'Founder', comp: 'ContentCraft', img: 'https://picsum.photos/seed/testi8/80/80', txt: 'Replacement policy works perfectly. Disconnected numbers get replaced without complex verification audits.' },
-    { name: 'Arjun Kapoor', role: 'Partner', comp: 'SEOStar Agency', img: 'https://picsum.photos/seed/testi9/80/80', txt: 'Scaled from 3 to 27 clients in 6 months using local search lead campaigns.' },
-    { name: 'Deepa Iyer', role: 'COO', comp: 'NetBuild Studio', img: 'https://picsum.photos/seed/testi10/80/80', txt: 'Every lead had verified contact info. The dashboard is clean and lead delivery pipeline is fast.' },
-    { name: 'Karan Malhotra', role: 'Director', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/testi11/80/80', txt: 'Appointment leads close 3x faster than normal form fills. Strongly recommend.' },
-    { name: 'Nisha Verma', role: 'Founder', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/testi12/80/80', txt: 'Been with them 3 years now. Lead consistency keeps our pipeline stable.' },
+    { name: 'Sarah Jenkins', role: 'CEO', comp: 'TechSEO Solutions LLC', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
+    { name: 'Diana Ross', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
+    { name: 'Adam Vance', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
+    { name: 'Emily Davis', role: 'COO', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/testi4/80/80', txt: 'Appointment leads saved us. We scaled our operations directly without allocating massive budgets to cold calls.' },
+    { name: 'David Miller', role: 'CEO', comp: 'RankBoost Agency', img: 'https://picsum.photos/seed/testi5/80/80', txt: 'Tried 5 providers, nothing beats this. SEO Submit Web qualifies real decision makers rather than low-tier employees.' },
+    { name: 'Sarah Chen', role: 'Founder', comp: 'DigiFirst Agency', img: 'https://picsum.photos/seed/testi6/80/80', txt: 'The lead quality is outstanding. We sync details straight into HubSpot and start the call sequence.' },
+    { name: 'Marcus Brody', role: 'Director', comp: 'WebWave Co', img: 'https://picsum.photos/seed/testi7/80/80', txt: 'ROI was visible in week 1. We closed two $5k contracts from our first leads batch.' },
+    { name: 'Megan Adams', role: 'Founder', comp: 'ContentCraft', img: 'https://picsum.photos/seed/testi8/80/80', txt: 'Replacement policy works perfectly. Disconnected numbers get replaced without complex verification audits.' },
+    { name: 'Ashley Vance', role: 'Partner', comp: 'Apex Digital', img: 'https://picsum.photos/seed/testi9/80/80', txt: 'Scaled from 3 to 27 clients in 6 months using local search lead campaigns.' },
+    { name: 'Diana Cole', role: 'COO', comp: 'NetBuild Studio', img: 'https://picsum.photos/seed/testi10/80/80', txt: 'Every lead had verified contact info. The dashboard is clean and lead delivery pipeline is fast.' },
+    { name: 'Kevin Anderson', role: 'Director', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/testi11/80/80', txt: 'Appointment leads close 3x faster than normal form fills. Strongly recommend.' },
+    { name: 'Nicole Anderson', role: 'Founder', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/testi12/80/80', txt: 'Been with them 3 years now. Lead consistency keeps our pipeline stable.' },
   ];
 
   return (
@@ -4797,7 +4800,7 @@ const TestimonialsPage = ({ isMobile }) => {
       {/* [C] MAIN FEATURED TESTIMONIAL */}
       <section style={{ background: C.lightBg, padding: '48px 24px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center' }}>
-          <img src="https://picsum.photos/seed/featuredtesti/200/200" alt="Arjun Kapoor Featured Testimonial" style={{ width: '200px', height: '200px', objectFit: 'cover', display: 'block', border: `4px solid ${C.navy}` }} />
+          <img src="https://picsum.photos/seed/featuredtesti/200/200" alt="David Miller Featured Testimonial" style={{ width: '200px', height: '200px', objectFit: 'cover', display: 'block', border: `4px solid ${C.navy}` }} />
           <div style={{ textAlign: 'left' }}>
             <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
               {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
@@ -4805,8 +4808,8 @@ const TestimonialsPage = ({ isMobile }) => {
             <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
               "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
             </p>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Arjun Kapoor</h4>
-            <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • SEOStar Agency</span>
+            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>David Miller</h4>
+            <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • RankBoost Agency</span>
           </div>
         </div>
       </section>
@@ -4900,9 +4903,9 @@ const TestimonialsPage = ({ isMobile }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
           {[
-            { name: 'Rajesh Sharma', title: 'TechSEO Solutions', img: 'https://picsum.photos/seed/video1/400/220' },
-            { name: 'Priya Kulkarni', title: 'WebCraft Agency', img: 'https://picsum.photos/seed/video2/400/220' },
-            { name: 'Amit Mehta', title: 'GrowthMark Digital', img: 'https://picsum.photos/seed/video3/400/220' },
+            { name: 'Sarah Jenkins', title: 'TechSEO Solutions LLC', img: 'https://picsum.photos/seed/video1/400/220' },
+            { name: 'Diana Ross', title: 'WebCraft Agency', img: 'https://picsum.photos/seed/video2/400/220' },
+            { name: 'Adam Vance', title: 'GrowthMark Digital', img: 'https://picsum.photos/seed/video3/400/220' },
           ].map((video, idx) => (
             <div key={idx} style={{
               background: C.deepNavy,
@@ -5318,7 +5321,7 @@ const ContactPage = ({ isMobile }) => {
         }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
-            Let's <span style={{ color: C.yellow }}>Start Your</span> Lead Generation Journey
+            Ready to <span style={{ color: C.yellow }}>Scale With</span> High-Quality Leads?
           </h1>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
             Reach our team for webhook configuration questions, custom geo filters, or sample inquiries.
@@ -5348,9 +5351,9 @@ const ContactPage = ({ isMobile }) => {
       <section style={{ background: C.lightBg, padding: '32px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+91 77389 07685', note: 'Available 24 hours a day', link: 'tel:+917738907685' },
+            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+1 (555) 123-4567', note: 'Available 24 hours a day', link: 'tel:+15551234567' },
             { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'Seosubmitweb@gmail.com', note: 'Reply within 2 hours', link: 'mailto:Seosubmitweb@gmail.com' },
-            { border: C.navy, icon: 'ti-map-pin', title: 'Delhi Office HQ', val: '123 Business Hub, Sector 18, Delhi NCR — 110001', note: 'Mon–Sun Open Operations' },
+            { border: C.navy, icon: 'ti-map-pin', title: 'Chicago Office HQ', val: '123 Business Hub, Loop District, Chicago, IL 60601', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
             <div key={idx} style={{ background: C.white, borderTop: `4px solid ${item.border}`, padding: '24px 20px', textAlign: 'center', border: '1px solid #dde3f0' }}>
               <i className={`ti ${item.icon}`} style={{ fontSize: '32px', color: item.border, display: 'block', marginBottom: '12px' }} />
@@ -5366,7 +5369,7 @@ const ContactPage = ({ isMobile }) => {
         </div>
         <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+            href="https://wa.me/15551234567?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -5590,8 +5593,8 @@ const ContactPage = ({ isMobile }) => {
 
             <div style={{ marginTop: '24px', textAlign: 'left' }}>
               <span style={{ fontSize: '12px', color: '#666', display: 'block' }}>Or call us directly:</span>
-              <a href="tel:+917738907685" style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display, textDecoration: 'none' }}>
-                +91 77389 07685
+              <a href="tel:+15551234567" style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display, textDecoration: 'none' }}>
+                +1 (555) 123-4567
               </a>
             </div>
           </div>
@@ -5671,7 +5674,7 @@ const ContactPage = ({ isMobile }) => {
           }}>
             <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>HQ Location Address</h4>
             <p style={{ fontSize: '11px', color: '#555', marginBottom: '12px' }}>
-              123 Business Hub, Sector 18, Delhi NCR — 110001
+              123 Business Hub, Loop District, Chicago, IL 60601
             </p>
             <button onClick={() => alert('Launching Google Maps directions...')} style={{ background: C.blue, color: C.white, border: 'none', padding: '6px 12px', fontSize: '10px', fontWeight: 'bold', cursor: 'pointer', borderRadius: 0 }}>
               GET DIRECTIONS
@@ -5707,7 +5710,7 @@ const ContactPage = ({ isMobile }) => {
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { tz: 'IST (India Standard)', hours: '9:00 AM – 9:00 PM', note: 'Primary call center operations' },
+            { tz: 'PST (Pacific Standard)', hours: '7:00 AM – 7:00 PM', note: 'West Coast support operations' },
             { tz: 'EST (Eastern Standard)', hours: '8:00 AM – 8:00 PM', note: 'Account management operations' },
             { tz: 'GMT (Greenwich Mean)', hours: '8:00 AM – 6:00 PM', note: 'Technical support desk' },
           ].map((card, idx) => (
