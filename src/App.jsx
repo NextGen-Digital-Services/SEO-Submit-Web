@@ -110,7 +110,7 @@ Source: Website Contact Form
 
   // OPEN WHATSAPP
   const encodedMessage = encodeURIComponent(waMessage);
-  const whatsappURL = `https://wa.me/15551234567?text=${encodedMessage}`;
+  const whatsappURL = `https://wa.me/17165755447?text=${encodedMessage}`;
   window.open(whatsappURL, '_blank');
 
   // SEND EMAIL VIA EMAILJS
@@ -203,7 +203,7 @@ const SuccessMessage = ({ onClose }) => (
           CLOSE
         </button>
         <a
-          href="https://wa.me/15551234567"
+          href="https://wa.me/17165755447"
           target="_blank"
           rel="noreferrer"
           style={{
@@ -226,7 +226,7 @@ const SuccessMessage = ({ onClose }) => (
 // FLOATING WHATSAPP BUTTON
 const WhatsAppFloat = () => (
   <a
-    href="https://wa.me/15551234567?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+    href="https://wa.me/17165755447?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
     target="_blank"
     rel="noreferrer"
     style={{
@@ -391,7 +391,7 @@ const Navbar = ({ isMobile }) => {
       <div style={{ display: 'flex', alignItems: 'center' }}>
         {/* WhatsApp icon link */}
         <a
-          href="https://wa.me/15551234567"
+          href="https://wa.me/17165755447"
           target="_blank"
           rel="noreferrer"
           title="WhatsApp Us"
@@ -461,8 +461,8 @@ const Footer = ({ isMobile }) => {
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-phone" />
               </div>
-              <a href="tel:+15551234567" style={{ color: 'inherit', textDecoration: 'none' }}>
-                +1 (555) 123-4567
+              <a href="tel:+17165755447" style={{ color: 'inherit', textDecoration: 'none' }}>
+                (716) 575-5447
               </a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
@@ -471,8 +471,8 @@ const Footer = ({ isMobile }) => {
               </div>
               <span>
                 <strong>WhatsApp Us: </strong>
-                <a href="https://wa.me/15551234567" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  +1 (555) 123-4567
+                <a href="https://wa.me/17165755447" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  (716) 575-5447
                 </a>
               </span>
             </div>
@@ -768,7 +768,7 @@ const HomePage = ({ isMobile }) => {
               </button>
 
               {/* Phone button */}
-              <a href="tel:+15551234567" style={{
+              <a href="tel:+17165755447" style={{
                 background: 'transparent',
                 color: '#FFD600',
                 fontFamily: "'Montserrat', sans-serif",
@@ -784,12 +784,12 @@ const HomePage = ({ isMobile }) => {
                 gap: '8px',
               }}>
                 <i className="ti ti-phone" style={{ fontSize: '16px' }}></i>
-                +1 (555) 123-4567
+                (716) 575-5447
               </a>
 
               {/* WhatsApp button */}
               <a
-                href="https://wa.me/15551234567?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
+                href="https://wa.me/17165755447?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1734,7 +1734,7 @@ const HomePage = ({ isMobile }) => {
               SCHEDULE A CALL
             </button>
             <a
-              href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+              href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
               target="_blank"
               rel="noreferrer"
               style={{
@@ -2183,7 +2183,7 @@ const AboutPage = ({ isMobile }) => {
             CONTACT US
           </button>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -2385,7 +2385,7 @@ const SeoLeadsPage = ({ isMobile }) => {
                 VIEW PRICING
               </button>
               <a
-                href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
+                href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -2858,7 +2858,7 @@ const SeoLeadsPage = ({ isMobile }) => {
             DISCUSS INTEGRATION
           </button>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -3057,7 +3057,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
                 VIEW PRICING
               </button>
               <a
-                href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
+                href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -3557,7 +3557,7 @@ const WebDesignLeadsPage = ({ isMobile }) => {
             VIEW SAMPLE LEADS →
           </button>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20Web%20Design%20Leads.%20Please%20send%20details."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -3737,7 +3737,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
                 VIEW PRICING
               </button>
               <a
-                href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
+                href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -4247,7 +4247,7 @@ const AppointmentLeadsPage = ({ isMobile }) => {
             GET STARTED →
           </button>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20Appointment%20Leads.%20Please%20send%20details."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -4604,7 +4604,7 @@ const BlogPage = ({ isMobile }) => {
             GET STARTED
           </button>
           <a
-            href="https://wa.me/917738907685?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -5171,7 +5171,7 @@ const TestimonialsPage = ({ isMobile }) => {
               Want to speak to support instead?
             </p>
             <a
-              href="https://wa.me/917738907685"
+              href="https://wa.me/17165755447"
               target="_blank"
               rel="noreferrer"
               style={{
@@ -5351,7 +5351,7 @@ const ContactPage = ({ isMobile }) => {
       <section style={{ background: C.lightBg, padding: '32px 24px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '+1 (555) 123-4567', note: 'Available 24 hours a day', link: 'tel:+15551234567' },
+            { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '(716) 575-5447', note: 'Available 24 hours a day', link: 'tel:+17165755447' },
             { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'Seosubmitweb@gmail.com', note: 'Reply within 2 hours', link: 'mailto:Seosubmitweb@gmail.com' },
             { border: C.navy, icon: 'ti-map-pin', title: 'Chicago Office HQ', val: '123 Business Hub, Loop District, Chicago, IL 60601', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
@@ -5369,7 +5369,7 @@ const ContactPage = ({ isMobile }) => {
         </div>
         <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'center' }}>
           <a
-            href="https://wa.me/15551234567?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
+            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20me%20more%20information."
             target="_blank"
             rel="noreferrer"
             style={{
@@ -5593,8 +5593,8 @@ const ContactPage = ({ isMobile }) => {
 
             <div style={{ marginTop: '24px', textAlign: 'left' }}>
               <span style={{ fontSize: '12px', color: '#666', display: 'block' }}>Or call us directly:</span>
-              <a href="tel:+15551234567" style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display, textDecoration: 'none' }}>
-                +1 (555) 123-4567
+              <a href="tel:+17165755447" style={{ fontSize: '24px', fontWeight: '900', color: C.blue, fontFamily: F.display, textDecoration: 'none' }}>
+                (716) 575-5447
               </a>
             </div>
           </div>
