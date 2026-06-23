@@ -108,7 +108,7 @@ const ContactPage = () => {
                       type="tel"
                       id="phone"
                       name="phone"
-                      placeholder="e.g. +1 (555) 000-0000"
+                      placeholder="e.g. (716) 575-5447"
                       value={formData.phone}
                       onChange={handleChange}
                       className="form-input"

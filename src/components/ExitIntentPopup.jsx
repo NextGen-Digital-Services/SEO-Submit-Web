@@ -264,7 +264,7 @@ export default function ExitIntentPopup({ onSubmit }) {
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="e.g. +1 (555) 123-4567"
+                  placeholder="e.g. (716) 575-5447"
                   value={form.phone}
                   onChange={handleInputChange}
                   style={{
