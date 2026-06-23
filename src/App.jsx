@@ -9,6 +9,8 @@ import BlogImg from './assets/All Images/Blog.png';
 import TestimonialImg from './assets/All Images/Testimonial.jpg';
 import ContactImg from './assets/All Images/Contact.jpg';
 import Logo from './assets/Logo/Logo1.png';
+import Testimonial1Result from './assets/Testimonial/1_result.webp';
+import Testimonial2Result from './assets/Testimonial/2_result.webp';
 import ExitIntentPopup from './components/ExitIntentPopup';
 
 // COLOR TOKENS
@@ -4809,36 +4811,67 @@ const TestimonialsPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [C] MAIN FEATURED TESTIMONIAL */}
+      {/* [C] MAIN FEATURED TESTIMONIALS */}
       <section style={{ background: C.lightBg, padding: '48px 24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center' }}>
-          <img src="https://picsum.photos/seed/featuredtesti/200/200" alt="David Miller Featured Testimonial" style={{ width: '200px', height: '200px', objectFit: 'cover', display: 'block', border: `4px solid ${C.navy}` }} />
-          <div style={{ textAlign: 'left' }}>
-            <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
-              {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+          gap: '24px'
+        }}>
+          {/* Card 1: Abe Rubarts */}
+          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: `4px solid ${C.navy}`,
+              flexShrink: 0,
+              padding: 0,
+              margin: 0,
+              display: 'block'
+            }}>
+              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', borderRadius: '50%' }} />
             </div>
-            <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-              "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
-            </p>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>David Miller</h4>
-            <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • RankBoost Agency</span>
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
+                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+              </div>
+              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+              </p>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abe Rubarts</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Founder & CEO at Locus Digital • www.locusdigital.com</span>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* [C] MAIN FEATURED TESTIMONIAL */}
-      <section style={{ background: C.lightBg, padding: '48px 24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center' }}>
-          <img src="https://picsum.photos/seed/featuredtesti/200/200" alt="Arjun Kapoor Featured Testimonial" style={{ width: '200px', height: '200px', objectFit: 'cover', display: 'block', border: `4px solid ${C.navy}` }} />
-          <div style={{ textAlign: 'left' }}>
-            <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
-              {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+          {/* Card 2: Jared Diamond */}
+          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{
+              width: '120px',
+              height: '120px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: `4px solid ${C.navy}`,
+              flexShrink: 0,
+              padding: 0,
+              margin: 0,
+              display: 'block'
+            }}>
+              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', borderRadius: '50%' }} />
             </div>
-            <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-              "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
-            </p>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Arjun Kapoor</h4>
-            <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Partner • SEOStar Agency</span>
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
+                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+              </div>
+              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+              </p>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Jared Diamond</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at Upcision • apixdigital.co</span>
+            </div>
           </div>
         </div>
       </section>
