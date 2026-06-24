@@ -9,30 +9,16 @@ import Testimonial1Result from '../assets/Testimonial/1_result.webp';
 import Testimonial2Result from '../assets/Testimonial/2_result.webp';
 import Testimonial3Result from '../assets/Testimonial/3_result.webp';
 import Testimonial4Result from '../assets/Testimonial/4_result.webp';
-
-// Automatically detect and import the screenshots from src/assets/Email
-const emailImages = import.meta.glob('../assets/Email/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
-const verifiedConversations = Object.keys(emailImages).map((key) => {
-  const filename = key.split('/').pop();
-  return {
-    url: emailImages[key].default || emailImages[key],
-    name: filename,
-    fileName: filename.startsWith('11') ? 'verified-client-email.eml' : 'client-feedback-chat.pdf',
-    icon: filename.startsWith('11') ? 'ti ti-mail' : 'ti ti-brand-whatsapp',
-    alt: filename.startsWith('11') 
-      ? 'Verified client email conversation showing successful lead delivery feedback' 
-      : 'Client chat feedback showing successful campaign execution results'
-  };
-});
+import Testimonial5Result from '../assets/Testimonial/13.jpeg';
+import Testimonial6Result from '../assets/Testimonial/14.jpeg';
 
 export const TestimonialsPage = ({ isMobile }) => {
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [zoomedImage, setZoomedImage] = useState(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
-    if (selectedVideo || zoomedImage) {
+    if (selectedVideo) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -40,7 +26,7 @@ export const TestimonialsPage = ({ isMobile }) => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedVideo, zoomedImage]);
+  }, [selectedVideo]);
 
   useEffect(() => {
     if (selectedVideo && videoRef.current) {
@@ -118,29 +104,6 @@ export const TestimonialsPage = ({ isMobile }) => {
         </div>
       </div>
 
-      {/* [B] OVERALL RATINGS BAND */}
-      <section style={{ background: C.yellow, padding: '24px' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)',
-          gap: '16px',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
-          {[
-            { score: '4.9/5', source: 'Google Reviews' },
-            { score: '4.8/5', source: 'Trustpilot' },
-            { score: '4.9/5', source: 'Facebook' },
-            { score: '5.0/5', source: 'Clutch' },
-          ].map((item, idx) => (
-            <div key={idx} style={{ background: C.navy, padding: '16px', textAlign: 'center' }}>
-              <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.yellow }}>{item.score}</span>
-              <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '10px', color: C.white, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '4px' }}>{item.source}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* [C] MAIN FEATURED TESTIMONIALS */}
       <section style={{ background: C.lightBg, padding: '48px 24px' }}>
         <div style={{
@@ -148,7 +111,8 @@ export const TestimonialsPage = ({ isMobile }) => {
           margin: '0 auto',
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-          gap: '24px'
+          gap: '24px',
+          alignItems: 'stretch'
         }}>
           {/* Card 1: Abe Rubarts */}
           <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
@@ -203,16 +167,7 @@ export const TestimonialsPage = ({ isMobile }) => {
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at Upcision • apixdigital.co</span>
             </div>
           </div>
-        </div>
-      </section>
-      <section style={{ background: C.lightBg, padding: '48px 24px' }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-          gap: '24px'
-        }}>
+
           {/* Card 3: Josh Early */}
           <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
             <div style={{
@@ -233,7 +188,7 @@ export const TestimonialsPage = ({ isMobile }) => {
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
               <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+                "I was skeptical at first, but the very first web design lead I received from SEOSubmitWeb converted into a $4,000 project. I haven't looked back since."
               </p>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Josh Early</h4>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Chief Operating Officer at  • www.omgnational.com/</span>
@@ -260,191 +215,68 @@ export const TestimonialsPage = ({ isMobile }) => {
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
               <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
+                "The appointment-set leads are worth every penny. I get on the call and the prospect already knows why we're talking — it makes closing so much easier and faster."
               </p>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Christopher Less</h4>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at • cplmarketinggroup.com</span>
             </div>
           </div>
+
+          {/* Card 5: Colin Rogers */}
+          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: `4px solid ${C.navy}`,
+              flexShrink: 0,
+              padding: 0,
+              margin: 0,
+              display: 'block'
+            }}>
+              <img src={Testimonial5Result} alt="Colin Rogers Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+            </div>
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
+                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+              </div>
+              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+                "We've tried every lead vendor out there — SEOSubmitWeb is the only one that actually delivers what they promise: exclusive, high-intent web design leads that are ready to talk business. From the first call, we closed 2 sales."
+              </p>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Colin Rogers</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of Web Savvy Marketing</span>
+            </div>
+          </div>
+
+          {/* Card 6: Abraham Anijdar */}
+          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: `4px solid ${C.navy}`,
+              flexShrink: 0,
+              padding: 0,
+              margin: 0,
+              display: 'block'
+            }}>
+              <img src={Testimonial6Result} alt="Abraham Anijdar Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+            </div>
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
+                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+              </div>
+              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+                "We scaled from 3 clients to over 20 in less than a year using SEOSubmitWeb leads. The ROI speaks for itself — this is the smartest investment our agency has ever made."
+              </p>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abraham Anijdar</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of WebTeamManagement</span>
+            </div>
+          </div>
         </div>
       </section>
-
-
-      {/* [D] VERIFIED CLIENT CONVERSATIONS SECTION */}
-      <SectionWrapper bg={C.navy} style={{ borderTop: `1px solid rgba(255, 255, 255, 0.1)`, borderBottom: `1px solid rgba(255, 255, 255, 0.1)` }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <Eyebrow label="VERIFIED PROOF" labelColor={C.yellow} />
-          <h2 style={{
-            fontFamily: F.display,
-            fontWeight: 900,
-            fontSize: '26px',
-            color: C.white,
-            marginTop: '8px',
-            marginBottom: '12px'
-          }}>
-            Verified Client Conversations
-          </h2>
-          <p style={{
-            fontFamily: F.body,
-            fontSize: '14px',
-            color: 'rgba(255, 255, 255, 0.7)',
-            maxWidth: '600px',
-            margin: '0 auto 24px',
-            lineHeight: 1.6
-          }}>
-            Real client messages, emails and feedback received after successful lead delivery.
-          </p>
-        </div>
-
-        {/* Trust Badges */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '12px',
-          flexWrap: 'wrap',
-          marginBottom: '32px'
-        }}>
-          {["Real Client Email", "Actual Messenger Chat", "Unedited Feedback", "Verified Results"].map((badge, idx) => (
-            <div key={idx} style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: 'rgba(255, 214, 0, 0.08)',
-              border: `1px solid ${C.yellow}`,
-              borderRadius: '20px',
-              padding: '6px 14px',
-              color: C.yellow,
-              fontFamily: F.display,
-              fontWeight: 700,
-              fontSize: '11px',
-              letterSpacing: '0.5px'
-            }}>
-              <span>✓</span> {badge}
-            </div>
-          ))}
-        </div>
-
-        {/* Grid of Screenshots */}
-        <div className="verified-conv-grid">
-          {verifiedConversations.map((conv, idx) => (
-            <div 
-              key={idx} 
-              className="verified-card"
-              onClick={() => setZoomedImage(conv)}
-            >
-              {/* Card Header (Browser/Chat Mock style) */}
-              <div style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingBottom: '12px',
-                borderBottom: '1px solid #E5E7EB',
-                marginBottom: '12px',
-              }}>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FF5F56' }}></span>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFBD2E' }}></span>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27C93F' }}></span>
-                </div>
-                <div style={{
-                  fontFamily: F.body,
-                  fontSize: '11px',
-                  color: '#6B7280',
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px'
-                }}>
-                  <i className={conv.icon} style={{ fontSize: '13px', color: conv.icon.includes('whatsapp') ? '#25D366' : C.blue }}></i> 
-                  {conv.fileName}
-                </div>
-                <div style={{ color: C.blue, display: 'flex', alignItems: 'center' }}>
-                  <i className="ti ti-zoom-in" style={{ fontSize: '16px' }}></i>
-                </div>
-              </div>
-
-              {/* Card Image Wrapper */}
-              <div className="verified-card-img-wrapper">
-                <img 
-                  src={conv.url} 
-                  alt={conv.alt}
-                  className="verified-card-img"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Small Trust Statement */}
-        <p style={{
-          textAlign: 'center',
-          fontFamily: F.body,
-          fontSize: '12px',
-          color: 'rgba(255, 255, 255, 0.5)',
-          fontStyle: 'italic',
-          lineHeight: 1.5,
-          maxWidth: '600px',
-          margin: '32px auto 0'
-        }}>
-          "These are real conversations and feedback received from active clients after lead delivery and campaign execution."
-        </p>
-
-        <style>{`
-          .verified-conv-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-          }
-          @media (min-width: 768px) {
-            .verified-conv-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          .verified-card {
-            background: #FFFFFF;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
-            padding: 16px;
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-          }
-          .verified-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04);
-          }
-          .verified-card-img-wrapper {
-            width: 100%;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justifyContent: center;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #F9FAFB;
-            padding: 12px;
-          }
-          .verified-card-img {
-            width: 100%;
-            height: auto;
-            max-height: 480px;
-            object-fit: contain;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-          }
-          .verified-card:hover .verified-card-img {
-            transform: scale(1.02);
-          }
-        `}</style>
-      </SectionWrapper>
 
       {/* [E] VIDEO TESTIMONIALS SECTION */}
       <SectionWrapper bg={C.navy}>
@@ -818,94 +650,7 @@ export const TestimonialsPage = ({ isMobile }) => {
         </div>
       )}
 
-      {/* Zoom Image Modal / Lightbox */}
-      {zoomedImage && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(6, 16, 32, 0.95)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 99999,
-            padding: '20px',
-            cursor: 'zoom-out',
-            backdropFilter: 'blur(8px)',
-          }}
-          onClick={() => setZoomedImage(null)}
-        >
-          {/* Close Button */}
-          <button 
-            onClick={() => setZoomedImage(null)}
-            style={{
-              position: 'absolute',
-              top: '24px',
-              right: '24px',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: C.white,
-              fontSize: '24px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 100000,
-              lineHeight: '1',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = C.yellow;
-              e.currentTarget.style.color = C.navy;
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.color = C.white;
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-            aria-label="Close image zoom"
-          >
-            &times;
-          </button>
 
-          {/* Image Wrapper */}
-          <div 
-            style={{
-              position: 'relative',
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              cursor: 'default',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img 
-              src={zoomedImage.url} 
-              alt={zoomedImage.name} 
-              style={{
-                maxWidth: '100%',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-                display: 'block',
-                borderRadius: '8px',
-                border: '2px solid rgba(255, 255, 255, 0.1)',
-              }}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
