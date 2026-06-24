@@ -1,12 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import SectionWrapper from '../components/SectionWrapper';
 import ContactForm from '../forms/ContactForm';
 import ContactImg from '../assets/All Images/Contact_result.webp';
 
 export const ContactPage = ({ isMobile }) => {
-  const navigate = useNavigate();
 
   return (
     <div style={{ width: '100%' }}>
@@ -196,48 +194,6 @@ export const ContactPage = ({ isMobile }) => {
         </div>
       </SectionWrapper>
 
-      {/* [D] MAP PLACEHOLDER */}
-      <section style={{ background: C.deepNavy, padding: '48px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          height: '280px',
-          border: '1px dashed rgba(255,255,255,0.15)',
-          background: 'radial-gradient(circle, rgba(10,22,40,0.8) 0%, rgba(6,16,32,0.9) 100%)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
-          }
-        }>
-          {/* Simulated Grid Lines */}
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '25%', width: '1px', background: 'rgba(255,255,255,0.05)' }} />
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: '1px', background: 'rgba(255,255,255,0.05)' }} />
-          <div style={{ position: 'absolute', top: 0, bottom: 0, left: '75%', width: '1px', background: 'rgba(255,255,255,0.05)' }} />
-          <div style={{ position: 'absolute', left: 0, right: 0, top: '25%', height: '1px', background: 'rgba(255,255,255,0.05)' }} />
-          <div style={{ position: 'absolute', left: 0, right: 0, top: '50%', height: '1px', background: 'rgba(255,255,255,0.05)' }} />
-          <div style={{ position: 'absolute', left: 0, right: 0, top: '75%', height: '1px', background: 'rgba(255,255,255,0.05)' }} />
-
-          <div style={{
-            background: C.white,
-            color: C.navy,
-            padding: '20px',
-            border: `2px solid ${C.yellow}`,
-            zIndex: 1,
-            maxWidth: '300px',
-            textAlign: 'left',
-          }}>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>HQ Location Address</h4>
-            <p style={{ fontSize: '11px', color: '#555', marginBottom: '12px' }}>
-              123 Business Hub, Loop District, Chicago, IL 60601
-            </p>
-            <button onClick={() => alert('Launching Google Maps directions...')} style={{ background: C.blue, color: C.white, border: 'none', padding: '6px 12px', fontSize: '10px', fontWeight: 'bold', cursor: 'pointer', borderRadius: 0 }}>
-              GET DIRECTIONS
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* [E] FAQ STRIP */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
@@ -276,16 +232,6 @@ export const ContactPage = ({ isMobile }) => {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* [G] BOTTOM CTA */}
-      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
-          Don't wait — your competitors are already buying leads
-        </h2>
-        <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-          CLAIM YOUR ZIP CODES
-        </button>
       </section>
     </div>
   );

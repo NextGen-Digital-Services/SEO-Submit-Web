@@ -49,11 +49,6 @@ export const TestimonialsPage = ({ isMobile }) => {
     }
   }, [selectedVideo]);
 
-  const reviewsList = [
-    { name: 'Jared Diamond', role: 'CEO at Upcision', comp: 'apixdigital.co', img: 'https://picsum.photos/seed/testi1/80/80', txt: 'Best SEO leads in the market. Phone verification is thorough, show-up rates are consistent, and support handles requests promptly.' },
-    { name: 'Diana Ross', role: 'Director', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/testi2/80/80', txt: '24/7 support is real. I had a webhook syncing issue at 2am and the representative solved it. High conversion percentages.' },
-    { name: 'Adam Vance', role: 'Founder', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/testi3/80/80', txt: 'Close rate jumped 40% in our design team since we started acquiring custom leads. Replacement policy works flawlessly.' },
-  ];
 
   return (
     <div style={{ width: '100%' }}>
@@ -274,42 +269,6 @@ export const TestimonialsPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [C] FEATURED TESTIMONIALS */}
-      <SectionWrapper bg={C.white}>
-        <Eyebrow label="FEATURED CLIENTS" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          In-Depth Client Case Notes
-        </h2>
-
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '20px' }}>
-          {reviewsList.slice(0, 3).map((test, idx) => (
-            <div key={idx} style={{
-              background: C.white,
-              border: '1px solid #dde3f0',
-              borderLeft: `4px solid ${idx % 2 === 0 ? C.yellow : C.blue}`,
-              padding: '24px',
-              position: 'relative',
-            }}>
-              <div style={{ fontSize: '40px', color: C.blue, fontFamily: F.display, fontWeight: 900, lineHeight: 1, marginBottom: '10px' }}>“</div>
-              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '14px', marginBottom: '12px' }}>
-                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
-              </div>
-              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#444', lineHeight: 1.7, marginBottom: '16px', fontStyle: 'italic' }}>
-                "{test.txt}"
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #f0f3ff', paddingTop: '12px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0, margin: 0 }}>
-                  <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
-                </div>
-                <div style={{ textAlign: 'left' }}>
-                  <h5 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.navy }}>{test.name}</h5>
-                  <span style={{ fontSize: '10px', color: '#888' }}>{test.role} • {test.comp}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </SectionWrapper>
 
       {/* [D] VERIFIED CLIENT CONVERSATIONS SECTION */}
       <SectionWrapper bg={C.navy} style={{ borderTop: `1px solid rgba(255, 255, 255, 0.1)`, borderBottom: `1px solid rgba(255, 255, 255, 0.1)` }}>
