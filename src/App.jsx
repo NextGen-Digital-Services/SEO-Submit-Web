@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
-import HeroImage from './assets/Hero/HeroSection.jpeg';
+import HeroImage from './assets/Hero/HeroSectio';
 import BookAppointmentImg from './assets/All Images/Bookappointment.jpeg';
 import SeoLeadsImg from './assets/All Images/Seoleads.avif';
 import WebDesignImg from './assets/All Images/WebDesginLeads.jpeg';
