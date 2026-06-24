@@ -165,44 +165,21 @@ export const HomePage = ({ isMobile }) => {
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '20px' }}>
             What Makes SEO Submit Web <span style={{ color: C.yellow }}>The #1 Choice</span>
           </h2>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px', lineHeight: 1.6 }}>
-            We qualify our opportunities through active search optimization channels. No shared listings, no outdated databases.
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
+            Since 2016, SEOSubmitWeb has built its reputation on one promise — leads that are 100% exclusive to you, never shared with a competitor.
           </p>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
-            {[
-              { title: 'C-Level Data Only', desc: 'Direct contact details of CEOs, Founders, and senior decision makers.' },
-              { title: 'Replacement Guarantee', desc: 'Any lead with incorrect contact credentials is automatically replaced.' },
-              { title: 'Real Time Sourcing', desc: 'Leads route straight to your inbox the moment prospect verification completes.' },
-              { title: 'Dedicated Manager', desc: 'Continuous campaign assistance from a dedicated SEO Submit Web project manager.' },
-            ].map((feat, idx) => (
-              <div key={idx} style={{ borderLeft: `3px solid ${C.yellow}`, padding: '12px 16px', background: 'rgba(255,255,255,0.05)', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '13px', color: C.white, marginBottom: '4px' }}>
-                  <i className="ti ti-check" style={{ color: C.yellow, marginRight: '6px' }} />
-                  {feat.title}
-                </h4>
-                <p style={{ fontFamily: F.body, fontSize: '11px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>{feat.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <button
-            onClick={() => navigate('/contact')}
-            style={{
-              background: C.yellow,
-              color: C.navy,
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '12px',
-              letterSpacing: '1px',
-              padding: '14px 28px',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: 0,
-            }}
-          >
-            CLAIM YOUR ZIP CODES →
-          </button>
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
+            We don't just generate leads — we deliver SEO leads, web design leads, and appointment-set prospects who are actively looking for exactly what you sell, right now.
+          </p>
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
+            Nearly a decade in business means we've refined what works, so every lead you receive is high-intent, pre-qualified, and ready for a real conversation.
+          </p>
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
+            Unlike lead marketplaces that resell the same contact five times over, every lead we generate belongs to one client — you.
+          </p>
+          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: 0, lineHeight: 1.6 }}>
+            When your pipeline is built on exclusive, appointment-set leads from a partner with 9+ years of proven results, closing becomes a process — not a gamble.
+          </p>
         </div>
         <div>
           <img
