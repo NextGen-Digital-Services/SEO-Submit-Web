@@ -25,6 +25,9 @@ export const HeroSection = ({ isMobile }) => {
         <img
           src={HeroImage}
           alt="SEO Submit Web Hero"
+          width="1536"
+          height="1024"
+          loading="eager"
           style={{
             position: 'absolute',
             top: 0,
@@ -200,6 +203,9 @@ export const HeroSection = ({ isMobile }) => {
         <img 
           src="/assets/lead-generation-hero.png"
           alt="Digital marketing team reviewing incoming qualified leads"
+          width="1672"
+          height="941"
+          loading="eager"
           fetchPriority="high"
           style={{ 
             position: 'absolute', 

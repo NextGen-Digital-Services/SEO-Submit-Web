@@ -55,6 +55,9 @@ export const TestimonialsPage = ({ isMobile }) => {
         <img
           src={TestimonialImg}
           alt="Testimonials"
+          width="1200"
+          height="1500"
+          loading="eager"
           style={{
             position: 'absolute',
             top: 0,
@@ -147,7 +150,7 @@ export const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -174,7 +177,7 @@ export const TestimonialsPage = ({ isMobile }) => {
               margin: 0,
               display: 'block'
             }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -215,7 +218,7 @@ export const TestimonialsPage = ({ isMobile }) => {
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderTop: '1px solid #f0f3ff', paddingTop: '12px' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0, margin: 0 }}>
-                  <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                  <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
                   <h5 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.navy }}>{test.name}</h5>
@@ -239,7 +242,7 @@ export const TestimonialsPage = ({ isMobile }) => {
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, padding: 0, margin: 0 }}>
-                  <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                  <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
                 </div>
                 <div style={{ textAlign: 'left' }}>
                   <h5 style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.navy }}>{test.name}</h5>
@@ -302,6 +305,9 @@ export const TestimonialsPage = ({ isMobile }) => {
                 <img 
                   src={video.thumbnail} 
                   alt={video.name} 
+                  width="640"
+                  height="360"
+                  loading="lazy"
                   style={{ 
                     width: '100%', 
                     height: '100%', 
@@ -387,7 +393,7 @@ export const TestimonialsPage = ({ isMobile }) => {
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '24px' }}>
             {/* Case 1 */}
             <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src="https://picsum.photos/seed/case1/600/200" alt="SEO Growth Case" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src="https://picsum.photos/seed/case1/600/200" alt="SEO Growth Case" width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 01</span>
                 <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>
@@ -413,7 +419,7 @@ export const TestimonialsPage = ({ isMobile }) => {
 
             {/* Case 2 */}
             <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src="https://picsum.photos/seed/case2/600/200" alt="Web design revenue growth" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src="https://picsum.photos/seed/case2/600/200" alt="Web design revenue growth" width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 02</span>
                 <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>

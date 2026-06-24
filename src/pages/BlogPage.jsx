@@ -42,6 +42,9 @@ export const BlogPage = ({ isMobile }) => {
         <img
           src={BlogImg}
           alt="Blog"
+          width="1354"
+          height="1161"
+          loading="eager"
           style={{
             position: 'absolute',
             top: 0,
@@ -135,6 +138,9 @@ export const BlogPage = ({ isMobile }) => {
             <img
               src="/assets/seo-analytics-leads.png"
               alt="Marketing Success"
+              width="1672"
+              height="941"
+              loading="lazy"
               style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
             />
           </div>
@@ -146,7 +152,7 @@ export const BlogPage = ({ isMobile }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '20px' }}>
           {filteredPosts.map((post, idx) => (
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${post.border}`, display: 'flex', flexDirection: 'column' }}>
-              <img src={post.img} alt={post.title} style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src={post.img} alt={post.title} width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
               <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
                 <span style={{
                   fontFamily: F.display,
@@ -165,6 +171,9 @@ export const BlogPage = ({ isMobile }) => {
                   <img 
                     src={idx % 3 === 0 ? 'https://picsum.photos/seed/author1/40/40' : (idx % 3 === 1 ? 'https://picsum.photos/seed/author2/40/40' : 'https://picsum.photos/seed/author3/40/40')} 
                     alt="Author" 
+                    width="40"
+                    height="40"
+                    loading="lazy"
                     style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', display: 'block', border: '1px solid #FFD600' }} 
                   />
                   <span>Admin</span>

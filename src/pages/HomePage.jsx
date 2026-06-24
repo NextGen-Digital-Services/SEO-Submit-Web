@@ -60,6 +60,8 @@ export const HomePage = ({ isMobile }) => {
           <img
             src="/assets/lead-generation-hero.png"
             alt="Agency team collaborating on lead generation"
+            width="1672"
+            height="941"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -206,6 +208,8 @@ export const HomePage = ({ isMobile }) => {
           <img
             src="/assets/seo-analytics-leads.png"
             alt="Marketing analytics and sales pipeline growth"
+            width="1672"
+            height="941"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -270,6 +274,8 @@ export const HomePage = ({ isMobile }) => {
         <img
           src="/assets/lead-generation-hero.png"
           alt="Lead generation team in a modern digital workspace"
+          width="1672"
+          height="941"
           loading="lazy"
           style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', marginTop: '32px' }}
         />
@@ -319,7 +325,7 @@ export const HomePage = ({ isMobile }) => {
               { name: 'Ananya Patel', role: 'Client Success Director', img: 'https://picsum.photos/seed/person4/300/300', bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
             ].map((member, idx) => (
               <div key={idx} style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                <img src={member.img} alt={member.name} style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', marginBottom: '14px', border: '3px solid #FFD600' }} />
+                <img src={member.img} alt={member.name} width="300" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', marginBottom: '14px', border: '3px solid #FFD600' }} />
                 <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                 <span style={{ fontSize: '11px', color: C.blue, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
                 <p style={{ fontFamily: F.body, fontSize: '11px', color: '#666', lineHeight: 1.5, marginBottom: '14px', flex: 1 }}>{member.bio}</p>
@@ -342,6 +348,8 @@ export const HomePage = ({ isMobile }) => {
           <img
             src="/assets/seo-analytics-leads.png"
             alt="SEO analytics dashboard and qualified lead pipeline"
+            width="1672"
+            height="941"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -388,7 +396,7 @@ export const HomePage = ({ isMobile }) => {
             { border: C.navy, cat: 'APPOINTMENTS', img: 'https://picsum.photos/seed/blog3/600/200', title: 'How to Scale Your Agency With Appointment Fixed Leads', desc: 'Scale calendar consulting sessions to secure five-figure retainer agreements. Skip cold dialing.' },
           ].map((post, idx) => (
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${post.border}`, display: 'flex', flexDirection: 'column' }}>
-              <img src={post.img} alt={post.title} style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src={post.img} alt={post.title} width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
               <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
                 <span style={{
                   fontFamily: F.display,

@@ -37,6 +37,9 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
           <img
             src={SeoLeadsImg}
             alt="SEO Leads"
+            width="1470"
+            height="980"
+            loading="eager"
             style={{
               position: 'absolute',
               top: 0,
@@ -164,7 +167,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         }}>
           {/* Stats Image Background */}
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
-            <img src="/assets/seo-analytics-leads.png" alt="SEO analytics and high-intent lead dashboard" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }} />
+            <img src="/assets/seo-analytics-leads.png" alt="SEO analytics and high-intent lead dashboard" width="1672" height="941" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }} />
           </div>
 
           <div style={{ position: 'relative', zIndex: 2 }}>
@@ -217,7 +220,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
 
           {/* Right Lead Card Mockup */}
           <div style={{ background: C.yellow, color: C.navy, border: `2px solid ${C.navy}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="/assets/seo-analytics-leads.png" alt="SEO lead qualification dashboard" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/seo-analytics-leads.png" alt="SEO lead qualification dashboard" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px', borderBottom: `2px solid ${C.navy}`, paddingBottom: '6px' }}>
                 Verified SEO Lead Mockup
@@ -414,7 +417,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
-                <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
               </div>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic', flex: 1 }}>
                 "{test.txt}"

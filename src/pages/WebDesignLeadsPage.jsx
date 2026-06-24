@@ -36,6 +36,9 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
           <img
             src={WebDesignImg}
             alt="Web Design Leads"
+            width="1600"
+            height="900"
+            loading="eager"
             style={{
               position: 'absolute',
               top: 0,
@@ -166,6 +169,9 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             <img
               src="/assets/lead-generation-hero.png"
               alt="Web Design Background"
+              width="1672"
+              height="941"
+              loading="eager"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
             />
           </div>
@@ -219,7 +225,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
           {/* Sample Lead Card Mockup */}
           <div style={{ background: C.white, border: `3px solid ${C.blue}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.blue, textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px', borderBottom: `2px solid ${C.blue}`, paddingBottom: '6px' }}>
                 Verified Web Lead

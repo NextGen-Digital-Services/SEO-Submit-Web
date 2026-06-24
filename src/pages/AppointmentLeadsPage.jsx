@@ -36,6 +36,9 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
           <img
             src={AppointmentImg}
             alt="Appointment Leads"
+            width="1200"
+            height="676"
+            loading="eager"
             style={{
               position: 'absolute',
               top: 0,
@@ -146,6 +149,9 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             <img
               src="/assets/seo-analytics-leads.png"
               alt="Handshake meeting appt"
+              width="1672"
+              height="941"
+              loading="eager"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
             />
           </div>
@@ -195,7 +201,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
 
           {/* Right Timeline Booking Process */}
           <div style={{ background: C.lightBg, border: `1px solid #dde3f0`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="/assets/seo-analytics-leads.png" alt="Appointment booking and lead qualification dashboard" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="/assets/seo-analytics-leads.png" alt="Appointment booking and lead qualification dashboard" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '14px', textTransform: 'uppercase' }}>
                 Booking Flow
@@ -432,7 +438,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
-                <img src={test.img} alt={test.name} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
+                <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
               </div>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic', flex: 1 }}>
                 "{test.txt}"

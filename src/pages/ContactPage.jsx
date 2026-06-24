@@ -25,6 +25,9 @@ export const ContactPage = ({ isMobile }) => {
         <img
           src={ContactImg}
           alt="Contact"
+          width="1200"
+          height="800"
+          loading="eager"
           style={{
             position: 'absolute',
             top: 0,
@@ -126,6 +129,9 @@ export const ContactPage = ({ isMobile }) => {
       <img
         src="/assets/lead-generation-hero.png"
         alt="SEO Submit Web support team"
+        width="1672"
+        height="941"
+        loading="lazy"
         style={{ width: '100%', height: '150px', objectFit: 'cover', display: 'block' }}
       />
 

@@ -31,6 +31,9 @@ export const AboutPage = ({ isMobile }) => {
           <img
             src="/assets/lead-generation-hero.png"
             alt="SEO Submit Web Office Background"
+            width="1672"
+            height="941"
+            loading="eager"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.15 }}
           />
         </div>
@@ -133,6 +136,8 @@ export const AboutPage = ({ isMobile }) => {
           <img
             src="/assets/seo-analytics-leads.png"
             alt="Startup Delhi Office"
+            width="1672"
+            height="941"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -257,7 +262,7 @@ export const AboutPage = ({ isMobile }) => {
               { name: 'Emily Davis', role: 'Client Success Director', dep: 'Support', border: C.yellow, img: 'https://picsum.photos/seed/team4/400/300', bio: 'Coordinates directly with agency owners to optimize campaign setups.' },
             ].map((member, idx) => (
               <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                <img src={member.img} alt={member.name} style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', border: '3px solid #FFD600' }} />
+                <img src={member.img} alt={member.name} width="400" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', border: '3px solid #FFD600' }} />
                 <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '15px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                   <span style={{ fontSize: '12px', color: member.border === C.yellow ? C.blue : member.border, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
@@ -285,6 +290,8 @@ export const AboutPage = ({ isMobile }) => {
           <img
             src="/assets/lead-generation-hero.png"
             alt="SEO Submit Web Culture"
+            width="1672"
+            height="941"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -319,9 +326,9 @@ export const AboutPage = ({ isMobile }) => {
 
       {/* Office Image Strip */}
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, width: '100%' }}>
-        <img src="https://picsum.photos/seed/office1/400/200" alt="Modern Office" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-        <img src="https://picsum.photos/seed/office2/400/200" alt="Team meeting" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
-        <img src="https://picsum.photos/seed/office3/400/200" alt="Workspace Desk" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="https://picsum.photos/seed/office1/400/200" alt="Modern Office" width="400" height="200" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="https://picsum.photos/seed/office2/400/200" alt="Team meeting" width="400" height="200" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="https://picsum.photos/seed/office3/400/200" alt="Workspace Desk" width="400" height="200" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
       </section>
 
       {/* [SECTION H] AWARDS & CERTIFICATIONS */}
@@ -387,6 +394,8 @@ export const AboutPage = ({ isMobile }) => {
             <img
               src="https://picsum.photos/seed/featuredclient/200/200"
               alt="David Miller"
+              width="200"
+              height="200"
               loading="lazy"
               style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', border: `3px solid ${C.yellow}` }}
             />

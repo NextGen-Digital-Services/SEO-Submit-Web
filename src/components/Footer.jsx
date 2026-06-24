@@ -26,6 +26,9 @@ export const Footer = ({ isMobile }) => {
             <img
               src={Logo}
               alt="SEO Submit Web"
+              width="34"
+              height="34"
+              loading="lazy"
               style={{
                 height: '34px',
                 width: 'auto',
