@@ -1,3 +1,6 @@
+import ChristopherLessImg from '../assets/Testimonial/Christopher Less CEO of Cplmarketinggroup.com.jpg (1).webp';
+import JoshEarlyImg from '../assets/Testimonial/Josh Early - Chief Operating Officer at.jpg (1).webp';
+
 export const testimonials = [
   {
     quote: "We closed 3 new SEO retainers in our first month of using SEOLeads. The contacts are 100% exclusive, meaning we were the only agency presenting a pitch. No more bidding wars. The average client retainer is $2,500/month.",
@@ -29,6 +32,24 @@ export const testimonials = [
     role: "Head of Client Acquisition",
     company: "SearchLab Solutions",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
+    rating: 5
+  },
+  {
+    quote: "Placeholder review text for CPL Marketing Group. We successfully scaled our lead pipeline and closed multiple contracts using their exclusive organic intent SEO leads.",
+    author: "Christopher Less",
+    role: "CEO & Founder",
+    company: "CPL Marketing Group",
+    website: "cplmarketinggroup.com",
+    avatar: ChristopherLessImg,
+    rating: 5
+  },
+  {
+    quote: "Placeholder review text for Acme Corp. Sourcing high-quality leads has never been easier. The pre-vetted appointment scheduling has significantly boosted our sales pipeline conversion rates.",
+    author: "Josh Early",
+    role: "Chief Operating Officer",
+    company: "Acme Corp",
+    website: "acme.com",
+    avatar: JoshEarlyImg,
     rating: 5
   }
 ];
