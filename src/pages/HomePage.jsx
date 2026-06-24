@@ -69,7 +69,7 @@ export const HomePage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="ABOUT SEO SUBMIT WEB" />
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            Since 2016, SEOSubmitWeb has helped agencies and service businesses close more deals  <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
+            Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals  <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
             We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never resold.
@@ -166,7 +166,7 @@ export const HomePage = ({ isMobile }) => {
             What Makes SEO Submit Web <span style={{ color: C.yellow }}>The #1 Choice</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-            Since 2016, SEOSubmitWeb has built its reputation on one promise — leads that are 100% exclusive to you, never shared with a competitor.
+            Since 2009, SEOSubmitWeb has built its reputation on one promise — leads that are 100% exclusive to you, never shared with a competitor.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
             We don't just generate leads — we deliver SEO leads, web design leads, and appointment-set prospects who are actively looking for exactly what you sell, right now.
