@@ -164,59 +164,6 @@ export const TestimonialsPage = ({ isMobile }) => {
             </div>
           </div>
 
-          {/* Card 3: Jared Diamond */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
-            </div>
-            <div style={{ textAlign: 'left', flex: 1 }}>
-              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
-                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
-              </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
-              </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Jared Diamond</h4>
-              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at Upcision • apixdigital.co</span>
-            </div>
-          </div>
-          {/* Card 1: Abe Rubarts */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
-            </div>
-            <div style={{ textAlign: 'left', flex: 1 }}>
-              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
-                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
-              </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
-                "SEO Submit Web leads helped us completely transform our sales velocity. We closed 24 retainer accounts in our first 90 days, adding over $48,000 in new monthly recurring revenue. Their support team replaced any invalid numbers instantly."
-              </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abe Rubarts</h4>
-              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Founder & CEO at Locus Digital • www.locusdigital.com</span>
-            </div>
-          </div>
-
           {/* Card 2: Jared Diamond */}
           <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
             <div style={{
