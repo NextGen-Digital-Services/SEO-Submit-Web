@@ -100,7 +100,7 @@ export const AboutPage = ({ isMobile }) => {
             Welcome to SEOSubmitWeb <span style={{ color: C.blue }}>where exclusive leads meet real results.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            Founded in 2016, SEOSubmitWeb was built on a simple but powerful belief: businesses deserve better than recycled, shared leads that go cold before you even make the first call.
+            Founded in 2009, SEOSubmitWeb was built on a simple but powerful belief: businesses deserve better than recycled, shared leads that go cold before you even make the first call.
             For nearly a decade, we have been in the business of connecting agencies, consultants, and service providers with prospects who are actively searching for SEO services, web design solutions, and professional appointments — not just browsing.
           </p>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
