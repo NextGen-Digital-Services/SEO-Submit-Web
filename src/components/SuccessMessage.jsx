@@ -39,18 +39,11 @@ export const SuccessMessage = ({ onClose }) => (
       </h2>
       <p style={{
         fontSize: '14px', color: '#555',
-        lineHeight: 1.7, marginBottom: '8px',
+        lineHeight: 1.7, marginBottom: '24px',
       }}>
         Thank you for contacting SEO Submit Web.
         We have received your enquiry and will 
         get back to you within 2 hours.
-      </p>
-      <p style={{
-        fontSize: '13px', color: '#0057FF',
-        fontWeight: 600, marginBottom: '24px',
-      }}>
-        WhatsApp message also opened — 
-        send it to reach us instantly!
       </p>
       <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
         <button

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { C, F } from '../styles/tokens';
 import { LEAD_PRICING_DATA } from '../data/pricingData';
+import { handleFormSubmit } from '../utils/formHandler';
 
 export const PricingModal = ({ isOpen, onClose, defaultLeadType, isMobile }) => {
   const [pricingFormData, setPricingFormData] = useState({
@@ -11,6 +12,8 @@ export const PricingModal = ({ isOpen, onClose, defaultLeadType, isMobile }) => 
     leadType: defaultLeadType || 'SEO Leads'
   });
   const [pricingFormErrors, setPricingFormErrors] = useState({});
+  const [pricingLoading, setPricingLoading] = useState(false);
+  const [pricingSuccess, setPricingSuccess] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -22,6 +25,8 @@ export const PricingModal = ({ isOpen, onClose, defaultLeadType, isMobile }) => 
         leadType: defaultLeadType || 'SEO Leads'
       });
       setPricingFormErrors({});
+      setPricingLoading(false);
+      setPricingSuccess(false);
     }
   }, [isOpen, defaultLeadType]);
 
@@ -115,153 +120,221 @@ export const PricingModal = ({ isOpen, onClose, defaultLeadType, isMobile }) => 
           gap: '32px',
           alignItems: 'start',
         }}>
-          {/* Left Side: Form */}
-          <form 
-            onSubmit={(e) => {
-              e.preventDefault();
-              const errors = {};
-              if (!pricingFormData.name.trim()) errors.name = "Full name is required";
-              if (!pricingFormData.company.trim()) errors.company = "Company name is required";
-              if (!pricingFormData.email.trim()) {
-                errors.email = "Email is required";
-              } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(pricingFormData.email)) {
-                errors.email = "Invalid email address";
-              }
-              if (!pricingFormData.phone.trim()) errors.phone = "Phone number is required";
-
-              if (Object.keys(errors).length > 0) {
-                setPricingFormErrors(errors);
-                return;
-              }
-
-              const waMessage = `Name: ${pricingFormData.name}
-Company: ${pricingFormData.company}
-Email: ${pricingFormData.email}
-Phone: ${pricingFormData.phone}
-Lead Type: ${pricingFormData.leadType}
-
-I want pricing details and a callback.`;
-
-              const encodedMessage = encodeURIComponent(waMessage);
-              const whatsappURL = `https://wa.me/17165755447?text=${encodedMessage}`;
-              window.open(whatsappURL, '_blank');
-
-              onClose();
-            }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '14px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              padding: '24px 20px',
-              borderRadius: '12px',
-            }}
-            noValidate
-          >
-            <div>
-              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
-                Full Name *
-              </label>
-              <input
-                type="text"
-                value={pricingFormData.name}
-                onChange={(e) => {
-                  setPricingFormData({ ...pricingFormData, name: e.target.value });
-                  if (pricingFormErrors.name) setPricingFormErrors({ ...pricingFormErrors, name: '' });
-                }}
-                placeholder="e.g. John Doe"
-                style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.name ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
-              />
-              {pricingFormErrors.name && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.name}</span>}
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
-                Company Name *
-              </label>
-              <input
-                type="text"
-                value={pricingFormData.company}
-                onChange={(e) => {
-                  setPricingFormData({ ...pricingFormData, company: e.target.value });
-                  if (pricingFormErrors.company) setPricingFormErrors({ ...pricingFormErrors, company: '' });
-                }}
-                placeholder="e.g. Apex Agency"
-                style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.company ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
-              />
-              {pricingFormErrors.company && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.company}</span>}
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
-                Email *
-              </label>
-              <input
-                type="email"
-                value={pricingFormData.email}
-                onChange={(e) => {
-                  setPricingFormData({ ...pricingFormData, email: e.target.value });
-                  if (pricingFormErrors.email) setPricingFormErrors({ ...pricingFormErrors, email: '' });
-                }}
-                placeholder="e.g. john@agency.com"
-                style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.email ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
-              />
-              {pricingFormErrors.email && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.email}</span>}
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
-                Phone Number *
-              </label>
-              <input
-                type="tel"
-                value={pricingFormData.phone}
-                onChange={(e) => {
-                  setPricingFormData({ ...pricingFormData, phone: e.target.value });
-                  if (pricingFormErrors.phone) setPricingFormErrors({ ...pricingFormErrors, phone: '' });
-                }}
-                placeholder="e.g. +1 (555) 019-2834"
-                style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.phone ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
-              />
-              {pricingFormErrors.phone && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.phone}</span>}
-            </div>
-
-            <div>
-              <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
-                Lead Type *
-              </label>
-              <select
-                value={pricingFormData.leadType}
-                onChange={(e) => setPricingFormData({ ...pricingFormData, leadType: e.target.value })}
-                style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: '1px solid rgba(255, 255, 255, 0.15)', outline: 'none' }}
-              >
-                <option value="SEO Leads">SEO Leads</option>
-                <option value="Web Design Leads">Web Design Leads</option>
-                <option value="Appointment Leads">Appointment Leads</option>
-              </select>
-            </div>
-
-            <button
-              type="submit"
+          {/* Left Side: Form or Success */}
+          {pricingSuccess ? (
+            <div 
               style={{
-                background: C.yellow,
-                color: C.navy,
-                fontFamily: F.display,
-                fontWeight: 800,
-                fontSize: '12px',
-                letterSpacing: '1px',
-                padding: '12px',
-                border: 'none',
-                cursor: 'pointer',
-                marginTop: '8px',
-                width: '100%',
-                borderRadius: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '20px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: `1.5px solid ${C.blue}`,
+                padding: '40px 24px',
+                borderRadius: '12px',
+                textAlign: 'center',
+                alignSelf: 'stretch',
               }}
             >
-              REQUEST CALLBACK & WHATSAPP →
-            </button>
-          </form>
+              <div 
+                style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  background: C.yellow,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={C.navy} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.yellow }}>
+                REQUEST RECEIVED
+              </h3>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.6, margin: 0 }}>
+                Thank you! We have received your pricing callback request. Our team will contact you within 2 hours.
+              </p>
+              <button
+                onClick={onClose}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  color: C.white,
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontFamily: F.display,
+                  fontWeight: 800,
+                  fontSize: '11px',
+                  letterSpacing: '1px',
+                  padding: '10px 20px',
+                  cursor: 'pointer',
+                  marginTop: '8px',
+                  transition: 'background-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = C.white;
+                  e.currentTarget.style.color = C.navy;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.color = C.white;
+                }}
+              >
+                CLOSE
+              </button>
+            </div>
+          ) : (
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const errors = {};
+                if (!pricingFormData.name.trim()) errors.name = "Full name is required";
+                if (!pricingFormData.company.trim()) errors.company = "Company name is required";
+                if (!pricingFormData.email.trim()) {
+                  errors.email = "Email is required";
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(pricingFormData.email)) {
+                  errors.email = "Invalid email address";
+                }
+                if (!pricingFormData.phone.trim()) errors.phone = "Phone number is required";
+
+                if (Object.keys(errors).length > 0) {
+                  setPricingFormErrors(errors);
+                  return;
+                }
+
+                setPricingFormErrors({});
+                setPricingLoading(true);
+
+                handleFormSubmit(pricingFormData, `Pricing Modal - Callback Request (${pricingFormData.leadType})`)
+                  .then(() => {
+                    setPricingLoading(false);
+                    setPricingSuccess(true);
+                  })
+                  .catch((err) => {
+                    setPricingLoading(false);
+                    alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+                  });
+              }}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '14px',
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                padding: '24px 20px',
+                borderRadius: '12px',
+                width: '100%',
+                boxSizing: 'border-box',
+              }}
+              noValidate
+            >
+              <div>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  value={pricingFormData.name}
+                  onChange={(e) => {
+                    setPricingFormData({ ...pricingFormData, name: e.target.value });
+                    if (pricingFormErrors.name) setPricingFormErrors({ ...pricingFormErrors, name: '' });
+                  }}
+                  placeholder="e.g. John Doe"
+                  style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.name ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none', boxSizing: 'border-box' }}
+                />
+                {pricingFormErrors.name && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.name}</span>}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                  Company Name *
+                </label>
+                <input
+                  type="text"
+                  value={pricingFormData.company}
+                  onChange={(e) => {
+                    setPricingFormData({ ...pricingFormData, company: e.target.value });
+                    if (pricingFormErrors.company) setPricingFormErrors({ ...pricingFormErrors, company: '' });
+                  }}
+                  placeholder="e.g. Apex Agency"
+                  style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.company ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none', boxSizing: 'border-box' }}
+                />
+                {pricingFormErrors.company && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.company}</span>}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  value={pricingFormData.email}
+                  onChange={(e) => {
+                    setPricingFormData({ ...pricingFormData, email: e.target.value });
+                    if (pricingFormErrors.email) setPricingFormErrors({ ...pricingFormErrors, email: '' });
+                  }}
+                  placeholder="e.g. john@agency.com"
+                  style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.email ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none', boxSizing: 'border-box' }}
+                />
+                {pricingFormErrors.email && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.email}</span>}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  value={pricingFormData.phone}
+                  onChange={(e) => {
+                    setPricingFormData({ ...pricingFormData, phone: e.target.value });
+                    if (pricingFormErrors.phone) setPricingFormErrors({ ...pricingFormErrors, phone: '' });
+                  }}
+                  placeholder="e.g. +1 (555) 019-2834"
+                  style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: pricingFormErrors.phone ? '1px solid #ff4444' : '1px solid rgba(255, 255, 255, 0.15)', outline: 'none', boxSizing: 'border-box' }}
+                />
+                {pricingFormErrors.phone && <span style={{ color: '#ff4444', fontSize: '10px', marginTop: '4px', display: 'block' }}>{pricingFormErrors.phone}</span>}
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: C.yellow, marginBottom: '6px' }}>
+                  Lead Type *
+                </label>
+                <select
+                  value={pricingFormData.leadType}
+                  onChange={(e) => setPricingFormData({ ...pricingFormData, leadType: e.target.value })}
+                  style={{ width: '100%', padding: '10px 12px', background: '#1a2a4a', color: '#fff', border: '1px solid rgba(255, 255, 255, 0.15)', outline: 'none', boxSizing: 'border-box' }}
+                >
+                  <option value="SEO Leads">SEO Leads</option>
+                  <option value="Web Design Leads">Web Design Leads</option>
+                  <option value="Appointment Leads">Appointment Leads</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                disabled={pricingLoading}
+                style={{
+                  background: pricingLoading ? '#cccccc' : C.yellow,
+                  color: pricingLoading ? '#666666' : C.navy,
+                  fontFamily: F.display,
+                  fontWeight: 800,
+                  fontSize: '12px',
+                  letterSpacing: '1px',
+                  padding: '12px',
+                  border: 'none',
+                  cursor: pricingLoading ? 'not-allowed' : 'pointer',
+                  marginTop: '8px',
+                  width: '100%',
+                  borderRadius: 0,
+                }}
+              >
+                {pricingLoading ? 'SENDING...' : 'REQUEST CALLBACK & PRICING →'}
+              </button>
+            </form>
+          )}
 
           {/* Right Side: Pricing Cards */}
           <div style={{
