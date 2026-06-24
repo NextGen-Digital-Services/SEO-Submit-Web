@@ -48,12 +48,16 @@ export const SeoLeadsForm = () => {
     setSeoErrors({});
     setSeoLoading(true);
 
-    setTimeout(() => {
-      setSeoLoading(false);
-      handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry');
-      setSeoSuccess(true);
-      setSeoForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
-    }, 1000);
+    handleFormSubmit(seoForm, 'SEO Leads Page - Enquiry')
+      .then(() => {
+        setSeoLoading(false);
+        setSeoSuccess(true);
+        setSeoForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      })
+      .catch((err) => {
+        setSeoLoading(false);
+        alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+      });
   };
 
   return (

@@ -99,20 +99,28 @@ export default function ExitIntentPopup({ onSubmit }) {
     setErrors({});
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    if (onSubmit) {
+      onSubmit(form)
+        .then(() => {
+          setIsSubmitting(false);
+          setIsSuccess(true);
+          sessionStorage.setItem('exit_popup_submitted', 'true');
+          localStorage.setItem('exit_popup_submitted', 'true');
+          setTimeout(() => {
+            handleClose();
+          }, 2000);
+        })
+        .catch((err) => {
+          setIsSubmitting(false);
+          alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+        });
+    } else {
       setIsSubmitting(false);
       setIsSuccess(true);
-      sessionStorage.setItem('exit_popup_submitted', 'true');
-      localStorage.setItem('exit_popup_submitted', 'true');
-
-      if (onSubmit) {
-        onSubmit(form);
-      }
-
       setTimeout(() => {
         handleClose();
       }, 2000);
-    }, 1200);
+    }
   };
 
   if (!isRendered) return null;

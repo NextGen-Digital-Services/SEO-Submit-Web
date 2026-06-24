@@ -57,24 +57,28 @@ export const ContactForm = () => {
     setContactErrors({});
     setContactLoading(true);
 
-    setTimeout(() => {
-      setContactLoading(false);
-      handleFormSubmit({
-        ...contactForm,
-        name: contactForm.firstName + ' ' + contactForm.lastName
-      }, 'Contact Page - Main Enquiry');
-      setContactSuccess(true);
-      setContactForm({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        budget: '',
-        message: ''
+    handleFormSubmit({
+      ...contactForm,
+      name: contactForm.firstName + ' ' + contactForm.lastName
+    }, 'Contact Page - Main Enquiry')
+      .then(() => {
+        setContactLoading(false);
+        setContactSuccess(true);
+        setContactForm({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          budget: '',
+          message: ''
+        });
+      })
+      .catch((err) => {
+        setContactLoading(false);
+        alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
       });
-    }, 1000);
   };
 
   return (

@@ -48,12 +48,16 @@ export const WebDesignLeadsForm = () => {
     setWebErrors({});
     setWebLoading(true);
 
-    setTimeout(() => {
-      setWebLoading(false);
-      handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry');
-      setWebSuccess(true);
-      setWebForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
-    }, 1000);
+    handleFormSubmit(webForm, 'Web Design Leads Page - Enquiry')
+      .then(() => {
+        setWebLoading(false);
+        setWebSuccess(true);
+        setWebForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      })
+      .catch((err) => {
+        setWebLoading(false);
+        alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+      });
   };
 
   return (

@@ -39,23 +39,27 @@ export const ReviewForm = () => {
     setReviewErrors({});
     setReviewLoading(true);
 
-    setTimeout(() => {
-      setReviewLoading(false);
-      handleFormSubmit({
-        name: reviewForm.name,
-        company: reviewForm.company,
-        service: reviewForm.service,
-        message: `Rating: ${reviewForm.rating} Stars | Review: ${reviewForm.review}`
-      }, 'Testimonials Page - Leave a Review');
-      setReviewSuccess(true);
-      setReviewForm({
-        name: '',
-        company: '',
-        service: '',
-        rating: '5',
-        review: ''
+    handleFormSubmit({
+      name: reviewForm.name,
+      company: reviewForm.company,
+      service: reviewForm.service,
+      message: `Rating: ${reviewForm.rating} Stars | Review: ${reviewForm.review}`
+    }, 'Testimonials Page - Leave a Review')
+      .then(() => {
+        setReviewLoading(false);
+        setReviewSuccess(true);
+        setReviewForm({
+          name: '',
+          company: '',
+          service: '',
+          rating: '5',
+          review: ''
+        });
+      })
+      .catch((err) => {
+        setReviewLoading(false);
+        alert(err.message || 'Failed to submit review. Please try again.');
       });
-    }, 1000);
   };
 
   return (

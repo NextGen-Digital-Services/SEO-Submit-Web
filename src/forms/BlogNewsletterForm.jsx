@@ -29,12 +29,16 @@ export const BlogNewsletterForm = ({ isMobile }) => {
     setBlogErrors({});
     setBlogLoading(true);
 
-    setTimeout(() => {
-      setBlogLoading(false);
-      handleFormSubmit({ email: blogEmail }, 'Blog Newsletter - Subscription Request');
-      setBlogSuccess(true);
-      setBlogEmail('');
-    }, 1000);
+    handleFormSubmit({ email: blogEmail }, 'Blog Newsletter - Subscription Request')
+      .then(() => {
+        setBlogLoading(false);
+        setBlogSuccess(true);
+        setBlogEmail('');
+      })
+      .catch((err) => {
+        setBlogLoading(false);
+        alert(err.message || 'Failed to subscribe. Please try again.');
+      });
   };
 
   return (

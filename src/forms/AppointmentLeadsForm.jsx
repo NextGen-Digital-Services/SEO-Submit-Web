@@ -48,12 +48,16 @@ export const AppointmentLeadsForm = () => {
     setAppErrors({});
     setAppLoading(true);
 
-    setTimeout(() => {
-      setAppLoading(false);
-      handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry');
-      setAppSuccess(true);
-      setAppForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
-    }, 1000);
+    handleFormSubmit(appForm, 'Appointment Leads Page - Enquiry')
+      .then(() => {
+        setAppLoading(false);
+        setAppSuccess(true);
+        setAppForm({ name: '', email: '', phone: '', company: '', budget: '', message: '' });
+      })
+      .catch((err) => {
+        setAppLoading(false);
+        alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+      });
   };
 
   return (

@@ -48,12 +48,16 @@ export const HeroForm = () => {
     setHeroErrors({});
     setHeroLoading(true);
 
-    setTimeout(() => {
-      setHeroLoading(false);
-      handleFormSubmit(heroForm, 'Hero - Verified Lead Request');
-      setHeroSuccess(true);
-      setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
-    }, 1000);
+    handleFormSubmit(heroForm, 'Hero - Verified Lead Request')
+      .then(() => {
+        setHeroLoading(false);
+        setHeroSuccess(true);
+        setHeroForm({ name: '', email: '', phone: '', company: '', service: '' });
+      })
+      .catch((err) => {
+        setHeroLoading(false);
+        alert(err.message || 'Failed to submit form. Please check your internet connection and try again.');
+      });
   };
 
   return (
