@@ -111,7 +111,7 @@ export const Footer = ({ isMobile }) => {
             {[
 
 
-              { icon: 'ti-brand-linkedin', path: '#' },
+              { icon: 'ti-brand-linkedin', path: 'https://www.linkedin.com/in/imran-merchant/' },
 
             ].map((social, i) => (
               <a
