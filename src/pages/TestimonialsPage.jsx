@@ -260,9 +260,9 @@ export const TestimonialsPage = ({ isMobile }) => {
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Colin Rogers</h4>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of Web Savvy Marketing</span>
             </div>
-          ))}
+          </div>
         </div>
-      </SectionWrapper>
+      </section>
 
       {/* [D] VERIFIED CLIENT CONVERSATIONS SECTION */}
       <SectionWrapper bg={C.navy} style={{ borderTop: `1px solid rgba(255, 255, 255, 0.1)`, borderBottom: `1px solid rgba(255, 255, 255, 0.1)` }}>
