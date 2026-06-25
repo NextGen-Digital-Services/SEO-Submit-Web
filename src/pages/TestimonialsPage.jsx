@@ -9,6 +9,9 @@ import Testimonial1Result from '../assets/Testimonial/1_result.webp';
 import Testimonial2Result from '../assets/Testimonial/2_result.webp';
 import Testimonial3Result from '../assets/Testimonial/3_result.webp';
 import Testimonial4Result from '../assets/Testimonial/4_result.webp';
+import Testimonial5Result from '../assets/Testimonial/13.jpeg';
+import Testimonial6Result from '../assets/Testimonial/14.jpeg';
+
 
 // Automatically detect and import the screenshots from src/assets/Email
 const emailImages = import.meta.glob('../assets/Email/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
@@ -259,6 +262,33 @@ export const TestimonialsPage = ({ isMobile }) => {
               </p>
               <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Colin Rogers</h4>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of Web Savvy Marketing</span>
+            </div>
+          </div>
+
+          {/* Card 6: Abraham Anijdar */}
+          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
+            <div style={{
+              width: '100px',
+              height: '100px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: `4px solid ${C.navy}`,
+              flexShrink: 0,
+              padding: 0,
+              margin: 0,
+              display: 'block'
+            }}>
+              <img src={Testimonial6Result} alt="Abraham Anijdar Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+            </div>
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
+                {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
+              </div>
+              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+                "We scaled from 3 clients to over 20 in less than a year using SEOSubmitWeb leads. The ROI speaks for itself — this is the smartest investment our agency has ever made."
+              </p>
+              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abraham Anijdar</h4>
+              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of WebTeamManagement</span>
             </div>
           </div>
         </div>
