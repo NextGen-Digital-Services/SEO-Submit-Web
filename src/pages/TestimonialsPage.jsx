@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
@@ -29,8 +29,8 @@ const verifiedConversations = Object.keys(emailImages).map((key) => {
 });
 
 export const TestimonialsPage = ({ isMobile }) => {
-  const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [zoomedImage, setZoomedImage] = useState(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
