@@ -9,8 +9,8 @@ import Testimonial1Result from '../assets/Testimonial/1_result.webp';
 import Testimonial2Result from '../assets/Testimonial/2_result.webp';
 import Testimonial3Result from '../assets/Testimonial/3_result.webp';
 import Testimonial4Result from '../assets/Testimonial/4_result.webp';
-import Testimonial5Result from '../assets/Testimonial/13.jpeg';
-import Testimonial6Result from '../assets/Testimonial/14.jpeg';
+import Testimonial5Result from '../assets/Testimonial/13_result.webp';
+import Testimonial6Result from '../assets/Testimonial/14_result.webp';
 
 
 // Automatically detect and import the screenshots from src/assets/Email
