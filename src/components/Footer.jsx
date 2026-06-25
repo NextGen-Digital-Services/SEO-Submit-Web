@@ -68,10 +68,10 @@ export const Footer = ({ isMobile }) => {
               </a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
-              <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
-                <i className="ti ti-map-pin" />
+              <div style={{ width: '24px', height: '24px', background: C.red, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
+
               </div>
-              <span>123 Business Hub, Loop District, Chicago, IL 60601</span>
+            
             </div>
           </div>
         </div>
@@ -109,10 +109,10 @@ export const Footer = ({ isMobile }) => {
           </h4>
           <div style={{ display: 'flex', gap: '10px' }}>
             {[
-              { icon: 'ti-brand-facebook', path: '#' },
-              { icon: 'ti-brand-twitter', path: '#' },
+
+
               { icon: 'ti-brand-linkedin', path: '#' },
-              { icon: 'ti-brand-instagram', path: '#' },
+
             ].map((social, i) => (
               <a
                 key={i}
