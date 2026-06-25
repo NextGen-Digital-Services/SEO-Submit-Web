@@ -22,21 +22,27 @@ export const handleFormSubmit = (formData, formType) => {
       return;
     }
 
+    const fieldsSummary = Object.entries(formData)
+      .map(([key, val]) => `${key.toUpperCase()}: ${val}`)
+      .join('\n');
+
     window.emailjs.send(
       serviceId,
       templateId,
       {
+        ...formData,
         form_type: formType,
         from_name: formData.name || (formData.firstName || formData.lastName ? (formData.firstName || '') + ' ' + (formData.lastName || '') : '') || 'Not provided',
-        from_email: formData.email,
+        from_email: formData.email || '',
         phone: formData.phone || 'Not provided',
         company: formData.company || 'Not provided',
-        service: formData.service || 'Not provided',
+        service: formData.service || formData.leadType || 'Not provided',
         budget: formData.budget || 'Not provided',
         message: formData.message || 'Not provided',
         to_email: 'info@seosubmitweb.com',
         bcc_email: 'seosubmitweb@gmail.com',
-        reply_to: formData.email,
+        reply_to: formData.email || '',
+        all_fields_summary: fieldsSummary,
       }
     ).then((response) => {
       console.log('Email sent successfully:', response.status, response.text);
