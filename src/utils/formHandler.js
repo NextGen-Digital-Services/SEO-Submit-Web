@@ -1,27 +1,20 @@
-// REUSABLE FORM HANDLER FUNCTION
+// REUSABLE FORM HANDLER — Opens default email client via mailto link
 export const handleFormSubmit = (formData, formType) => {
-  const serviceId = 'YOUR_SERVICE_ID';
-  const templateId = 'YOUR_TEMPLATE_ID';
+  return new Promise((resolve) => {
+    const to = 'info@seosubmitweb.com';
+    const subject = 'New Website Lead';
 
-  return new Promise((resolve, reject) => {
-    // If the template/service IDs are placeholders, simulate successful delivery in dev mode
-    if (serviceId.includes('YOUR_') || templateId.includes('YOUR_')) {
-      console.warn(`[Dev Mode] Simulating email delivery for: "${formType}"`);
-      console.log('Recipient (To): info@seosubmitweb.com');
-      console.log('Backup (Bcc): seosubmitweb@gmail.com');
-      console.log('Data:', formData);
-      
-      setTimeout(() => {
-        resolve({ status: 200, text: 'MOCK_SUCCESS' });
-      }, 800);
-      return;
-    }
+    // Build a clean, readable body from all submitted fields
+    const lines = [];
+    lines.push(`Form: ${formType}`);
+    lines.push('');
 
-    if (!window.emailjs) {
-      reject(new Error('Email service is not loaded yet. Please try again.'));
-      return;
-    }
+    const name = formData.name
+      || ((formData.firstName || formData.lastName)
+        ? `${formData.firstName || ''} ${formData.lastName || ''}`.trim()
+        : '');
 
+<<<<<<< HEAD
     const fieldsSummary = Object.entries(formData)
       .map(([key, val]) => `${key.toUpperCase()}: ${val}`)
       .join('\n');
@@ -51,5 +44,35 @@ export const handleFormSubmit = (formData, formType) => {
       console.error('Email send error:', error);
       reject(error);
     });
+=======
+    if (name) lines.push(`Name: ${name}`);
+    if (formData.email) lines.push(`Email: ${formData.email}`);
+    if (formData.phone) lines.push(`Phone: ${formData.phone}`);
+    if (formData.company) lines.push(`Company: ${formData.company}`);
+    if (formData.service) lines.push(`Service: ${formData.service}`);
+    if (formData.leadType) lines.push(`Lead Type: ${formData.leadType}`);
+    if (formData.budget) lines.push(`Budget: ${formData.budget}`);
+    if (formData.rating) lines.push(`Rating: ${formData.rating} / 5`);
+    if (formData.review) lines.push(`Review: ${formData.review}`);
+    if (formData.message) lines.push(`Message: ${formData.message}`);
+
+    lines.push('');
+    lines.push('---');
+    lines.push('Sent from SEOSubmitWeb.com');
+
+    const body = lines.join('\n');
+
+    const mailtoUrl =
+      `mailto:${to}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoUrl;
+
+    // Resolve after a short delay so the form UI can show success state
+    setTimeout(() => {
+      resolve({ status: 200, text: 'MAILTO_OPENED' });
+    }, 500);
+>>>>>>> df683d7 (email fix)
   });
 };
