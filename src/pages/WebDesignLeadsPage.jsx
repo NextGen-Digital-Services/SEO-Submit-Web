@@ -412,28 +412,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [H] TESTIMONIALS STRIP */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.white, marginBottom: '28px' }}>
-          What Web Designers Say
-        </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
-          {[
-            { name: 'Sarah Jenkins', comp: 'WebCraft Agency', txt: 'The project details are incredibly thorough. We knew the client\'s budget and timeline before the initial discovery call.' },
-            { name: 'Megan Adams', comp: 'ContentCraft', txt: 'Their customer support is stellar. Any disconnected number gets replaced in our dashboard within a few hours.' },
-            { name: 'Diana Cole', comp: 'NetBuild Studio', txt: 'SEO Submit Web leads helped us close 3 major e-commerce contracts in our first month. The ROI was clear in week 1.' },
-          ].map((test, idx) => (
-            <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '20px', border: '1px solid rgba(255,255,255,0.2)' }}>
-              <span style={{ fontSize: '28px', color: C.yellow, display: 'block', lineHeight: 1 }}>“</span>
-              <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic' }}>
-                "{test.txt}"
-              </p>
-              <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.yellow, display: 'block' }}>{test.name}</span>
-              <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', display: 'block' }}>{test.comp}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
       {/* [H] WEB DESIGN LEADS ENQUIRY FORM */}
       <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.blue}` }}>
