@@ -58,17 +58,7 @@ export const Footer = ({ isMobile }) => {
                 (716) 575-5447
               </a>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
-              <div style={{ width: '24px', height: '24px', background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.white, borderRadius: 0 }}>
-                <i className="ti ti-brand-whatsapp" />
-              </div>
-              <span>
-                <strong>WhatsApp Us: </strong>
-                <a href="https://wa.me/17165755447" target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-                  (716) 575-5447
-                </a>
-              </span>
-            </div>
+
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-mail" />

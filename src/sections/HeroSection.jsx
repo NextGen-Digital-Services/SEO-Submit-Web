@@ -157,31 +157,7 @@ export const HeroSection = ({ isMobile }) => {
               (716) 575-5447
             </a>
 
-            {/* WhatsApp button */}
-            <a
-              href="https://wa.me/17165755447?text=Hi%20SEO%20Submit%20Web%2C%20I%20am%20interested%20in%20your%20leads."
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                background: '#25D366',
-                color: '#ffffff',
-                fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 800,
-                fontSize: '12px',
-                letterSpacing: '1px',
-                padding: '13px 24px',
-                textDecoration: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                borderRadius: 0,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-            >
-              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-              CHAT ON WHATSAPP
-            </a>
+
 
           </div>
 

@@ -126,30 +126,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
               <button onClick={() => onViewPricing && onViewPricing('SEO Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
                 VIEW PRICING
               </button>
-              <a
-                href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: '#25D366',
-                  color: '#fff',
-                  fontFamily: F.display,
-                  fontWeight: 800,
-                  fontSize: '12px',
-                  letterSpacing: '1px',
-                  padding: '13px 24px',
-                  textDecoration: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  borderRadius: 0,
-                }}
-              >
-                <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-                CHAT ON WHATSAPP
-              </a>
+
             </div>
           </div>
         </div>
@@ -454,30 +431,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             DISCUSS INTEGRATION
           </button>
-          <a
-            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20SEO%20Leads.%20Please%20send%20details."
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#25D366',
-              color: '#fff',
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '12px',
-              letterSpacing: '1px',
-              padding: '13px 24px',
-              textDecoration: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: 0,
-            }}
-          >
-            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-            CHAT ON WHATSAPP
-          </a>
+
         </div>
       </section>
     </div>

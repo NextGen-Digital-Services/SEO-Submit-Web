@@ -430,30 +430,7 @@ export const AboutPage = ({ isMobile }) => {
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             CONTACT US
           </button>
-          <a
-            href="https://wa.me/17165755447?text=Hi%20I%20am%20interested%20in%20your%20leads.%20Please%20send%20details."
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#25D366',
-              color: '#fff',
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '12px',
-              letterSpacing: '1px',
-              padding: '13px 28px',
-              textDecoration: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: 0,
-            }}
-          >
-            <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-            CHAT ON WHATSAPP
-          </a>
+
         </div>
       </section>
     </div>

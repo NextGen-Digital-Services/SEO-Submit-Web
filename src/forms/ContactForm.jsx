@@ -141,7 +141,7 @@ export const ContactForm = () => {
 
       <div style={{ textAlign: 'left' }}>
         <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#0057FF', marginBottom: '6px' }}>
-          Phone / WhatsApp Number *
+          Phone Number *
         </label>
         <input
           type="tel"

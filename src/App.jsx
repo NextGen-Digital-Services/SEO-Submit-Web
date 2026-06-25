@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 import RouteTitle from './components/RouteTitle';
-import WhatsAppFloat from './components/WhatsAppFloat';
 import ExitIntentPopup from './components/ExitIntentPopup';
 
 // Pages
@@ -154,7 +153,6 @@ function App() {
 
         <Footer isMobile={isMobile} />
         <ScrollToTopButton />
-        <WhatsAppFloat />
         <ExitIntentPopup onSubmit={(data) => handleFormSubmit(data, 'Exit Intent Popup - Lead Request')} />
 
         <PricingModal 

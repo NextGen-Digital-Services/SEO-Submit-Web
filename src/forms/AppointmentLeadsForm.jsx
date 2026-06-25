@@ -106,7 +106,7 @@ export const AppointmentLeadsForm = () => {
 
       <div style={{ textAlign: 'left' }}>
         <label style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFD600', marginBottom: '6px' }}>
-          WhatsApp / Phone Number *
+          Phone Number *
         </label>
         <input
           type="tel"

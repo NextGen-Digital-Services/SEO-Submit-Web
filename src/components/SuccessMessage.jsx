@@ -57,22 +57,6 @@ export const SuccessMessage = ({ onClose }) => (
           }}>
           CLOSE
         </button>
-        <a
-          href="https://wa.me/17165755447"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            background: '#25D366', color: '#fff',
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 800, fontSize: '12px',
-            letterSpacing: '1px', padding: '12px 24px',
-            textDecoration: 'none', display: 'inline-block',
-          }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            OPEN WHATSAPP
-          </span>
-        </a>
       </div>
     </div>
   </div>

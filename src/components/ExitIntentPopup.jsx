@@ -267,7 +267,7 @@ export default function ExitIntentPopup({ onSubmit }) {
 
               <div style={{ textAlign: 'left' }}>
                 <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', color: '#374151', marginBottom: '6px' }}>
-                  Phone / WhatsApp Number *
+                  Phone Number *
                 </label>
                 <input
                   type="tel"

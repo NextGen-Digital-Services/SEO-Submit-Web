@@ -126,25 +126,6 @@ export const Navbar = ({ isMobile }) => {
 
         {/* Group right-side actions to maintain spacing */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          {/* WhatsApp icon link */}
-          <a
-            href="https://wa.me/17165755447"
-            target="_blank"
-            rel="noreferrer"
-            title="WhatsApp Us"
-            style={{
-              width: '40px',
-              height: '36px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              background: '#25D366',
-              textDecoration: 'none',
-            }}
-          >
-            <i className="ti ti-brand-whatsapp" style={{ fontSize: '22px', color: '#fff' }} />
-          </a>
-
           {/* Hamburger Menu (visible only on mobile) */}
           {isMobile && (
             <button

@@ -21,7 +21,7 @@ const verifiedConversations = Object.keys(emailImages).map((key) => {
     url: emailImages[key].default || emailImages[key],
     name: filename,
     fileName: filename.startsWith('11') ? 'verified-client-email.eml' : 'client-feedback-chat.pdf',
-    icon: filename.startsWith('11') ? 'ti ti-mail' : 'ti ti-brand-whatsapp',
+    icon: filename.startsWith('11') ? 'ti ti-mail' : 'ti ti-message',
     alt: filename.startsWith('11') 
       ? 'Verified client email conversation showing successful lead delivery feedback' 
       : 'Client chat feedback showing successful campaign execution results'
@@ -381,7 +381,7 @@ export const TestimonialsPage = ({ isMobile }) => {
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  <i className={conv.icon} style={{ fontSize: '13px', color: conv.icon.includes('whatsapp') ? '#25D366' : C.blue }}></i> 
+                  <i className={conv.icon} style={{ fontSize: '13px', color: C.blue }}></i> 
                   {conv.fileName}
                 </div>
                 <div style={{ color: C.blue, display: 'flex', alignItems: 'center' }}>
@@ -699,38 +699,7 @@ export const TestimonialsPage = ({ isMobile }) => {
 
           <ReviewForm />
 
-          {/* Green WhatsApp Contact Button */}
-          <div style={{ marginTop: '20px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', textAlign: 'center' }}>
-            <p style={{ textAlign: 'center', fontSize: '12px', color: 'rgba(255,255,255,0.5)', marginTop: '12px', marginBottom: '12px' }}>
-              Want to speak to support instead?
-            </p>
-            <a
-              href="https://wa.me/17165755447"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#25D366',
-                color: '#fff',
-                fontFamily: F.display,
-                fontWeight: 800,
-                fontSize: '11px',
-                letterSpacing: '1px',
-                padding: '12px 24px',
-                textDecoration: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                borderRadius: 0,
-                width: '100%',
-                justifyContent: 'center',
-              }}
-            >
-              <i className="ti ti-brand-whatsapp" style={{ fontSize: '18px' }}></i>
-              CHAT WITH SUPPORT ON WHATSAPP
-            </a>
-          </div>
+
         </div>
       </section>
 
