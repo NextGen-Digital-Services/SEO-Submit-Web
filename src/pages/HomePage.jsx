@@ -1,4 +1,8 @@
 import React from 'react';
+import team1Img from '../assets/Team/1.webp';
+import team2Img from '../assets/Team/2.webp';
+import team3Img from '../assets/Team/3.webp';
+import team4Img from '../assets/Team/4.webp';
 import { Link, useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
@@ -296,23 +300,16 @@ export const HomePage = ({ isMobile }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
-              { name: 'Rahul Sharma', role: 'CEO & Founder', img: 'https://picsum.photos/seed/person1/300/300', bio: '15+ years in lead gen strategies. Directs core platform technology.' },
-              { name: 'Priya Mehta', role: 'Head of Lead Gen', img: 'https://picsum.photos/seed/person2/300/300', bio: 'Manages quality control guidelines and qualification agents.' },
-              { name: 'Vikram Singh', role: 'Chief Tech Officer', img: 'https://picsum.photos/seed/person3/300/300', bio: 'Designs integration scripts, automated filters, and API webhooks.' },
-              { name: 'Ananya Patel', role: 'Client Success Director', img: 'https://picsum.photos/seed/person4/300/300', bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
+              { name: 'Imran Merchant', role: 'CEO & Founder', img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
+              { name: 'Anurag ', role: 'Head of Lead Gen', img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
+              { name: 'Vihan Sharma', role: 'Chief Tech Officer', img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
+              { name: 'Amanda Wilson', role: 'Client Success Director', img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
             ].map((member, idx) => (
               <div key={idx} style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img src={member.img} alt={member.name} width="300" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', marginBottom: '14px', border: '3px solid #FFD600' }} />
                 <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                 <span style={{ fontSize: '11px', color: C.blue, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
                 <p style={{ fontFamily: F.body, fontSize: '11px', color: '#666', lineHeight: 1.5, marginBottom: '14px', flex: 1 }}>{member.bio}</p>
-                <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
-                  {['ti-brand-linkedin', 'ti-brand-twitter', 'ti-mail'].map((icon) => (
-                    <a key={icon} href="#" style={{ width: '28px', height: '28px', background: C.yellow, color: C.navy, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', textDecoration: 'none' }}>
-                      <i className={`ti ${icon}`} />
-                    </a>
-                  ))}
-                </div>
               </div>
             ))}
           </div>

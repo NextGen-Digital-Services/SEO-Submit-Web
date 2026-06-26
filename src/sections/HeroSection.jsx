@@ -93,7 +93,7 @@ export const HeroSection = ({ isMobile }) => {
             marginBottom: '24px',
             maxWidth: '480px',
           }}>
-            Since 2016, SEOSubmitWeb has helped agencies and service businesses close more deals — without chasing cold, recycled leads. Stop competing for the same tired leads. Start closing exclusively yours.
+            Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals — without chasing cold, recycled leads. Stop competing for the same tired leads. Start closing exclusively yours.
           </p>
 
           {/* Trust pills */}

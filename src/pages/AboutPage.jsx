@@ -1,4 +1,8 @@
 import React from 'react';
+import team1Img from '../assets/Team/1.webp';
+import team2Img from '../assets/Team/2.webp';
+import team3Img from '../assets/Team/3.webp';
+import team4Img from '../assets/Team/4.webp';
 import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
@@ -256,10 +260,10 @@ export const AboutPage = ({ isMobile }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
-              { name: 'Alexander Vance', role: 'CEO & Founder', dep: 'Executive', border: C.yellow, img: 'https://picsum.photos/seed/team1/400/300', bio: 'Former VP of Growth at Apex Digital with 18+ years of organic search and enterprise lead generation experience.' },
-              { name: 'Sarah Chen', role: 'Head of SEO Strategy', dep: 'Operations', border: C.blue, img: 'https://picsum.photos/seed/team2/400/300', bio: 'Recognized search architect specializing B2B intent validation and organic lead acquisition.' },
-              { name: 'Marcus Brody', role: 'Director of Web Architecture', dep: 'Technology', border: C.navy, img: 'https://picsum.photos/seed/team3/400/300', bio: 'Over a decade designing high-converting Landers and technical schemas for portals.' },
-              { name: 'Emily Davis', role: 'Client Success Director', dep: 'Support', border: C.yellow, img: 'https://picsum.photos/seed/team4/400/300', bio: 'Coordinates directly with agency owners to optimize campaign setups.' },
+              { name: 'Imran Merchant', role: 'CEO & Founder', dep: 'Executive', border: C.yellow, img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
+              { name: 'Anurag', role: 'Head of Lead Gen', dep: 'Operations', border: C.blue, img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
+              { name: 'Amanda Wilson', role: 'Client Success Director', dep: 'Technology', border: C.navy, img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
+              { name: 'Vihan Sharma', role: 'Chief Tech Officer', dep: 'Support', border: C.yellow, img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
             ].map((member, idx) => (
               <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img src={member.img} alt={member.name} width="400" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', border: '3px solid #FFD600' }} />
@@ -270,13 +274,6 @@ export const AboutPage = ({ isMobile }) => {
                     {member.dep}
                   </span>
                   <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.7, marginBottom: '16px', flex: 1 }}>{member.bio}</p>
-                  <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
-                    {['ti-brand-linkedin', 'ti-brand-twitter', 'ti-mail'].map((icon) => (
-                      <a key={icon} href="#" style={{ width: '28px', height: '28px', background: member.border, color: member.border === C.yellow ? C.navy : C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', textDecoration: 'none' }}>
-                        <i className={`ti ${icon}`} />
-                      </a>
-                    ))}
-                  </div>
                 </div>
               </div>
             ))}
