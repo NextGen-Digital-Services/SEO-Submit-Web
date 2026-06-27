@@ -12,6 +12,10 @@ import ServicesSection from '../sections/ServicesSection';
 import PricingSection from '../sections/PricingSection';
 import TestimonialsSection from '../sections/TestimonialsSection';
 import CTASection from '../sections/CTASection';
+import home1 from '../assets/home/home1.webp';
+import home2 from '../assets/home/home2.webp';
+import home3 from '../assets/home/home3.webp';
+
 
 export const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
@@ -365,9 +369,9 @@ export const HomePage = ({ isMobile }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '20px', marginBottom: '28px' }}>
           {[
-            { border: C.yellow, cat: 'SEO LEADS', img: 'https://picsum.photos/seed/blog1/600/200', title: '10 Proven Ways to Convert SEO Leads Faster in 2025', desc: 'Understand high-converting proposal scopes, audit formats, and scripts to double your sales closing percentage.' },
-            { border: C.blue, cat: 'WEB DESIGN', img: 'https://picsum.photos/seed/blog2/600/200', title: 'Why Exclusive Leads Beat Shared Leads Every Time', desc: 'Discover how shared leads damage your reps margins and how exclusive leads establish sustainable growth pipelines.' },
-            { border: C.navy, cat: 'APPOINTMENTS', img: 'https://picsum.photos/seed/blog3/600/200', title: 'How to Scale Your Agency With Appointment Fixed Leads', desc: 'Scale calendar consulting sessions to secure five-figure retainer agreements. Skip cold dialing.' },
+            { border: C.yellow, cat: 'SEO LEADS', img: home1 , title: '10 Proven Ways to Convert SEO Leads Faster in 2025', desc: 'Understand high-converting proposal scopes, audit formats, and scripts to double your sales closing percentage.' },
+            { border: C.blue, cat: 'WEB DESIGN', img: home2 , title: 'Why Exclusive Leads Beat Shared Leads Every Time', desc: 'Discover how shared leads damage your reps margins and how exclusive leads establish sustainable growth pipelines.' },
+            { border: C.navy, cat: 'APPOINTMENTS', img: home3 , title: 'How to Scale Your Agency With Appointment Fixed Leads', desc: 'Scale calendar consulting sessions to secure five-figure retainer agreements. Skip cold dialing.' },
           ].map((post, idx) => (
             <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${post.border}`, display: 'flex', flexDirection: 'column' }}>
               <img src={post.img} alt={post.title} width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />

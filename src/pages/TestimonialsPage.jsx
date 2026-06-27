@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
@@ -11,7 +11,8 @@ import Testimonial3Result from '../assets/Testimonial/3_result.webp';
 import Testimonial4Result from '../assets/Testimonial/4_result.webp';
 import Testimonial5Result from '../assets/Testimonial/13_result.webp';
 import Testimonial6Result from '../assets/Testimonial/14_result.webp';
-
+import case1 from '../assets/Testimonial/case1.webp';
+import case2 from '../assets/Testimonial/case2.webp';
 
 // Automatically detect and import the screenshots from src/assets/Email
 const emailImages = import.meta.glob('../assets/Email/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
@@ -614,7 +615,7 @@ export const TestimonialsPage = ({ isMobile }) => {
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '24px' }}>
             {/* Case 1 */}
             <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src="https://picsum.photos/seed/case1/600/200" alt="SEO Growth Case" width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src={case1} alt="SEO Growth Case" width="600" height="200" loading="lazy" style={{ width: '100%', height: '240px', objectFit: 'cover',objectPosition: 'center' }} />
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 01</span>
                 <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>
@@ -640,7 +641,7 @@ export const TestimonialsPage = ({ isMobile }) => {
 
             {/* Case 2 */}
             <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src="https://picsum.photos/seed/case2/600/200" alt="Web design revenue growth" width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+              <img src={case2} alt="Web design revenue growth" width="600" height="200" loading="lazy" style={{ width: '100%', height: '240px', objectFit: 'cover', objectPosition: 'center'}} />
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 02</span>
                 <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>

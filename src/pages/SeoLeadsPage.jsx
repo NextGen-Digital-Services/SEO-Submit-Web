@@ -5,6 +5,7 @@ import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
 import SeoLeadsForm from '../forms/SeoLeadsForm';
 import SeoLeadsImg from '../assets/All Images/Seoleads_result.webp';
+import seoleads from '../assets/seoleads/seoleads.webp';
 
 export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
@@ -388,9 +389,9 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/seoclient1/80/80', txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
-            { name: 'David Miller', comp: 'RankBoost Agency', img: 'https://picsum.photos/seed/seoclient2/80/80', txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
-            { name: 'Ashley Vance', comp: 'Apex Digital', img: 'https://picsum.photos/seed/seoclient3/80/80', txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
+            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: seoleads, txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
+            { name: 'David Miller', comp: 'RankBoost Agency', img: seoleads, txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
+            { name: 'Ashley Vance', comp: 'Apex Digital', img: seoleads, txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
