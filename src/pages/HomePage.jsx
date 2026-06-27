@@ -390,12 +390,9 @@ export const HomePage = ({ isMobile }) => {
                 <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '15px', color: C.navy, marginBottom: '8px', lineHeight: 1.3 }}>{post.title}</h4>
                 <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, marginBottom: '16px', flex: 1 }}>{post.desc}</p>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#999', marginBottom: '12px', fontFamily: F.body }}>
-                  <span>Admin</span>
-                  <span>Jan 18, 2025</span>
+                
                 </div>
-                <Link to="/blog" style={{ fontFamily: F.display, fontWeight: 700, fontSize: '11px', color: C.blue, textDecoration: 'none', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                  Read More →
-                </Link>
+                
               </div>
             </div>
           ))}
