@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import SectionWrapper from '../components/SectionWrapper';
 import Eyebrow from '../components/Eyebrow';
+import soloman from '../assets/Home/soloman.webp'
 
 export const TestimonialsSection = ({ isMobile }) => {
   const navigate = useNavigate();
@@ -16,9 +17,9 @@ export const TestimonialsSection = ({ isMobile }) => {
 
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
         {[
-          { name: 'Rajesh Sharma', comp: 'TechSEO Solutions', img: 'https://picsum.photos/seed/client1/80/80', txt: 'SEO Submit Web leads convert at 3x the rate of other lists. The phone validation ensures we talk to founders ready to buy SEO services.', badge: 'SEO Leads' },
-          { name: 'Priya Kulkarni', comp: 'WebCraft Agency', img: 'https://picsum.photos/seed/client2/80/80', txt: 'I support SEO Submit Web leads fully. When a disconnected number popped up, support replaced it in 2 hours with no hassle.', badge: 'Web Design Leads' },
-          { name: 'Amit Mehta', comp: 'GrowthMark Digital', img: 'https://picsum.photos/seed/client3/80/80', txt: 'Our monthly sales retainers doubled in 90 days since boarding their calendar fixed appt leads. Saving SDR calling hours.', badge: 'Appointments' },
+          { name: 'Rajesh Sharma', comp: 'TechSEO Solutions', img: soloman, txt: 'SEO Submit Web leads convert at 3x the rate of other lists. The phone validation ensures we talk to founders ready to buy SEO services.', badge: 'SEO Leads' },
+          { name: 'Priya Kulkarni', comp: 'WebCraft Agency', img: soloman, txt: 'I support SEO Submit Web leads fully. When a disconnected number popped up, support replaced it in 2 hours with no hassle.', badge: 'Web Design Leads' },
+          { name: 'Amit Mehta', comp: 'GrowthMark Digital', img: soloman, txt: 'Our monthly sales retainers doubled in 90 days since boarding their calendar fixed appt leads. Saving SDR calling hours.', badge: 'Appointments' },
         ].map((test, idx) => (
           <div key={idx} style={{ background: C.white, padding: '24px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
