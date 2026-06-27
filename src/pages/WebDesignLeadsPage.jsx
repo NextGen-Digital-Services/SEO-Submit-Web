@@ -85,7 +85,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              Buy <span style={{ color: C.yellow }}>Web Design Leads</span> — Exclusive Leads Trusted Since 2016
+               Buy <span style={{ color: C.yellow }}>web design leads</span> Exclusive Leads Trusted Since 2009
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -179,7 +179,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr', gap: '32px' }}>
           <div>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
-              Every set of web design leads delivered through SEOSubmitWeb is verified for intent and quality before it ever reaches your inbox — so you spend your time pitching, not qualifying.
+              Every lead is verified for intent and quality before delivery. Since 2016, SEOSubmitWeb has delivered high-quality web design leads to freelancers, boutique studios, and full-service agencies — all with one guarantee: one lead, one buyer, zero sharing.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px' }}>
               {[
@@ -234,7 +234,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             { border: C.yellow, title: 'New Website Builds', desc: 'Startups and service providers seeking their very first online site.', price: '$$' },
             { border: C.blue, title: 'Redesign Projects', desc: 'Established firms looking to overhaul their outdated UI/UX designs.', price: '$$$' },
             { border: C.navy, title: 'E-Commerce Websites', desc: 'Retailers scaling into Shopify, WooCommerce, or custom checkouts.', price: '$$$$' },
-            { border: C.yellow, title: 'Landing Page Projects', desc: 'If your team builds as well as designs, buy web development leads and expand your pipeline with businesses specifically seeking development expertise.', price: '$' },
+            { border: C.yellow, title: 'Web Development Leads', desc: 'Beyond design, we also help development-focused agencies buy web development leads — pre-qualified businesses actively looking for custom builds, CMS solutions, and full-stack development partners.', price: '$' },
           ].map((cat, idx) => (
             <div key={idx} style={{ background: C.white, borderTop: `4px solid ${cat.border}`, border: '1px solid #dde3f0', padding: '20px', display: 'flex', flexDirection: 'column' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '8px' }}>{cat.title}</h4>
@@ -256,12 +256,12 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
           {[
-            { border: C.yellow, title: 'High Order Values', desc: 'When you buy web design leads exclusively through SEOSubmitWeb, every dollar you invest returns multiplied — because you are the only agency in the room.' },
-            { border: C.blue, title: 'Fresh Inquiries Only', desc: 'Unlike directories and marketplaces that recycle the same web design leads endlessly, SEOSubmitWeb generates every lead fresh and delivers it exclusively to one client.' },
-            { border: C.blue, title: '100% Replacement policy', desc: 'Most lead vendors sell the same web design leads to five agencies at once — leaving you to compete on price. SEOSubmitWeb eliminates that problem entirely.' },
-            { border: C.yellow, title: 'Verified Budget Allocation', desc: 'Agencies that buy exclusive web design leads from SEOSubmitWeb stop chasing and start closing — because every prospect already knows what they need.' },
-            { border: C.yellow, title: 'Direct Access', desc: 'When you buy exclusive web design leads from SEOSubmitWeb, you are the only buyer — no competitor receives the same contact, and no one else gets to pitch the same prospect.' },
-            { border: C.blue, title: 'Custom CRM Push', desc: 'Whether you are a solo freelancer or a growing agency, you can buy web design leads from SEOSubmitWeb at the volume that fits your pipeline — and scale up as you grow.' },
+            { border: C.yellow, title: 'High Order Values', desc: "Every dollar invested in exclusive web design leads delivers greater ROI because you're the only agency contacting the prospect." },
+            { border: C.blue, title: 'Fresh Inquiries Only', desc: 'Unlike directories and marketplaces, every lead is generated fresh and delivered exclusively.' },
+            { border: C.blue, title: '100% Replacement policy', desc: 'Most lead vendors sell the same web design leads to multiple agencies. SEOSubmitWeb delivers every lead exclusively to one buyer.' },
+            { border: C.yellow, title: 'Verified Budget Allocation', desc: 'Agencies that buy exclusive web design leads from SEOSubmitWeb stop chasing and start closing because every prospect already knows what they need.' },
+            { border: C.yellow, title: 'Direct Access', desc: 'When you buy exclusive web design leads from SEOSubmitWeb, you are the only buyer — no competitor receives the same contact, and no one else gets to pitch the same prospect you are closing.' },
+            { border: C.blue, title: 'Custom CRM Push', desc: "Whether you're a freelancer or a growing agency, scale your lead volume whenever you need." },
           ].map((item, idx) => (
             <div key={idx} style={{ background: C.navy, borderLeft: `3px solid ${item.border}`, padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '6px' }}>{item.title}</h4>
@@ -424,13 +424,88 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
+      {/* [H2] SEO CONTENT SECTION */}
+      <SectionWrapper bg={C.white}>
+        <div style={{
+          display: 'grid',
+          flexDirection: 'column',
+          gap: '32px',
+          paddingTop: '16px',
+          paddingBottom: '16px',
+        }}>
+          <div>
+            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              Why Choose Exclusive Web Design Leads?
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              If your agency is ready to grow faster and close more projects, it is time to buy web design leads from SEOSubmitWeb — the exclusive lead source designers and agencies have trusted since 2009.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              Our web design leads are not recycled lists or shared contacts — every prospect we deliver is freshly generated, high-intent, and actively looking to hire a web designer or agency right now.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+              Agencies that buy exclusive web design leads from SEOSubmitWeb spend less time chasing and more time closing.
+            </p>
+          </div>
+
+          <div>
+            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              The SEOSubmitWeb Exclusivity Difference
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              When you buy exclusive web design leads from SEOSubmitWeb, you are the only buyer — no competitor receives the same contact. Most lead vendors resell the same leads. We never do.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              Since 2009, SEOSubmitWeb has delivered exclusive, verified web design leads with one lead, one buyer, zero sharing.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+              Unlike directories, every lead is generated fresh and delivered exclusively.
+            </p>
+          </div>
+
+          <div>
+            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              High-Quality Web & CMS Development Leads
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              We also help agencies buy web development leads for businesses seeking custom websites, CMS solutions, and full-stack development.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              Every lead is verified before delivery for maximum ROI, allowing you to scale your lead volume as your agency grows.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+              Buy exclusive web design leads today and start closing more projects.
+            </p>
+          </div>
+          <div>
+            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              Ready to Grow Your Agency?
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              When you buy web design leads exclusively through SEOSubmitWeb, every dollar you invest returns multiplied because you are the only agency in the room and the only one with a chance to close.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+              Every day you delay is a day another agency is closing the web design projects you should have won. Buy exclusive web design leads from SEOSubmitWeb and make sure you are always first in the door.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom:
+            '12px' }}>
+              From design to development, SEOSubmitWeb has you covered. Buy web development leads or web design leads and build a complete digital services pipeline backed by a partner with nearly a decade of proven results.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, }}>
+              Visit www.seosubmitweb.com today to buy web design leads or web development leads that are exclusive, pre-qualified, and ready to close — because your next best client is already out there looking for you.
+            </p>
+            
+          </div>
+        </div>
+      </SectionWrapper>
+
       {/* [I] BOTTOM CTA */}
       <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
           Your Next Best Client Is Already Looking
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
-          Visit SEOSubmitWeb today to buy web design leads or web development leads that are exclusive, pre-qualified, and ready to close — because your next best client is already out there looking for you.
+          Visit <a href="http://www.seosubmitweb.com" style={{ color: C.yellow, textDecoration: 'none' }}>www.seosubmitweb.com</a> today to buy exclusive web design leads and web development leads that are verified, exclusive, and ready to convert.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>

@@ -416,6 +416,76 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
+      {/* [H2] SEO CONTENT SECTION */}
+            <SectionWrapper bg={C.white}>
+              <div style={{
+                display: 'grid',
+                flexDirection: 'column',
+                gap: '32px',
+                paddingTop: '16px',
+                paddingBottom: '16px',
+              }}>
+                <div>
+                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                    Why Agencies Choose to Buy SEO Leads
+                  </h2>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    If you are ready to grow your agency faster, buy SEO leads from SEOSubmitWeb — the trusted source for high-intent prospects since 2009.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    The smartest decision any digital agency can make today is to buy exclusive SEO leads that are verified, exclusive, and delivered by a partner with nearly a decade of proven results.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    Our SEO leads are not scraped from directories or pulled from outdated databases — they are actively generated prospects looking for SEO services right now.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                   Stop wasting your sales team's time on cold outreach — buy SEO leads that are already interested, already searching, and already ready to talk.
+                  </p>
+                </div>
+      
+                <div>
+                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                    Exclusive SEO Leads That Give You an Edge
+                  </h2>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    When you buy exclusive SEO leads through SEOSubmitWeb, you eliminate the single biggest problem in lead generation — competing with five other agencies for the same contact.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    At SEOSubmitWeb, every client who chooses to buy exclusive SEO leads gets prospects that belong to them alone — sourced fresh, delivered fast, and never resold.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+                    The difference between agencies that grow and agencies that stall is simple — the ones that grow buy SEO leads from a source they can trust.
+                  </p>
+                </div>
+      
+                <div>
+                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                    Verified Leads Built for Agency Growth
+                  </h2>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    Thousands of consultants and agencies have chosen to buy SEO leads from SEOSubmitWeb because quality, exclusivity, and consistency are never optional for us — they are standard.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                  SEO leads from SEOSubmitWeb come pre-qualified and appointment-ready, allowing your team to spend less time prospecting and more time closing deals that matter.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+                   Whether you are a solo consultant or a growing agency, when you buy exclusive SEO leads from SEOSubmitWeb you get a pipeline built on real demand — not recycled hope.
+                  </p>
+                </div>
+                <div>
+                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                    Scale Faster With SEOSubmitWeb
+                  </h2>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                    We have been generating premium SEO leads since 2009, and every year we get better at identifying the prospects most likely to convert into long-term clients for your business.
+                  </p>
+                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
+                  Buy exclusive SEO leads from SEOSubmitWeb and experience the difference genuine exclusivity makes — one lead, one buyer, zero competition.
+                  </p> 
+                </div>
+              </div>
+            </SectionWrapper>
+
       {/* [H] BOTTOM CTA */}
       <section style={{ background: C.yellow, padding: '40px 24px', textAlign: 'center' }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy, marginBottom: '8px' }}>
