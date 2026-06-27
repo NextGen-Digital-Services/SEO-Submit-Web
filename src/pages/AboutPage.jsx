@@ -364,64 +364,10 @@ export const AboutPage = ({ isMobile }) => {
         </div>
       </SectionWrapper>
 
-      {/* [SECTION I] CLIENT LOGOS BAND */}
-      <section style={{ background: C.yellow, padding: '32px 24px', textAlign: 'center' }}>
-        <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '24px' }}>
-          Trusted By 5,000+ Agencies Worldwide
-        </h3>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
-          {["TechSEO Solutions LLC", "WebCraft Studio", "RankBoost Agency", "DigitalFirst Co", "GrowthMark", "PixelForge"].map((client) => (
-            <div key={client} style={{
-              background: C.white,
-              color: C.navy,
-              border: `2px solid ${C.navy}`,
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '11px',
-              padding: '12px 24px',
-              letterSpacing: '1px',
-              borderRadius: 0,
-            }}>
-              CLIENT LOGO: {client}
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
-      {/* [SECTION J] TESTIMONIAL ON ABOUT PAGE */}
-      <section style={{ background: C.blue, padding: '48px 24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', background: C.white, padding: '24px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px' }}>
-          <div style={{ width: isMobile ? '100%' : '200px', flexShrink: 0 }}>
-            <img
-              src="https://picsum.photos/seed/featuredclient/200/200"
-              alt="David Miller"
-              width="200"
-              height="200"
-              loading="lazy"
-              style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block', border: `3px solid ${C.yellow}` }}
-            />
-          </div>
-          <div style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '14px', marginBottom: '8px' }}>
-              {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
-            </div>
-            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#333', lineHeight: 1.8, marginBottom: '14px', fontStyle: 'italic' }}>
-              "SEO Submit Web completely transformed how we acquire clients. Before them, we were spending 40 hours a week cold calling with a 2% success rate. Now we receive 20 exclusive, pre-verified leads every week and our close rate is 35%. They are not just a vendor — they are a genuine growth partner."
-            </p>
-            <div>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy }}>David Miller</h4>
-              <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO, RankBoost Agency • Sourced SEO Leads</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      
+
 
       {/* [SECTION K] ABOUT PAGE CTA */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
