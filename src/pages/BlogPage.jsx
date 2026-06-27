@@ -177,50 +177,16 @@ export const BlogPage = ({ isMobile }) => {
                 <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '10px', lineHeight: 1.3 }}>{post.title}</h4>
                 <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, marginBottom: '16px', flex: 1 }}>{post.desc}</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: '#666', marginBottom: '12px', fontFamily: F.body }}>
-                  <img 
-                    src={idx % 3 === 0 ? 'https://picsum.photos/seed/author1/40/40' : (idx % 3 === 1 ? 'https://picsum.photos/seed/author2/40/40' : 'https://picsum.photos/seed/author3/40/40')} 
-                    alt="Author" 
-                    width="40"
-                    height="40"
-                    loading="lazy"
-                    style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover', display: 'block', border: '1px solid #FFD600' }} 
-                  />
-                  <span>Admin</span>
-                  <span>•</span>
-                  <span>5 min read</span>
                 </div>
-                <Link to="/blog" style={{ fontFamily: F.display, fontWeight: 700, fontSize: '11px', color: C.blue, textDecoration: 'none', letterSpacing: '1px', textTransform: 'uppercase' }}>
-                  Read More →
-                </Link>
+                
               </div>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* [D] CATEGORIES SIDEBAR STRIP */}
-      <section style={{ background: C.lightBg, padding: '24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-          {[
-            { cat: 'SEO', count: 3 },
-            { cat: 'Web Design', count: 1 },
-            { cat: 'Lead Gen', count: 3 },
-            { cat: 'Business Growth', count: 2 },
-          ].map((item) => (
-            <span key={item.cat} style={{
-              background: C.white,
-              border: '1px solid #dde3f0',
-              padding: '6px 14px',
-              fontSize: '11px',
-              fontFamily: F.display,
-              fontWeight: 700,
-              color: C.navy,
-            }}>
-              {item.cat} ({item.count})
-            </span>
-          ))}
-        </div>
-      </section>
+      
+
 
       {/* [E] NEWSLETTER SIGNUP */}
       <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center' }}>
