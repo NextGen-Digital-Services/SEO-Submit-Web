@@ -5,21 +5,30 @@ import SectionWrapper from '../components/SectionWrapper';
 import BlogNewsletterForm from '../forms/BlogNewsletterForm';
 import SuccessMessage from '../components/SuccessMessage';
 import BlogImg from '../assets/All Images/Blog_result.webp';
+import blog1 from '../assets/Blog/blog1.webp';
+import blog2 from '../assets/Blog/blog2.webp';
+import blog3 from '../assets/Blog/blog3.webp';
+import blog4 from '../assets/Blog/blog4.webp';
+import blog5 from '../assets/Blog/blog5.webp';
+import blog6 from '../assets/Blog/blog6.webp';
+import blog7 from '../assets/Blog/blog7.webp';
+import blog8 from '../assets/Blog/blog8.webp';
+import blog9 from '../assets/Blog/blog9.webp';
 
 export const BlogPage = ({ isMobile }) => {
   const navigate = useNavigate();
   const [filter, setFilter] = useState('All');
 
   const blogPosts = [
-    { cat: 'SEO', title: '10 Proven Ways to Convert SEO Leads Faster in 2025', border: C.yellow, img: 'https://picsum.photos/seed/blogpost1/600/200', desc: 'Understand high-converting proposal scopes, audit formats, and scripts to double your sales closing percentage.' },
-    { cat: 'Lead Gen', title: 'Why Exclusive Leads Beat Shared Leads Every Single Time', border: C.blue, img: 'https://picsum.photos/seed/blogpost2/600/200', desc: 'Discover how shared leads decay and ruin margins, and why exclusive pipelines guarantee better ROI for service companies.' },
-    { cat: 'Business Growth', title: 'How to Scale Your Agency to $100K/Month Using Appointment Leads', border: C.navy, img: 'https://picsum.photos/seed/blogpost3/600/200', desc: 'Transition your agency sales process to scheduled calendar calls. Save time, stop dialing, and start pitching target clients.' },
-    { cat: 'SEO', title: 'The Ultimate Guide to Buying SEO Leads — What to Look For', border: C.yellow, img: 'https://picsum.photos/seed/blogpost4/600/200', desc: 'How to verify the quality of third-party lead sellers and pick verified providers.' },
-    { cat: 'Web Design', title: 'Web Design Lead Generation: How to Get 50 Clients This Month', border: C.blue, img: 'https://picsum.photos/seed/blogpost5/600/200', desc: 'Direct outreach frameworks and paid search techniques that book high-value web builds.' },
-    { cat: 'Business Growth', title: 'Cold Calling Is Dead — Here\'s What Actually Works in 2025', border: C.navy, img: 'https://picsum.photos/seed/blogpost6/600/200', desc: 'Modern inbound pipelines and calendar fixed consultation techniques.' },
-    { cat: 'Lead Gen', title: 'ACMA Compliance: What Lead Buyers Need to Know', border: C.yellow, img: 'https://picsum.photos/seed/blogpost7/600/200', desc: 'Legal compliance guide for agency buyers to protect campaigns.' },
-    { cat: 'SEO', title: 'How to Build a 7-Figure SEO Agency Using Purchased Leads', border: C.blue, img: 'https://picsum.photos/seed/blogpost8/600/200', desc: 'Strategic operations guide on onboarding and scaling outsourced pipelines.' },
-    { cat: 'Lead Gen', title: 'Appointment Setting vs Cold Email: Which Converts Better?', border: C.navy, img: 'https://picsum.photos/seed/blogpost9/600/200', desc: 'A head-to-head metrics battle comparing conversion speeds and cost parameters.' },
+    { cat: 'SEO', title: '10 Proven Ways to Convert SEO Leads Faster in 2025', border: C.yellow, img: blog1, desc: 'Understand high-converting proposal scopes, audit formats, and scripts to double your sales closing percentage.' },
+    { cat: 'Lead Gen', title: 'Why Exclusive Leads Beat Shared Leads Every Single Time', border: C.blue, img: blog2, desc: 'Discover how shared leads decay and ruin margins, and why exclusive pipelines guarantee better ROI for service companies.' },
+    { cat: 'Business Growth', title: 'How to Scale Your Agency to $100K/Month Using Appointment Leads', border: C.navy, img: blog3, desc: 'Transition your agency sales process to scheduled calendar calls. Save time, stop dialing, and start pitching target clients.' },
+    { cat: 'SEO', title: 'The Ultimate Guide to Buying SEO Leads — What to Look For', border: C.yellow, img: blog4, desc: 'How to verify the quality of third-party lead sellers and pick verified providers.' },
+    { cat: 'Web Design', title: 'Web Design Lead Generation: How to Get 50 Clients This Month', border: C.blue, img: blog5, desc: 'Direct outreach frameworks and paid search techniques that book high-value web builds.' },
+    { cat: 'Business Growth', title: 'Cold Calling Is Dead — Here\'s What Actually Works in 2025', border: C.navy, img: blog6, desc: 'Modern inbound pipelines and calendar fixed consultation techniques.' },
+    { cat: 'Lead Gen', title: 'ACMA Compliance: What Lead Buyers Need to Know', border: C.yellow, img: blog7, desc: 'Legal compliance guide for agency buyers to protect campaigns.' },
+    { cat: 'SEO', title: 'How to Build a 7-Figure SEO Agency Using Purchased Leads', border: C.blue, img: blog8, desc: 'Strategic operations guide on onboarding and scaling outsourced pipelines.' },
+    { cat: 'Lead Gen', title: 'Appointment Setting vs Cold Email: Which Converts Better?', border: C.navy, img: blog9, desc: 'A head-to-head metrics battle comparing conversion speeds and cost parameters.' },
   ];
 
   const filteredPosts = filter === 'All' ? blogPosts : blogPosts.filter(p => p.cat === filter);

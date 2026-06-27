@@ -67,7 +67,7 @@ export const HomePage = ({ isMobile }) => {
             width="1672"
             height="941"
             loading="lazy"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', }}
           />
         </div>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
