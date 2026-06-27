@@ -486,6 +486,12 @@ export const TestimonialsPage = ({ isMobile }) => {
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.jpg',
             },
             {
+              name: 'Abe Rubarts',
+              title: 'Founder & CEO at Locus Digital | www.locusdigital.com',
+              videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.mp4',
+              thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.jpg',
+            },
+            {
               name: 'Diana Ross',
               title: 'WebCraft Agency',
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.mp4',
@@ -572,6 +578,11 @@ export const TestimonialsPage = ({ isMobile }) => {
           @media (min-width: 640px) {
             .testimonial-video-grid {
               grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          @media (min-width: 1024px) {
+            .testimonial-video-grid {
+              grid-template-columns: repeat(3, 1fr);
             }
           }
           .video-thumbnail-img {
