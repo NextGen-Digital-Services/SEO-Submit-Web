@@ -5,6 +5,7 @@ import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
 import AppointmentLeadsForm from '../forms/AppointmentLeadsForm';
 import AppointmentImg from '../assets/All Images/AppointmentsLeads_result.webp';
+import soloman from '../assets/Home/soloman.webp';
 
 export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
@@ -409,9 +410,9 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: 'https://picsum.photos/seed/appclient1/80/80', txt: 'Appointment leads saved us. Stop cold outreach and book direct meetings.' },
-            { name: 'Kevin Anderson', comp: 'AppBoost Digital', img: 'https://picsum.photos/seed/appclient2/80/80', txt: 'Meetings closed 3x faster than traditional forms. Essential for agencies.' },
-            { name: 'Nicole Anderson', comp: 'BrandRise Agency', img: 'https://picsum.photos/seed/appclient3/80/80', txt: 'Synced calls keep our sales reps busy. Excellent team coordination.' },
+            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: soloman, txt: 'Appointment leads saved us. Stop cold outreach and book direct meetings.' },
+            { name: 'Kevin Anderson', comp: 'AppBoost Digital', img: soloman, txt: 'Meetings closed 3x faster than traditional forms. Essential for agencies.' },
+            { name: 'Nicole Anderson', comp: 'BrandRise Agency', img: soloman, txt: 'Synced calls keep our sales reps busy. Excellent team coordination.' },
           ].map((test, idx) => (
             <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
