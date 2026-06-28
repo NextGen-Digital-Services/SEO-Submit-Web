@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
+import { FaLinkedinIn } from 'react-icons/fa';
 import Logo from '../assets/Logo/Logo1_result.webp';
 
 export const Navbar = ({ isMobile }) => {
@@ -125,7 +126,26 @@ export const Navbar = ({ isMobile }) => {
         )}
 
         {/* Group right-side actions to maintain spacing */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <a
+            href="https://www.linkedin.com/in/imran-merchant?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            style={{
+              color: C.white,
+              fontSize: '18px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = C.yellow}
+            onMouseLeave={(e) => e.currentTarget.style.color = C.white}
+          >
+            <FaLinkedinIn />
+          </a>
           {/* Hamburger Menu (visible only on mobile) */}
           {isMobile && (
             <button
