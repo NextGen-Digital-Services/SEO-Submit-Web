@@ -32,7 +32,7 @@ const Blog = () => {
     <div className="blog-page animate-fade-in">
       {/* Blog Hero Banner */}
       <section className="blog-hero section-padding text-center relative overflow-hidden">
-        <div className="glow-blur" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)' }}></div>
+        <div className="glow-blur" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)', contentVisibility: 'auto' }}></div>
         <div className="container">
           <span className="section-tag">Search Insights</span>
           <h1>The Agency Client Acquisition Blog</h1>
@@ -43,22 +43,31 @@ const Blog = () => {
       </section>
 
       {/* Featured Post Block */}
-      {selectedCategory === 'All' && !searchTerm && (
-        <section className="featured-post-section container mb-5">
+      {selectedCategory === 'All' && !searchTerm && featuredPost && (
+        <section className="featured-post-section container mb-5" style={{ marginBottom: '40px' }}>
           <div className="glass-card featured-post-card animate-slide-up">
             <div className="featured-grid-inner">
-              <div className="featured-img-col">
-                <img src={featuredPost.image} alt={featuredPost.title} className="featured-img-node" />
+              <div className="featured-img-col" style={{ backgroundColor: '#0f172a' }}>
+                <img 
+                  src={featuredPost.image} 
+                  alt={`Featured Post: ${featuredPost.title}`} 
+                  className="featured-img-node" 
+                  width="600"
+                  height="400"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
               </div>
               <div className="featured-text-col text-left">
                 <span className="badge badge-primary mb-3">{featuredPost.category}</span>
-                <h2>{featuredPost.title}</h2>
+                <h2 style={{ marginTop: 0 }}>{featuredPost.title}</h2>
                 <p className="featured-excerpt">{featuredPost.excerpt}</p>
-                <div className="post-meta-details mb-4">
+                <div className="post-meta-details mb-4" style={{ marginBottom: '16px' }}>
                   <span className="meta-author">By <strong>{featuredPost.author}</strong></span>
-                  <span className="meta-divider">•</span>
+                  <span className="meta-divider" aria-hidden="true">•</span>
                   <span className="meta-date">{featuredPost.date}</span>
-                  <span className="meta-divider">•</span>
+                  <span className="meta-divider" aria-hidden="true">•</span>
                   <span className="meta-time">{featuredPost.readTime}</span>
                 </div>
                 <div className="featured-paragraph-preview">
@@ -72,7 +81,7 @@ const Blog = () => {
 
       {/* Filter and Search Bar Row */}
       <section className="blog-filters-section container py-4 border-y">
-        <div className="filters-row flex-between">
+        <div className="filters-row flex-between" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
           {/* Categories list */}
           <div className="category-pills">
             {categories.map(cat => (
@@ -87,13 +96,14 @@ const Blog = () => {
           </div>
 
           {/* Search box */}
-          <div className="search-box-wrapper">
+          <div className="search-box-wrapper" style={{ minWidth: '250px' }}>
             <input
               type="text"
               placeholder="Search articles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="form-input search-input-field"
+              style={{ boxSizing: 'border-box' }}
             />
           </div>
         </div>
@@ -112,20 +122,32 @@ const Blog = () => {
           ) : (
             <div className="grid-3 blog-posts-grid">
               {(searchTerm || selectedCategory !== 'All' ? filteredPosts : gridPosts).map((post) => (
-                <div className="glass-card blog-post-item text-left animate-slide-up" key={post.id}>
-                  <div className="post-thumb-wrapper">
-                    <img src={post.image} alt={post.title} className="post-thumb-img" />
+                <div 
+                  className="glass-card blog-post-item text-left animate-slide-up" 
+                  key={post.id}
+                  style={{ contentVisibility: 'auto', containIntrinsicSize: '0 380px' }}
+                >
+                  <div className="post-thumb-wrapper" style={{ backgroundColor: '#1e293b' }}>
+                    <img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="post-thumb-img" 
+                      width="360"
+                      height="200"
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <span className="post-cat-badge">{post.category}</span>
                   </div>
                   <div className="post-card-content">
-                    <div className="post-card-meta mb-2">
+                    <div className="post-card-meta mb-2" style={{ marginBottom: '8px' }}>
                       <span>{post.date}</span>
-                      <span>•</span>
+                      <span aria-hidden="true">•</span>
                       <span>{post.readTime}</span>
                     </div>
-                    <h3 className="post-card-title">{post.title}</h3>
+                    <h3 className="post-card-title" style={{ marginTop: 0 }}>{post.title}</h3>
                     <p className="post-card-excerpt">{post.excerpt}</p>
-                    <div className="post-card-author mt-4">
+                    <div className="post-card-author mt-4" style={{ marginTop: '16px' }}>
                       <span>By <strong>{post.author}</strong></span>
                     </div>
                   </div>
@@ -140,11 +162,11 @@ const Blog = () => {
       <section className="blog-newsletter section-padding border-t bg-tertiary">
         <div className="container max-width-article text-center">
           <h2>Get Sales Conversion Guides Sent To Your Inbox</h2>
-          <p className="subtitle mb-4">Subscribe to our newsletter and stay ahead of lead verification tips, calendar appointment booking practices, and sales follow-up checklists.</p>
+          <p className="subtitle mb-4" style={{ marginBottom: '24px' }}>Subscribe to our newsletter and stay ahead of lead verification tips, calendar appointment booking practices, and sales follow-up checklists.</p>
           
           {newsletterSubscribed ? (
             <div className="submit-success-toast inline-flex">
-              <svg className="toast-success-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="toast-success-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Thanks for subscribing! Check your inbox for our B2B sales follow-up checklist.</span>
@@ -158,6 +180,7 @@ const Blog = () => {
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 className="form-input newsletter-input"
+                style={{ boxSizing: 'border-box' }}
               />
               <button type="submit" className="btn btn-primary">
                 Subscribe Now
@@ -170,6 +193,7 @@ const Blog = () => {
       <style>{`
         .blog-page {
           background-color: var(--bg-primary);
+          box-sizing: border-box;
         }
         .border-y {
           border-top: 1px solid var(--border-light);
@@ -196,6 +220,7 @@ const Blog = () => {
         .featured-post-card {
           padding: 0;
           overflow: hidden;
+          background-color: var(--bg-secondary);
         }
         .featured-post-card:hover {
           transform: none;
@@ -205,22 +230,28 @@ const Blog = () => {
           grid-template-columns: 1fr 1fr;
           align-items: stretch;
         }
+        .featured-img-col {
+          position: relative;
+        }
         .featured-img-node {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          display: block;
         }
         .featured-text-col {
           padding: 40px;
           display: flex;
           flex-direction: column;
           justify-content: center;
+          box-sizing: border-box;
         }
         .featured-text-col h2 {
           font-size: 2.2rem;
           font-weight: 800;
           margin-bottom: 16px;
           color: var(--text-primary);
+          line-height: 1.2;
         }
         .featured-excerpt {
           font-size: 1.1rem;
@@ -246,6 +277,7 @@ const Blog = () => {
           display: flex;
           gap: 10px;
           flex-wrap: wrap;
+          flex-grow: 1;
         }
         .category-pill-btn {
           background-color: var(--bg-primary);
@@ -268,16 +300,28 @@ const Blog = () => {
           color: var(--primary);
         }
         .search-input-field {
-          width: 250px;
+          width: 100%;
+          padding: 10px 14px;
+          font-size: 14px;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--border-light);
+          outline: none;
         }
 
         /* Grid */
+        .blog-posts-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 24px;
+        }
         .blog-post-item {
           padding: 0;
           overflow: hidden;
           height: 100%;
           display: flex;
           flex-direction: column;
+          background-color: var(--bg-secondary);
+          box-sizing: border-box;
         }
         .post-thumb-wrapper {
           position: relative;
@@ -290,9 +334,10 @@ const Blog = () => {
           height: 100%;
           object-fit: cover;
           transition: transform var(--transition-normal);
+          display: block;
         }
         .blog-post-item:hover .post-thumb-img {
-          transform: scale(1.05);
+          transform: scale(1.04);
         }
         .post-cat-badge {
           position: absolute;
@@ -311,6 +356,7 @@ const Blog = () => {
           display: flex;
           flex-direction: column;
           flex-grow: 1;
+          box-sizing: border-box;
         }
         .post-card-meta {
           display: flex;
@@ -346,6 +392,9 @@ const Blog = () => {
         }
         .newsletter-input {
           flex-grow: 1;
+          padding: 12px 14px;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--border-light);
         }
 
         @media (max-width: 1024px) {
@@ -358,13 +407,14 @@ const Blog = () => {
           .featured-text-col {
             padding: 30px;
           }
-          .filters-row {
-            flex-direction: column;
-            gap: 20px;
-            align-items: flex-start;
+        }
+        @media (max-width: 768px) {
+          .blog-hero h1 {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
           }
-          .search-input-field {
-            width: 100%;
+          .newsletter-form-inline {
+            flex-direction: column;
           }
         }
       `}</style>

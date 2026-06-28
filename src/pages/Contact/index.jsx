@@ -43,7 +43,7 @@ const ContactPage = () => {
     <div className="contact-page animate-fade-in">
       {/* Hero Banner */}
       <section className="contact-hero section-padding text-center relative overflow-hidden">
-        <div className="glow-blur" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)' }}></div>
+        <div className="glow-blur" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)', contentVisibility: 'auto' }}></div>
         <div className="container">
           <span className="section-tag">Direct Line</span>
           <h1>Request Exclusive Lead Access</h1>
@@ -54,14 +54,14 @@ const ContactPage = () => {
       </section>
 
       {/* Grid: Form and Business Details */}
-      <section className="contact-grid-section container mb-5">
+      <section className="contact-grid-section container mb-5" style={{ marginBottom: '40px' }}>
         <div className="grid-2 contact-main-grid">
           {/* Left: Detailed Contact Form */}
           <div className="glass-card contact-form-card">
             {success ? (
               <div className="contact-success-box text-center">
                 <span className="success-icon-circle-lg">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </span>
@@ -72,7 +72,7 @@ const ContactPage = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-actual-form text-left">
-                <div className="form-row-double mb-3">
+                <div className="form-row-double mb-3" style={{ marginBottom: '16px' }}>
                   <div className="form-group">
                     <label htmlFor="name">Full Name</label>
                     <input
@@ -84,6 +84,7 @@ const ContactPage = () => {
                       value={formData.name}
                       onChange={handleChange}
                       className="form-input"
+                      style={{ boxSizing: 'border-box' }}
                     />
                   </div>
                   <div className="form-group">
@@ -97,11 +98,12 @@ const ContactPage = () => {
                       value={formData.email}
                       onChange={handleChange}
                       className="form-input"
+                      style={{ boxSizing: 'border-box' }}
                     />
                   </div>
                 </div>
 
-                <div className="form-row-double mb-3">
+                <div className="form-row-double mb-3" style={{ marginBottom: '16px' }}>
                   <div className="form-group">
                     <label htmlFor="phone">Phone Number</label>
                     <input
@@ -112,6 +114,7 @@ const ContactPage = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="form-input"
+                      style={{ boxSizing: 'border-box' }}
                     />
                   </div>
                   <div className="form-group">
@@ -124,11 +127,12 @@ const ContactPage = () => {
                       value={formData.company}
                       onChange={handleChange}
                       className="form-input"
+                      style={{ boxSizing: 'border-box' }}
                     />
                   </div>
                 </div>
 
-                <div className="form-group mb-3">
+                <div className="form-group mb-3" style={{ marginBottom: '16px' }}>
                   <label htmlFor="website">Website Domain URL</label>
                   <input
                     type="url"
@@ -139,10 +143,11 @@ const ContactPage = () => {
                     value={formData.website}
                     onChange={handleChange}
                     className="form-input"
+                    style={{ boxSizing: 'border-box', width: '100%' }}
                   />
                 </div>
 
-                <div className="form-group mb-3">
+                <div className="form-group mb-3" style={{ marginBottom: '16px' }}>
                   <label htmlFor="package">Target Lead Package</label>
                   <select
                     id="package"
@@ -150,6 +155,7 @@ const ContactPage = () => {
                     value={formData.package}
                     onChange={handleChange}
                     className="form-input"
+                    style={{ boxSizing: 'border-box', width: '100%' }}
                   >
                     <option value="bronze">Bronze Campaign (10 leads / week)</option>
                     <option value="silver">Silver Campaign (20 leads / week)</option>
@@ -159,7 +165,7 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-                <div className="form-group mb-4">
+                <div className="form-group mb-4" style={{ marginBottom: '24px' }}>
                   <label htmlFor="message">Campaign Goals / Target Niches</label>
                   <textarea
                     id="message"
@@ -169,40 +175,41 @@ const ContactPage = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="form-input"
+                    style={{ boxSizing: 'border-box', width: '100%', resize: 'vertical' }}
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-orange btn-block btn-lg" disabled={loading}>
+                <button type="submit" className="btn btn-orange btn-block btn-lg" disabled={loading} style={{ width: '100%', cursor: loading ? 'not-allowed' : 'pointer' }}>
                   {loading ? 'Submitting Inquiry...' : 'Submit Inquiry & Request Lead Queue Setup'}
                 </button>
               </form>
             )}
           </div>
 
-          {/* Right: Business details & mock map */}
+          {/* Right: Business details & optimized map */}
           <div className="contact-details-col text-left">
-            <div className="glass-card details-card mb-4">
-              <h3>Office Headquarters</h3>
-              <p className="address-block mt-3 mb-4">
+            <div className="glass-card details-card mb-4" style={{ marginBottom: '24px' }}>
+              <h3 style={{ marginTop: 0 }}>Office Headquarters</h3>
+              <p className="address-block mt-3 mb-4" style={{ marginTop: '12px', marginBottom: '24px' }}>
                 <strong>SEOLeads Inc.</strong><br />
                 Suite 420, Tech Tower West<br />
                 840 Financial Avenue, San Francisco, CA 94104
               </p>
 
               <div className="contact-links-list">
-                <div className="link-item-icon mb-3">
-                  <svg className="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="link-item-icon mb-3" style={{ marginBottom: '12px' }}>
+                  <svg className="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                   <span>inbound@seoleads.me</span>
                 </div>
-                <div className="link-item-icon mb-3">
-                  <svg className="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="link-item-icon mb-3" style={{ marginBottom: '12px' }}>
+                  <svg className="contact-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                   <span>
-                    <a href="tel:+17165755447" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    <a href="tel:+17165755447" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 600 }}>
                       (716) 575-5447
                     </a>
                   </span>
@@ -210,11 +217,19 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Mock Maps API visual */}
-            <div className="glass-card mock-map-card overflow-hidden">
-              <div className="mock-map-visual relative flex-center">
-                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Mock map" className="map-img-node" />
-                <div className="map-marker-pin animate-float">
+            {/* Optimized Maps API Visual */}
+            <div className="glass-card mock-map-card overflow-hidden" style={{ backgroundColor: '#1e293b' }}>
+              <div className="mock-map-visual relative flex-center" style={{ position: 'relative' }}>
+                <img 
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=60" 
+                  alt="San Francisco Office HQ Map Location Visual" 
+                  className="map-img-node" 
+                  width="600"
+                  height="250"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="map-marker-pin animate-float" style={{ pointerEvents: 'none' }}>
                   <span className="marker-inner"></span>
                 </div>
               </div>
@@ -226,6 +241,7 @@ const ContactPage = () => {
       <style>{`
         .contact-page {
           background-color: var(--bg-primary);
+          box-sizing: border-box;
         }
         .contact-hero h1 {
           font-size: 3.5rem;
@@ -234,13 +250,25 @@ const ContactPage = () => {
           margin-bottom: 24px;
         }
 
+        .contact-main-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 32px;
+        }
         .contact-form-card {
           padding: 40px;
+          box-sizing: border-box;
+          background-color: var(--bg-secondary);
         }
         .form-row-double {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 20px;
+        }
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
         }
         .contact-success-box {
           padding: 40px 0;
@@ -269,6 +297,8 @@ const ContactPage = () => {
 
         .details-card {
           padding: 30px;
+          box-sizing: border-box;
+          background-color: var(--bg-secondary);
         }
         .details-card h3 {
           font-size: 1.25rem;
@@ -296,15 +326,20 @@ const ContactPage = () => {
         .mock-map-card {
           padding: 0;
           height: 250px;
+          box-sizing: border-box;
         }
         .mock-map-visual {
           width: 100%;
           height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .map-img-node {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          display: block;
           filter: grayscale(1) contrast(1.1) brightness(0.9);
         }
         .map-marker-pin {
@@ -316,6 +351,9 @@ const ContactPage = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .marker-inner {
           width: 16px;
@@ -329,13 +367,16 @@ const ContactPage = () => {
         @media (max-width: 1024px) {
           .contact-main-grid {
             grid-template-columns: 1fr;
-            gap: 30px;
           }
         }
         @media (max-width: 768px) {
+          .contact-hero h1 {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+          }
           .form-row-double {
             grid-template-columns: 1fr;
-            gap: 0;
+            gap: 16px;
           }
           .contact-form-card {
             padding: 24px;
