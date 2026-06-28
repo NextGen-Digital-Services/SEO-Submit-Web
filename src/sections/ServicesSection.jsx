@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import SectionWrapper from '../components/SectionWrapper';
 import Eyebrow from '../components/Eyebrow';
-import BookAppointmentImg from '../assets/All Images/Bookappointment_result.webp';
+
 
 export const ServicesSection = ({ isMobile }) => {
   return (
@@ -16,7 +16,7 @@ export const ServicesSection = ({ isMobile }) => {
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '20px' }}>
         {[
           {
-            img: '/assets/seo-analytics-leads.png',
+            img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552888/hero2_result_sgduei.webp',
             border: C.yellow,
             icon: 'ti-search',
             title: 'Exclusive SEO Leads',
@@ -25,7 +25,7 @@ export const ServicesSection = ({ isMobile }) => {
             path: '/seo-leads',
           },
           {
-            img: '/assets/lead-generation-hero.png',
+            img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552886/hero3_result_bnwoo5.webp',
             border: C.blue,
             icon: 'ti-layout',
             title: 'Web Design Leads',
@@ -34,7 +34,7 @@ export const ServicesSection = ({ isMobile }) => {
             path: '/web-design-leads',
           },
           {
-            img: '/assets/seo-analytics-leads.png',
+            img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552882/hero4_result_gfbbbb.webp',
             border: C.navy,
             icon: 'ti-calendar-check',
             title: 'Appointment Fixed Leads',
@@ -45,7 +45,7 @@ export const ServicesSection = ({ isMobile }) => {
         ].map((srv, idx) => (
           <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${srv.border}`, display: 'flex', flexDirection: 'column' }}>
             <img
-              src={srv.title === 'Appointment Fixed Leads' ? BookAppointmentImg : srv.img}
+              src={srv.img}
               alt={srv.title}
               style={{
                 width: '100%',

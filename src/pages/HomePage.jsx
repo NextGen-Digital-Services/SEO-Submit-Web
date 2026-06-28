@@ -66,7 +66,7 @@ export const HomePage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div>
           <img
-            src="/assets/lead-generation-hero.png"
+            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552891/hero1_result_dulipv.webp"
             alt="Agency team collaborating on lead generation"
             width="1672"
             height="941"
@@ -191,7 +191,7 @@ export const HomePage = ({ isMobile }) => {
         </div>
         <div>
           <img
-            src="/assets/seo-analytics-leads.png"
+            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552880/hero5_result_oahywd.webp"
             alt="Marketing analytics and sales pipeline growth"
             width="1672"
             height="941"
@@ -257,7 +257,7 @@ export const HomePage = ({ isMobile }) => {
         </div>
 
         <img
-          src="/assets/lead-generation-hero.png"
+          src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552877/hero6_result_vy8ajb.webp"
           alt="Lead generation team in a modern digital workspace"
           width="1672"
           height="941"
@@ -324,7 +324,7 @@ export const HomePage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div>
           <img
-            src="/assets/seo-analytics-leads.png"
+            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552876/hero7_result_xpaegu.webp"
             alt="SEO analytics dashboard and qualified lead pipeline"
             width="1672"
             height="941"
