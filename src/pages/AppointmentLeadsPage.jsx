@@ -5,7 +5,7 @@ import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
 import AppointmentLeadsForm from '../forms/AppointmentLeadsForm';
 import AppointmentImg from '../assets/All Images/AppointmentsLeads_result.webp';
-import soloman from '../assets/Home/soloman.webp';
+import soloman from '../assets/home/Soloman.webp';
 
 export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();

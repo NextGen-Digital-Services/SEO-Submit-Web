@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import SectionWrapper from '../components/SectionWrapper';
 import Eyebrow from '../components/Eyebrow';
-import soloman from '../assets/Home/soloman.webp';
+import soloman from '../assets/home/Soloman.webp';
 
 export const TestimonialsSection = ({ isMobile }) => {
   const navigate = useNavigate();
