@@ -3,7 +3,41 @@ import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import HeroForm from '../forms/HeroForm';
 import HeroImage from '../assets/Hero/HeroSection_result.webp';
-import Typewriter from '../components/Typewriter';
+
+const StaggerWordReveal = ({ segments }) => {
+  let globalWordIndex = 0;
+  return (
+    <>
+      {segments.map((segment, sIdx) => {
+        const words = segment.text.split(/(\s+)/);
+        return (
+          <span key={sIdx} style={segment.style}>
+            {words.map((word, wIdx) => {
+              if (!word.trim()) {
+                return <span key={wIdx}>{word}</span>;
+              }
+              const currentDelay = globalWordIndex * 0.08;
+              globalWordIndex++;
+              return (
+                <span
+                  key={wIdx}
+                  style={{
+                    display: 'inline-block',
+                    opacity: 0,
+                    animation: `slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards`,
+                    animationDelay: `${currentDelay}s`,
+                  }}
+                >
+                  {word}
+                </span>
+              );
+            })}
+          </span>
+        );
+      })}
+    </>
+  );
+};
 
 export const HeroSection = ({ isMobile }) => {
   const navigate = useNavigate();
@@ -82,13 +116,12 @@ export const HeroSection = ({ isMobile }) => {
             marginBottom: '16px',
             minHeight: isMobile ? '105px' : '140px',
           }}>
-            <Typewriter 
+            <StaggerWordReveal 
               segments={[
                 { text: 'We deliver exclusive ', style: {} },
                 { text: 'SEO leads, web design leads, and appointment-set leads ', style: { color: '#FFD600' } },
                 { text: 'that come to you ready to buy — never shared, never resold.', style: {} }
               ]}
-              speed={60}
             />
           </h1>
 
