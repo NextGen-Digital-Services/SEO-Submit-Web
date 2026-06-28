@@ -80,7 +80,7 @@ export const ContactPage = ({ isMobile }) => {
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
             { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '(716) 575-5447', note: 'Available 24 hours a day', link: 'tel:+17165755447' },
-            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'Seosubmitweb@gmail.com', note: 'Reply within 2 hours', link: 'mailto:Seosubmitweb@gmail.com' },
+            { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'info@seosubmitweb.com', note: 'Reply within 2 hours', link: 'mailto:info@seosubmitweb.com' },
             { border: C.navy, icon: 'ti-map-pin', title: 'Chicago Office HQ', val: '123 Business Hub, Loop District, Chicago, IL 60601', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
             <div key={idx} style={{ background: C.white, borderTop: `4px solid ${item.border}`, padding: '24px 20px', textAlign: 'center', border: '1px solid #dde3f0' }}>

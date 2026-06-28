@@ -63,8 +63,8 @@ export const Footer = ({ isMobile }) => {
               <div style={{ width: '24px', height: '24px', background: C.yellow, display: 'flex', alignItems: 'center', justifyContent: 'center', color: C.navy, borderRadius: 0 }}>
                 <i className="ti ti-mail" />
               </div>
-              <a href="mailto:Seosubmitweb@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                Seosubmitweb@gmail.com
+              <a href="mailto:info@seosubmitweb.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                info@seosubmitweb.com
               </a>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.white, fontFamily: F.body }}>
