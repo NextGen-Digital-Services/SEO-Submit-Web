@@ -497,8 +497,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.jpg',
             },
             {
-              name: 'Abe Rubarts',
-              title: 'Founder & CEO at Locus Digital | www.locusdigital.com',
+              name: 'Marlon Rogers',
+              title: 'One Base Media - UK',
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.mp4',
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.jpg',
             }
