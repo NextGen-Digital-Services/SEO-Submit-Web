@@ -179,7 +179,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
 
           {/* Right Timeline Booking Process */}
           <div style={{ background: C.lightBg, border: `1px solid #dde3f0`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="/assets/seo-analytics-leads.png" alt="Appointment booking and lead qualification dashboard" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
+            <img src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782632233/appointment1_result_b89afx.webp" alt="Appointment booking and lead qualification dashboard" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '14px', textTransform: 'uppercase' }}>
                 Booking Flow

@@ -145,7 +145,7 @@ export const BlogPage = ({ isMobile }) => {
           </div>
           <div>
             <img
-              src="/assets/seo-analytics-leads.png"
+              src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782632272/blog1_result_qbeazh.webp"
               alt="Marketing Success"
               width="1672"
               height="941"

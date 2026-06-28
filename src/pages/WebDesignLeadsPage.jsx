@@ -202,7 +202,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
           {/* Sample Lead Card Mockup */}
           <div style={{ background: C.white, border: `3px solid ${C.blue}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden', height: '100%', minHeight: '350px' }}>
-            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782632208/web1_result_vhb04d.webp" alt="Agency team discussing website design projects" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
         </div>
       </SectionWrapper>
