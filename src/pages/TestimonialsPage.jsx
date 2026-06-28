@@ -28,8 +28,8 @@ const verifiedConversations = Object.keys(emailImages).map((key) => {
       : 'Client chat feedback showing successful campaign execution results'
   };
 }).sort((a, b) => {
-  if (a.name.startsWith('11')) return 1;
-  if (b.name.startsWith('11')) return -1;
+  if (a.name.startsWith('103')) return 1;
+  if (b.name.startsWith('103')) return -1;
   return a.name.localeCompare(b.name);
 });
 
@@ -491,8 +491,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.jpg',
             },
             {
-              name: 'Diana Ross',
-              title: 'WebCraft Agency',
+              name: 'Abraham Anijdar',
+              title: 'CEO of WebTeamManagement',
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.mp4',
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.jpg',
             },
