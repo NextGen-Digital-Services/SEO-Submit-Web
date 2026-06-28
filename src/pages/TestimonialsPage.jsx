@@ -27,6 +27,10 @@ const verifiedConversations = Object.keys(emailImages).map((key) => {
       ? 'Verified client email conversation showing successful lead delivery feedback' 
       : 'Client chat feedback showing successful campaign execution results'
   };
+}).sort((a, b) => {
+  if (a.name.startsWith('11')) return 1;
+  if (b.name.startsWith('11')) return -1;
+  return a.name.localeCompare(b.name);
 });
 
 export const TestimonialsPage = ({ isMobile }) => {
@@ -487,18 +491,18 @@ export const TestimonialsPage = ({ isMobile }) => {
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782211334/Video_1_jmmidk.jpg',
             },
             {
-              name: 'Abe Rubarts',
-              title: 'Founder & CEO at Locus Digital | www.locusdigital.com',
-              videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.mp4',
-              thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.jpg',
-            },
-            {
               name: 'Diana Ross',
               title: 'WebCraft Agency',
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.mp4',
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782216715/Video2_compressed_svrrfv.jpg',
+            },
+            {
+              name: 'Abe Rubarts',
+              title: 'Founder & CEO at Locus Digital | www.locusdigital.com',
+              videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.mp4',
+              thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.jpg',
             }
-          ].map((video, idx) => (
+           ].map((video, idx) => (
             <div 
               key={idx} 
               style={{
