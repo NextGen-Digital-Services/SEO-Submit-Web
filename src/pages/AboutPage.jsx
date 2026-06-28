@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
+import useScrollReveal from '../hooks/useScrollReveal';
+import Counter from '../components/Counter';
 
 export const AboutPage = ({ isMobile }) => {
   const navigate = useNavigate();
+  useScrollReveal();
 
   return (
     <div style={{ width: '100%' }}>
@@ -100,7 +103,7 @@ export const AboutPage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div style={{ padding: isMobile ? '32px 16px' : '56px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="HOW WE STARTED" />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
             Welcome to SEOSubmitWeb <span style={{ color: C.blue }}>where exclusive leads meet real results.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
@@ -151,7 +154,7 @@ export const AboutPage = ({ isMobile }) => {
       {/* [SECTION C] MISSION VISION VALUES */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="WHO WE ARE" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
           Our Mission, Vision & <span style={{ color: C.blue }}>Core Values</span>
         </h2>
 
@@ -197,7 +200,7 @@ export const AboutPage = ({ isMobile }) => {
       {/* [SECTION D] BY THE NUMBERS */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.white, marginBottom: '28px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.white, marginBottom: '28px' }}>
             16 Years of <span style={{ color: C.yellow }}>Proven Results</span>
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
@@ -211,8 +214,8 @@ export const AboutPage = ({ isMobile }) => {
               { val: '24/7', lbl: 'Support Available', color: C.white },
               { val: '3-Step', lbl: 'Quality Check', color: C.white },
             ].map((stat, idx) => (
-              <div key={idx} style={{ background: C.navy, padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: stat.color, marginBottom: '4px' }}>{stat.val}</span>
+              <div key={idx} className="reveal" style={{ background: C.navy, padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: stat.color, marginBottom: '4px' }}><Counter value={stat.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '10px', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>{stat.lbl}</span>
               </div>
             ))}
@@ -223,7 +226,7 @@ export const AboutPage = ({ isMobile }) => {
       {/* [SECTION E] TIMELINE */}
       <SectionWrapper bg={C.yellow}>
         <Eyebrow label="OUR JOURNEY" labelColor={C.navy} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
           16 Years of <span style={{ color: C.blue }}>Growth & Innovation</span>
         </h2>
 
@@ -254,18 +257,18 @@ export const AboutPage = ({ isMobile }) => {
       <section id="about-team" style={{ background: C.white, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Eyebrow label="THE PEOPLE" />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
             Meet the Team That <span style={{ color: C.blue }}>Powers Your Pipeline</span>
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
               { name: 'Imran Merchant', role: 'CEO & Founder', dep: 'Executive', border: C.yellow, img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
-              { name: 'Anurag', role: 'Head of Lead Gen', dep: 'Operations', border: C.blue, img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
+              { name: 'Logan Anderson', role: 'Head of Lead Gen', dep: 'Operations', border: C.blue, img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
               { name: 'Amanda Wilson', role: 'Client Success Director', dep: 'Technology', border: C.navy, img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
               { name: 'Vihan Sharma', role: 'Chief Tech Officer', dep: 'Support', border: C.yellow, img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
             ].map((member, idx) => (
-              <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+              <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img
                 src={member.img}
                 alt={member.name}
@@ -311,7 +314,7 @@ export const AboutPage = ({ isMobile }) => {
         </div>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Eyebrow label="OUR CULTURE" />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '16px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '16px' }}>
             A Team That <span style={{ color: C.blue }}>Lives & Breathes</span> Lead Generation
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '12px' }}>
@@ -342,7 +345,7 @@ export const AboutPage = ({ isMobile }) => {
       {/* [SECTION H] AWARDS & CERTIFICATIONS */}
       <SectionWrapper bg={C.navy}>
         <Eyebrow label="RECOGNITION" labelColor={C.yellow} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
           Awards, Certifications & <span style={{ color: C.yellow }}>Industry Recognition</span>
         </h2>
 
@@ -371,7 +374,7 @@ export const AboutPage = ({ isMobile }) => {
 
       {/* [SECTION K] ABOUT PAGE CTA */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '8px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '8px' }}>
           Ready to Grow Your Agency With Exclusive Leads?
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '14px', color: '#333', marginBottom: '24px' }}>

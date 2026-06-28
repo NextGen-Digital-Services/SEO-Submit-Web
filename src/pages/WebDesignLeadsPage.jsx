@@ -4,10 +4,13 @@ import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
 import WebDesignLeadsForm from '../forms/WebDesignLeadsForm';
+import useScrollReveal from '../hooks/useScrollReveal';
+import Counter from '../components/Counter';
 import WebDesignImg from '../assets/All Images/WebDesginLeads_result.webp';
 
 export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
+  useScrollReveal();
 
   return (
     <div style={{ width: '100%' }}>
@@ -160,8 +163,8 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
               { val: '4.7 / 5', lbl: 'Average Rating' },
               { val: 'Real-Time', lbl: 'Delivery Pipeline' },
             ].map((item, idx) => (
-              <div key={idx} style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(255,255,255,0.15)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white }}>{item.val}</span>
+              <div key={idx} className="reveal" style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(255,255,255,0.15)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white }}><Counter value={item.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '9px', color: C.yellow, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '2px' }}>{item.lbl}</span>
               </div>
             ))}
@@ -172,7 +175,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [B] WHAT YOU RECEIVE */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="LEAD OUTLINE" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Verified Leads, Ready to Close
         </h2>
 
@@ -192,7 +195,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
                 'Project Scope Detail',
                 'Timeline Expectations',
               ].map((bullet) => (
-                <div key={bullet} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
+                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
                   <i className="ti ti-check" style={{ color: C.blue, fontSize: '16px', fontWeight: 'bold' }} />
                   <span>{bullet}</span>
                 </div>
@@ -210,7 +213,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [C] WEB DESIGN LEAD TYPES */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="LEAD CATEGORIES" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Web Design & Development Leads
         </h2>
 
@@ -221,7 +224,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             { border: C.navy, title: 'E-Commerce Websites', desc: 'Retailers scaling into Shopify, WooCommerce, or custom checkouts.', price: '$$$$' },
             { border: C.yellow, title: 'Web Development Leads', desc: 'Beyond design, we also help development-focused agencies buy web development leads — pre-qualified businesses actively looking for custom builds, CMS solutions, and full-stack development partners.', price: '$' },
           ].map((cat, idx) => (
-            <div key={idx} style={{ background: C.white, borderTop: `4px solid ${cat.border}`, border: '1px solid #dde3f0', padding: '20px', display: 'flex', flexDirection: 'column' }}>
+            <div key={idx} className="reveal" style={{ background: C.white, borderTop: `4px solid ${cat.border}`, border: '1px solid #dde3f0', padding: '20px', display: 'flex', flexDirection: 'column' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '8px' }}>{cat.title}</h4>
               <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.6, marginBottom: '14px', flex: 1 }}>{cat.desc}</p>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -235,7 +238,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [D] WHY WEB DESIGN LEADS */}
       <SectionWrapper bg={C.navy}>
         <Eyebrow label="ADVANTAGES" labelColor={C.yellow} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
           Why Agencies Choose SEOSubmitWeb
         </h2>
 
@@ -248,7 +251,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             { border: C.yellow, title: 'Direct Access', desc: 'When you buy exclusive web design leads from SEOSubmitWeb, you are the only buyer — no competitor receives the same contact, and no one else gets to pitch the same prospect you are closing.' },
             { border: C.blue, title: 'Custom CRM Push', desc: "Whether you're a freelancer or a growing agency, scale your lead volume whenever you need." },
           ].map((item, idx) => (
-            <div key={idx} style={{ background: C.navy, borderLeft: `3px solid ${item.border}`, padding: '20px' }}>
+            <div key={idx} className="reveal" style={{ background: C.navy, borderLeft: `3px solid ${item.border}`, padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '6px' }}>{item.title}</h4>
               <p style={{ fontFamily: F.body, fontSize: '11px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{item.desc}</p>
             </div>
@@ -259,7 +262,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [E] PRICING */}
       <SectionWrapper bg={C.yellow} id="web-pricing">
         <Eyebrow label="PRICING PLANS" labelColor={C.navy} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Web Design Lead Packages
         </h2>
 
@@ -289,7 +292,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             };
 
             return (
-              <div key={pack.name} style={cardStyle}>
+              <div key={pack.name} className="reveal" style={cardStyle}>
                 <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.navy, marginBottom: '6px' }}>
                   {pack.name}
                 </div>
@@ -339,7 +342,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [F] PROCESS */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="PROCESS" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '32px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '32px' }}>
           Our Web Lead Verification Flow
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)', gap: '16px' }}>
@@ -350,7 +353,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             { step: '4', title: 'CRM Delivery', desc: 'Verified records route straight to your CRM.' },
             { step: '5', title: 'Pitch & Close', desc: 'You deliver the custom mockups and sign the client.' },
           ].map((item) => (
-            <div key={item.step} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div key={item.step} className="reveal" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <div style={{
                 width: '40px',
                 height: '40px',
@@ -374,7 +377,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [G] FAQ */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="FAQ" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Frequently Asked Questions About Web Design Leads
         </h2>
 
@@ -389,7 +392,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             { q: 'How long does delivery take?', a: 'Most leads route in under 2 minutes after validation.' },
             { q: 'Can I set geo filters?', a: 'Yes. Targeting options are available on enterprise campaigns.' },
           ].map((faq, idx) => (
-            <div key={idx} style={{ padding: '16px', borderLeft: `3px solid ${C.blue}`, background: C.white, textAlign: 'left' }}>
+            <div key={idx} className="reveal" style={{ padding: '16px', borderLeft: `3px solid ${C.blue}`, background: C.white, textAlign: 'left' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>{faq.q}</h4>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
             </div>
@@ -402,7 +405,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [H] WEB DESIGN LEADS ENQUIRY FORM */}
       <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.blue}` }}>
         <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
             Start Closing More Web Design Projects Today
           </h2>
           <WebDesignLeadsForm />
@@ -419,7 +422,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
           paddingBottom: '16px',
         }}>
           <div>
-            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
               Why Choose Exclusive Web Design Leads?
             </h2>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -434,7 +437,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
           </div>
 
           <div>
-            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
               The SEOSubmitWeb Exclusivity Difference
             </h2>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -449,7 +452,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
           </div>
 
           <div>
-            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
               High-Quality Web & CMS Development Leads
             </h2>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -463,7 +466,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
             </p>
           </div>
           <div>
-            <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
               Ready to Grow Your Agency?
             </h2>
             <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -486,7 +489,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
       {/* [I] BOTTOM CTA */}
       <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
           Your Next Best Client Is Already Looking
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>

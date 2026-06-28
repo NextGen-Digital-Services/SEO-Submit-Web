@@ -5,10 +5,12 @@ import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
 import SeoLeadsForm from '../forms/SeoLeadsForm';
 import SeoLeadsImg from '../assets/All Images/Seoleads_result.webp';
-import seoleads from '../assets/seoleads/seoleads.webp';
+import useScrollReveal from '../hooks/useScrollReveal';
+import Counter from '../components/Counter';
 
 export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
+  useScrollReveal();
 
   return (
     <div style={{ width: '100%' }}>
@@ -155,8 +157,8 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
               { val: '4.8 / 5', lbl: 'Average Rating' },
               { val: '48hr', lbl: 'Max Delivery Window' },
             ].map((item, idx) => (
-              <div key={idx} style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(10,22,40,0.1)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy }}>{item.val}</span>
+              <div key={idx} className="reveal" style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(10,22,40,0.1)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy }}><Counter value={item.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '9px', color: C.blue, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '2px' }}>{item.lbl}</span>
               </div>
             ))}
@@ -167,7 +169,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [B] WHAT ARE SEO LEADS */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="WHAT YOU GET" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           What Exactly Are Our SEO Leads?
         </h2>
 
@@ -188,7 +190,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                 'Decision Maker Role Checked',
                 'Geographic Location Filters',
               ].map((bullet) => (
-                <div key={bullet} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
+                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
                   <i className="ti ti-square-check" style={{ color: C.blue, fontSize: '16px' }} />
                   <span>{bullet}</span>
                 </div>
@@ -206,7 +208,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [C] WHY OUR SEO LEADS */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="KEY FEATURES" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Why Agencies Trust Our SEO Leads
         </h2>
 
@@ -219,7 +221,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
             { icon: 'ti-device-laptop', title: 'Compliance Standards', desc: 'All leads are double opt-in and adhere to ACMA, GDPR, and CAN-SPAM standards.' },
             { icon: 'ti-coin', title: 'Budget Verified', desc: 'We verify that the contact has set aside a budget matching your minimum tier.' },
           ].map((item, idx) => (
-            <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
+            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
               <i className={`ti ${item.icon}`} style={{ fontSize: '24px', color: C.blue, display: 'block', marginBottom: '12px' }} />
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '6px' }}>{item.title}</h4>
               <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.6 }}>{item.desc}</p>
@@ -231,7 +233,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [D] SEO LEADS PRICING */}
       <SectionWrapper bg={C.navy} id="seo-pricing">
         <Eyebrow label="PRICING PLANS" labelColor={C.yellow} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
           SEO Lead Packages
         </h2>
 
@@ -259,7 +261,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
             };
 
             return (
-              <div key={pack.name} style={cardStyle}>
+              <div key={pack.name} className="reveal" style={cardStyle}>
                 <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.navy, marginBottom: '6px' }}>
                   {pack.name}
                 </div>
@@ -308,7 +310,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
 
       {/* [E] HOW SEO LEADS WORK */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '32px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '32px' }}>
           Our SEO Lead Flow
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
@@ -343,7 +345,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [F] SEO LEADS FAQ */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="FAQ" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Frequently Asked Questions About SEO Leads
         </h2>
 
@@ -358,7 +360,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
             { q: 'Can I get leads for a specific city or country?', a: 'Yes. We offer targeting filters on our enterprise accounts.' },
             { q: 'Is there a minimum order?', a: 'Our starter package begins at 20 leads per month.' },
           ].map((faq, idx) => (
-            <div key={idx} style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
+            <div key={idx} className="reveal" style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>{faq.q}</h4>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
             </div>
@@ -366,35 +368,10 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [G] TESTIMONIALS STRIP */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.white, marginBottom: '28px' }}>
-          SEO Agency Owners Speak
-        </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
-          {[
-            { name: 'Sarah Jenkins', comp: 'PixelForge Studio', img: seoleads, txt: 'The leads are extremely hot. We closed 4 deals from our first batch of 20 SEO leads. Superb service.' },
-            { name: 'David Miller', comp: 'RankBoost Agency', img: seoleads, txt: 'We tried several scrapers and list providers. SEO Submit Web leads are verified, saving our reps hours of cold-calling.' },
-            { name: 'Ashley Vance', comp: 'Apex Digital', img: seoleads, txt: 'Since swapping to SEO Submit Web leads, we went from 3 to 27 SEO clients in just 6 months.' },
-          ].map((test, idx) => (
-            <div key={idx} style={{ background: 'rgba(255,255,255,0.1)', padding: '24px 20px', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '3px solid #FFD600', padding: 0, margin: '0 0 12px 0' }}>
-                <img src={test.img} alt={test.name} width="80" height="80" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', padding: 0, margin: 0 }} />
-              </div>
-              <p style={{ fontFamily: F.body, fontSize: '12px', color: C.white, lineHeight: 1.6, marginBottom: '12px', fontStyle: 'italic', flex: 1 }}>
-                "{test.txt}"
-              </p>
-              <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: C.yellow, display: 'block' }}>{test.name}</span>
-              <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', display: 'block' }}>{test.comp}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* [G] SEO LEADS ENQUIRY FORM */}
       <section style={{ background: C.navy, padding: '48px 24px', borderTop: `3px solid ${C.yellow}` }}>
         <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.yellow, marginBottom: '24px' }}>
             Get SEO Leads Now — Fill The Form Below
           </h2>
           <SeoLeadsForm />
@@ -411,7 +388,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                 paddingBottom: '16px',
               }}>
                 <div>
-                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
                     Why Agencies Choose to Buy SEO Leads
                   </h2>
                   <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -429,7 +406,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                 </div>
       
                 <div>
-                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
                     Exclusive SEO Leads That Give You an Edge
                   </h2>
                   <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -444,7 +421,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                 </div>
       
                 <div>
-                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
                     Verified Leads Built for Agency Growth
                   </h2>
                   <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -458,7 +435,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
                   </p>
                 </div>
                 <div>
-                  <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
                     Scale Faster With SEOSubmitWeb
                   </h2>
                   <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
@@ -473,7 +450,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
 
       {/* [H] BOTTOM CTA */}
       <section style={{ background: C.yellow, padding: '40px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy, marginBottom: '8px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy, marginBottom: '8px' }}>
           Ready to Buy Exclusive SEO Leads?
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '13px', color: '#333', marginBottom: '20px' }}>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import HeroForm from '../forms/HeroForm';
 import HeroImage from '../assets/Hero/HeroSection_result.webp';
+import Typewriter from '../components/Typewriter';
 
 export const HeroSection = ({ isMobile }) => {
   const navigate = useNavigate();
@@ -79,10 +80,16 @@ export const HeroSection = ({ isMobile }) => {
             color: '#ffffff',
             lineHeight: 1.15,
             marginBottom: '16px',
+            minHeight: isMobile ? '105px' : '140px',
           }}>
-            We deliver exclusive {' '}
-            <span style={{ color: '#FFD600' }}>SEO leads, web design leads, and appointment-set leads </span>
-            {' '}that come to you ready to buy — never shared, never resold.
+            <Typewriter 
+              segments={[
+                { text: 'We deliver exclusive ', style: {} },
+                { text: 'SEO leads, web design leads, and appointment-set leads ', style: { color: '#FFD600' } },
+                { text: 'that come to you ready to buy — never shared, never resold.', style: {} }
+              ]}
+              speed={60}
+            />
           </h1>
 
           {/* Paragraph */}
@@ -121,6 +128,7 @@ export const HeroSection = ({ isMobile }) => {
             
             {/* VIEW LEAD SAMPLES button */}
             <button 
+              className="btn-float"
               onClick={() => navigate('/contact')}
               style={{
                 background: '#FFD600',

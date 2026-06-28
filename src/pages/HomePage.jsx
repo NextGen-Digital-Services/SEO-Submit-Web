@@ -15,10 +15,13 @@ import CTASection from '../sections/CTASection';
 import home1 from '../assets/home/home1.webp';
 import home2 from '../assets/home/home2.webp';
 import home3 from '../assets/home/home3.webp';
+import useScrollReveal from '../hooks/useScrollReveal';
+import Counter from '../components/Counter';
 
 
 export const HomePage = ({ isMobile }) => {
   const navigate = useNavigate();
+  useScrollReveal();
 
   return (
     <div style={{ width: '100%' }}>
@@ -76,7 +79,7 @@ export const HomePage = ({ isMobile }) => {
         </div>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
           <Eyebrow label="ABOUT SEO SUBMIT WEB" />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
             Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals  <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
@@ -95,8 +98,8 @@ export const HomePage = ({ isMobile }) => {
               { val: '10K+ Leads', lbl: 'Delivered' },
               { val: '15+ Countries', lbl: 'Served' },
             ].map((p, idx) => (
-              <div key={idx} style={{ background: C.yellow, padding: '12px', textAlign: 'center' }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy }}>{p.val}</span>
+              <div key={idx} className="reveal" style={{ background: C.yellow, padding: '12px', textAlign: 'center' }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy }}><Counter value={p.val} /></span>
                 <span style={{ display: 'block', fontSize: '10px', color: '#555', fontFamily: F.body }}>{p.lbl}</span>
               </div>
             ))}
@@ -141,6 +144,7 @@ export const HomePage = ({ isMobile }) => {
         ].map((stat, idx, arr) => (
           <div
             key={stat.label}
+            className="reveal"
             style={{
               textAlign: 'center',
               padding: '12px',
@@ -148,7 +152,7 @@ export const HomePage = ({ isMobile }) => {
             }}
           >
             <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.navy }}>
-              {stat.num}<sup style={{ fontSize: '20px' }}>{stat.sup}</sup>
+              <Counter value={stat.num} /><sup style={{ fontSize: '20px' }}>{stat.sup}</sup>
             </span>
             <span style={{
               fontFamily: F.display,
@@ -170,7 +174,7 @@ export const HomePage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.navy, textAlign: 'left' }}>
           <Eyebrow label="WHY CHOOSE US" labelColor={C.yellow} />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '20px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '20px' }}>
             What Makes SEO Submit Web <span style={{ color: C.yellow }}>The #1 Choice</span>
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
@@ -204,7 +208,7 @@ export const HomePage = ({ isMobile }) => {
       {/* [SECTION G] HOW IT WORKS */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="HOW IT WORKS" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           4 Simple Steps to Start Getting Leads
         </h2>
 
@@ -269,7 +273,7 @@ export const HomePage = ({ isMobile }) => {
       {/* [SECTION H] INDUSTRIES WE SERVE */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="INDUSTRIES" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Leads For Every <span style={{ color: C.blue }}>Digital Service</span> Industry
         </h2>
 
@@ -298,18 +302,18 @@ export const HomePage = ({ isMobile }) => {
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Eyebrow label="MEET THE TEAM" labelColor={C.yellow} />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
             The Experts Behind Your <span style={{ color: C.yellow }}>Lead Pipeline</span>
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
               { name: 'Imran Merchant', role: 'CEO & Founder', img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
-              { name: 'Anurag ', role: 'Head of Lead Gen', img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
+              { name: 'Logan Anderson', role: 'Head of Lead Gen', img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
               { name: 'Vihan Sharma', role: 'Chief Tech Officer', img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
               { name: 'Amanda Wilson', role: 'Client Success Director', img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
             ].map((member, idx) => (
-              <div key={idx} style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+              <div key={idx} className="reveal" style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img src={member.img} alt={member.name} width="300" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', marginBottom: '14px', border: '3px solid #FFD600' }} />
                 <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                 <span style={{ fontSize: '11px', color: C.blue, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
@@ -334,7 +338,7 @@ export const HomePage = ({ isMobile }) => {
         </div>
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.navy, textAlign: 'left' }}>
           <Eyebrow label="BY THE NUMBERS" labelColor={C.yellow} />
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
             Our Results <span style={{ color: C.yellow }}>In Numbers</span>
           </h2>
 
@@ -345,8 +349,8 @@ export const HomePage = ({ isMobile }) => {
               { val: '50+', lbl: 'Active Monthly Clients' },
               { val: '15+', lbl: 'Countries Served' },
             ].map((box, idx) => (
-              <div key={idx} style={{ background: C.blue, padding: '20px', textAlign: 'center' }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '32px', color: C.white, marginBottom: '4px' }}>{box.val}</span>
+              <div key={idx} className="reveal" style={{ background: C.blue, padding: '20px', textAlign: 'center' }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '32px', color: C.white, marginBottom: '4px' }}><Counter value={box.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '10px', color: C.yellow, textTransform: 'uppercase', letterSpacing: '1px' }}>{box.lbl}</span>
               </div>
             ))}
@@ -363,7 +367,7 @@ export const HomePage = ({ isMobile }) => {
       {/* [SECTION M] BLOG WITH IMAGES */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="FROM OUR BLOG" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
           Latest Tips & <span style={{ color: C.blue }}>Industry Insights</span>
         </h2>
 
@@ -373,7 +377,7 @@ export const HomePage = ({ isMobile }) => {
             { border: C.blue, cat: 'WEB DESIGN', img: home2 , title: 'Why Exclusive Leads Beat Shared Leads Every Time', desc: 'Discover how shared leads damage your reps margins and how exclusive leads establish sustainable growth pipelines.' },
             { border: C.navy, cat: 'APPOINTMENTS', img: home3 , title: 'How to Scale Your Agency With Appointment Fixed Leads', desc: 'Scale calendar consulting sessions to secure five-figure retainer agreements. Skip cold dialing.' },
           ].map((post, idx) => (
-            <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${post.border}`, display: 'flex', flexDirection: 'column' }}>
+            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${post.border}`, display: 'flex', flexDirection: 'column' }}>
               <img src={post.img} alt={post.title} width="600" height="200" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
               <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', textAlign: 'left' }}>
                 <span style={{
@@ -421,7 +425,7 @@ export const HomePage = ({ isMobile }) => {
 
       {/* [SECTION N] PARTNERS BAND */}
       <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.white, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.white, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '28px' }}>
           Trusted & Certified By
         </h2>
         <div style={{

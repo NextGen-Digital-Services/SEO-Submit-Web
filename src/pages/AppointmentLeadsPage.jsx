@@ -6,9 +6,12 @@ import SectionWrapper from '../components/SectionWrapper';
 import AppointmentLeadsForm from '../forms/AppointmentLeadsForm';
 import AppointmentImg from '../assets/All Images/AppointmentsLeads_result.webp';
 import soloman from '../assets/home/Soloman.webp';
+import useScrollReveal from '../hooks/useScrollReveal';
+import Counter from '../components/Counter';
 
 export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
   const navigate = useNavigate();
+  useScrollReveal();
 
   return (
     <div style={{ width: '100%' }}>
@@ -141,8 +144,8 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
               { val: '3x', lbl: 'Conversion Increase' },
               { val: '24/7', lbl: 'Calendar Sync' },
             ].map((item, idx) => (
-              <div key={idx} style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(255,255,255,0.15)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white }}>{item.val}</span>
+              <div key={idx} className="reveal" style={{ textAlign: 'center', borderBottom: idx !== 3 ? '1px solid rgba(255,255,255,0.15)' : 'none', paddingBottom: '12px', marginBottom: idx !== 3 ? '12px' : 0 }}>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white }}><Counter value={item.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '9px', color: C.yellow, textTransform: 'uppercase', letterSpacing: '1px', marginTop: '2px' }}>{item.lbl}</span>
               </div>
             ))}
@@ -153,7 +156,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [B] WHAT IS APPOINTMENT FIXED LEAD */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="HOW IT WORKS" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           What is an Appointment Fixed Lead?
         </h2>
 
@@ -169,7 +172,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
                 'Full notes on client requirements and budgets attached.',
                 'CMO, CEO, or business owner present on the meeting.',
               ].map((bullet, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
+                <div key={idx} className="reveal" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
                   <i className="ti ti-circle-check" style={{ color: C.blue, fontSize: '16px', marginTop: '2px' }} />
                   <span>{bullet}</span>
                 </div>
@@ -191,7 +194,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
                   { num: '3', title: 'Calendar Sync', desc: 'Calendar invitation automatically pushes to your representatives.' },
                   { num: '4', title: 'Close The Deal', desc: 'You run the pitch call and sign the contract.' },
                 ].map((step) => (
-                  <div key={step.num} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                  <div key={step.num} className="reveal" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <div style={{ width: '24px', height: '24px', background: C.blue, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '10px' }}>
                       {step.num}
                     </div>
@@ -209,7 +212,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
 
       {/* [C] BENEFITS */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
           Key Benefits of Appointment Leads
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
@@ -219,7 +222,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             { title: 'Confirmed Meeting Time', desc: 'Meetings route straight onto your calendar software.' },
             { title: 'Decision Maker Present', desc: 'Saves time by pitching CEO, Founder, or CMO direct.' },
           ].map((item, idx) => (
-            <div key={idx} style={{ background: C.white, padding: '20px', textAlign: 'left', borderRadius: 0 }}>
+            <div key={idx} className="reveal" style={{ background: C.white, padding: '20px', textAlign: 'left', borderRadius: 0 }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '8px' }}>{item.title}</h4>
               <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.5 }}>{item.desc}</p>
             </div>
@@ -230,7 +233,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [D] INDUSTRIES */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="TARGET SECTORS" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           We Sync Appointments For Multiple Sectors
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
@@ -242,7 +245,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             { title: 'Logistics Companies', desc: 'Freight providers seeking contract shippers.' },
             { title: 'Legal Counsel', desc: 'Attorneys sourcing commercial contract consulting.' },
           ].map((item, idx) => (
-            <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
+            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.blue, marginBottom: '6px' }}>{item.title}</h4>
               <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.5 }}>{item.desc}</p>
             </div>
@@ -253,7 +256,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [E] PRICING */}
       <SectionWrapper bg={C.navy} id="appt-pricing">
         <Eyebrow label="PRICING PLANS" labelColor={C.yellow} />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
           Appointment Packages
         </h2>
 
@@ -283,7 +286,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             };
 
             return (
-              <div key={pack.name} style={cardStyle}>
+              <div key={pack.name} className="reveal" style={cardStyle}>
                 <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.navy, marginBottom: '6px' }}>
                   {pack.name}
                 </div>
@@ -333,7 +336,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [F] COMPARISON TABLE */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
             Lead Sourcing Comparison
           </h2>
           <div style={{ overflowX: 'auto' }}>
@@ -380,7 +383,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
       {/* [G] FAQ */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="FAQ" />
-        <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Frequently Asked Questions About Appointments
         </h2>
 
@@ -395,7 +398,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
             { q: 'Do you provide call logs?', a: 'Yes, call transcripts and recordings are provided.' },
             { q: 'Can we adjust monthly volumes?', a: 'Yes, you can upgrade or scale your package monthly.' },
           ].map((faq, idx) => (
-            <div key={idx} style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
+            <div key={idx} className="reveal" style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>{faq.q}</h4>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
             </div>
@@ -405,7 +408,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
 
       {/* [H] TESTIMONIALS */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.white, marginBottom: '28px' }}>
+        <h3 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.white, marginBottom: '28px' }}>
           Client Success Stories
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>

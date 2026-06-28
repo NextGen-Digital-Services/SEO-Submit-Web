@@ -9,7 +9,7 @@ export const ServicesSection = ({ isMobile }) => {
   return (
     <SectionWrapper bg={C.lightBg}>
       <Eyebrow label="WHAT WE OFFER" />
-      <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+      <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
         Our <span style={{ color: C.blue }}>Three Core</span> Lead Generation Services
       </h2>
 
@@ -43,7 +43,7 @@ export const ServicesSection = ({ isMobile }) => {
             path: '/appointment-leads',
           },
         ].map((srv, idx) => (
-          <div key={idx} style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${srv.border}`, display: 'flex', flexDirection: 'column' }}>
+          <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${srv.border}`, display: 'flex', flexDirection: 'column' }}>
             <img
               src={srv.img}
               alt={srv.title}
@@ -73,7 +73,7 @@ export const ServicesSection = ({ isMobile }) => {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '20px', flex: 1 }}>
                 {srv.features.map((f) => (
-                  <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: '#444' }}>
+                  <div key={f} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', color: '#444' }}>
                     <i className="ti ti-check" style={{ color: C.blue, fontSize: '12px' }} />
                     <span>{f}</span>
                   </div>

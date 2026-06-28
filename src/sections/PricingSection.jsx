@@ -10,7 +10,7 @@ export const PricingSection = ({ isMobile }) => {
   return (
     <SectionWrapper bg={C.lightBg}>
       <Eyebrow label="PRICING PLANS" />
-      <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+      <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
         Simple & Transparent Packages
       </h2>
 
@@ -42,7 +42,7 @@ export const PricingSection = ({ isMobile }) => {
           };
 
           return (
-            <div key={pack.name} style={cardStyle}>
+            <div key={pack.name} className="reveal" style={cardStyle}>
               {pack.featured && (
                 <div style={{
                   position: 'absolute',
@@ -76,7 +76,7 @@ export const PricingSection = ({ isMobile }) => {
               <div style={{ height: '2px', background: pack.featured ? 'rgba(255,255,255,0.2)' : '#f0f3ff', margin: '14px 0' }} />
               <div style={{ minHeight: '130px', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
                 {pack.features.map((f) => (
-                  <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: pack.featured ? 'rgba(255,255,255,0.85)' : '#444' }}>
+                  <div key={f} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: pack.featured ? 'rgba(255,255,255,0.85)' : '#444' }}>
                     <i className="ti ti-check" style={{ color: pack.featured ? C.yellow : C.blue, fontSize: '14px' }} />
                     <span>{f}</span>
                   </div>

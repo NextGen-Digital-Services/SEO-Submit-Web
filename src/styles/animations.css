@@ -86,3 +86,29 @@
   background-size: 200% auto;
   animation: shimmer 2s linear infinite;
 }
+
+/* Scroll Reveal animation classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating CTA button animation */
+@keyframes float-cta {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.btn-float {
+  animation: float-cta 3s ease-in-out infinite !important;
+}
