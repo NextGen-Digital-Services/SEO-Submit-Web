@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { C, F } from '../styles/tokens';
 import { FaLinkedinIn } from 'react-icons/fa';
@@ -20,6 +20,10 @@ export const Navbar = ({ isMobile }) => {
     { label: 'Contact', path: '/contact' },
   ];
 
+  const closeDrawer = useCallback(() => {
+    setIsDrawerOpen(false);
+  }, []);
+
   // Prevent body scrolling when drawer is open
   useEffect(() => {
     if (isDrawerOpen && isMobile) {
@@ -36,7 +40,7 @@ export const Navbar = ({ isMobile }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setIsDrawerOpen(false);
+        closeDrawer();
       }
     };
     if (isDrawerOpen && isMobile) {
@@ -45,22 +49,27 @@ export const Navbar = ({ isMobile }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isDrawerOpen, isMobile]);
+  }, [isDrawerOpen, isMobile, closeDrawer]);
 
   return (
     <>
-      <nav style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 999,
-        background: C.navy,
-        borderBottom: `3px solid ${C.yellow}`,
-        height: '60px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 24px',
-      }}>
+      <nav 
+        role="navigation" 
+        aria-label="Main Website Navigation"
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 999,
+          background: C.navy,
+          borderBottom: `3px solid ${C.yellow}`,
+          height: '60px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 24px',
+          boxSizing: 'border-box'
+        }}
+      >
         <Link to="/" style={{ 
           display: 'flex', 
           alignItems: 'center',
@@ -69,7 +78,7 @@ export const Navbar = ({ isMobile }) => {
         }}>
           <img
             src={Logo}
-            alt="SEO Submit Web Logo"
+            alt="SEO Submit Web Corporate Logo"
             width="38"
             height="38"
             loading="eager"
@@ -97,6 +106,7 @@ export const Navbar = ({ isMobile }) => {
             {links.map((link, idx) => {
               const isActive = location.pathname === link.path;
               const isHovered = hoveredIndex === idx;
+              const isLast = idx === links.length - 1;
               return (
                 <Link
                   key={link.path}
@@ -107,15 +117,16 @@ export const Navbar = ({ isMobile }) => {
                     color: C.white,
                     fontSize: '11px',
                     fontWeight: 600,
-                    padding: '0 10px',
+                    padding: '0 12px',
                     height: '60px',
                     display: 'flex',
                     alignItems: 'center',
-                    borderRight: '1px solid rgba(255,255,255,0.1)',
+                    borderRight: isLast ? 'none' : '1px solid rgba(255,255,255,0.1)',
                     textDecoration: 'none',
                     fontFamily: F.body,
                     background: (isActive || isHovered) ? C.blue : 'transparent',
                     transition: 'background 0.2s ease',
+                    boxSizing: 'border-box'
                   }}
                 >
                   {link.label}
@@ -131,7 +142,7 @@ export const Navbar = ({ isMobile }) => {
             href="https://www.linkedin.com/in/imran-merchant?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn Profile"
+            aria-label="Follow Imran Merchant on LinkedIn"
             style={{
               color: C.white,
               fontSize: '18px',
@@ -140,6 +151,8 @@ export const Navbar = ({ isMobile }) => {
               justifyContent: 'center',
               textDecoration: 'none',
               transition: 'color 0.2s ease',
+              width: '24px',
+              height: '24px'
             }}
             onMouseEnter={(e) => e.currentTarget.style.color = C.yellow}
             onMouseLeave={(e) => e.currentTarget.style.color = C.white}
@@ -150,6 +163,8 @@ export const Navbar = ({ isMobile }) => {
           {isMobile && (
             <button
               onClick={() => setIsDrawerOpen(true)}
+              aria-expanded={isDrawerOpen}
+              aria-controls="mobile-nav-drawer"
               aria-label="Open navigation menu"
               style={{
                 width: '40px',
@@ -174,7 +189,7 @@ export const Navbar = ({ isMobile }) => {
         <>
           {/* Backdrop overlay */}
           <div
-            onClick={() => setIsDrawerOpen(false)}
+            onClick={closeDrawer}
             style={{
               position: 'fixed',
               top: 0,
@@ -192,6 +207,7 @@ export const Navbar = ({ isMobile }) => {
 
           {/* Drawer Panel */}
           <div
+            id="mobile-nav-drawer"
             style={{
               position: 'fixed',
               top: 0,
@@ -203,7 +219,7 @@ export const Navbar = ({ isMobile }) => {
               boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.5)',
               zIndex: 9999,
               transform: isDrawerOpen ? 'translateX(0)' : 'translateX(100%)',
-              transition: 'transform 0.3s ease-in-out',
+              transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
               display: 'flex',
               flexDirection: 'column',
               padding: '24px',
@@ -212,11 +228,11 @@ export const Navbar = ({ isMobile }) => {
           >
             {/* Drawer Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-              <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.yellow, letterSpacing: '1px' }}>
+              <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.yellow, letterSpacing: '1.5px' }}>
                 NAVIGATION
               </span>
               <button
-                onClick={() => setIsDrawerOpen(false)}
+                onClick={closeDrawer}
                 aria-label="Close navigation menu"
                 style={{
                   background: 'transparent',
@@ -228,21 +244,27 @@ export const Navbar = ({ isMobile }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   padding: 0,
+                  width: '32px',
+                  height: '32px'
                 }}
               >
                 <i className="ti ti-x" />
               </button>
             </div>
 
-            {/* Drawer Links */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {/* Drawer Links Stack */}
+            <div 
+              role="menu"
+              style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}
+            >
               {links.map((link) => {
                 const isActive = location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
-                    onClick={() => setIsDrawerOpen(false)}
+                    role="menuitem"
+                    onClick={closeDrawer}
                     style={{
                       color: isActive ? C.yellow : C.white,
                       fontSize: '14px',
@@ -254,6 +276,8 @@ export const Navbar = ({ isMobile }) => {
                       transition: 'all 0.2s ease',
                       display: 'block',
                       borderLeft: isActive ? `3px solid ${C.yellow}` : '3px solid transparent',
+                      borderRadius: '0 4px 4px 0',
+                      boxSizing: 'border-box'
                     }}
                   >
                     {link.label}

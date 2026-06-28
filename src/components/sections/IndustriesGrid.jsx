@@ -74,11 +74,11 @@ const IndustriesGrid = () => {
   };
 
   return (
-    <section id="industries" className="industries-section section-padding relative">
+    <section id="industries" className="industries-section section-padding relative" aria-label="Target Industries Verticals Sourced">
       <div className="container">
-        <div className="section-title-wrapper animate-slide-up">
-          <div className="section-tag">
-            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg">
+        <div className="section-title-wrapper animate-slide-up" style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <div className="section-tag" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
               <line x1="9" y1="22" x2="9" y2="16" />
               <line x1="15" y1="22" x2="15" y2="16" />
@@ -88,7 +88,7 @@ const IndustriesGrid = () => {
             <span>Industries We Serve</span>
           </div>
           <h2>Industries We Serve</h2>
-          <p className="subtitle">
+          <p className="subtitle" style={{ maxWidth: '720px', margin: '16px auto 0 auto' }}>
             We source and qualify high-intent B2B prospects across diverse high-value verticals, matching them with your agency's industry expertise.
           </p>
         </div>
@@ -137,7 +137,10 @@ const IndustriesGrid = () => {
           transition: background-color var(--transition-normal);
         }
         .industries-grid {
-          margin-top: 20px;
+          margin-top: 32px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 24px;
         }
         .industry-card {
           padding: 35px 30px;
@@ -146,6 +149,7 @@ const IndustriesGrid = () => {
           flex-direction: column;
           align-items: flex-start;
           height: 100%;
+          box-sizing: border-box;
         }
         .industry-card-header {
           display: flex;
@@ -162,6 +166,7 @@ const IndustriesGrid = () => {
           align-items: center;
           justify-content: center;
           border: 1px solid var(--border-light);
+          flex-shrink: 0;
           transition: all var(--transition-normal);
         }
         .industry-stat-tag {
@@ -169,25 +174,35 @@ const IndustriesGrid = () => {
           font-weight: 700;
           padding: 4px 10px;
           border-radius: var(--radius-full);
+          white-space: nowrap;
         }
         .industry-name {
           font-size: 1.25rem;
           font-weight: 800;
           color: var(--text-primary);
           margin-bottom: 12px;
+          margin-top: 0;
         }
         .industry-benefit {
           font-size: 0.9rem;
           color: var(--text-secondary);
           line-height: 1.6;
+          margin: 0;
         }
         
         @media (max-width: 768px) {
+          .industries-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
           .industry-card {
             padding: 24px;
           }
           .industry-card-header {
             margin-bottom: 16px;
+          }
+          .section-title-wrapper h2 {
+            font-size: 1.8rem;
           }
         }
       `}</style>

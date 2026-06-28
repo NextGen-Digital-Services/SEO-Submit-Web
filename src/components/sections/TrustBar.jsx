@@ -22,7 +22,7 @@ const TrustBar = () => {
             {/* First Set of Logos */}
             {logos.map((logo, index) => (
               <div className="logo-item" key={`logo-1-${index}`}>
-                <svg className="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <svg className="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d={logo.icon} />
                 </svg>
                 <span className="logo-name">{logo.name}</span>
@@ -31,7 +31,7 @@ const TrustBar = () => {
             {/* Duplicated Set of Logos for Infinite Loop */}
             {logos.map((logo, index) => (
               <div className="logo-item" key={`logo-2-${index}`}>
-                <svg className="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <svg className="logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d={logo.icon} />
                 </svg>
                 <span className="logo-name">{logo.name}</span>
@@ -48,6 +48,8 @@ const TrustBar = () => {
           border-top: 1px solid var(--border-light);
           border-bottom: 1px solid var(--border-light);
           transition: background-color var(--transition-normal);
+          box-sizing: border-box;
+          width: 100%;
         }
         .trust-heading {
           font-size: 0.8rem;
@@ -57,31 +59,57 @@ const TrustBar = () => {
           color: var(--text-muted);
           text-align: center;
           margin-bottom: 30px;
+          margin-top: 0;
         }
         .logo-carousel-container {
           width: 100%;
-          mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+          display: flex;
+          overflow: hidden;
+          position: relative;
+          mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+        }
+        .logo-carousel-track {
+          display: flex;
+          width: max-content;
+          gap: 24px;
+          animation: marquee 25s linear infinite;
+          will-change: transform;
+        }
+        .logo-carousel-track:hover {
+          animation-play-state: paused;
         }
         .logo-item {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 10px 24px;
+          padding: 12px 24px;
           background-color: var(--bg-primary);
           border: 1px solid var(--border-light);
           border-radius: var(--radius-full);
           white-space: nowrap;
+          flex-shrink: 0;
+          box-sizing: border-box;
         }
         .logo-svg {
           width: 20px;
           height: 20px;
           color: var(--primary);
+          flex-shrink: 0;
         }
         .logo-name {
           font-size: 0.9rem;
           font-weight: 700;
           color: var(--text-primary);
+        }
+        
+        @keyframes marquee {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          100% {
+            transform: translate3d(calc(-50% - 12px), 0, 0);
+          }
         }
         
         @media (max-width: 768px) {
@@ -91,6 +119,19 @@ const TrustBar = () => {
           .trust-heading {
             font-size: 0.75rem;
             margin-bottom: 20px;
+            padding: 0 16px;
+          }
+          .logo-carousel-track {
+            gap: 16px;
+            animation: marquee 20s linear infinite;
+          }
+          @keyframes marquee {
+            0% {
+              transform: translate3d(0, 0, 0);
+            }
+            100% {
+              transform: translate3d(calc(-50% - 8px), 0, 0);
+            }
           }
         }
       `}</style>

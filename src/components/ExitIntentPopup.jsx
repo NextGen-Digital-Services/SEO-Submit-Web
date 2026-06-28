@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 export default function ExitIntentPopup({ onSubmit }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,6 +7,13 @@ export default function ExitIntentPopup({ onSubmit }) {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleClose = useCallback(() => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setIsRendered(false);
+    }, 300);
+  }, []);
 
   useEffect(() => {
     const hasShown = sessionStorage.getItem('exit_popup_shown');
@@ -18,47 +25,47 @@ export default function ExitIntentPopup({ onSubmit }) {
 
     const showPopup = () => {
       setIsRendered(true);
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 50);
+      // Let React process insertion before animating opacity/scale
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setIsVisible(true);
+        }, 30);
+      });
       sessionStorage.setItem('exit_popup_shown', 'true');
+      cleanupEvents();
     };
 
-    // 7 seconds delay trigger
-    timeoutId = setTimeout(showPopup, 7000);
-
-    // Mouse leave viewport top trigger
     const handleMouseLeave = (e) => {
       if (e.clientY <= 0) {
         showPopup();
-        document.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-    document.addEventListener('mouseleave', handleMouseLeave);
 
-    return () => {
-      clearTimeout(timeoutId);
+    const cleanupEvents = () => {
+      if (timeoutId) clearTimeout(timeoutId);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
+
+    // 7 seconds delay fallback trigger
+    timeoutId = setTimeout(showPopup, 7000);
+
+    // Mouse leave viewport top trigger
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return cleanupEvents;
   }, []);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    setTimeout(() => {
-      setIsRendered(false);
-    }, 300);
-  };
-
   const handleInputChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-    if (errors[e.target.name]) {
-      setErrors({
-        ...errors,
-        [e.target.name]: ''
-      });
+    const { name, value } = e.target;
+    setForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
     }
   };
 
@@ -126,22 +133,30 @@ export default function ExitIntentPopup({ onSubmit }) {
   if (!isRendered) return null;
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      background: 'rgba(0, 0, 0, 0.75)',
-      backdropFilter: 'blur(4px)',
-      zIndex: 10000,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      opacity: isVisible ? 1 : 0,
-      transition: 'opacity 250ms ease',
-      boxSizing: 'border-box',
-    }}>
+    <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="exit-modal-title"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        background: 'rgba(0, 0, 0, 0.75)',
+        backdropFilter: 'blur(4px)',
+        zIndex: 10000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: isVisible ? 1 : 0,
+        transition: 'opacity 250ms ease-in-out',
+        boxSizing: 'border-box',
+      }}
+    >
+      {/* Background overlay click trap to close optionally */}
+      <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, zIndex: -1 }} onClick={handleClose} />
+
       <div style={{
         position: 'relative',
         width: '90%',
@@ -150,9 +165,9 @@ export default function ExitIntentPopup({ onSubmit }) {
         borderRadius: '8px',
         padding: '40px',
         boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        transform: isVisible ? 'scale(1)' : 'scale(0.92)',
+        transform: isVisible ? 'scale(1)' : 'scale(0.95)',
         opacity: isVisible ? 1 : 0,
-        transition: 'transform 300ms ease-out, opacity 300ms ease-out',
+        transition: 'transform 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 300ms ease-out',
         boxSizing: 'border-box',
         color: '#111111',
       }}>
@@ -178,20 +193,21 @@ export default function ExitIntentPopup({ onSubmit }) {
 
         {isSuccess ? (
           <div style={{ textAlign: 'center', padding: '20px 0' }}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B21FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '16px' }}>
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B21FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '16px', display: 'inline-block' }}>
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <h3 style={{ fontSize: '24px', fontWeight: 700, color: '#0D0D1A', marginBottom: '10px' }}>Request Received</h3>
-            <p style={{ fontSize: '15px', color: '#555555' }}>We will send your niche-specific verified lead samples within 24 hours.</p>
+            <h3 id="exit-modal-title" style={{ fontSize: '24px', fontWeight: 700, color: '#0D0D1A', marginBottom: '10px', marginTop: 0 }}>Request Received</h3>
+            <p style={{ fontSize: '15px', color: '#555555', margin: 0 }}>We will send your niche-specific verified lead samples within 24 hours.</p>
           </div>
         ) : (
           <div>
-            <h3 style={{
+            <h3 id="exit-modal-title" style={{
               fontFamily: "'Montserrat', sans-serif",
               fontSize: '28px',
               fontWeight: 700,
               color: '#0D0D1A',
               marginBottom: '10px',
+              marginTop: 0,
               lineHeight: 1.2,
             }}>
               Before You Leave...
@@ -201,6 +217,7 @@ export default function ExitIntentPopup({ onSubmit }) {
               fontSize: '15px',
               color: '#555555',
               marginBottom: '24px',
+              marginTop: 0,
               lineHeight: 1.5,
             }}>
               Get 3 verified lead samples for your exact niche — delivered in 24 hours.
@@ -312,6 +329,7 @@ export default function ExitIntentPopup({ onSubmit }) {
                     color: '#111111',
                     outline: 'none',
                     boxSizing: 'border-box',
+                    cursor: 'pointer'
                   }}
                 >
                   <option value="">Which service are you looking for?</option>

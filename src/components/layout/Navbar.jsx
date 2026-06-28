@@ -17,18 +17,13 @@ const Navbar = ({ theme, toggleTheme }) => {
   ];
 
   return (
-    <nav className="glass-navbar">
+    <nav className="glass-navbar" aria-label="Main Navigation">
       <div className="container nav-container">
         {/* LOGO */}
-        <Link to="/" style={{ 
-          display: 'flex', 
-          alignItems: 'center',
-          gap: '10px',
-          textDecoration: 'none',
-        }}>
+        <Link to="/" className="nav-logo-link" aria-label="SEO Submit Web Home">
           <img
             src={Logo}
-            alt="SEO Submit Web"
+            alt="SEO Submit Web Logo"
             style={{
               height: '38px',
               width: 'auto',
@@ -49,7 +44,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         </Link>
 
         {/* NAVIGATION LINKS (Desktop) */}
-        <div className="nav-links-desktop">
+        <div className="nav-links-desktop" role="navigation">
           {links.map((link) => (
             <NavLink 
               key={link.name} 
@@ -72,7 +67,9 @@ const Navbar = ({ theme, toggleTheme }) => {
           <button 
             className={`mobile-menu-burger ${mobileMenuOpen ? 'open' : ''}`} 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+            aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
           >
             <span></span>
             <span></span>
@@ -81,9 +78,13 @@ const Navbar = ({ theme, toggleTheme }) => {
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation (Full screen overlay with smooth slide-down) */}
-      <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-drawer-header flex-between container">
+      {/* Mobile Drawer Navigation */}
+      <div 
+        id="mobile-nav-drawer"
+        className={`mobile-menu-drawer ${mobileMenuOpen ? 'active' : ''}`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className="mobile-drawer-header container">
           <Link to="/" style={{ 
             display: 'flex', 
             alignItems: 'center',
@@ -92,7 +93,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           }} onClick={() => setMobileMenuOpen(false)}>
             <img
               src={Logo}
-              alt="SEO Submit Web"
+              alt="SEO Submit Web Logo"
               style={{
                 height: '38px',
                 width: 'auto',
@@ -125,7 +126,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
         <ul className="mobile-nav-links container">
           {links.map((link) => (
-            <li key={link.name}>
+            <li key={link.name} style={{ listStyle: 'none' }}>
               <Link 
                 to={link.path} 
                 className="mobile-nav-link-item"
@@ -140,6 +141,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               to="/contact" 
               className="btn btn-orange btn-block text-center"
               onClick={() => setMobileMenuOpen(false)}
+              style={{ display: 'block', padding: '14px' }}
             >
               Get Started
             </Link>
@@ -147,7 +149,7 @@ const Navbar = ({ theme, toggleTheme }) => {
         </ul>
       </div>
 
-      {/* Styled inline components to guarantee perfect rendering */}
+      {/* Styled inline components */}
       <style>{`
         .glass-navbar {
           position: sticky;
@@ -172,33 +174,20 @@ const Navbar = ({ theme, toggleTheme }) => {
           margin: 0 auto;
           padding-left: 24px;
           padding-right: 24px;
+          box-sizing: border-box;
         }
 
-        .logo-wrapper {
-          display: flex;
+        .nav-logo-link {
+          display: flex; 
           align-items: center;
           gap: 10px;
-          font-weight: 800;
-          font-size: 1.4rem;
-          color: var(--text-primary);
-          font-family: var(--font-heading);
           text-decoration: none;
-          flex-shrink: 0;
-        }
-
-        .logo-icon {
-          width: 28px;
-          height: 28px;
-        }
-
-        .logo-text {
-          letter-spacing: -0.5px;
         }
 
         .nav-links-desktop {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
         }
 
         .nav-link-item {
@@ -243,25 +232,6 @@ const Navbar = ({ theme, toggleTheme }) => {
           flex-shrink: 0;
         }
 
-        .theme-toggle-btn {
-          background: none;
-          border: 1px solid var(--border-light);
-          color: var(--text-primary);
-          padding: 8px;
-          border-radius: var(--radius-md);
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all var(--transition-fast);
-        }
-
-        .theme-toggle-btn:hover {
-          background-color: var(--bg-tertiary);
-          border-color: var(--primary-light);
-          color: var(--primary);
-        }
-
         .btn-nav-cta {
           display: inline-flex;
         }
@@ -271,21 +241,32 @@ const Navbar = ({ theme, toggleTheme }) => {
           display: none;
           flex-direction: column;
           justify-content: space-between;
-          width: 22px;
-          height: 16px;
+          width: 24px;
+          height: 18px;
           background: none;
           border: none;
           cursor: pointer;
           padding: 0;
-          z-index: 101;
+          z-index: 201;
         }
 
         .mobile-menu-burger span {
           width: 100%;
           height: 2px;
-          background-color: var(--text-primary);
+          background-color: #ffffff;
           border-radius: 2px;
           transition: all 0.3s ease;
+        }
+
+        /* Burger animations when open */
+        .mobile-menu-burger.open span:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-menu-burger.open span:nth-child(2) {
+          opacity: 0;
+        }
+        .mobile-menu-burger.open span:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Mobile Drawer */
@@ -295,7 +276,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           left: 0;
           width: 100%;
           height: 100vh;
-          background-color: var(--bg-primary);
+          background-color: var(--bg-secondary, #111);
           z-index: 200;
           transform: translateY(-100%);
           opacity: 0;
@@ -303,6 +284,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           display: flex;
           flex-direction: column;
           padding-top: 24px;
+          box-sizing: border-box;
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, visibility 0.4s;
         }
 
@@ -313,33 +295,44 @@ const Navbar = ({ theme, toggleTheme }) => {
         }
 
         .mobile-drawer-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
           width: 100%;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
+          padding: 0 24px;
+          box-sizing: border-box;
         }
 
         .mobile-drawer-close {
           background: none;
           border: none;
-          color: var(--text-primary);
+          color: #ffffff;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px;
         }
 
         .mobile-nav-links {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 12px;
           overflow-y: auto;
           flex-grow: 1;
-          padding-bottom: 40px;
+          padding: 0 24px 40px 24px;
+          margin: 0;
+          box-sizing: border-box;
         }
 
         .mobile-nav-link-item {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: var(--text-primary);
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #ffffff;
           display: block;
-          padding: 12px 0;
-          border-bottom: 1px solid var(--border-light);
+          padding: 14px 0; /* Massively improved mobile tap targets */
+          border-bottom: 1px solid var(--border-light, rgba(255,255,255,0.1));
           text-decoration: none;
         }
 
@@ -348,21 +341,21 @@ const Navbar = ({ theme, toggleTheme }) => {
         }
 
         .mobile-cta-li {
-          margin-top: 20px;
-          list-style: none;
+          margin-top: 24px;
         }
 
-        /* Responsive breakpoints */
-        @media (max-width: 1280px) {
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
           .nav-links-desktop {
-            gap: 12px;
+            gap: 10px;
           }
           .nav-link-item {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
           }
         }
 
-        @media (max-width: 1150px) {
+        /* Switched breakpoint to 1024px to completely avoid header cramping */
+        @media (max-width: 1024px) {
           .nav-links-desktop {
             display: none !important;
           }

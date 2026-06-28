@@ -29,21 +29,21 @@ const AuthorityMetrics = () => {
   ];
 
   return (
-    <section className="metrics-section section-padding relative overflow-hidden">
+    <section className="metrics-section section-padding relative overflow-hidden" aria-label="Authority Metrics">
       {/* Decorative Blur */}
-      <div className="glow-blur metrics-glow" style={{ top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '300px', backgroundColor: 'var(--primary-glow)' }}></div>
+      <div className="glow-blur metrics-glow" style={{ top: '30%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '300px', backgroundColor: 'var(--primary-glow)', pointerEvents: 'none' }}></div>
 
       <div className="container">
-        <div className="section-title-wrapper animate-slide-up">
-          <div className="section-tag">
-            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg">
+        <div className="section-title-wrapper animate-slide-up" style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <div className="section-tag" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M3 3v18h18" />
               <path d="m18.7 8-5.1 5.2-2.8-2.7L7 14.3" />
             </svg>
             <span>Trust & Experience</span>
           </div>
           <h2>We Deliver Vetted B2B Leads to Scale Your Agency</h2>
-          <p className="subtitle">
+          <p className="subtitle" style={{ maxWidth: '720px', margin: '16px auto 0 auto' }}>
             See the concrete figures behind the SEOLeads client acquisition network. We prioritize speed, validation accuracy, and client ROI.
           </p>
         </div>
@@ -57,7 +57,7 @@ const AuthorityMetrics = () => {
             >
               <div className="metric-glow-dot" style={{ backgroundColor: metric.color }}></div>
               <span className="metric-value" style={{ color: metric.color }}>{metric.value}</span>
-              <span className="metric-label">{metric.label}</span>
+              <strong className="metric-label">{metric.label}</strong>
               <p className="metric-desc">{metric.description}</p>
             </div>
           ))}
@@ -71,12 +71,17 @@ const AuthorityMetrics = () => {
         }
         .metrics-grid {
           margin-top: 20px;
+          display: grid;
+          /* Default fallback grid style */
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
         }
         .metric-card {
           padding: 40px 30px;
           text-align: center;
           position: relative;
           overflow: hidden;
+          box-sizing: border-box;
         }
         .metric-glow-dot {
           position: absolute;
@@ -102,20 +107,29 @@ const AuthorityMetrics = () => {
           font-size: 1.1rem;
           font-weight: 700;
           color: var(--text-primary);
-          margin-bottom: 8px;
+          margin-bottom: 12px;
+          line-height: 1.4;
         }
         .metric-desc {
           font-size: 0.85rem;
           color: var(--text-muted);
           line-height: 1.5;
+          margin: 0;
         }
         
+        /* RESPONSIVE BREAKPOINTS (Bina color change kiye layout strong adjustment) */
         @media (max-width: 1440px) {
           .metric-value {
             font-size: 3rem;
           }
         }
+
+        /* Tablet View: 2 Columns Grid */
         @media (max-width: 1024px) {
+          .metrics-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+          }
           .metric-value {
             font-size: 2.8rem;
           }
@@ -123,6 +137,22 @@ const AuthorityMetrics = () => {
             padding: 30px 20px;
           }
         }
+
+        /* Mobile View: 1 Column Stack */
+        @media (max-width: 767px) {
+          .metrics-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+          .metric-value {
+            font-size: 3rem; /* Kept bold on mobile but inside bounds */
+          }
+          .section-title-wrapper h2 {
+            font-size: 1.8rem; /* Keeps titles wrapping elegantly on mobile */
+            line-height: 1.3;
+          }
+        }
+
         @media (max-width: 375px) {
           .metric-value {
             font-size: 2.3rem;

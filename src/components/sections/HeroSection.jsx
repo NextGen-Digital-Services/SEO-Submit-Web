@@ -19,16 +19,16 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="hero-section overflow-hidden relative">
+    <section className="hero-section overflow-hidden relative" aria-label="Introduction Lead Generation Sourcing">
       {/* Background Decorative Blurs */}
-      <div className="glow-blur hero-glow-1" style={{ top: '10%', left: '10%', width: '400px', height: '400px', backgroundColor: 'var(--primary-glow)' }}></div>
-      <div className="glow-blur hero-glow-2" style={{ bottom: '20%', right: '10%', width: '350px', height: '350px', backgroundColor: 'var(--secondary-light)', opacity: 0.2 }}></div>
+      <div className="glow-blur hero-glow-1" style={{ top: '10%', left: '10%', width: '400px', height: '400px', backgroundColor: 'var(--primary-glow)', pointerEvents: 'none' }}></div>
+      <div className="glow-blur hero-glow-2" style={{ bottom: '20%', right: '10%', width: '350px', height: '350px', backgroundColor: 'var(--secondary-light)', opacity: 0.2, pointerEvents: 'none' }}></div>
 
       <div className="container hero-container animate-fade-in">
         {/* Left Column: Text & CTA Form */}
         <div className="hero-content text-left">
-          <div className="section-tag animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg">
+          <div className="section-tag animate-slide-up" style={{ animationDelay: '0.1s', display: 'inline-flex', alignItems: 'center' }}>
+            <svg style={{ width: '12px', height: '12px', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
               <circle cx="9" cy="7" r="4" />
               <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
@@ -47,16 +47,18 @@ const HeroSection = () => {
 
           {/* Quick Submit Form */}
           <div className="hero-form-wrapper animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <form onSubmit={handleSubmit} className="hero-form">
+            <form onSubmit={handleSubmit} className="hero-form" aria-label="Quick sample lead request form">
               <div className="input-group">
                 <span className="input-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
                 </span>
+                <label htmlFor="heroEmail" className="sr-only" style={{ display: 'none' }}>Agency Email Address</label>
                 <input 
                   type="email" 
+                  id="heroEmail"
                   placeholder="Enter your agency email"
                   required
                   value={emailInput}
@@ -65,7 +67,9 @@ const HeroSection = () => {
                 />
               </div>
               <div className="niche-selector-group">
+                <label htmlFor="heroNiche" className="sr-only" style={{ display: 'none' }}>Select Lead Specialty</label>
                 <select 
+                  id="heroNiche"
                   className="niche-select"
                   value={leadNiche}
                   onChange={(e) => setLeadNiche(e.target.value)}
@@ -81,8 +85,8 @@ const HeroSection = () => {
             </form>
 
             {success && (
-              <div className="submit-success-toast animate-slide-up">
-                <svg className="toast-success-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="submit-success-toast animate-slide-up" role="alert">
+                <svg className="toast-success-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                   <polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
@@ -94,19 +98,19 @@ const HeroSection = () => {
           {/* Key Value Pillars */}
           <div className="hero-pillars animate-slide-up" style={{ animationDelay: '0.5s' }}>
             <div className="pillar-item">
-              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>100% Exclusivity Guarantee</span>
             </div>
             <div className="pillar-item">
-              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Vetted Budgets & Intent</span>
             </div>
             <div className="pillar-item">
-              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               <span>Real-Time CRM Integrations</span>
@@ -118,7 +122,7 @@ const HeroSection = () => {
         <div className="hero-graphic animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <div className="hero-image-card">
             <div className="hero-image-wrapper">
-              <img src="/agency_team_meeting.png" alt="Established Lead Generation Agency Team" className="hero-image" />
+              <img src="/agency_team_meeting.png" alt="Established Lead Generation Agency Team Coordinating Client Pipeline Sourcing" className="hero-image" />
             </div>
             <div className="hero-image-badge-container">
               <span className="hero-image-badge-dot"></span>
@@ -133,15 +137,18 @@ const HeroSection = () => {
           padding-top: 100px;
           padding-bottom: 80px;
           background: radial-gradient(circle at top center, rgba(37, 99, 235, 0.03) 0%, transparent 70%);
+          box-sizing: border-box;
         }
         .hero-container {
           display: grid;
           grid-template-columns: 1.1fr 0.9fr;
           gap: 60px;
           align-items: center;
+          box-sizing: border-box;
         }
         .hero-content {
           max-width: 680px;
+          box-sizing: border-box;
         }
         .hero-title {
           font-size: 3.5rem;
@@ -150,6 +157,7 @@ const HeroSection = () => {
           letter-spacing: -2px;
           color: var(--text-primary);
           margin-bottom: 24px;
+          margin-top: 0;
         }
         .hero-description {
           font-size: 1.2rem;
@@ -159,6 +167,7 @@ const HeroSection = () => {
         }
         .hero-form-wrapper {
           margin-bottom: 35px;
+          box-sizing: border-box;
         }
         .hero-form {
           display: flex;
@@ -168,6 +177,7 @@ const HeroSection = () => {
           border-radius: var(--radius-lg);
           border: 1px solid var(--border-light);
           box-shadow: var(--shadow-lg);
+          box-sizing: border-box;
         }
         .hero-form:focus-within {
           border-color: var(--primary);
@@ -179,6 +189,7 @@ const HeroSection = () => {
           gap: 10px;
           flex-grow: 1.5;
           padding-left: 12px;
+          box-sizing: border-box;
         }
         .niche-selector-group {
           display: flex;
@@ -186,6 +197,7 @@ const HeroSection = () => {
           border-left: 1px solid var(--border-light);
           padding-left: 12px;
           flex-grow: 0.5;
+          box-sizing: border-box;
         }
         .niche-select {
           border: none;
@@ -196,11 +208,13 @@ const HeroSection = () => {
           font-weight: 600;
           font-size: 0.95rem;
           cursor: pointer;
+          height: 100%;
         }
         .input-icon {
           color: var(--text-muted);
           display: flex;
           align-items: center;
+          flex-shrink: 0;
         }
         .hero-input {
           border: none;
@@ -209,6 +223,7 @@ const HeroSection = () => {
           width: 100%;
           color: var(--text-primary);
           font-size: 1rem;
+          box-sizing: border-box;
         }
         .hero-submit-btn {
           background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -217,6 +232,13 @@ const HeroSection = () => {
           padding: 14px 24px;
           font-weight: 600;
           cursor: pointer;
+          border: none;
+          white-space: nowrap;
+          transition: opacity 0.2s ease;
+        }
+        .hero-submit-btn:disabled {
+          opacity: 0.8;
+          cursor: not-allowed;
         }
         .submit-success-toast {
           margin-top: 16px;
@@ -229,6 +251,7 @@ const HeroSection = () => {
           color: var(--text-primary);
           border-radius: var(--radius-md);
           font-size: 0.9rem;
+          box-sizing: border-box;
         }
         .toast-success-icon {
           color: var(--accent-green);
@@ -238,6 +261,7 @@ const HeroSection = () => {
           display: flex;
           gap: 24px;
           flex-wrap: wrap;
+          box-sizing: border-box;
         }
         .pillar-item {
           display: flex;
@@ -251,9 +275,9 @@ const HeroSection = () => {
           width: 18px;
           height: 18px;
           color: var(--accent-green);
+          flex-shrink: 0;
         }
         
-        /* Hero Professional Image Card Styles */
         .hero-image-card {
           width: 100%;
           border-radius: var(--radius-lg);
@@ -265,6 +289,7 @@ const HeroSection = () => {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          box-sizing: border-box;
         }
         .hero-image-wrapper {
           width: 100%;
@@ -290,20 +315,21 @@ const HeroSection = () => {
           background-color: var(--primary-light);
           border-radius: var(--radius-sm);
           border-left: 4px solid var(--primary);
+          box-sizing: border-box;
+          text-align: left;
         }
         .hero-image-badge-dot {
           width: 8px;
           height: 8px;
           border-radius: 50%;
           background-color: var(--accent-orange);
-          animation: pulseGlow 1.5s infinite;
         }
         .hero-image-badge-text {
           font-size: 0.85rem;
           color: var(--text-primary);
         }
 
-        /* Hero Responsive breakpoints */
+        /* Hero Responsive Breakpoints */
         @media (max-width: 1440px) {
           .hero-title {
             font-size: 3.2rem;
@@ -325,6 +351,10 @@ const HeroSection = () => {
           .hero-pillars {
             justify-content: center;
           }
+          .hero-image-card {
+            max-width: 500px;
+            margin: 0 auto;
+          }
         }
         @media (max-width: 768px) {
           .hero-title {
@@ -333,29 +363,27 @@ const HeroSection = () => {
           }
           .hero-form {
             flex-direction: column;
-            padding: 8px;
+            padding: 12px;
+            gap: 16px;
           }
           .input-group {
-            padding-left: 4px;
-            padding-bottom: 8px;
+            padding-left: 0;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border-light);
+            width: 100%;
           }
           .niche-selector-group {
             border-left: none;
-            padding-left: 4px;
-            padding-bottom: 8px;
+            padding-left: 0;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--border-light);
+            width: 100%;
+          }
+          .niche-select {
+            padding: 4px 0;
           }
           .hero-submit-btn {
             width: 100%;
-          }
-        }
-        @media (max-width: 560px) {
-          .dashboard-grid {
-            grid-template-columns: 1fr;
-            gap: 12px;
-          }
-          .dashboard-body {
             padding: 16px;
           }
         }
