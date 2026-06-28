@@ -138,7 +138,7 @@ export const AboutPage = ({ isMobile }) => {
         </div>
         <div>
           <img
-            src="/assets/seo-analytics-leads.png"
+            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782553402/about1_result_ligj1b.webp"
             alt="Startup Delhi Office"
             width="1672"
             height="941"
@@ -301,7 +301,7 @@ export const AboutPage = ({ isMobile }) => {
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%', background: C.lightBg }}>
         <div>
           <img
-            src="/assets/lead-generation-hero.png"
+            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782553400/about2_result_rzyidl.webp"
             alt="SEO Submit Web Culture"
             width="1672"
             height="941"

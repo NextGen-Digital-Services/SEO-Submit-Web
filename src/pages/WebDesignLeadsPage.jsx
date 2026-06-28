@@ -201,23 +201,8 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
           </div>
 
           {/* Sample Lead Card Mockup */}
-          <div style={{ background: C.white, border: `3px solid ${C.blue}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
-            <div style={{ padding: '20px' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', color: C.blue, textTransform: 'uppercase', marginBottom: '12px', letterSpacing: '1px', borderBottom: `2px solid ${C.blue}`, paddingBottom: '6px' }}>
-                Verified Web Lead
-              </h4>
-              <div style={{ display: 'grid', gap: '8px', fontSize: '12px', fontFamily: F.body }}>
-                <div><strong>Business Name:</strong> Summit Dental Care</div>
-                <div><strong>Contact Name:</strong> Dr. Sarah Jenkins</div>
-                <div><strong>Email:</strong> dr.sarah@summitdental.com</div>
-                <div><strong>Phone:</strong> +1 (312) 555-0982</div>
-                <div><strong>Current Website:</strong> summitdentalsite.com</div>
-                <div><strong>Budget Range:</strong> $8,000 - $12,000</div>
-                <div><strong>Project Type:</strong> Complete Rebuild & CRM</div>
-                <div><strong>Timeline:</strong> 4 - 6 weeks</div>
-              </div>
-            </div>
+          <div style={{ background: C.white, border: `3px solid ${C.blue}`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden', height: '100%', minHeight: '350px' }}>
+            <img src="/assets/lead-generation-hero.png" alt="Agency team discussing website design projects" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
         </div>
       </SectionWrapper>
