@@ -17,9 +17,9 @@ export const TestimonialsSection = ({ isMobile }) => {
 
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
         {[
-          { name: 'Michael Anderson', comp: 'Apex Digital Solutions', img: soloman, txt: 'SEO Submit Web leads convert at 3x the rate of other lists. The phone validation ensures we talk to founders ready to buy SEO services.', badge: 'SEO Leads' },
-          { name: 'Sarah Mitchell', comp: 'BrightWave Agency', img: soloman, txt: 'I support SEO Submit Web leads fully. When a disconnected number popped up, support replaced it in 2 hours with no hassle.', badge: 'Web Design Leads' },
-          { name: 'David Thompson', comp: 'GrowthForge Marketing', img: soloman, txt: 'Our monthly sales retainers doubled in 90 days since boarding their calendar fixed appt leads. Saving SDR calling hours.', badge: 'Appointments' },
+          { name: 'Jared Diamond', comp: 'CEO at Upcision • apixdigital.co', img: soloman, txt: "The appointment-set leads from SEOSubmitWeb have completely transformed how I run my sales process — I spend less time prospecting and more time closing. Best investment I've made for my business.", badge: 'SEO Leads' },
+          { name: 'Josh Early', comp: 'Chief Operating Officer at  • www.omgnational.com', img: soloman, txt: "I was skeptical at first, but the very first web design lead I received from SEOSubmitWeb converted into a $4,000 project. I haven't looked back since.", badge: 'Web Design Leads' },
+          { name: 'Christopher Less', comp: 'CEO at • cplmarketinggroup.com', img: soloman, txt: "The appointment-set leads are worth every penny. I get on the call and the prospect already knows why we're talking — it makes closing so much easier and faster.", badge: 'Appointments' },
         ].map((test, idx) => (
           <div key={idx} style={{ background: C.white, padding: '24px', position: 'relative', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
