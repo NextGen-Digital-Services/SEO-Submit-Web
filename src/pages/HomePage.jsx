@@ -29,101 +29,184 @@ export const HomePage = ({ isMobile }) => {
       <HeroSection isMobile={isMobile} />
 
       {/* [SECTION B] TICKER BAR */}
-      <section className="hide-scrollbar" style={{
-        background: C.blue,
-        padding: '12px 24px',
-        display: 'flex',
-        overflowX: 'auto',
-        whiteSpace: 'nowrap',
-        width: '100%',
-      }}>
-        {[
-          { icon: 'ti-award', label: 'Founded', value: 'Since 2009' },
-          { icon: 'ti-users', label: 'Clients Served', value: '500+' },
-          { icon: 'ti-shield-check', label: 'Guarantee', value: 'Bad Lead Replaced' },
-          { icon: 'ti-clock', label: 'Support', value: '24/7 Available' },
-          { icon: 'ti-star', label: 'Avg Rating', value: '4.9 / 5.0' },
-        ].map((item, idx, arr) => (
-          <div
-            key={item.label}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '0 28px',
-              borderRight: idx === arr.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.3)',
-            }}
-          >
-            <span style={{ color: C.yellow, fontSize: '18px', display: 'flex', alignItems: 'center' }}>
-              <i className={`ti ${item.icon}`} />
-            </span>
-            <div style={{ display: 'inline-block', textAlign: 'left' }}>
-              <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', fontWeight: 600, letterSpacing: '1px', textTransform: 'uppercase', display: 'block' }}>{item.label}</span>
-              <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.white, display: 'block' }}>{item.value}</span>
-            </div>
-          </div>
-        ))}
-      </section>
+<section 
+  className="hide-scrollbar" 
+  style={{
+    background: C.blue,
+    padding: isMobile ? '20px 16px' : '16px 40px', // Extra horizontal padding for desktop layout breathing room
+    display: 'flex',
+    flexDirection: isMobile ? 'row' : 'row',
+    flexWrap: isMobile ? 'wrap' : 'nowrap', // Mobile par data wrap hoga, desktop par single row fill karega
+    justifyContent: isMobile ? 'space-between' : 'space-between', // Dono screen sizes par container ko pura fill karega
+    alignItems: 'center',
+    gap: isMobile ? '16px 12px' : '24px', // Flexible native gaps
+    width: '100%',
+    overflowX: 'hidden'
+  }}
+>
+  {[
+    { icon: 'ti-award', label: 'Founded', value: 'Since 2009' },
+    { icon: 'ti-users', label: 'Clients Served', value: '500+' },
+    { icon: 'ti-shield-check', label: 'Guarantee', value: 'Bad Lead Replaced' },
+    { icon: 'ti-clock', label: 'Support', value: '24/7 Available' },
+    { icon: 'ti-star', label: 'Avg Rating', value: '4.9 / 5.0' },
+  ].map((item, idx, arr) => {
+    // Mobile layouts require calculated fluid widths to fill maximum flex vectors
+    const flexBasisValue = isMobile ? 'calc(50% - 8px)' : 'auto';
+    
+    return (
+      <div
+        key={item.label}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          flexGrow: 1, // Har item ko expand hoke space fill karne dega
+          flexShrink: 0,
+          flexBasis: idx === arr.length - 1 && isMobile ? '100%' : flexBasisValue, // Mobile par last item full width space cover karega
+          justifyContent: idx === arr.length - 1 && isMobile ? 'center' : 'flex-start',
+          padding: isMobile ? '4px 0' : '0 12px',
+          // Desktop partitions borders logic without container leaks
+          borderRight: (!isMobile && idx !== arr.length - 1) ? '1px solid rgba(255,255,255,0.2)' : 'none',
+        }}
+      >
+        <span style={{ 
+          color: C.yellow, 
+          fontSize: '20px', 
+          display: 'flex', 
+          alignItems: 'center',
+          flexShrink: 0 
+        }}>
+          <i className={`ti ${item.icon}`} />
+        </span>
+        <div style={{ textAlign: 'left' }}>
+          <span style={{ 
+            fontSize: '10px', 
+            color: 'rgba(255,255,255,0.65)', 
+            fontWeight: 600, 
+            letterSpacing: '1px', 
+            textTransform: 'uppercase', 
+            display: 'block',
+            lineHeight: 1.3
+          }}>
+            {item.label}
+          </span>
+          <span style={{ 
+            fontFamily: F.display, 
+            fontWeight: 900, 
+            fontSize: isMobile ? '14px' : '16px', 
+            color: C.white, 
+            display: 'block',
+            marginTop: '2px',
+            lineHeight: 1.2
+          }}>
+            {item.value}
+          </span>
+        </div>
+      </div>
+    );
+  })}
+</section>
 
       {/* [SECTION C] ABOUT PREVIEW WITH IMAGE */}
-      <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
-        <div>
-          <img
-            src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552891/hero1_result_dulipv.webp"
-            alt="Agency team collaborating on lead generation"
-            width="1672"
-            height="941"
-            loading="lazy"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', }}
-          />
-        </div>
-        <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.white, textAlign: 'left' }}>
-          <Eyebrow label="ABOUT SEO SUBMIT WEB" />
-          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals  <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
-          </h2>
-          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '12px' }}>
-            We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never resold.
-            Every lead is generated fresh for your business alone, so you're always the first call, not the fifth.
-          </p>
-          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '24px' }}>
-            With nearly a decade of proven results, our clients don't just get leads — they get a predictable pipeline they can build a business on.
-            Stop competing for the same tired leads. Start closing exclusively yours.
-          </p>
+      <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%', overflow: 'hidden' }}>
+  {/* Local animation controls for high performance scale entry */}
+  <style>{`
+    .about-image-zoom {
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .about-image-zoom:hover {
+      transform: scale(1.04);
+    }
+    .about-btn-interactive {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .about-btn-interactive:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 87, 255, 0.25);
+      filter: brightness(1.1);
+    }
+  `}</style>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '28px' }}>
-            {[
-              { val: '16+ Years', lbl: 'Experience' },
-              { val: '500+ Clients', lbl: 'Trust Us' },
-              { val: '10K+ Leads', lbl: 'Delivered' },
-              { val: '15+ Countries', lbl: 'Served' },
-            ].map((p, idx) => (
-              <div key={idx} className="reveal" style={{ background: C.yellow, padding: '12px', textAlign: 'center' }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy }}><Counter value={p.val} /></span>
-                <span style={{ display: 'block', fontSize: '10px', color: '#555', fontFamily: F.body }}>{p.lbl}</span>
-              </div>
-            ))}
-          </div>
+  {/* Image Segment with dynamic container constraint */}
+  <div style={{ overflow: 'hidden', width: '100%', background: '#f3f4f6' }}>
+    <img
+      src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552891/hero1_result_dulipv.webp"
+      alt="Agency team collaborating on lead generation"
+      width="1672"
+      height="941"
+      loading="lazy"
+      className="about-image-zoom"
+      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+    />
+  </div>
 
-          <button
-            onClick={() => navigate('/about')}
-            style={{
-              background: C.blue,
-              color: C.white,
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '12px',
-              letterSpacing: '1px',
-              padding: '14px 28px',
-              border: 'none',
-              cursor: 'pointer',
-              borderRadius: 0,
-            }}
-          >
-            READ OUR FULL STORY →
-          </button>
+  {/* Content Layer with dynamic alignment spacing */}
+  <div style={{ padding: isMobile ? '40px 20px' : '64px 48px', background: C.white, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+    <Eyebrow label="ABOUT SEO SUBMIT WEB" />
+    <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: isMobile ? '26px' : '32px', color: C.navy, marginBottom: '20px', lineHeight: 1.25 }}>
+      Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
+    </h2>
+    <p style={{ fontFamily: F.body, fontSize: '14.5px', color: '#4b5563', lineHeight: 1.8, marginBottom: '14px' }}>
+      We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never resold.
+      Every lead is generated fresh for your business alone, so you're always the first call, not the fifth.
+    </p>
+    <p style={{ fontFamily: F.body, fontSize: '14.5px', color: '#4b5563', lineHeight: 1.8, marginBottom: '28px' }}>
+      With nearly a decade of proven results, our clients don't just get leads — they get a predictable pipeline they can build a business on.
+      Stop competing for the same tired leads. Start closing exclusively yours.
+    </p>
+
+    {/* Safely optimized Grid layer - Counter metrics crash fixing variables included */}
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
+      {[
+        { num: '16', suffix: '+ Years', lbl: 'Experience' },
+        { num: '500', suffix: '+ Clients', lbl: 'Trust Us' },
+        { num: '10', suffix: 'K+ Leads', lbl: 'Delivered' },
+        { num: '15', suffix: '+ Countries', lbl: 'Served' },
+      ].map((p, idx) => (
+        <div 
+          key={idx} 
+          className="reveal" 
+          style={{ 
+            background: C.yellow, 
+            padding: '16px 12px', 
+            textAlign: 'center',
+            borderRadius: '4px',
+            boxShadow: '0 2px 8px rgba(255,214,0,0.15)'
+          }}
+        >
+          <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy }}>
+            <Counter value={p.num} />
+            <span style={{ fontSize: '14px', marginLeft: '2px' }}>{p.suffix}</span>
+          </span>
+          <span style={{ display: 'block', fontSize: '11px', color: '#374151', fontFamily: F.body, marginTop: '2px', fontWeight: 500 }}>
+            {p.lbl}
+          </span>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <button
+      onClick={() => navigate('/about')}
+      className="about-btn-interactive"
+      style={{
+        background: C.blue,
+        color: C.white,
+        fontFamily: F.display,
+        fontWeight: 800,
+        fontSize: '13px',
+        letterSpacing: '1px',
+        padding: '16px 32px',
+        border: 'none',
+        cursor: 'pointer',
+        borderRadius: '4px',
+        alignSelf: 'flex-start'
+      }}
+    >
+      READ OUR FULL STORY →
+    </button>
+  </div>
+</section>
 
       {/* [SECTION D] SERVICES WITH IMAGES */}
       <ServicesSection isMobile={isMobile} />
