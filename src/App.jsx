@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Layout & Common Components
 import Navbar from './components/Navbar';
@@ -123,7 +123,7 @@ function App() {
   const isMobile = windowWidth < 768;
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTopOnMount />
       <RouteTitle />
       <div style={{
@@ -162,7 +162,7 @@ function App() {
           isMobile={isMobile} 
         />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
