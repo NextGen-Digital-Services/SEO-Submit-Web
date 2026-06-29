@@ -299,30 +299,47 @@ export const HomePage = ({ isMobile }) => {
       </SectionWrapper>
 
       {/* [SECTION I] TEAM PREVIEW WITH IMAGES */}
-      <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <Eyebrow label="MEET THE TEAM" labelColor={C.yellow} />
-          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
-            The Experts Behind Your <span style={{ color: C.yellow }}>Lead Pipeline</span>
-          </h2>
+      {/* [SECTION I] TEAM PREVIEW WITH IMAGES */}
+<section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
+  <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <Eyebrow label="MEET THE TEAM" labelColor={C.yellow} />
+    <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
+      The Experts Behind Your <span style={{ color: C.yellow }}>Lead Pipeline</span>
+    </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
-            {[
-              { name: 'Imran Merchant', role: 'CEO & Founder', img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
-              { name: 'Logan Anderson', role: 'Head of Lead Gen', img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
-              { name: 'Vihan Sharma', role: 'Chief Tech Officer', img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
-              { name: 'Amanda Wilson', role: 'Client Success Director', img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
-            ].map((member, idx) => (
-              <div key={idx} className="reveal" style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                <img src={member.img} alt={member.name} width="300" height="300" loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block', marginBottom: '14px', border: '3px solid #FFD600' }} />
-                <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
-                <span style={{ fontSize: '11px', color: C.blue, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
-                <p style={{ fontFamily: F.body, fontSize: '11px', color: '#666', lineHeight: 1.5, marginBottom: '14px', flex: 1 }}>{member.bio}</p>
-              </div>
-            ))}
-          </div>
+    <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
+      {[
+        { name: 'Imran Merchant', role: 'CEO & Founder', img: team1Img, bio: '15+ years in lead gen strategies. Directs core platform technology.' },
+        { name: 'Logan Anderson', role: 'Head of Lead Gen', img: team2Img, bio: 'Manages quality control guidelines and qualification agents.' },
+        { name: 'Vihan Sharma', role: 'Chief Tech Officer', img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
+        { name: 'Amanda Wilson', role: 'Client Success Director', img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
+      ].map((member, idx) => (
+        <div key={idx} className="reveal" style={{ background: C.white, padding: '16px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          {/* Yahan height ko 180px se badha kar 260px kiya hai aur objectPosition top kiya hai taaki faces na katein */}
+          <img 
+            src={member.img} 
+            alt={member.name} 
+            width="300" 
+            height="300" 
+            loading="lazy" 
+            style={{ 
+              width: '100%', 
+              height: '260px',
+              objectFit: 'cover', 
+              objectPosition: 'top center', 
+              display: 'block', 
+              marginBottom: '14px', 
+              border: '3px solid #FFD600' 
+            }} 
+          />
+          <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
+          <span style={{ fontSize: '11px', color: C.blue, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
+          <p style={{ fontFamily: F.body, fontSize: '11px', color: '#666', lineHeight: 1.5, marginBottom: '14px', flex: 1 }}>{member.bio}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* [SECTION J] NUMBERS SPEAK */}
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>

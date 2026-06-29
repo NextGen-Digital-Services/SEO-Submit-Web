@@ -254,6 +254,7 @@ export const AboutPage = ({ isMobile }) => {
       </SectionWrapper>
 
       {/* [SECTION F] TEAM SECTION WITH PHOTOS */}
+      {/* [SECTION F] TEAM SECTION WITH PHOTOS */}
       <section id="about-team" style={{ background: C.white, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Eyebrow label="THE PEOPLE" />
@@ -270,22 +271,20 @@ export const AboutPage = ({ isMobile }) => {
             ].map((member, idx) => (
               <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
                 <img
-                src={member.img}
-                alt={member.name}
-                width="400"
-                height="300"
-                loading="lazy"
-                style={{
-                width: '100%',
-                height: '180px',
-                objectFit: 'cover',
-                objectPosition:
-                member.name === 'Imran Merchant'
-                ? '50% 15%'
-                : 'center',
-                display: 'block',
-                border: '3px solid #FFD600',
-                }}/>
+                  src={member.img}
+                  alt={member.name}
+                  width="400"
+                  height="300"
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '260px', // 180px se badha kar 260px kiya taaki vertical crop na ho
+                    objectFit: 'cover',
+                    objectPosition: 'top center', // Sabhi images ko top-center alignment diya taaki faces safe rahein
+                    display: 'block',
+                    border: '3px solid #FFD600',
+                  }}
+                />
                 <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '15px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                   <span style={{ fontSize: '12px', color: member.border === C.yellow ? C.blue : member.border, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
