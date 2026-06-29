@@ -381,7 +381,7 @@ export const HomePage = ({ isMobile }) => {
         </div>
       </SectionWrapper>
 
-      {/* [SECTION I] TEAM PREVIEW WITH IMAGES */}
+    
       {/* [SECTION I] TEAM PREVIEW WITH IMAGES */}
 <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
   <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
