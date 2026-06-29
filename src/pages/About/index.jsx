@@ -1,26 +1,38 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const navigate = useNavigate();
 
+  // Updated array matches perfectly with your provided screenshot team mapping data
   const team = [
     {
-      name: 'Alexander Vance',
+      name: 'Imran Merchant',
       role: 'CEO & Founder',
-      bio: 'Former VP of Growth at Apex Digital with 18+ years of organic search and enterprise lead generation experience.',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'
+      category: 'EXECUTIVE',
+      bio: 'Former VP of Growth with 18+ years of organic search, strategy execution, and enterprise lead generation experience.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=70' // Replace with Imran's actual asset path if local
     },
     {
-      name: 'Sarah Chen',
-      role: 'Head of SEO Strategy',
-      bio: 'Recognized search architect specializing in algorithmic market intelligence, B2B intent validation, and scalable organic lead acquisition.',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80'
+      name: 'Logan Anderson',
+      role: 'Head of Lead Gen',
+      category: 'OPERATIONS',
+      bio: 'Specialist in algorithmic intent validation, multi-channel automated workflows, and scalable B2B client acquisition.',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=70' // Replace with Logan's asset path
     },
     {
-      name: 'Marcus Brody',
-      role: 'Director of Web Architecture',
-      bio: 'Over a decade designing high-converting, mobile-first landers and technical schemas for Fortune 500 portals.',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80'
+      name: 'Amanda Wilson',
+      role: 'Client Success Director',
+      category: 'TECHNOLOGY',
+      bio: 'Dedicated to optimization checks, client retention roadmaps, and smooth cross-platform CRM integrations.',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=70' // Replace with Amanda's asset path
+    },
+    {
+      name: 'Vihan Sharma',
+      role: 'Chief Tech Officer',
+      category: 'SUPPORT',
+      bio: 'Architect behind technical schema networks, instant server synchronizations, and data pipeline security protocols.',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=70' // Replace with Vihan's asset path
     }
   ];
 
@@ -43,7 +55,7 @@ const About = () => {
     <div className="about-page animate-fade-in">
       {/* Hero Banner */}
       <section className="about-hero section-padding text-center relative overflow-hidden">
-        <div className="glow-blur" style={{ top: '10%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)', position: 'absolute', zIndex: -1 }}></div>
+        <div className="glow-blur" style={{ top: '10%', left: '50%', transform: 'translateX(-50%)', width: '500px', height: '300px', backgroundColor: 'var(--primary-glow)', position: 'absolute', zIndex: -1, contentVisibility: 'auto' }}></div>
         <div className="container">
           <span className="section-tag">Agency Heritage</span>
           <h1>Engineered for Authority. Built for Scale.</h1>
@@ -91,8 +103,16 @@ const About = () => {
                 We set out to build a platform that merges inbound B2B content marketing, pre-qualification telephone checks, and active CRM scheduling syncs. By partnering directly with business owners requesting organic optimization, we created the ultimate exclusive lead routing desk.
               </p>
             </div>
-            <div className="story-image-box">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Office Collaboration" className="story-img" />
+            <div className="story-image-box" style={{ backgroundColor: '#1e293b', borderRadius: 'var(--radius-xl)' }}>
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=60" 
+                alt="Office Collaboration Team meeting" 
+                className="story-img" 
+                width="600"
+                height="400"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -137,20 +157,39 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Synchronized Image Screenshot Team Section */}
       <section className="about-team section-padding bg-tertiary">
         <div className="container">
           <div className="section-title-wrapper">
-            <span className="section-tag">Leadership</span>
-            <h2>The Technical Minds Behind the Results</h2>
+            <span className="section-tag">THE PEOPLE</span>
+            <h2>Meet the Team That <span style={{ color: '#2563eb' }}>Powers Your Pipeline</span></h2>
           </div>
-          <div className="grid-3 team-grid">
+          <div className="grid-4 team-grid">
             {team.map((member, i) => (
-              <div className="glass-card team-card text-left" key={i}>
-                <img src={member.image} alt={member.name} className="team-avatar" />
-                <h3 className="team-name">{member.name}</h3>
-                <span className="team-role">{member.role}</span>
-                <p className="team-bio">{member.bio}</p>
+              <div 
+                className="glass-card team-card text-center" 
+                key={i}
+                style={{ contentVisibility: 'auto', containIntrinsicSize: '0 420px' }}
+              >
+                <div className="team-image-wrapper">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="team-avatar" 
+                    width="300"
+                    height="250"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="team-meta-content">
+                  <h3 className="team-name">{member.name}</h3>
+                  <span className="team-role">{member.role}</span>
+                  <div className="team-category-badge-box">
+                    <span className="team-cat-badge">{member.category}</span>
+                  </div>
+                  <p className="team-bio">{member.bio}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -171,6 +210,7 @@ const About = () => {
       <style>{`
         .about-page {
           background-color: var(--bg-primary);
+          box-sizing: border-box;
         }
         .about-hero h1 {
           font-size: 3.5rem;
@@ -235,6 +275,8 @@ const About = () => {
           border-radius: var(--radius-xl);
           box-shadow: var(--shadow-lg);
           width: 100%;
+          display: block;
+          object-fit: cover;
         }
 
         /* Mission Grid */
@@ -278,42 +320,91 @@ const About = () => {
           line-height: 1.6;
         }
 
-        /* Team Grid */
+        /* Team Grid matching exact screenshot layout structure */
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 20px;
+          margin-top: 40px;
+        }
         .team-card {
-          padding: 30px;
+          padding: 0;
+          overflow: hidden;
+          background-color: var(--bg-secondary);
+          border: 1px solid var(--border-light);
+          border-top: 3px solid #fbbf24; /* Yellow top accent border from your screen */
+          box-sizing: border-box;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        .team-image-wrapper {
+          width: 100%;
+          height: 220px;
+          overflow: hidden;
+          background-color: #0f172a;
+          border-bottom: 1px solid var(--border-light);
         }
         .team-avatar {
           width: 100%;
-          height: 250px;
+          height: 100%;
           object-fit: cover;
-          border-radius: var(--radius-md);
-          margin-bottom: 20px;
+          display: block;
+        }
+        .team-meta-content {
+          padding: 24px 16px;
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
         }
         .team-name {
-          font-size: 1.25rem;
-          margin-bottom: 6px;
+          font-size: 1.2rem;
+          font-weight: 800;
+          margin: 0 0 4px 0;
           color: var(--text-primary);
-          font-family: var(--font-heading);
         }
         .team-role {
           font-size: 0.85rem;
-          color: var(--primary);
+          color: #2563eb; /* Blue colors roles */
           font-weight: 700;
           display: block;
-          margin-bottom: 16px;
+          margin-bottom: 12px;
+        }
+        .team-category-badge-box {
+          margin-bottom: 12px;
+        }
+        .team-cat-badge {
+          font-size: 0.65rem;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          color: var(--text-muted);
+          background-color: var(--bg-primary);
+          padding: 4px 10px;
+          border-radius: 4px;
+          border: 1px solid var(--border-light);
+          display: inline-block;
         }
         .team-bio {
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           color: var(--text-secondary);
           line-height: 1.5;
+          margin: 0;
         }
 
+        @media (max-width: 1024px) {
+          .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
         @media (max-width: 768px) {
           .about-hero h1 {
             font-size: 2.3rem;
           }
           .story-text h2 {
             font-size: 1.8rem;
+          }
+          .team-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
