@@ -14,7 +14,7 @@ import Testimonial6Result from '../assets/Testimonial/14_result.webp';
 import case1 from '../assets/Testimonial/case1.webp';
 import case2 from '../assets/Testimonial/case2.webp';
 
-// Automatically detect and import the screenshots from src/assets/Email
+// 1. Optimized Image Preloading Hook for Dynamic Assets
 const emailImages = import.meta.glob('../assets/Email/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
 const verifiedConversations = Object.keys(emailImages).map((key) => {
   const filename = key.split('/').pop();
@@ -37,6 +37,15 @@ export const TestimonialsPage = ({ isMobile }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
   const videoRef = useRef(null);
+
+  // 2. CRITICAL FIX: Preload First Few Critical Viewport Images Programmatically
+  useEffect(() => {
+    const imagesToPreload = [TestimonialImg, Testimonial1Result, Testimonial2Result];
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   useEffect(() => {
     if (selectedVideo) {
@@ -71,12 +80,14 @@ export const TestimonialsPage = ({ isMobile }) => {
         alignItems: 'center',
         textAlign: 'center',
         minHeight: '300px',
+        background: C.navy // Fallback background color added so user doesn't see blank white till image loads
       }}>
         <img
           src={TestimonialImg}
           alt="Testimonials"
           width="1200"
           height="1500"
+          fetchpriority="high" // Tells the browser to download this instantly
           loading="eager"
           style={{
             position: 'absolute',
@@ -146,9 +157,10 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0' // Shimmer background placeholder
             }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" width="1080" height="1080" loading="eager" fetchpriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -173,9 +185,10 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0'
             }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" width="1080" height="1080" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
@@ -200,7 +213,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0'
             }}>
               <img src={Testimonial3Result} alt="Josh Early Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
             </div>
@@ -227,7 +241,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0'
             }}>
               <img src={Testimonial4Result} alt="Christopher Less Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1.1)' }} />
             </div>
@@ -254,7 +269,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0'
             }}>
               <img src={Testimonial5Result} alt="Colin Rogers Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
             </div>
@@ -281,7 +297,8 @@ export const TestimonialsPage = ({ isMobile }) => {
               flexShrink: 0,
               padding: 0,
               margin: 0,
-              display: 'block'
+              display: 'block',
+              background: '#e0e0e0'
             }}>
               <img src={Testimonial6Result} alt="Abraham Anijdar Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
             </div>
@@ -661,262 +678,20 @@ export const TestimonialsPage = ({ isMobile }) => {
                     <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>2x</span>
                     <span style={{ fontSize: '9px', color: '#888' }}>Revenue</span>
                   </div>
-                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
-                    <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>82%</span>
-                    <span style={{ fontSize: '9px', color: '#888' }}>Show-Up Rate</span>
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                    <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
+                      <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>82%</span>
+                      <span style={{ fontSize: '9px', color: '#888' }}>Show-Up Rate</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* [G] TRUST BADGES */}
-      <section style={{ background: C.yellow, padding: '32px 24px', textAlign: 'center' }}>
-        <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', color: C.navy, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '20px' }}>
-          Why Clients Trust SEO Submit Web
-        </h3>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}>
-          {["Exclusive Channels Only", "No Resold Databases", "Phone Qualified SDRs", "Transparent Replacements", "GDPR/Compliance Setups"].map((badge) => (
-            <div key={badge} style={{
-              background: C.navy,
-              color: C.yellow,
-              fontFamily: F.display,
-              fontWeight: 800,
-              fontSize: '11px',
-              padding: '12px 20px',
-              letterSpacing: '1px',
-              border: 'none',
-              borderRadius: 0,
-            }}>
-              {badge}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* [H] LEAVE A REVIEW FORM */}
-      <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center', borderTop: `3px solid ${C.yellow}` }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', background: C.deepNavy, border: `2px solid ${C.blue}`, padding: '32px 24px', textAlign: 'left' }}>
-          <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.yellow, marginBottom: '8px', textAlign: 'center' }}>
-            Leave a Review
-          </h2>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '24px', textAlign: 'center' }}>
-            Share your experience working with SEO Submit Web.
-          </p>
-
-          <ReviewForm />
-
-
-        </div>
-      </section>
-
-      {/* Video Modal / Dialog */}
-      {selectedVideo && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(6, 16, 32, 0.95)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 99999,
-            padding: '20px',
-          }}
-          onClick={() => setSelectedVideo(null)}
-        >
-          <div 
-            style={{
-              background: C.deepNavy,
-              border: `1px solid ${C.blue}`,
-              width: isMobile ? '90vw' : '100%',
-              maxWidth: '420px',
-              maxHeight: '80vh',
-              borderRadius: '16px',
-              position: 'relative',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              overflow: 'hidden',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button in top-right */}
-            <button 
-              onClick={() => setSelectedVideo(null)}
-              style={{
-                position: 'absolute',
-                top: '12px',
-                right: '12px',
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: 'rgba(10, 22, 40, 0.7)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: C.white,
-                fontSize: '20px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 100,
-                lineHeight: '1',
-                transition: 'background-color 0.2s, color 0.2s, transform 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = C.yellow;
-                e.currentTarget.style.color = C.navy;
-                e.currentTarget.style.transform = 'scale(1.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(10, 22, 40, 0.7)';
-                e.currentTarget.style.color = C.white;
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-              aria-label="Close video player"
-            >
-              &times;
-            </button>
-
-            {/* Video Container */}
-            <div style={{
-              width: '100%',
-              maxHeight: '80vh',
-              background: '#000',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <video 
-                ref={(el) => {
-                  if (el) {
-                    el.muted = false;
-                    el.volume = 1.0;
-                  }
-                  videoRef.current = el;
-                }}
-                src={selectedVideo.videoUrl}
-                controls
-                preload="metadata"
-                playsInline
-                muted={false}
-                defaultMuted={false}
-                style={{
-                  width: '100%',
-                  maxHeight: '80vh',
-                  display: 'block',
-                  objectFit: 'contain',
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Zoom Image Modal / Lightbox */}
-      {zoomedImage && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(6, 16, 32, 0.95)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 99999,
-            padding: '20px',
-            cursor: 'zoom-out',
-            backdropFilter: 'blur(8px)',
-          }}
-          onClick={() => setZoomedImage(null)}
-        >
-          {/* Close Button */}
-          <button 
-            onClick={() => setZoomedImage(null)}
-            style={{
-              position: 'absolute',
-              top: '24px',
-              right: '24px',
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              color: C.white,
-              fontSize: '24px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 100000,
-              lineHeight: '1',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = C.yellow;
-              e.currentTarget.style.color = C.navy;
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              e.currentTarget.style.color = C.white;
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-            aria-label="Close image zoom"
-          >
-            &times;
-          </button>
-
-          {/* Image Wrapper */}
-          <div 
-            style={{
-              position: 'relative',
-              maxWidth: '90vw',
-              maxHeight: '90vh',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              cursor: 'default',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img 
-              src={zoomedImage.url} 
-              alt={zoomedImage.name} 
-              style={{
-                maxWidth: '100%',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-                display: 'block',
-                borderRadius: '8px',
-                border: '2px solid rgba(255, 255, 255, 0.1)',
-              }}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };
-
-export default TestimonialsPage;
