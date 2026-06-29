@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-
 import { C, F } from '../styles/tokens';
 import Eyebrow from '../components/Eyebrow';
 import SectionWrapper from '../components/SectionWrapper';
@@ -23,8 +22,8 @@ const verifiedConversations = Object.keys(emailImages).map((key) => {
     name: filename,
     fileName: filename.startsWith('11') ? 'verified-client-email.eml' : 'client-feedback-chat.pdf',
     icon: filename.startsWith('11') ? 'ti ti-mail' : 'ti ti-message',
-    alt: filename.startsWith('11') 
-      ? 'Verified client email conversation showing successful lead delivery feedback' 
+    alt: filename.startsWith('11')
+      ? 'Verified client email conversation showing successful lead delivery feedback'
       : 'Client chat feedback showing successful campaign execution results'
   };
 }).sort((a, b) => {
@@ -56,12 +55,30 @@ export const TestimonialsPage = ({ isMobile }) => {
     }
   }, [selectedVideo]);
 
-
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', overflowX: 'hidden' }}>
+      {/* PERFORMANCE AND HARDWARE-ACCELERATED TRANSITIONS */}
+      <style>{`
+        .stat-pill {
+          animation: fadePill 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadePill {
+          from { opacity: 0; transform: translateY(4px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .testimonial-premium-card {
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          will-change: transform, box-shadow;
+          transform: translateZ(0);
+        }
+        .testimonial-premium-card:hover {
+          transform: translateY(-5px) translateZ(0);
+          box-shadow: 0 12px 25px rgba(10, 22, 40, 0.08);
+        }
+      `}</style>
+
       {/* [A] PAGE HERO */}
       <div style={{
-        flex: 1,
         padding: '56px 40px',
         position: 'relative',
         overflow: 'hidden',
@@ -70,14 +87,16 @@ export const TestimonialsPage = ({ isMobile }) => {
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        minHeight: '300px',
+        minHeight: '320px',
+        background: C.navy
       }}>
         <img
           src={TestimonialImg}
-          alt="Testimonials"
+          alt="Client Testimonials and Reviews Overview"
           width="1200"
           height="1500"
           loading="eager"
+          fetchpriority="high" // Fast LCP Core Web Vitals Fix
           style={{
             position: 'absolute',
             top: 0,
@@ -86,7 +105,7 @@ export const TestimonialsPage = ({ isMobile }) => {
             height: '100%',
             objectFit: 'cover',
             objectPosition: 'center center',
-            opacity: 0.45,
+            opacity: 0.35,
             zIndex: 0,
           }}
         />
@@ -96,11 +115,11 @@ export const TestimonialsPage = ({ isMobile }) => {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'rgba(10, 22, 40, 0.45)',
+          background: 'linear-gradient(180deg, rgba(10, 22, 40, 0.5) 0%, rgba(10, 22, 40, 0.75) 100%)',
           zIndex: 1,
         }} />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '36px', color: C.white, marginBottom: '14px' }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '750px' }}>
+          <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: isMobile ? '28px' : '36px', color: C.white, marginBottom: '14px', lineHeight: 1.2 }}>
             Real Results From <span style={{ color: C.yellow }}>Real Clients</span>
           </h1>
           <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
@@ -109,14 +128,16 @@ export const TestimonialsPage = ({ isMobile }) => {
 
           {/* Stat Pills */}
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {["500+ Happy Clients", "4.9 / 5 Average Rating", "98% Would Recommend"].map((pill) => (
-              <span key={pill} style={{
+            {["500+ Happy Clients", "4.9 / 5 Average Rating", "98% Would Recommend"].map((pill, idx) => (
+              <span key={pill} className="stat-pill" style={{
                 background: C.yellow,
                 color: C.navy,
                 fontFamily: F.display,
                 fontWeight: 700,
                 fontSize: '11px',
                 padding: '8px 16px',
+                borderRadius: '4px',
+                animationDelay: `${idx * 80}ms`
               }}>
                 {pill}
               </span>
@@ -136,163 +157,131 @@ export const TestimonialsPage = ({ isMobile }) => {
           alignItems: 'stretch'
         }}>
           {/* Card 1: Abe Rubarts */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial1Result} alt="Abe Rubarts Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img
+                src={Testimonial1Result}
+                alt="Abe Rubarts Featured Testimonial"
+                width="100"
+                height="100"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transform: 'scale(2.0)',
+                  objectPosition: 'center',
+                  display: 'block'
+                }}
+              />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "SEOSubmitWeb delivers prospects who already understand what they need — we closed 5 sales out of 50 leads."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abe Rubarts</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abe Rubarts</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Founder & CEO at Locus Digital • www.locusdigital.com</span>
             </div>
           </div>
 
           {/* Card 2: Jared Diamond */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial2Result} alt="Jared Diamond Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(2)' }} />
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img
+                src={Testimonial2Result}
+                alt="Jared Diamond Featured Testimonial"
+                width="100"
+                height="100"
+                loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transform: 'scale(2.0)',
+                  objectPosition: 'center',
+                  display: 'block'
+                }}
+              />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "The appointment-set leads from SEOSubmitWeb have completely transformed how I run my sales process — I spend less time prospecting and more time closing. Best investment I've made for my business."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Jared Diamond</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Jared Diamond</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at Upcision • apixdigital.co</span>
             </div>
           </div>
 
           {/* Card 3: Josh Early */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial3Result} alt="Josh Early Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img src={Testimonial3Result} alt="Josh Early Featured Testimonial" width="100" height="100" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "I was skeptical at first, but the very first web design lead I received from SEOSubmitWeb converted into a $4,000 project. I haven't looked back since."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Josh Early</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Josh Early</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>Chief Operating Officer at  • www.omgnational.com/</span>
             </div>
           </div>
 
-          {/* Card 4: Christopher less*/}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial4Result} alt="Christopher Less Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1.1)' }} />
+          {/* Card 4: Christopher Less */}
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img src={Testimonial4Result} alt="Christopher Less Featured Testimonial" width="100" height="100" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "The appointment-set leads are worth every penny. I get on the call and the prospect already knows why we're talking — it makes closing so much easier and faster."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Christopher Less</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Christopher Less</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO at • cplmarketinggroup.com</span>
             </div>
           </div>
 
           {/* Card 5: Colin Rogers */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial5Result} alt="Colin Rogers Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img src={Testimonial5Result} alt="Colin Rogers Featured Testimonial" width="100" height="100" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "We've tried every lead vendor out there — SEOSubmitWeb is the only one that actually delivers what they promise: exclusive, high-intent web design leads that are ready to talk business. From the first call, we closed 2 sales."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Colin Rogers</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Colin Rogers</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of Web Savvy Marketing</span>
             </div>
           </div>
 
           {/* Card 6: Abraham Anijdar */}
-          <div style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '32px', alignItems: 'center', height: '100%', boxSizing: 'border-box' }}>
-            <div style={{
-              width: '100px',
-              height: '100px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-              border: `4px solid ${C.navy}`,
-              flexShrink: 0,
-              padding: 0,
-              margin: 0,
-              display: 'block'
-            }}>
-              <img src={Testimonial6Result} alt="Abraham Anijdar Featured Testimonial" width="1080" height="1080" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', transform: 'scale(1)' }} />
+          <div className="testimonial-premium-card" style={{ background: C.white, border: `4px solid ${C.yellow}`, padding: '32px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '24px', alignItems: 'center', height: '100%', boxSizing: 'border-box', borderRadius: '4px' }}>
+            <div style={{ width: '100px', height: '100px', borderRadius: '50%', overflow: 'hidden', border: `4px solid ${C.navy}`, flexShrink: 0, background: '#f3f4f6' }}>
+              <img src={Testimonial6Result} alt="Abraham Anijdar Featured Testimonial" width="100" height="100" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             <div style={{ textAlign: 'left', flex: 1 }}>
               <div style={{ display: 'flex', gap: '2px', color: C.yellow, fontSize: '18px', marginBottom: '12px' }}>
                 {Array.from({ length: 5 }).map((_, i) => <span key={i}>★</span>)}
               </div>
-              <p style={{ fontFamily: F.body, fontSize: '15px', color: C.navy, lineHeight: 1.8, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
+              <p style={{ fontFamily: F.body, fontSize: '14.5px', color: C.navy, lineHeight: 1.7, marginBottom: '16px', fontWeight: 500, fontStyle: 'italic' }}>
                 "We scaled from 3 clients to over 20 in less than a year using SEOSubmitWeb leads. The ROI speaks for itself — this is the smartest investment our agency has ever made."
               </p>
-              <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abraham Anijdar</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '2px' }}>Abraham Anijdar</h3>
               <span style={{ fontSize: '12px', color: C.blue, fontWeight: 'bold' }}>CEO of WebTeamManagement</span>
             </div>
           </div>
@@ -357,8 +346,8 @@ export const TestimonialsPage = ({ isMobile }) => {
         {/* Grid of Screenshots */}
         <div className="verified-conv-grid">
           {verifiedConversations.map((conv, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="verified-card"
               onClick={() => setZoomedImage(conv)}
             >
@@ -386,7 +375,7 @@ export const TestimonialsPage = ({ isMobile }) => {
                   alignItems: 'center',
                   gap: '6px'
                 }}>
-                  <i className={conv.icon} style={{ fontSize: '13px', color: C.blue }}></i> 
+                  <i className={conv.icon} style={{ fontSize: '13px', color: C.blue }}></i>
                   {conv.fileName}
                 </div>
                 <div style={{ color: C.blue, display: 'flex', alignItems: 'center' }}>
@@ -396,11 +385,14 @@ export const TestimonialsPage = ({ isMobile }) => {
 
               {/* Card Image Wrapper */}
               <div className="verified-card-img-wrapper">
-                <img 
-                  src={conv.url} 
+                <img
+                  src={conv.url}
                   alt={conv.alt}
                   className="verified-card-img"
-                  loading="lazy"
+                  width="400"
+                  height="300"
+                  loading="lazy" // Strict layout preservation deferred parsing
+                  style={{ contentVisibility: 'auto' }}
                 />
               </div>
             </div>
@@ -445,9 +437,11 @@ export const TestimonialsPage = ({ isMobile }) => {
             flex-direction: column;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            will-change: transform;
+            transform: translateZ(0);
           }
           .verified-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px) translateZ(0);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.04);
           }
           .verified-card-img-wrapper {
@@ -460,14 +454,15 @@ export const TestimonialsPage = ({ isMobile }) => {
             border-radius: 8px;
             background: #F9FAFB;
             padding: 12px;
+            aspect-ratio: 4 / 3; /* Layout shifts container lock */
           }
           .verified-card-img {
             width: 100%;
-            height: auto;
+            height: 100%;
             max-height: 480px;
             object-fit: contain;
             border-radius: 4px;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .verified-card:hover .verified-card-img {
             transform: scale(1.02);
@@ -502,9 +497,10 @@ export const TestimonialsPage = ({ isMobile }) => {
               videoUrl: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.mp4',
               thumbnail: 'https://res.cloudinary.com/dpeq00iqq/video/upload/v1782547676/512_ultra_ykgopq.jpg',
             }
-           ].map((video, idx) => (
-            <div 
-              key={idx} 
+          ].map((video, idx) => (
+            <div
+              key={idx}
+              className="premium-video-card"
               style={{
                 background: C.deepNavy,
                 border: `1px solid ${C.blue}`,
@@ -512,7 +508,7 @@ export const TestimonialsPage = ({ isMobile }) => {
                 flexDirection: 'column',
                 overflow: 'hidden',
                 cursor: 'pointer',
-              }} 
+              }}
               onClick={() => setSelectedVideo(video)}
             >
               {/* Thumbnail Container */}
@@ -523,22 +519,22 @@ export const TestimonialsPage = ({ isMobile }) => {
                 overflow: 'hidden',
                 background: '#000',
               }}>
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.name} 
+                <img
+                  src={video.thumbnail}
+                  alt={video.name}
                   width="640"
                   height="360"
                   loading="lazy"
-                  style={{ 
-                    width: '100%', 
-                    height: '100%', 
-                    objectFit: 'cover', 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
                     display: 'block',
-                  }} 
+                  }}
                   className="video-thumbnail-img"
                 />
                 {/* Play Button Overlay */}
-                <div 
+                <div
                   className="video-play-overlay"
                   style={{
                     position: 'absolute',
@@ -560,12 +556,12 @@ export const TestimonialsPage = ({ isMobile }) => {
                   </svg>
                 </div>
               </div>
-              
+
               {/* Client Info below thumbnail */}
               <div style={{ padding: '16px', textAlign: 'left' }}>
-                <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '4px' }}>
+                <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '4px' }}>
                   {video.name}
-                </h4>
+                </h3>
                 <p style={{ fontFamily: F.body, fontSize: '11px', color: 'rgba(255,255,255,0.7)', margin: 0 }}>
                   {video.title}
                 </p>
@@ -591,17 +587,17 @@ export const TestimonialsPage = ({ isMobile }) => {
             }
           }
           .video-thumbnail-img {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .video-play-overlay {
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .testimonial-video-grid > div:hover .video-thumbnail-img {
-            transform: scale(1.05);
+            transform: scale(1.03);
           }
           .testimonial-video-grid > div:hover .video-play-overlay {
             background-color: ${C.yellow} !important;
-            transform: translate(-50%, -50%) scale(1.1) !important;
+            transform: translate(-50%, -50%) scale(1.08) !important;
           }
           .testimonial-video-grid > div:hover .video-play-overlay svg {
             fill: ${C.navy} !important;
@@ -618,11 +614,13 @@ export const TestimonialsPage = ({ isMobile }) => {
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '24px' }}>
             {/* Case 1 */}
-            <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src={case1} alt="SEO Growth Case" width="600" height="200" loading="lazy" style={{ width: '100%', height: '240px', objectFit: 'cover',objectPosition: 'center' }} />
+            <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column', borderRadius: '4px', overflow: 'hidden' }}>
+              <div style={{ width: '100%', height: '240px', background: '#eef2f6', overflow: 'hidden' }}>
+                <img src={case1} alt="SEO Growth Case Study Infrastructure Result" width="600" height="240" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+              </div>
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 01</span>
-                <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>
+                <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start', borderRadius: '2px' }}>CASE 01</span>
+                <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px', lineHeight: 1.3 }}>
                   Agency Scaled from 3 to 47 Clients in 6 Months
                 </h3>
                 <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, marginBottom: '20px', flex: 1 }}>
@@ -631,11 +629,11 @@ export const TestimonialsPage = ({ isMobile }) => {
                   <strong>Results:</strong> Closed 44 retainers with average values of $2k/mo.
                 </p>
                 <div style={{ display: 'flex', gap: '10px' }}>
-                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center', borderRadius: '4px' }}>
                     <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>+1400%</span>
                     <span style={{ fontSize: '9px', color: '#888' }}>Client Growth</span>
                   </div>
-                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center', borderRadius: '4px' }}>
                     <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>$88k</span>
                     <span style={{ fontSize: '9px', color: '#888' }}>New MRR</span>
                   </div>
@@ -644,11 +642,13 @@ export const TestimonialsPage = ({ isMobile }) => {
             </div>
 
             {/* Case 2 */}
-            <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column' }}>
-              <img src={case2} alt="Web design revenue growth" width="600" height="200" loading="lazy" style={{ width: '100%', height: '240px', objectFit: 'cover', objectPosition: 'center'}} />
+            <div style={{ background: C.white, textAlign: 'left', color: C.navy, display: 'flex', flexDirection: 'column', borderRadius: '4px', overflow: 'hidden' }}>
+              <div style={{ width: '100%', height: '240px', background: '#eef2f6', overflow: 'hidden' }}>
+                <img src={case2} alt="Web design revenue growth client optimization map" width="600" height="240" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+              </div>
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start' }}>CASE 02</span>
-                <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px' }}>
+                <span style={{ background: C.yellow, color: C.navy, padding: '4px 10px', fontSize: '9px', fontWeight: 'bold', fontFamily: F.display, alignSelf: 'flex-start', borderRadius: '2px' }}>CASE 02</span>
+                <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', marginTop: '12px', marginBottom: '12px', lineHeight: 1.3 }}>
                   Web Design Firm Doubled Revenue in 90 Days
                 </h3>
                 <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, marginBottom: '20px', flex: 1 }}>
@@ -657,11 +657,11 @@ export const TestimonialsPage = ({ isMobile }) => {
                   <strong>Results:</strong> Show up rate exceeded 80%, booking 14 new custom designs.
                 </p>
                 <div style={{ display: 'flex', gap: '10px' }}>
-                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center', borderRadius: '4px' }}>
                     <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>2x</span>
                     <span style={{ fontSize: '9px', color: '#888' }}>Revenue</span>
                   </div>
-                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center' }}>
+                  <div style={{ background: C.lightBg, padding: '10px', flex: 1, textAlign: 'center', borderRadius: '4px' }}>
                     <span style={{ display: 'block', fontWeight: 'bold', fontSize: '18px', color: C.blue }}>82%</span>
                     <span style={{ fontSize: '9px', color: '#888' }}>Show-Up Rate</span>
                   </div>
@@ -680,7 +680,7 @@ export const TestimonialsPage = ({ isMobile }) => {
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: '16px',
+          gap: '12px',
           flexWrap: 'wrap',
           maxWidth: '1200px',
           margin: '0 auto',
@@ -693,9 +693,9 @@ export const TestimonialsPage = ({ isMobile }) => {
               fontWeight: 800,
               fontSize: '11px',
               padding: '12px 20px',
-              letterSpacing: '1px',
+              letterSpacing: '0.5px',
               border: 'none',
-              borderRadius: 0,
+              borderRadius: '4px',
             }}>
               {badge}
             </div>
@@ -705,7 +705,7 @@ export const TestimonialsPage = ({ isMobile }) => {
 
       {/* [H] LEAVE A REVIEW FORM */}
       <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center', borderTop: `3px solid ${C.yellow}` }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', background: C.deepNavy, border: `2px solid ${C.blue}`, padding: '32px 24px', textAlign: 'left' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', background: C.deepNavy, border: `2px solid ${C.blue}`, padding: '32px 24px', textAlign: 'left', borderRadius: '4px' }}>
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.yellow, marginBottom: '8px', textAlign: 'center' }}>
             Leave a Review
           </h2>
@@ -714,14 +714,12 @@ export const TestimonialsPage = ({ isMobile }) => {
           </p>
 
           <ReviewForm />
-
-
         </div>
       </section>
 
       {/* Video Modal / Dialog */}
       {selectedVideo && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -737,7 +735,7 @@ export const TestimonialsPage = ({ isMobile }) => {
           }}
           onClick={() => setSelectedVideo(null)}
         >
-          <div 
+          <div
             style={{
               background: C.deepNavy,
               border: `1px solid ${C.blue}`,
@@ -756,7 +754,7 @@ export const TestimonialsPage = ({ isMobile }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button in top-right */}
-            <button 
+            <button
               onClick={() => setSelectedVideo(null)}
               style={{
                 position: 'absolute',
@@ -801,7 +799,7 @@ export const TestimonialsPage = ({ isMobile }) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <video 
+              <video
                 ref={(el) => {
                   if (el) {
                     el.muted = false;
@@ -829,7 +827,7 @@ export const TestimonialsPage = ({ isMobile }) => {
 
       {/* Zoom Image Modal / Lightbox */}
       {zoomedImage && (
-        <div 
+        <div
           style={{
             position: 'fixed',
             top: 0,
@@ -848,7 +846,7 @@ export const TestimonialsPage = ({ isMobile }) => {
           onClick={() => setZoomedImage(null)}
         >
           {/* Close Button */}
-          <button 
+          <button
             onClick={() => setZoomedImage(null)}
             style={{
               position: 'absolute',
@@ -885,7 +883,7 @@ export const TestimonialsPage = ({ isMobile }) => {
           </button>
 
           {/* Image Wrapper */}
-          <div 
+          <div
             style={{
               position: 'relative',
               maxWidth: '90vw',
@@ -900,9 +898,9 @@ export const TestimonialsPage = ({ isMobile }) => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <img 
-              src={zoomedImage.url} 
-              alt={zoomedImage.name} 
+            <img
+              src={zoomedImage.url}
+              alt={zoomedImage.name}
               style={{
                 maxWidth: '100%',
                 maxHeight: '90vh',
