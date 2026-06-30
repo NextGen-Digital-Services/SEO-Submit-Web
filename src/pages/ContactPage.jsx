@@ -81,7 +81,7 @@ export const ContactPage = ({ isMobile }) => {
           background: 'linear-gradient(180deg, rgba(10, 22, 40, 0.5) 0%, rgba(10, 22, 40, 0.75) 100%)',
           zIndex: 1,
         }} />
-        
+
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '750px' }}>
           <h1 style={{ fontFamily: F.display, fontWeight: 900, fontSize: isMobile ? '28px' : '36px', color: C.white, marginBottom: '14px', lineHeight: 1.2 }}>
             Ready to <span style={{ color: C.yellow }}>Scale With</span> High-Quality Leads?
@@ -89,7 +89,7 @@ export const ContactPage = ({ isMobile }) => {
           <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.9)', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>
             Reach our team for webhook configuration questions, custom geo filters, or sample inquiries.
           </p>
-          
+
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
             {["Available 24/7", "Reply in 2 hours", "CRM Integrations Supported"].map((pill, i) => (
               <span key={pill} className="pill-badge" style={{
@@ -105,7 +105,7 @@ export const ContactPage = ({ isMobile }) => {
                 borderRadius: '4px',
                 animationDelay: `${i * 100}ms`
               }}>
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 {pill}
               </span>
             ))}
@@ -114,22 +114,43 @@ export const ContactPage = ({ isMobile }) => {
       </div>
 
       {/* [B] CONTACT GRID */}
-      <section style={{ background: C.lightBg, padding: '32px 24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ background: C.lightBg, padding: '48px 24px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(300px, 650px))',
+          gap: '24px',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          justifyContent: 'center'
+        }}>
           {[
             { border: C.yellow, icon: 'ti-phone', title: 'Phone Support', val: '(716) 575-5447', note: 'Available 24 hours a day', link: 'tel:+17165755447' },
             { border: C.blue, icon: 'ti-mail', title: 'Email Enquiries', val: 'info@seosubmitweb.com', note: 'Reply within 2 hours', link: 'mailto:info@seosubmitweb.com' },
-            { border: C.navy, icon: 'ti-map-pin', title: 'Chicago Office HQ', val: '123 Business Hub, Loop District, Chicago, IL 60601', note: 'Mon–Sun Open Operations' },
           ].map((item, idx) => (
-            <div key={idx} className="info-card" style={{ background: C.white, borderTop: `4px solid ${item.border}`, padding: '24px 20px', textAlign: 'center', borderLeft: '1px solid #dde3f0', borderRight: '1px solid #dde3f0', borderBottom: '1px solid #dde3f0', borderRadius: '4px' }}>
-              <i className={`ti ${item.icon}`} style={{ fontSize: '32px', color: item.border, display: 'block', marginBottom: '12px' }} />
-              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '6px' }}>{item.title}</h3>
-              <span style={{ display: 'block', fontSize: '13px', fontWeight: 'bold', color: C.navy, marginBottom: '4px' }}>
+            <div
+              key={idx}
+              className="info-card"
+              style={{
+                background: C.white,
+                borderTop: `4px solid ${item.border}`,
+                padding: '32px 24px', // Internal layout balance ke liye padding badha di
+                textAlign: 'center',
+                borderLeft: '1px solid #dde3f0',
+                borderRight: '1px solid #dde3f0',
+                borderBottom: '1px solid #dde3f0',
+                borderRadius: '6px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.03)', // Subtle premium feel shadow
+                transition: 'all 0.3s ease'
+              }}
+            >
+              <i className={`ti ${item.icon}`} style={{ fontSize: '36px', color: item.border, display: 'block', marginBottom: '16px' }} />
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '18px', color: C.navy, marginBottom: '8px' }}>{item.title}</h3>
+              <span style={{ display: 'block', fontSize: '15px', fontWeight: 'bold', color: C.navy, marginBottom: '6px' }}>
                 {item.link ? (
                   <a href={item.link} style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = C.blue} onMouseLeave={(e) => e.target.style.color = 'inherit'}>{item.val}</a>
                 ) : item.val}
               </span>
-              <span style={{ fontSize: '11px', color: '#888' }}>{item.note}</span>
+              <span style={{ fontSize: '12px', color: '#888' }}>{item.note}</span>
             </div>
           ))}
         </div>
