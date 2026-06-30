@@ -8,6 +8,8 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 import RouteTitle from './components/RouteTitle';
 import ExitIntentPopup from './components/ExitIntentPopup';
+// 👇 1. YAHAN IMPORT KARIYE
+import WhatsAppButton from './components/WhatsAppButton'; 
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -111,7 +113,7 @@ function App() {
     const emailScript = document.createElement('script');
     emailScript.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
     emailScript.onload = () => {
-      window.emailjs.init('YOUR_PUBLIC_KEY');
+      window.emailjs.init('vD_zn4RFL9iBPfI7U');
     };
     document.head.appendChild(emailScript);
 
@@ -161,6 +163,9 @@ function App() {
           defaultLeadType={defaultLeadType} 
           isMobile={isMobile} 
         />
+
+        {/* 👇 2. YAHAN BUTTON DAAL DIYA (TAKI HAR PAGE PE DIKHE) */}
+        <WhatsAppButton />
       </div>
     </BrowserRouter>
   );

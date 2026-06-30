@@ -6,6 +6,12 @@ import Logo from '../assets/Logo/Logo1_result.webp';
 export const Footer = ({ isMobile }) => {
   const currentYear = new Date().getFullYear();
 
+  // WhatsApp configuration
+  const phoneNumber = "17165755447"; 
+  const customMessage = "Hi SEOSubmitWeb, I visited your website and I'm interested in getting high-quality SEO & Web Design leads. Can we connect?";
+  const encodedMessage = encodeURIComponent(customMessage);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
   return (
     <footer style={{ display: 'flex', flexDirection: 'column', width: '100%' }} aria-label="Agency Footer">
       {/* Top Section */}
@@ -105,8 +111,10 @@ export const Footer = ({ isMobile }) => {
             Follow Us
           </h4>
           <div style={{ display: 'flex', gap: '10px' }}>
+           
             {[
               { icon: 'ti-brand-linkedin', path: 'https://www.linkedin.com/in/imran-merchant/', label: 'LinkedIn Profile' },
+              { icon: 'ti-brand-whatsapp', path: whatsappUrl, label: 'Chat on WhatsApp' },
             ].map((social, i) => (
               <a
                 key={i}

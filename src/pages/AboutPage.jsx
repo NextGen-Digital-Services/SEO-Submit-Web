@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import team1Img from '../assets/Team/1.webp';
 import team2Img from '../assets/Team/2.webp';
 import team3Img from '../assets/Team/3.webp';
@@ -14,8 +14,27 @@ export const AboutPage = ({ isMobile }) => {
   const navigate = useNavigate();
   useScrollReveal();
 
+  // Team cards ke hover status ko track karne ke liye state
+  const [hoveredTeamIdx, setHoveredTeamIdx] = useState(null);
+  // Award cards ke hover status ko track karne ke liye state
+  const [hoveredAwardIdx, setHoveredAwardIdx] = useState(null);
+
   return (
     <div style={{ width: '100%' }}>
+      {/* CSS Animations directly injected within the file */}
+      <style>{`
+        @keyframes pageHeroFade {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-hero-content {
+          animation: pageHeroFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .smooth-transition {
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+      `}</style>
+
       {/* [SECTION A] ABOUT HERO */}
       <section style={{
         background: C.navy,
@@ -46,7 +65,7 @@ export const AboutPage = ({ isMobile }) => {
         </div>
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 2, padding: '80px 48px', textAlign: 'center', maxWidth: '800px' }}>
+        <div className="animate-hero-content" style={{ position: 'relative', zIndex: 2, padding: '80px 48px', textAlign: 'center', maxWidth: '800px' }}>
           <div style={{
             background: C.yellow,
             color: C.navy,
@@ -134,6 +153,7 @@ export const AboutPage = ({ isMobile }) => {
               border: 'none',
               cursor: 'pointer',
               borderRadius: 0,
+              transition: 'background 0.3s ease',
             }}
           >
             MEET OUR TEAM →
@@ -254,7 +274,6 @@ export const AboutPage = ({ isMobile }) => {
       </SectionWrapper>
 
       {/* [SECTION F] TEAM SECTION WITH PHOTOS */}
-      {/* [SECTION F] TEAM SECTION WITH PHOTOS */}
       <section id="about-team" style={{ background: C.white, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Eyebrow label="THE PEOPLE" />
@@ -269,22 +288,44 @@ export const AboutPage = ({ isMobile }) => {
               { name: 'Amanda Wilson', role: 'Client Success Director', dep: 'Technology', border: C.navy, img: team3Img, bio: 'Optimizes target scopes and coordinates replacement pipelines.' },
               { name: 'Vihan Sharma', role: 'Chief Tech Officer', dep: 'Support', border: C.yellow, img: team4Img, bio: 'Designs integration scripts, automated filters, and API webhooks.' },
             ].map((member, idx) => (
-              <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${member.border}`, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  width="400"
-                  height="300"
-                  loading="lazy"
-                  style={{
-                    width: '100%',
-                    height: '260px', // 180px se badha kar 260px kiya taaki vertical crop na ho
-                    objectFit: 'cover',
-                    objectPosition: 'top center', // Sabhi images ko top-center alignment diya taaki faces safe rahein
-                    display: 'block',
-                    border: '3px solid #FFD600',
-                  }}
-                />
+              <div 
+                key={idx} 
+                className="reveal smooth-transition" 
+                onMouseEnter={() => setHoveredTeamIdx(idx)}
+                onMouseLeave={() => setHoveredTeamIdx(null)}
+                style={{ 
+                  background: C.white, 
+                  border: '1px solid #dde3f0', 
+                  borderTop: `4px solid ${member.border}`, 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  // Inline Card Hover Logic
+                  transform: hoveredTeamIdx === idx ? 'translateY(-8px)' : 'translateY(0)',
+                  boxShadow: hoveredTeamIdx === idx ? '0 12px 24px rgba(0,0,0,0.12)' : 'none',
+                }}
+              >
+                <div style={{ overflow: 'hidden', width: '100%', height: '260px' }}>
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    width="400"
+                    height="300"
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
+                      display: 'block',
+                      border: '3px solid #FFD600',
+                      transition: 'transform 0.4s ease',
+                      // Inner image scale hover logic
+                      transform: hoveredTeamIdx === idx ? 'scale(1.04)' : 'scale(1)'
+                    }}
+                  />
+                </div>
                 <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '15px', color: C.navy, marginBottom: '4px' }}>{member.name}</h4>
                   <span style={{ fontSize: '12px', color: member.border === C.yellow ? C.blue : member.border, fontWeight: 'bold', display: 'block', marginBottom: '8px' }}>{member.role}</span>
@@ -339,8 +380,6 @@ export const AboutPage = ({ isMobile }) => {
         </div>
       </section>
 
-      
-
       {/* [SECTION H] AWARDS & CERTIFICATIONS */}
       <SectionWrapper bg={C.navy}>
         <Eyebrow label="RECOGNITION" labelColor={C.yellow} />
@@ -356,7 +395,24 @@ export const AboutPage = ({ isMobile }) => {
             { title: 'BBB A+ Rating', year: '2025', desc: 'Excellent business metrics.' },
             { title: 'ISO 9001 Certified', year: '2024', desc: 'International Quality compliance.' },
           ].map((award, idx) => (
-            <div key={idx} style={{ background: C.yellow, color: C.navy, padding: '20px', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+            <div 
+              key={idx} 
+              className="smooth-transition"
+              onMouseEnter={() => setHoveredAwardIdx(idx)}
+              onMouseLeave={() => setHoveredAwardIdx(null)}
+              style={{ 
+                background: C.yellow, 
+                color: C.navy, 
+                padding: '20px', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                textAlign: 'center',
+                cursor: 'pointer',
+                // Award Cards Lift Effect
+                transform: hoveredAwardIdx === idx ? 'translateY(-6px)' : 'translateY(0)',
+                boxShadow: hoveredAwardIdx === idx ? '0 10px 20px rgba(255,214,0,0.15)' : 'none',
+              }}
+            >
               <i className="ti ti-award" style={{ fontSize: '32px', color: C.navy, marginBottom: '12px' }} />
               <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', marginBottom: '4px', lineHeight: 1.3 }}>{award.title}</h4>
               <span style={{ fontSize: '11px', fontWeight: 'bold', color: C.blue, display: 'block', marginBottom: '6px' }}>{award.year}</span>
@@ -365,11 +421,6 @@ export const AboutPage = ({ isMobile }) => {
           ))}
         </div>
       </SectionWrapper>
-
-      
-
-      
-
 
       {/* [SECTION K] ABOUT PAGE CTA */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
@@ -386,7 +437,6 @@ export const AboutPage = ({ isMobile }) => {
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
             CONTACT US
           </button>
-
         </div>
       </section>
     </div>

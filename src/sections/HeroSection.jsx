@@ -253,7 +253,7 @@ export const HeroSection = ({ isMobile }) => {
 
         <div style={{ position: 'relative', zIndex: 2 }}>
           <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '4px' }}>
-            Get Exclusive Leads For Your Agency
+            Get Exclusive Leads For Your Agency 
           </h2>
           <p style={{ fontFamily: F.body, fontSize: '12px', color: '#333', marginBottom: '16px' }}>
             Real-time. Verified. 100% exclusive — never resold to anyone else.
