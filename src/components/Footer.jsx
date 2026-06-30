@@ -157,7 +157,7 @@ export const Footer = ({ isMobile }) => {
         boxSizing: 'border-box'
       }}>
         <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontFamily: F.body, textAlign: isMobile ? 'center' : 'left' }}>
-          © {currentYear} SEO Submit Web. All Rights Reserved.
+          © 2009 SEO Submit Web. All Rights Reserved.
         </span>
         <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center' }}>
           <a href="#" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontFamily: F.body }}>Privacy Policy</a>
