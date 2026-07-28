@@ -103,7 +103,7 @@ export const HeroSection = ({ isMobile }) => {
             marginBottom: '16px',
             textTransform: 'uppercase',
           }}>
-            USA'S #1 SEO LEAD GENERATION COMPANY
+            BUY EXCLUSIVE SEO LEADS IN USA
           </div>
 
           {/* H1 heading */}

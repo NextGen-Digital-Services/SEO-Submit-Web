@@ -148,7 +148,7 @@ export const HomePage = ({ isMobile }) => {
       Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals <span style={{ color: C.blue }}>without chasing cold, recycled leads.</span>
     </h2>
     <p style={{ fontFamily: F.body, fontSize: '14.5px', color: '#4b5563', lineHeight: 1.8, marginBottom: '14px' }}>
-      We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never resold.
+      We deliver exclusive SEO leads, web design leads, and appointment-set leads that come to you ready to buy — never shared, never
       Every lead is generated fresh for your business alone, so you're always the first call, not the fifth.
     </p>
     <p style={{ fontFamily: F.body, fontSize: '14.5px', color: '#4b5563', lineHeight: 1.8, marginBottom: '28px' }}>
