@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+// CMS sub-application (lazy loaded — zero impact on public bundle)
+const CMSRoot = lazy(() => import('./admin/CMSRoot'));
 
 // Layout & Common Components
 import Navbar from './components/Navbar';
@@ -150,6 +153,19 @@ function App() {
             <Route path="/blog" element={<BlogPage isMobile={isMobile} />} />
             <Route path="/testimonials" element={<TestimonialsPage isMobile={isMobile} />} />
             <Route path="/contact" element={<ContactPage isMobile={isMobile} />} />
+
+            {/* ── CMS sub-application ─────────────────────────────────────────────
+                Completely isolated. Public Navbar/Footer/etc are NOT rendered.
+                All /cms/* routes are handled inside CMSRoot.
+            ─────────────────────────────────────────────────────────────────── */}
+            <Route
+              path="/cms/*"
+              element={
+                <Suspense fallback={null}>
+                  <CMSRoot />
+                </Suspense>
+              }
+            />
           </Routes>
         </main>
 
