@@ -9,10 +9,10 @@ export const CTASection = () => {
     <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <h2 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '32px', color: C.white, marginBottom: '8px' }}>
-          Stop Chasing Cold Leads. <span style={{ color: C.yellow }}>Start Closing Hot Ones.</span>
+          Ready to Buy SEO Leads in USA?
         </h2>
         <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.85)', marginBottom: '24px', lineHeight: 1.6 }}>
-          Gain access to exclusive buyers immediately. Zero risk, instant replacement guarantee. Fill your pipeline in 24 hours.
+          Get exclusive, verified, and conversion-focused leads delivered directly to your business.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button
@@ -30,10 +30,10 @@ export const CTASection = () => {
               borderRadius: 0,
             }}
           >
-            VIEW SAMPLE LEADS
+            Buy SEO Leads Today
           </button>
           <button
-            onClick={() => navigate('/contact')}
+            onClick={() => navigate('/web-design-leads')}
             style={{
               background: 'transparent',
               color: C.white,
@@ -47,7 +47,7 @@ export const CTASection = () => {
               borderRadius: 0,
             }}
           >
-            SCHEDULE A CALL
+            Get Website Design Leads
           </button>
 
         </div>

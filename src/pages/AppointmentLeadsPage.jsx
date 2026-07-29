@@ -79,7 +79,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
               marginBottom: '16px',
               display: 'inline-block',
             }}>
-              APPOINTMENT FIXED LEADS
+              PREMIUM APPOINTMENT LEADS USA
             </div>
             <h1 style={{
               fontFamily: F.display,
@@ -89,25 +89,35 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              Qualified Appointments <span style={{ color: C.yellow }}>Scheduled Directly</span> With Decision-Makers
+              Qualified Appointment Leads That Help You <span style={{ color: C.yellow }}>Close More Deals</span>
             </h1>
             <p style={{
               fontFamily: F.body,
-              fontSize: '14px',
-              color: 'rgba(255,255,255,0.85)',
+              fontSize: '13.5px',
+              color: 'rgba(255,255,255,0.9)',
+              lineHeight: 1.7,
+              marginBottom: '12px',
+              maxWidth: '540px',
+            }}>
+              Stop wasting time chasing prospects. We help businesses <strong>buy appointment leads in USA</strong> that are already qualified and interested in your services. Our experienced SDR team contacts prospects, verifies their requirements, and schedules appointments directly on your calendar.
+            </p>
+            <p style={{
+              fontFamily: F.body,
+              fontSize: '13.5px',
+              color: 'rgba(255,255,255,0.9)',
               lineHeight: 1.7,
               marginBottom: '24px',
               maxWidth: '540px',
             }}>
-              No cold dialing. We source, contact, qualify, and book direct video consultation dates on your sales calendar.
+              Whether you're looking to <strong>buy SEO leads in USA</strong>, <strong>buy website design leads in USA</strong>, or generate qualified B2B appointments, we deliver sales-ready opportunities that help your business grow faster.
             </p>
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                GET BOOKED CALLS
+                Get Qualified Leads
               </button>
               <button onClick={() => onViewPricing && onViewPricing('Appointment Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
-                VIEW PRICING
+                View Pricing
               </button>
 
             </div>
@@ -153,54 +163,48 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
-      {/* [B] WHAT IS APPOINTMENT FIXED LEAD */}
+      {/* [B] WHAT ARE APPOINTMENT LEADS? */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="HOW IT WORKS" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          What is an Appointment Fixed Lead?
+          What Are Appointment Leads?
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr', gap: '32px' }}>
           <div>
-            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
-              Instead of receiving basic contact details, our SDR team calls the prospects directly. We confirm their interest, ensure budget compatibility, and secure a meeting date on your calendar.
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '14px' }}>
+              Appointment leads are pre-qualified prospects who have shown genuine interest in your services and agreed to schedule a meeting with your sales team.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-              {[
-                'Verified slot directly booked on Google Calendar or Outlook.',
-                'Prospect attendance confirmed via text and email notifications.',
-                'Full notes on client requirements and budgets attached.',
-                'CMO, CEO, or business owner present on the meeting.',
-              ].map((bullet, idx) => (
-                <div key={idx} className="reveal" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
-                  <i className="ti ti-circle-check" style={{ color: C.blue, fontSize: '16px', marginTop: '2px' }} />
-                  <span>{bullet}</span>
-                </div>
-              ))}
-            </div>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '14px' }}>
+              Unlike ordinary lead lists, our team personally contacts every prospect, verifies their requirements, and books appointments with decision-makers, resulting in higher conversion rates and better ROI.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
+              If your business wants to <strong>buy SEO leads in USA</strong>, <strong>buy website design leads in USA</strong>, or expand into new markets, appointment setting is one of the fastest ways to increase sales.
+            </p>
           </div>
 
           {/* Right Timeline Booking Process */}
           <div style={{ background: C.lightBg, border: `1px solid #dde3f0`, borderRadius: 0, textAlign: 'left', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
             <img src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782632233/appointment1_result_b89afx.webp" alt="Appointment booking and lead qualification dashboard" width="1672" height="941" loading="lazy" style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }} />
             <div style={{ padding: '20px' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '14px', textTransform: 'uppercase' }}>
-                Booking Flow
-              </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '14px', textTransform: 'uppercase' }}>
+                Our Appointment Booking Process
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
-                  { num: '1', title: 'Verification Call', desc: 'Our team dials prospects to confirm budget size.' },
-                  { num: '2', title: 'Meeting Scheduled', desc: 'We coordinate dates and schedule the meeting.' },
-                  { num: '3', title: 'Calendar Sync', desc: 'Calendar invitation automatically pushes to your representatives.' },
-                  { num: '4', title: 'Close The Deal', desc: 'You run the pitch call and sign the contract.' },
+                  { num: '1', title: 'Target Audience Research', desc: 'We identify your ideal customers based on industry, company size, and location.' },
+                  { num: '2', title: 'Prospect Outreach', desc: 'Our SDR team contacts qualified prospects through email, LinkedIn, and cold calling.' },
+                  { num: '3', title: 'Lead Qualification', desc: 'We verify budget, interest, authority, and service requirements.' },
+                  { num: '4', title: 'Appointment Scheduling', desc: 'Once qualified, meetings are booked directly into your calendar.' },
+                  { num: '5', title: 'Sales Ready Opportunities', desc: 'You simply attend the meeting and focus on closing the deal.' },
                 ].map((step) => (
                   <div key={step.num} className="reveal" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '24px', height: '24px', background: C.blue, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '10px' }}>
+                    <div style={{ width: '24px', height: '24px', background: C.blue, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '10px', flexShrink: 0 }}>
                       {step.num}
                     </div>
                     <div>
-                      <h5 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '12px', color: C.navy }}>{step.title}</h5>
-                      <p style={{ fontFamily: F.body, fontSize: '10px', color: '#666' }}>{step.desc}</p>
+                      <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '12px', color: C.navy }}>{step.title}</h4>
+                      <p style={{ fontFamily: F.body, fontSize: '11px', color: '#666', lineHeight: 1.4 }}>{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -210,47 +214,56 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [C] BENEFITS */}
+      {/* [C] WHY CHOOSE OUR APPOINTMENT LEADS? */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
-          Key Benefits of Appointment Leads
+          Why Choose Our Appointment Leads?
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
           {[
-            { title: 'No Cold Calling', desc: 'Stop dialing cold leads. Pitch only clients scheduled to speak with you.' },
-            { title: 'Pre-Qualified Prospects', desc: 'Every contact is verified to ensure they have real budget capabilities.' },
-            { title: 'Confirmed Meeting Time', desc: 'Meetings route straight onto your calendar software.' },
-            { title: 'Decision Maker Present', desc: 'Saves time by pitching CEO, Founder, or CMO direct.' },
+            { title: 'Qualified Decision Makers', desc: 'Every meeting is scheduled with genuine business owners or decision-makers.' },
+            { title: 'Exclusive Appointments', desc: 'No recycled databases. We deliver exclusive appointments for your business.' },
+            { title: 'Better Conversion Rates', desc: 'Since every lead is verified before booking, your closing ratio improves significantly.' },
+            { title: 'USA-Focused Campaigns', desc: 'We specialize in generating appointment leads across the United States for agencies, software companies, web design firms, and SEO providers.' },
+            { title: 'Customized Lead Generation', desc: 'Whether you need SEO Leads, Website Design Leads, or industry-specific appointments, campaigns are customized according to your business goals.' },
           ].map((item, idx) => (
-            <div key={idx} className="reveal" style={{ background: C.white, padding: '20px', textAlign: 'left', borderRadius: 0 }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '8px' }}>{item.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.5 }}>{item.desc}</p>
+            <div key={idx} className="reveal" style={{ background: C.white, padding: '20px', textAlign: 'left', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{item.title}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* [D] INDUSTRIES */}
+      {/* [D] INDUSTRIES WE SERVE */}
       <SectionWrapper bg={C.lightBg}>
         <Eyebrow label="TARGET SECTORS" />
-        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          We Sync Appointments For Multiple Sectors
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '16px' }}>
+          Industries We Serve
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
+        <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', marginBottom: '24px' }}>
+          We generate appointment leads for businesses offering:
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '12px', marginBottom: '24px' }}>
           {[
-            { title: 'Real Estate Leads', desc: 'Brokerages looking to acquire property inventory listings.' },
-            { title: 'SaaS Platforms', desc: 'Software companies targeting enterprise-level sales.' },
-            { title: 'Digital Agencies', desc: 'SEO and design agencies scaling retainer contracts.' },
-            { title: 'Healthcare Solutions', desc: 'Medical offices planning digital scheduling builds.' },
-            { title: 'Logistics Companies', desc: 'Freight providers seeking contract shippers.' },
-            { title: 'Legal Counsel', desc: 'Attorneys sourcing commercial contract consulting.' },
+            'SEO Services',
+            'Website Design Services',
+            'Digital Marketing',
+            'PPC Services',
+            'Software Development',
+            'IT Services',
+            'SaaS Companies',
+            'Local Business Marketing',
           ].map((item, idx) => (
-            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.blue, marginBottom: '6px' }}>{item.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.5 }}>{item.desc}</p>
+            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', padding: '16px', display: 'flex', alignItems: 'center', gap: '10px', borderRadius: '4px' }}>
+              <i className="ti ti-check" style={{ color: C.blue, fontSize: '16px', fontWeight: 'bold' }} />
+              <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: '13px', color: C.navy }}>{item}</span>
             </div>
           ))}
         </div>
+        <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#555', lineHeight: 1.6, fontStyle: 'italic' }}>
+          Our lead generation campaigns are designed for businesses looking to <strong>buy SEO leads in USA</strong> and <strong>buy website design leads in USA</strong> with high buying intent.
+        </p>
       </SectionWrapper>
 
       {/* [E] PRICING */}
@@ -333,7 +346,7 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [F] COMPARISON TABLE */}
+      {/* [F] LEAD SOURCING COMPARISON TABLE */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
@@ -380,27 +393,91 @@ export const AppointmentLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
+      {/* [F2] BUY SEO & WEBSITE DESIGN LEADS & TRUST FACTORS */}
+      <section style={{ background: C.lightBg, padding: '48px 24px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '24px', marginBottom: '40px' }}>
+            <div style={{ background: C.white, padding: '24px', borderRadius: '4px', borderLeft: `4px solid ${C.navy}`, border: '1px solid #dde3f0' }}>
+              <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.navy, marginBottom: '12px' }}>
+                Buy SEO Leads in USA
+              </h2>
+              <p style={{ fontFamily: F.body, fontSize: '13.5px', color: C.navy, fontWeight: 700, marginBottom: '8px' }}>
+                Looking to scale your SEO agency?
+              </p>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
+                Our qualified Buy SEO Leads in USA service connects you with businesses actively searching for SEO services. Instead of spending months on marketing, receive exclusive appointments with companies ready to discuss SEO solutions.
+              </p>
+            </div>
+
+            <div style={{ background: C.white, padding: '24px', borderRadius: '4px', borderLeft: `4px solid ${C.blue}`, border: '1px solid #dde3f0' }}>
+              <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.navy, marginBottom: '12px' }}>
+                Buy Website Design Leads in USA
+              </h2>
+              <p style={{ fontFamily: F.body, fontSize: '13.5px', color: C.navy, fontWeight: 700, marginBottom: '8px' }}>
+                Need more website projects?
+              </p>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '8px' }}>
+                Our Buy Website Design Leads in USA campaigns help web design agencies connect with business owners looking to redesign existing websites or build new ones.
+              </p>
+              <p style={{ fontFamily: F.body, fontSize: '12.5px', color: C.blue, fontWeight: 600 }}>
+                Every lead is qualified before scheduling the appointment.
+              </p>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
+              Why Businesses Trust SEO Submit Web
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '14px' }}>
+              {[
+                '✔ Qualified USA Prospects',
+                '✔ Higher Appointment Show Rate',
+                '✔ Experienced SDR Team',
+                '✔ Exclusive Leads',
+                '✔ No Shared Databases',
+                '✔ Faster Business Growth',
+                '✔ Dedicated Campaign Manager',
+                '✔ Transparent Reporting',
+              ].map((item, idx) => (
+                <div key={idx} className="reveal" style={{ background: C.navy, color: C.white, padding: '16px', borderRadius: '4px', textAlign: 'center' }}>
+                  <span style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.yellow }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* [G] FAQ */}
       <SectionWrapper bg={C.white}>
         <Eyebrow label="FAQ" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          Frequently Asked Questions About Appointments
+          Frequently Asked Questions
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '20px' }}>
           {[
-            { q: 'How are meetings scheduled?', a: 'We sync with your calendar and verify appointment slots directly.' },
-            { q: 'What happens if a prospect does not show up?', a: 'If a show-up does not occur, the appointment is rescheduled or replaced.' },
-            { q: 'Are budgets verified?', a: 'Yes. We confirm funding capabilities during our qualification call.' },
-            { q: 'Can we define criteria filters?', a: 'Yes, filters are fully configured during setup.' },
-            { q: 'Which calendars can be synced?', a: 'We support calendar integrations with Google Workspace, Microsoft Outlook, and Calendly.' },
-            { q: 'Is there a setup delay?', a: 'Campaigns typically launch within 5 business days.' },
-            { q: 'Do you provide call logs?', a: 'Yes, call transcripts and recordings are provided.' },
-            { q: 'Can we adjust monthly volumes?', a: 'Yes, you can upgrade or scale your package monthly.' },
+            {
+              q: 'Do you provide exclusive appointment leads?',
+              a: "Yes. Every appointment is booked specifically for your business and isn't shared with competitors."
+            },
+            {
+              q: 'Can I buy SEO leads in USA?',
+              a: 'Absolutely. We provide verified SEO leads and qualified appointments for agencies targeting businesses across the United States.'
+            },
+            {
+              q: 'Do you offer website design leads?',
+              a: 'Yes. We generate qualified website design leads in USA for agencies, freelancers, and web development companies.'
+            },
+            {
+              q: 'What industries do you serve?',
+              a: 'We work with SEO agencies, web design companies, software firms, digital marketing agencies, IT service providers, and many other B2B businesses.'
+            }
           ].map((faq, idx) => (
-            <div key={idx} className="reveal" style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>{faq.q}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
+            <div key={idx} className="reveal" style={{ padding: '20px', borderLeft: `4px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{faq.q}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
             </div>
           ))}
         </div>

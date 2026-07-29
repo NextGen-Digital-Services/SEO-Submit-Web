@@ -51,36 +51,45 @@ export const ServicesSection = ({ isMobile }) => {
 
       <Eyebrow label="WHAT WE OFFER" />
       <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: isMobile ? '26px' : '32px', color: C.navy, marginBottom: '32px', lineHeight: 1.25 }}>
-        Our <span style={{ color: C.blue }}>Three Core</span> Lead Generation Services
+        Our Lead Generation Services
       </h2>
 
-      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '24px' }}>
         {[
           {
             img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552888/hero2_result_sgduei.webp',
             border: C.yellow,
             icon: 'ti-search',
-            title: 'Exclusive SEO Leads',
-            desc: 'High-intent leads from business owners looking for search engine optimization, content marketing, and link building retainers.',
-            features: ['Real-time, active buyers', '100% replacement policy', 'Phone & Email verified', 'C-Level contact data'],
+            title: 'Buy SEO Leads in USA',
+            desc: 'Get exclusive SEO leads from businesses actively searching for SEO services. Every lead is verified for higher conversion potential.',
+            features: ['Real-time, active buyers', '100% replacement policy', 'Phone & Email verified', 'Exclusive business leads'],
             path: '/seo-leads',
           },
           {
             img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552886/hero3_result_bnwoo5.webp',
             border: C.blue,
             icon: 'ti-layout',
-            title: 'Web Design Leads',
-            desc: 'Fresh leads from companies requesting custom website designs, landing page optimizations, and complex e-commerce builds.',
-            features: ['Complete website rebuilds', 'E-commerce scopes included', 'Direct phone confirmations', 'Budget range indicators'],
+            title: 'Website Design Leads in USA',
+            desc: 'Receive premium Website Design Leads in USA from businesses looking to build or redesign their websites.',
+            features: ['Complete website rebuilds', 'E-commerce scopes included', 'Direct phone confirmations', 'Verified budget availability'],
+            path: '/web-design-leads',
+          },
+          {
+            img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552880/hero5_result_oahywd.webp',
+            border: C.yellow,
+            icon: 'ti-device-laptop',
+            title: 'Web Design Leads USA',
+            desc: 'Grow your web design agency with exclusive Web Design Leads USA delivered directly to your inbox.',
+            features: ['Delivered directly to inbox', 'High-intent agency leads', 'Targeted web design clients', 'No shared prospect lists'],
             path: '/web-design-leads',
           },
           {
             img: 'https://res.cloudinary.com/dpeq00iqq/image/upload/v1782552882/hero4_result_gfbbbb.webp',
             border: C.navy,
             icon: 'ti-calendar-check',
-            title: 'Appointment Fixed Leads',
-            desc: 'Double your sales call count. We call and pre-book direct consultation meetings on your sales representatives\' calendars.',
-            features: ['Pre-booked calendar slot', 'No cold outreach required', 'Verified budget availability', 'Decision makers only'],
+            title: 'Appointment Set Leads',
+            desc: 'Skip cold calling. Our team schedules qualified appointments with interested prospects so your sales team can focus on closing deals.',
+            features: ['Pre-booked calendar slots', 'No cold outreach required', 'Verified budget & timeline', 'Decision makers only'],
             path: '/appointment-leads',
           },
         ].map((srv, idx) => (

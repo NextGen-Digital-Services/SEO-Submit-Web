@@ -258,23 +258,32 @@ export const HomePage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', background: C.navy, textAlign: 'left' }}>
           <Eyebrow label="WHY CHOOSE US" labelColor={C.yellow} />
           <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '20px' }}>
-            What Makes SEO Submit Web <span style={{ color: C.yellow }}>The #1 Choice</span>
+            Why Choose SEO Submit Web?
           </h2>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-            Since 2009, SEOSubmitWeb has built its reputation on one promise — leads that are 100% exclusive to you, never shared with a competitor.
+          <p style={{ fontFamily: F.body, fontSize: '13.5px', color: 'rgba(255,255,255,0.85)', marginBottom: '16px', lineHeight: 1.7 }}>
+            We specialize in delivering premium SEO Leads in USA for businesses looking to scale faster. Every lead is manually verified and delivered exclusively to your business, so you never compete with multiple agencies for the same prospect.
           </p>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-            We don't just generate leads — we deliver SEO leads, web design leads, and appointment-set prospects who are actively looking for exactly what you sell, right now.
+          <p style={{ fontFamily: F.body, fontSize: '13.5px', color: 'rgba(255,255,255,0.85)', marginBottom: '24px', lineHeight: 1.7 }}>
+            Whether you're looking to Buy SEO Leads in USA, generate more web design projects, or expand your digital marketing services, our lead generation system helps you connect with businesses actively searching for professional services.
           </p>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-            Nearly a decade in business means we've refined what works, so every lead you receive is high-intent, pre-qualified, and ready for a real conversation.
-          </p>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: '16px', lineHeight: 1.6 }}>
-            Unlike lead marketplaces that resell the same contact five times over, every lead we generate belongs to one client — you.
-          </p>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.7)', marginBottom: 0, lineHeight: 1.6 }}>
-            When your pipeline is built on exclusive, appointment-set leads from a partner with 9+ years of proven results, closing becomes a process — not a gamble.
-          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px' }}>
+            {[
+              'Buy SEO Leads in USA',
+              'Website Design Leads in USA',
+              'Web Design Leads USA',
+              'Appointment Set Leads',
+              'SEO Agency Leads',
+              'Digital Marketing Leads',
+              'Local Business Leads',
+              'Exclusive Business Leads',
+            ].map((highlight) => (
+              <div key={highlight} style={{ display: 'flex', alignItems: 'center', gap: '10px', color: C.yellow, fontSize: '12.5px', fontFamily: F.body, fontWeight: 600 }}>
+                <span style={{ fontSize: '16px', lineHeight: 1 }}>•</span>
+                <span style={{ color: C.white }}>{highlight}</span>
+              </div>
+            ))}
+          </div>
         </div>
         <div>
           <img
@@ -353,25 +362,30 @@ export const HomePage = ({ isMobile }) => {
         />
       </SectionWrapper>
 
-      {/* [SECTION H] INDUSTRIES WE SERVE */}
+      {/* [SECTION H] WHO CAN BENEFIT */}
       <SectionWrapper bg={C.lightBg}>
-        <Eyebrow label="INDUSTRIES" />
-        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          Leads For Every <span style={{ color: C.blue }}>Digital Service</span> Industry
+        <Eyebrow label="WHO CAN BENEFIT" />
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '12px' }}>
+          Who Can Benefit?
         </h2>
+        <p style={{ fontFamily: F.body, fontSize: '14px', color: '#4b5563', marginBottom: '28px' }}>
+          Our lead generation services are ideal for:
+        </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
           {[
             { icon: 'ti-search', title: 'SEO Agencies', desc: 'Inquiries seeking local SEO setups, technical optimization audits, and monthly link building packages.', border: C.yellow },
-            { icon: 'ti-layout', title: 'Web Design Firms', desc: 'Requests for corporate redesign projects, e-commerce integrations, and custom landing page designs.', border: C.blue },
-            { icon: 'ti-device-mobile', title: 'App Dev Companies', desc: 'Businesses planning iOS, Android, cross-platform applications, and SaaS software builds.', border: C.navy },
+            { icon: 'ti-target', title: 'Digital Marketing Agencies', desc: 'Full-service digital agencies looking for multi-channel lead generation and campaign clients.', border: C.blue },
+            { icon: 'ti-layout', title: 'Web Design Companies', desc: 'Requests for corporate redesign projects, e-commerce integrations, and custom landing page designs.', border: C.navy },
+            { icon: 'ti-user-check', title: 'Freelancers', desc: 'Independent specialists and consultants seeking high-value projects and steady monthly retainers.', border: C.yellow },
+            { icon: 'ti-building-store', title: 'Local Marketing Consultants', desc: 'Consultants working with regional and local SMBs to increase local organic search traffic.', border: C.blue },
+            { icon: 'ti-code', title: 'Website Developers', desc: 'Web developers building custom web applications, SaaS interfaces, and complex tech stacks.', border: C.navy },
             { icon: 'ti-click', title: 'PPC Agencies', desc: 'Companies seeking monthly campaign management across Google Ads, Meta Ads, and LinkedIn.', border: C.yellow },
-            { icon: 'ti-message-share', title: 'Social Media Firms', desc: 'Firms requesting brand identity consultation, page management, and social media advertising setup.', border: C.blue },
-            { icon: 'ti-edit', title: 'Content Marketing Agencies', desc: 'Corporate content strategies, writing pipelines, blog assets, and copywriting optimization.', border: C.navy },
+            { icon: 'ti-rocket', title: 'Startup Marketing Teams', desc: 'Fast-growing startups looking to accelerate client acquisition and scale pipeline revenue.', border: C.blue },
           ].map((ind, idx) => (
-            <div key={idx} style={{ background: C.white, borderTop: `4px solid ${ind.border}`, padding: '24px 20px', textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
+            <div key={idx} style={{ background: C.white, borderTop: `4px solid ${ind.border}`, padding: '24px 20px', textAlign: 'left', display: 'flex', flexDirection: 'column', borderRadius: '4px' }}>
               <i className={`ti ${ind.icon}`} style={{ fontSize: '32px', color: C.blue, display: 'block', marginBottom: '14px' }} />
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{ind.title}</h4>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{ind.title}</h3>
               <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, marginBottom: '16px', flex: 1 }}>{ind.desc}</p>
               <span style={{ alignSelf: 'flex-start', background: '#e1fce8', color: '#16a34a', fontSize: '9px', fontWeight: 'bold', padding: '3px 8px', letterSpacing: '1px' }}>
                 AVAILABLE
@@ -523,10 +537,10 @@ export const HomePage = ({ isMobile }) => {
         </div>
       </SectionWrapper>
 
-      {/* [SECTION N] PARTNERS BAND */}
+      {/* [SECTION N] WHY AGENCIES TRUST SEO SUBMIT WEB */}
       <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center' }}>
-        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '20px', color: C.white, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '28px' }}>
-          Trusted & Certified By
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.white, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '28px' }}>
+          Why Agencies Trust SEO Submit Web
         </h2>
         <div style={{
           display: 'flex',
@@ -536,7 +550,16 @@ export const HomePage = ({ isMobile }) => {
           maxWidth: '1200px',
           margin: '0 auto',
         }}>
-          {["GOOGLE PARTNER", "META BUSINESS", "ACMA COMPLIANT", "BBB A+", "ISO CERTIFIED"].map((badge) => (
+          {[
+            "✔ Exclusive Leads",
+            "✔ No Shared Leads",
+            "✔ High Conversion Rate",
+            "✔ Verified Business Information",
+            "✔ Fast Lead Delivery",
+            "✔ Dedicated Support",
+            "✔ Transparent Pricing",
+            "✔ USA-Focused Lead Generation",
+          ].map((badge) => (
             <div key={badge} style={{
               background: C.yellow,
               color: C.navy,
@@ -546,13 +569,47 @@ export const HomePage = ({ isMobile }) => {
               padding: '12px 20px',
               letterSpacing: '1px',
               border: 'none',
-              borderRadius: 0,
+              borderRadius: '4px',
             }}>
               {badge}
             </div>
           ))}
         </div>
       </section>
+
+      {/* [SECTION FAQ] SEO FAQs */}
+      <SectionWrapper bg={C.white}>
+        <Eyebrow label="FAQ" />
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
+          SEO FAQs
+        </h2>
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '20px' }}>
+          {[
+            {
+              q: 'What are SEO Leads?',
+              a: 'SEO leads are businesses actively looking for search engine optimization services to improve their website rankings and online visibility.'
+            },
+            {
+              q: 'Can I Buy SEO Leads in USA?',
+              a: 'Yes. We provide exclusive Buy SEO Leads in USA that are verified, qualified, and delivered only to your business.'
+            },
+            {
+              q: 'Are your SEO leads exclusive?',
+              a: 'Yes. We never resell the same lead to multiple agencies.'
+            },
+            {
+              q: 'What are Website Design Leads in USA?',
+              a: 'These are businesses actively searching for website design or website redesign services across the United States.'
+            }
+          ].map((faq, idx) => (
+            <div key={idx} className="reveal" style={{ padding: '20px', borderLeft: `4px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{faq.q}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: '#4b5563', lineHeight: 1.6 }}>{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
 
       {/* [SECTION O] BOTTOM CTA */}
       <CTASection />

@@ -88,7 +88,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-               Buy <span style={{ color: C.yellow }}>web design leads</span> Exclusive Leads Trusted Since 2009
+              Buy Web Design Leads – <span style={{ color: C.yellow }}>Exclusive & Verified Leads</span> for Agencies
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -98,11 +98,11 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
               marginBottom: '24px',
               maxWidth: '540px',
             }}>
-              If your agency is ready to grow faster and close more projects, it is time to buy web design leads from SEOSubmitWeb. Our web design leads are not recycled lists or shared contacts — every prospect we deliver is freshly generated, high-intent, and actively looking to hire a web designer or agency right now.
+              Grow your web design agency with premium, high-converting web design leads from businesses actively looking for professional website design services. Since 2009, SEO Submit Web has helped agencies connect with qualified prospects through exclusive, manually verified leads that are never shared with competitors. Whether you're a freelancer or an established agency, our lead generation solutions help you close more projects and grow your business faster.
             </p>
 
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
-              {["E-Commerce Focus", "Redesigns", "C-Level Data", "ACMA Compliant"].map((t) => (
+              {["✔ Verified Business Leads", "✔ Exclusive Leads Only", "✔ High Buying Intent", "✔ Affordable Pricing"].map((t) => (
                 <span key={t} style={{
                   background: 'rgba(255,255,255,0.15)',
                   color: C.white,
@@ -114,7 +114,6 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
                   alignItems: 'center',
                   gap: '6px',
                 }}>
-                  <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   {t}
                 </span>
               ))}
@@ -122,10 +121,10 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                VIEW LEAD SAMPLES
+                Buy Web Design Leads
               </button>
-              <button onClick={() => onViewPricing && onViewPricing('Web Design Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
-                VIEW PRICING
+              <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+                Get Free Sample
               </button>
 
             </div>
@@ -172,30 +171,35 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
-      {/* [B] WHAT YOU RECEIVE */}
+      {/* [B] SECTION 2: VERIFIED LEADS, READY TO CLOSE */}
       <SectionWrapper bg={C.white}>
-        <Eyebrow label="LEAD OUTLINE" />
+        <Eyebrow label="VERIFIED LEADS" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Verified Leads, Ready to Close
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr', gap: '32px' }}>
           <div>
-            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
-              Every lead is verified for intent and quality before delivery. Since 2016, SEOSubmitWeb has delivered high-quality web design leads to freelancers, boutique studios, and full-service agencies — all with one guarantee: one lead, one buyer, zero sharing.
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '14px' }}>
+              For over 15 years, SEO Submit Web has delivered high-quality web design leads that help agencies reduce prospecting time and increase sales. Every lead is carefully verified before delivery, ensuring you receive genuine businesses actively searching for website design, redesign, or development services.
             </p>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
+              Whether you specialize in WordPress, Shopify, eCommerce, or custom web development, our exclusive leads provide a consistent pipeline of qualified prospects.
+            </p>
+
+            <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '14px' }}>Features:</h3>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px' }}>
               {[
-                'Business Name & Sector',
-                'Contact Person & Role',
-                'Email Address Verified',
-                'Direct Contact Number',
-                'Current Website (if any)',
-                'Budget Range Specified',
-                'Project Scope Detail',
-                'Timeline Expectations',
+                'Verified Business Information',
+                'Business Owner Contact Details',
+                'Website URL Included',
+                'Email & Phone Number',
+                'USA-Based Businesses',
+                'High Conversion Potential',
+                'Daily Lead Delivery',
+                'Exclusive Lead Distribution',
               ].map((bullet) => (
-                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
+                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: C.navy, fontFamily: F.body, fontWeight: 600 }}>
                   <i className="ti ti-check" style={{ color: C.blue, fontSize: '16px', fontWeight: 'bold' }} />
                   <span>{bullet}</span>
                 </div>
@@ -210,67 +214,64 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [C] WEB DESIGN LEAD TYPES */}
+      {/* [C] SERVICES SECTION */}
       <SectionWrapper bg={C.lightBg}>
-        <Eyebrow label="LEAD CATEGORIES" />
+        <Eyebrow label="SERVICES" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Web Design & Development Leads
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
           {[
-            { border: C.yellow, title: 'New Website Builds', desc: 'Startups and service providers seeking their very first online site.', price: '$$' },
-            { border: C.blue, title: 'Redesign Projects', desc: 'Established firms looking to overhaul their outdated UI/UX designs.', price: '$$$' },
-            { border: C.navy, title: 'E-Commerce Websites', desc: 'Retailers scaling into Shopify, WooCommerce, or custom checkouts.', price: '$$$$' },
-            { border: C.yellow, title: 'Web Development Leads', desc: 'Beyond design, we also help development-focused agencies buy web development leads — pre-qualified businesses actively looking for custom builds, CMS solutions, and full-stack development partners.', price: '$' },
+            { border: C.yellow, title: 'New Website Design Leads', desc: 'Connect with businesses planning to launch a new website and looking for experienced web design professionals.' },
+            { border: C.blue, title: 'Redesign Project Leads', desc: 'Reach companies interested in redesigning outdated websites to improve performance and user experience.' },
+            { border: C.navy, title: 'Ecommerce Website Leads', desc: 'Generate more projects from businesses looking to build Shopify, WooCommerce, Magento, or custom eCommerce stores.' },
+            { border: C.yellow, title: 'Website Development Leads', desc: 'Receive qualified businesses searching for custom web development, CMS solutions, and responsive websites.' },
           ].map((cat, idx) => (
-            <div key={idx} className="reveal" style={{ background: C.white, borderTop: `4px solid ${cat.border}`, border: '1px solid #dde3f0', padding: '20px', display: 'flex', flexDirection: 'column' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '8px' }}>{cat.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.6, marginBottom: '14px', flex: 1 }}>{cat.desc}</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '11px', fontWeight: 'bold', color: C.blue }}>Value: {cat.price}</span>
-              </div>
+            <div key={idx} className="reveal" style={{ background: C.white, borderTop: `4px solid ${cat.border}`, border: '1px solid #dde3f0', padding: '20px', display: 'flex', flexDirection: 'column', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '10px' }}>{cat.title}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6, flex: 1 }}>{cat.desc}</p>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* [D] WHY WEB DESIGN LEADS */}
+      {/* [D] WHY CHOOSE US */}
       <SectionWrapper bg={C.navy}>
-        <Eyebrow label="ADVANTAGES" labelColor={C.yellow} />
+        <Eyebrow label="WHY CHOOSE US" labelColor={C.yellow} />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
-          Why Agencies Choose SEOSubmitWeb
+          Why Agencies Choose SEO Submit Web
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
           {[
-            { border: C.yellow, title: 'High Order Values', desc: "Every dollar invested in exclusive web design leads delivers greater ROI because you're the only agency contacting the prospect." },
-            { border: C.blue, title: 'Fresh Inquiries Only', desc: 'Unlike directories and marketplaces, every lead is generated fresh and delivered exclusively.' },
-            { border: C.blue, title: '100% Replacement policy', desc: 'Most lead vendors sell the same web design leads to multiple agencies. SEOSubmitWeb delivers every lead exclusively to one buyer.' },
-            { border: C.yellow, title: 'Verified Budget Allocation', desc: 'Agencies that buy exclusive web design leads from SEOSubmitWeb stop chasing and start closing because every prospect already knows what they need.' },
-            { border: C.yellow, title: 'Direct Access', desc: 'When you buy exclusive web design leads from SEOSubmitWeb, you are the only buyer — no competitor receives the same contact, and no one else gets to pitch the same prospect you are closing.' },
-            { border: C.blue, title: 'Custom CRM Push', desc: "Whether you're a freelancer or a growing agency, scale your lead volume whenever you need." },
+            { border: C.yellow, title: 'High-Quality Verified Leads', desc: 'Every lead is manually verified to ensure better conversion opportunities.' },
+            { border: C.blue, title: 'Exclusive Distribution', desc: 'Your leads are never shared with multiple agencies, giving you a competitive advantage.' },
+            { border: C.blue, title: 'Real Buying Intent', desc: 'We generate leads from businesses actively searching for web design services.' },
+            { border: C.yellow, title: 'Dedicated Account Support', desc: 'Our experienced team helps you choose the right lead package for your agency.' },
+            { border: C.yellow, title: 'Fast Delivery', desc: 'Receive your leads quickly through Excel, Google Sheets, Email, or CRM.' },
+            { border: C.blue, title: 'Affordable Pricing', desc: 'Flexible lead packages designed for freelancers, startups, and growing agencies.' },
           ].map((item, idx) => (
-            <div key={idx} className="reveal" style={{ background: C.navy, borderLeft: `3px solid ${item.border}`, padding: '20px' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.white, marginBottom: '6px' }}>{item.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{item.desc}</p>
+            <div key={idx} className="reveal" style={{ background: 'rgba(255,255,255,0.05)', borderLeft: `4px solid ${item.border}`, padding: '20px', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.white, marginBottom: '8px' }}>{item.title}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '12px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* [E] PRICING */}
+      {/* [E] PACKAGES SECTION */}
       <SectionWrapper bg={C.yellow} id="web-pricing">
-        <Eyebrow label="PRICING PLANS" labelColor={C.navy} />
+        <Eyebrow label="PACKAGES" labelColor={C.navy} />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
           Web Design Lead Packages
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? '24px' : 0 }}>
           {[
-            { name: 'Starter Web', price: '399', period: '20 Leads/mo', features: ['20 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'Email Support'] },
-            { name: 'Professional Web', price: '999', period: '50 Leads/mo', features: ['50 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', 'Dedicated Manager'], featured: true },
-            { name: 'Enterprise Web', price: '2,399', period: '120 Leads/mo', features: ['120 Web Leads', 'Real-Time Delivery', 'Bad Lead Replacement', 'CRM Webhook', '24/7 Priority Phone Support'] },
+            { name: 'Starter Package', price: '399', desc: 'Perfect for freelancers and small agencies looking to build a steady sales pipeline.', features: ['Verified Business Contacts', 'Exclusive Distribution', 'Real-Time Delivery', 'Email Support'] },
+            { name: 'Growth Package ⭐', price: '999', desc: 'Ideal for agencies looking to generate consistent web design projects every month.', features: ['Verified Business Contacts', 'Exclusive Distribution', 'Real-Time Delivery', 'Dedicated Account Manager'], featured: true },
+            { name: 'Enterprise Package', price: '2,399', desc: 'Designed for established agencies requiring a high volume of exclusive web design leads.', features: ['Verified Business Contacts', 'Exclusive Distribution', 'Real-Time Delivery', 'Custom CRM Integration', '24/7 Priority Support'] },
           ].map((pack, idx, arr) => {
             const cardStyle = pack.featured ? {
               background: C.blue,
@@ -293,20 +294,20 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
 
             return (
               <div key={pack.name} className="reveal" style={cardStyle}>
-                <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '13px', letterSpacing: '2px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.navy, marginBottom: '6px' }}>
+                <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: '14px', letterSpacing: '1px', textTransform: 'uppercase', color: pack.featured ? C.yellow : C.navy, marginBottom: '8px' }}>
                   {pack.name}
                 </div>
+                <p style={{ fontFamily: F.body, fontSize: '11.5px', color: pack.featured ? 'rgba(255,255,255,0.85)' : '#666', lineHeight: 1.5, marginBottom: '14px', minHeight: '36px' }}>
+                  {pack.desc}
+                </p>
                 <div style={{ display: 'flex', alignItems: 'baseline', marginBottom: '6px', lineHeight: 1 }}>
-                  <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '32px', color: pack.featured ? C.white : C.navy, display: 'inline-flex', alignItems: 'flex-start' }}>
-                    <sub style={{ fontSize: '18px', fontWeight: 900, marginRight: '2px', lineHeight: 1 }}>$</sub>
-                    {pack.price}
-                  </span>
-                  <span style={{ fontSize: '11px', color: pack.featured ? 'rgba(255,255,255,0.6)' : '#888', marginLeft: '6px', fontWeight: 600 }}>
-                    / {pack.period}
+                  <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: '12px', color: pack.featured ? C.yellow : C.blue, marginRight: '6px' }}>Starting From</span>
+                  <span style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: pack.featured ? C.white : C.navy }}>
+                    ${pack.price}
                   </span>
                 </div>
                 <div style={{ height: '2px', background: pack.featured ? 'rgba(255,255,255,0.2)' : '#f0f3ff', margin: '14px 0' }} />
-                <div style={{ minHeight: '130px', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
+                <div style={{ minHeight: '110px', display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
                   {pack.features.map((f) => (
                     <div key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: pack.featured ? 'rgba(255,255,255,0.85)' : '#444' }}>
                       <i className="ti ti-check" style={{ color: pack.featured ? C.yellow : C.blue, fontSize: '14px' }} />
@@ -331,7 +332,7 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
                     borderRadius: 0,
                   }}
                 >
-                  GET STARTED
+                  BUY WEB DESIGN LEADS
                 </button>
               </div>
             );
@@ -487,17 +488,20 @@ export const WebDesignLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [I] BOTTOM CTA */}
-      <section style={{ background: C.navy, padding: '40px 24px', textAlign: 'center', borderTop: `1px solid ${C.blue}` }}>
-        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.white, marginBottom: '8px' }}>
-          Your Next Best Client Is Already Looking
+      {/* [I] FINAL CTA SECTION */}
+      <section style={{ background: C.navy, padding: '48px 24px', textAlign: 'center', borderTop: `3px solid ${C.yellow}` }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.white, marginBottom: '12px' }}>
+          Ready to Grow Your Agency?
         </h2>
-        <p style={{ fontFamily: F.body, fontSize: '13px', color: 'rgba(255,255,255,0.8)', marginBottom: '20px' }}>
-          Visit <a href="http://www.seosubmitweb.com" style={{ color: C.yellow, textDecoration: 'none' }}>www.seosubmitweb.com</a> today to buy exclusive web design leads and web development leads that are verified, exclusive, and ready to convert.
+        <p style={{ fontFamily: F.body, fontSize: '14px', color: 'rgba(255,255,255,0.85)', marginBottom: '24px', maxWidth: '650px', margin: '0 auto 24px', lineHeight: 1.6 }}>
+          Get exclusive web design leads delivered directly to your inbox and start connecting with businesses actively searching for professional website design services.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-            BUY WEB DESIGN LEADS →
+            👉 Buy Web Design Leads
+          </button>
+          <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+            👉 Contact Sales
           </button>
 
         </div>

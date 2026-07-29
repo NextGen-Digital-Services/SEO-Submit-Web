@@ -1,5 +1,21 @@
 export const faqs = [
   {
+    question: 'What are SEO Leads?',
+    answer: 'SEO leads are businesses actively looking for search engine optimization services to improve their website rankings and online visibility.'
+  },
+  {
+    question: 'Can I Buy SEO Leads in USA?',
+    answer: 'Yes. We provide exclusive Buy SEO Leads in USA that are verified, qualified, and delivered only to your business.'
+  },
+  {
+    question: 'Are your SEO leads exclusive?',
+    answer: 'Yes. We never resell the same lead to multiple agencies.'
+  },
+  {
+    question: 'What are Website Design Leads in USA?',
+    answer: 'These are businesses actively searching for website design or website redesign services across the United States.'
+  },
+  {
     question: 'Are these leads exclusive, or are they sold to multiple agencies?',
     answer: 'All of our leads and booked appointments are 100% exclusive. Unlike traditional databases or standard lead sites that resell the same contact details to 5 or 10 agencies, we operate a strict 1-to-1 distribution queue. Once a lead is routed to your account, it is locked permanently and never shared again.'
   },

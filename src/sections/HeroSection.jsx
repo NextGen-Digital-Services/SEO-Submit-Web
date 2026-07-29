@@ -118,9 +118,9 @@ export const HeroSection = ({ isMobile }) => {
           }}>
             <StaggerWordReveal 
               segments={[
-                { text: 'We deliver exclusive ', style: {} },
-                { text: 'SEO leads, web design leads, and appointment-set leads ', style: { color: '#FFD600' } },
-                { text: 'that come to you ready to buy — never shared, never resold.', style: {} }
+                { text: 'Buy Exclusive ', style: {} },
+                { text: 'SEO Leads in USA ', style: { color: '#FFD600' } },
+                { text: 'That Convert', style: {} }
               ]}
             />
           </h1>
@@ -133,7 +133,7 @@ export const HeroSection = ({ isMobile }) => {
             marginBottom: '24px',
             maxWidth: '480px',
           }}>
-            Since 2009, SEOSubmitWeb has helped agencies and service businesses close more deals — without chasing cold, recycled leads. Stop competing for the same tired leads. Start closing exclusively yours.
+            Stop wasting your budget on recycled leads. Get Buy SEO Leads in USA that are exclusive, verified, and ready to convert. We help agencies, freelancers, and marketing companies grow faster with high-quality SEO Leads in USA, Website Design Leads in USA, and appointment-set leads.
           </p>
 
           {/* Trust pills */}
@@ -159,7 +159,7 @@ export const HeroSection = ({ isMobile }) => {
           {/* CTA Buttons */}
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             
-            {/* VIEW LEAD SAMPLES button */}
+            {/* Buy SEO Leads button */}
             <button 
               className="btn-float"
               onClick={() => navigate('/contact')}
@@ -175,28 +175,30 @@ export const HeroSection = ({ isMobile }) => {
                 cursor: 'pointer',
               }}
             >
-              VIEW LEAD SAMPLES
+              Buy SEO Leads
             </button>
 
-            {/* Phone button */}
-            <a href="tel:+17165755447" style={{
-              background: 'transparent',
-              color: '#FFD600',
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 700,
-              fontSize: '12px',
-              letterSpacing: '1px',
-              padding: '13px 24px',
-              border: '2px solid #FFD600',
-              cursor: 'pointer',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}>
-              <i className="ti ti-phone" style={{ fontSize: '16px' }}></i>
-              (716) 575-5447
-            </a>
+            {/* Get Website Design Leads button */}
+            <button 
+              onClick={() => navigate('/web-design-leads')}
+              style={{
+                background: 'transparent',
+                color: '#FFD600',
+                fontFamily: "'Montserrat', sans-serif",
+                fontWeight: 700,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '13px 24px',
+                border: '2px solid #FFD600',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              Get Website Design Leads
+            </button>
 
 
 

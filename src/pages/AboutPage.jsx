@@ -65,7 +65,7 @@ export const AboutPage = ({ isMobile }) => {
         </div>
 
         {/* Content */}
-        <div className="animate-hero-content" style={{ position: 'relative', zIndex: 2, padding: '80px 48px', textAlign: 'center', maxWidth: '800px' }}>
+        <div className="animate-hero-content" style={{ position: 'relative', zIndex: 2, padding: '80px 48px', textAlign: 'center', maxWidth: '900px' }}>
           <div style={{
             background: C.yellow,
             color: C.navy,
@@ -78,64 +78,82 @@ export const AboutPage = ({ isMobile }) => {
             marginBottom: '16px',
             borderRadius: 0,
           }}>
-            OUR STORY
+            ABOUT SEO SUBMIT WEB
           </div>
           <h1 style={{
             fontFamily: F.display,
             fontWeight: 900,
-            fontSize: isMobile ? '32px' : '44px',
+            fontSize: isMobile ? '28px' : '38px',
             color: C.white,
-            lineHeight: 1.15,
+            lineHeight: 1.2,
             marginBottom: '16px',
           }}>
-            The Team Behind <span style={{ color: C.yellow }}>High-Quality SEO & Web Design Leads</span>
+            About SEO Submit Web – <span style={{ color: C.yellow }}>Buy SEO Leads in USA</span> from a Trusted Lead Generation Company
           </h1>
           <p style={{
             fontFamily: F.body,
-            fontSize: '16px',
-            color: 'rgba(255,255,255,0.8)',
+            fontSize: '15px',
+            color: 'rgba(255,255,255,0.85)',
             lineHeight: 1.8,
             marginBottom: '28px',
           }}>
-            Founded in 2009, SEO Submit Web has been at the forefront of exclusive lead generation for over 16 years, helping thousands of agencies grow their client base with verified, real-time leads.
+            For over 16 years, SEO Submit Web has helped agencies grow faster by delivering exclusive, verified, and high-converting SEO leads. If you're looking to buy SEO leads in USA, we provide real business owners actively searching for SEO services. Our mission is simple—help digital marketing agencies close more deals with premium, exclusive leads.
           </p>
 
-          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {["Est. 2009", "5,000+ Clients", "40+ Countries"].map((pill) => (
-              <span key={pill} style={{
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              onClick={() => navigate('/seo-leads')}
+              style={{
                 background: C.yellow,
                 color: C.navy,
                 fontFamily: F.display,
                 fontWeight: 800,
-                fontSize: '11px',
-                padding: '8px 20px',
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '14px 28px',
+                border: 'none',
+                cursor: 'pointer',
                 borderRadius: 0,
-              }}>
-                {pill}
-              </span>
-            ))}
+              }}
+            >
+              Buy SEO Leads
+            </button>
+            <button
+              onClick={() => navigate('/contact')}
+              style={{
+                background: 'transparent',
+                color: C.white,
+                fontFamily: F.display,
+                fontWeight: 700,
+                fontSize: '12px',
+                letterSpacing: '1px',
+                padding: '12px 28px',
+                border: `2px solid ${C.white}`,
+                cursor: 'pointer',
+                borderRadius: 0,
+              }}
+            >
+              Contact Our Team
+            </button>
           </div>
         </div>
       </section>
 
-      {/* [SECTION B] OUR STORY WITH IMAGE */}
+      {/* [SECTION B] WELCOME SECTION WITH IMAGE */}
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%' }}>
         <div style={{ padding: isMobile ? '32px 16px' : '56px 40px', background: C.white, textAlign: 'left' }}>
-          <Eyebrow label="HOW WE STARTED" />
+          <Eyebrow label="WELCOME SECTION" />
           <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '16px' }}>
-            Welcome to SEOSubmitWeb <span style={{ color: C.blue }}>where exclusive leads meet real results.</span>
+            Welcome to SEO Submit Web
           </h2>
-          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            Founded in 2009, SEOSubmitWeb was built on a simple but powerful belief: businesses deserve better than recycled, shared leads that go cold before you even make the first call.
-            For nearly a decade, we have been in the business of connecting agencies, consultants, and service providers with prospects who are actively searching for SEO services, web design solutions, and professional appointments — not just browsing.
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '14px' }}>
+            At SEO Submit Web, we specialize in helping agencies scale with premium SEO leads for digital marketing agencies in USA. Every lead is generated using ethical marketing strategies and verified before delivery.
           </p>
-          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '12px' }}>
-            We started with a clear mission — to eliminate the frustration of chasing unqualified leads and replace it with a pipeline of high-intent prospects delivered exclusively to one client at a time.
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '14px' }}>
+            Unlike shared lead providers, our focus is on delivering exclusive opportunities that help agencies increase conversions while reducing acquisition costs. Whether you're a startup agency or an established SEO company, our lead generation solutions are designed to support long-term business growth.
           </p>
-          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.9, marginBottom: '24px' }}>
-            Exclusivity is not a feature we offer — it is the foundation everything we do is built on.
-            Every lead generated under the SEOSubmitWeb name is sourced, qualified, and delivered fresh to a single buyer — meaning when you receive a lead from us, no competitor is getting that same contact.
-            Our portfolio spans three core lead categories exclusive.
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, marginBottom: '24px' }}>
+            If you're planning to buy SEO leads in USA, you deserve leads that are fresh, exclusive, and ready to convert—not recycled databases or outdated contacts.
           </p>
           <button
             onClick={() => {
@@ -162,7 +180,7 @@ export const AboutPage = ({ isMobile }) => {
         <div>
           <img
             src="https://res.cloudinary.com/dpeq00iqq/image/upload/v1782553402/about1_result_ligj1b.webp"
-            alt="Startup Delhi Office"
+            alt="SEO Submit Web Office"
             width="1672"
             height="941"
             loading="lazy"
@@ -184,9 +202,9 @@ export const AboutPage = ({ isMobile }) => {
             <div style={{ width: '40px', height: '40px', background: C.yellow, color: C.navy, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px', fontSize: '20px' }}>
               <i className="ti ti-target" />
             </div>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Mission</h4>
-            <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.7 }}>
-              To empower digital agencies worldwide with the highest quality, real-time exclusive leads that convert into long-term clients. We exist to eliminate wasted prospecting time and replace it with guaranteed opportunities.
+            <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Mission</h3>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.7 }}>
+              To become the most trusted provider of SEO leads for digital marketing agencies in USA by delivering verified, exclusive, and conversion-focused leads.
             </p>
           </div>
 
@@ -195,9 +213,9 @@ export const AboutPage = ({ isMobile }) => {
             <div style={{ width: '40px', height: '40px', background: C.blue, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px', fontSize: '20px' }}>
               <i className="ti ti-eye" />
             </div>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Vision</h4>
-            <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.7 }}>
-              To become the global standard for exclusive lead generation — a world where every digital agency has instant access to verified, ready-to-convert prospects delivered in real time.
+            <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Vision</h3>
+            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.7 }}>
+              To help thousands of SEO agencies across the United States build predictable growth through premium lead generation.
             </p>
           </div>
 
@@ -206,36 +224,37 @@ export const AboutPage = ({ isMobile }) => {
             <div style={{ width: '40px', height: '40px', background: C.navy, color: C.white, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px', fontSize: '20px' }}>
               <i className="ti ti-heart" />
             </div>
-            <h4 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Values</h4>
-            <div style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <span>• Quality over quantity — always</span>
-              <span>• 100% transparency in every lead</span>
-              <span>• Client success is our success</span>
-              <span>• Innovation in every campaign</span>
+            <h3 style={{ fontFamily: F.display, fontWeight: 900, fontSize: '16px', color: C.navy, marginBottom: '8px' }}>Our Core Values</h3>
+            <div style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <span>• 100% Exclusive Leads</span>
+              <span>• Quality Before Quantity</span>
+              <span>• Honest & Transparent Service</span>
+              <span>• Customer Success First</span>
+              <span>• Long-Term Partnerships</span>
             </div>
           </div>
         </div>
       </SectionWrapper>
 
-      {/* [SECTION D] BY THE NUMBERS */}
+      {/* [SECTION D] STATISTICS SECTION */}
       <section style={{ background: C.blue, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.white, marginBottom: '28px' }}>
-            16 Years of <span style={{ color: C.yellow }}>Proven Results</span>
+            15 Years of Proven Results
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
-              { val: '16+', lbl: 'Years in Business', color: C.yellow },
+              { val: '15+', lbl: 'Years Experience', color: C.yellow },
               { val: '5,000+', lbl: 'Happy Clients', color: C.yellow },
               { val: '50,000+', lbl: 'Leads Delivered', color: C.yellow },
-              { val: '40+', lbl: 'Countries Served', color: C.yellow },
-              { val: '98%', lbl: 'Client Retention', color: C.white },
-              { val: '$2M+', lbl: 'Revenue for Clients', color: C.white },
-              { val: '24/7', lbl: 'Support Available', color: C.white },
-              { val: '3-Step', lbl: 'Quality Check', color: C.white },
+              { val: '40+', lbl: 'Industries Served', color: C.yellow },
+              { val: '98%', lbl: 'Client Satisfaction', color: C.white },
+              { val: '$2M+', lbl: 'Revenue Generated for Clients', color: C.white },
+              { val: '24/7', lbl: 'Customer Support', color: C.white },
+              { val: '3-Step', lbl: 'Lead Verification Process', color: C.white },
             ].map((stat, idx) => (
               <div key={idx} className="reveal" style={{ background: C.navy, padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: stat.color, marginBottom: '4px' }}><Counter value={stat.val} /></span>
+                <span style={{ display: 'block', fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: stat.color, marginBottom: '4px' }}><Counter value={stat.val} /></span>
                 <span style={{ display: 'block', fontFamily: F.display, fontWeight: 700, fontSize: '10px', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>{stat.lbl}</span>
               </div>
             ))}
@@ -243,30 +262,28 @@ export const AboutPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [SECTION E] TIMELINE */}
+      {/* [SECTION E] TIMELINE SECTION */}
       <SectionWrapper bg={C.yellow}>
         <Eyebrow label="OUR JOURNEY" labelColor={C.navy} />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
-          16 Years of <span style={{ color: C.blue }}>Growth & Innovation</span>
+          15 Years of Growth & Innovation
         </h2>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '800px', margin: '0 auto', textAlign: 'left' }}>
           {[
-            { year: '2009', title: 'SEO Submit Web Founded', desc: 'Started with SEO leads for 10 clients' },
-            { year: '2011', title: 'Expanded to Web Design Leads', desc: 'Grew to 100+ active agency clients' },
-            { year: '2013', title: 'Launched Appointment Fixed Leads', desc: 'Game changer for digital sales teams' },
-            { year: '2015', title: 'Crossed 1,000 Active Clients', desc: 'Opened second corporate operations office' },
-            { year: '2017', title: 'International Expansion', desc: 'Serving agencies across USA, UK, Australia & Canada' },
-            { year: '2019', title: '10,000th Client Milestone', desc: 'Launched 24/7 client operations dashboard support' },
-            { year: '2021', title: '50,000 Leads Delivered', desc: 'Awarded multiple industry recognition awards' },
-            { year: '2023', title: '5,000+ Active Clients', desc: 'Expanded delivery pipeline to 40+ countries' },
-            { year: '2025', title: 'New Tech Platform Launch', desc: 'AI-powered lead qualification and verification tools' },
+            { year: '2009', desc: 'Started offering professional SEO lead generation.' },
+            { year: '2012', desc: 'Expanded services across major USA markets.' },
+            { year: '2015', desc: 'Introduced exclusive lead verification.' },
+            { year: '2018', desc: 'Crossed 10,000 verified SEO leads delivered.' },
+            { year: '2020', desc: 'Added appointment-set leads.' },
+            { year: '2022', desc: 'Served agencies in multiple industries.' },
+            { year: '2024', desc: 'Helped hundreds of agencies scale successfully.' },
+            { year: 'Today', desc: 'One of the trusted providers to buy SEO leads in USA.' },
           ].map((evt, idx) => (
-            <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', background: C.white, padding: '16px', borderLeft: `4px solid ${C.blue}` }}>
-              <div style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 900, fontSize: '11px', padding: '6px 14px', letterSpacing: '1px' }}>{evt.year}</div>
+            <div key={idx} style={{ display: 'flex', gap: '16px', alignItems: 'center', background: C.white, padding: '16px', borderLeft: `4px solid ${C.blue}`, borderRadius: '4px' }}>
+              <div style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 900, fontSize: '11px', padding: '6px 14px', letterSpacing: '1px', borderRadius: '2px', flexShrink: 0 }}>{evt.year}</div>
               <div>
-                <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '2px' }}>{evt.title}</h4>
-                <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555' }}>{evt.desc}</p>
+                <p style={{ fontFamily: F.body, fontSize: '13px', color: C.navy, fontWeight: 600, margin: 0 }}>{evt.desc}</p>
               </div>
             </div>
           ))}
@@ -277,9 +294,12 @@ export const AboutPage = ({ isMobile }) => {
       <section id="about-team" style={{ background: C.white, padding: '48px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <Eyebrow label="THE PEOPLE" />
-          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '28px' }}>
-            Meet the Team That <span style={{ color: C.blue }}>Powers Your Pipeline</span>
+          <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '12px' }}>
+            Meet the Team Behind Your Success
           </h2>
+          <p style={{ fontFamily: F.body, fontSize: '14px', color: '#444', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto 28px' }}>
+            Our experienced lead generation specialists, researchers, and campaign managers work together to generate high-quality SEO leads for digital marketing agencies in USA. Every lead passes through a strict quality assurance process before being delivered to clients, ensuring maximum accuracy and better conversion opportunities.
+          </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
             {[
@@ -340,7 +360,7 @@ export const AboutPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [SECTION G] CULTURE / OFFICE IMAGES */}
+      {/* [SECTION G] TEAM CONTENT SECTION */}
       <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 0, width: '100%', background: C.lightBg }}>
         <div>
           <img
@@ -355,13 +375,16 @@ export const AboutPage = ({ isMobile }) => {
         <div style={{ padding: isMobile ? '32px 16px' : '48px 40px', textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Eyebrow label="OUR CULTURE" />
           <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '16px' }}>
-            A Team That <span style={{ color: C.blue }}>Lives & Breathes</span> Lead Generation
+            A Team That Lives & Breathes Lead Generation
           </h2>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '12px' }}>
-            We work in a high-intensity, growth-focused environment where quality metrics are analyzed hourly. Our mission is to keep your sales pipelines filled.
+          <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '12px' }}>
+            Behind every successful campaign is a dedicated team committed to delivering measurable results.
           </p>
-          <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
-            From verification drills to compliance audits, we ensure that every lead record is check-marked before transfer.
+          <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '12px' }}>
+            We combine SEO expertise, paid advertising, outreach campaigns, and data verification to generate qualified business leads across the United States. When agencies buy SEO leads in USA from SEO Submit Web, they receive leads that are exclusive, verified, and ready for immediate follow-up.
+          </p>
+          <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
+            Our goal isn't simply to deliver contacts—we deliver sales opportunities that help agencies grow consistently.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -380,21 +403,24 @@ export const AboutPage = ({ isMobile }) => {
         </div>
       </section>
 
-      {/* [SECTION H] AWARDS & CERTIFICATIONS */}
+      {/* [SECTION H] WHY AGENCIES TRUST US */}
       <SectionWrapper bg={C.navy}>
-        <Eyebrow label="RECOGNITION" labelColor={C.yellow} />
+        <Eyebrow label="WHY AGENCIES TRUST US" labelColor={C.yellow} />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.white, marginBottom: '28px' }}>
-          Awards, Certifications & <span style={{ color: C.yellow }}>Industry Recognition</span>
+          Why Agencies Trust SEO Submit Web
         </h2>
 
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)', gap: '16px' }}>
           {[
-            { title: 'Google Premier Partner', year: '2024', desc: 'Elite advertising certification.' },
-            { title: 'Meta Business Partner', year: '2024', desc: 'Verified scale marketing support.' },
-            { title: 'ACMA Compliant', year: '2025', desc: 'Highest communication standards.' },
-            { title: 'BBB A+ Rating', year: '2025', desc: 'Excellent business metrics.' },
-            { title: 'ISO 9001 Certified', year: '2024', desc: 'International Quality compliance.' },
-          ].map((award, idx) => (
+            '✔ 100% Exclusive Leads',
+            '✔ Manual Lead Verification',
+            '✔ Real-Time Delivery',
+            '✔ USA Business Leads',
+            '✔ Dedicated Account Manager',
+            '✔ Fast Lead Replacement',
+            '✔ Transparent Process',
+            '✔ Reliable Customer Support',
+          ].map((item, idx) => (
             <div 
               key={idx} 
               className="smooth-transition"
@@ -406,17 +432,17 @@ export const AboutPage = ({ isMobile }) => {
                 padding: '20px', 
                 display: 'flex', 
                 flexDirection: 'column', 
+                alignItems: 'center',
+                justifyContent: 'center',
                 textAlign: 'center',
                 cursor: 'pointer',
-                // Award Cards Lift Effect
+                borderRadius: '4px',
                 transform: hoveredAwardIdx === idx ? 'translateY(-6px)' : 'translateY(0)',
                 boxShadow: hoveredAwardIdx === idx ? '0 10px 20px rgba(255,214,0,0.15)' : 'none',
               }}
             >
-              <i className="ti ti-award" style={{ fontSize: '32px', color: C.navy, marginBottom: '12px' }} />
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', marginBottom: '4px', lineHeight: 1.3 }}>{award.title}</h4>
-              <span style={{ fontSize: '11px', fontWeight: 'bold', color: C.blue, display: 'block', marginBottom: '6px' }}>{award.year}</span>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#444', lineHeight: 1.4 }}>{award.desc}</p>
+              <i className="ti ti-shield-check" style={{ fontSize: '28px', color: C.navy, marginBottom: '10px' }} />
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', lineHeight: 1.4, margin: 0 }}>{item}</h3>
             </div>
           ))}
         </div>
@@ -425,17 +451,17 @@ export const AboutPage = ({ isMobile }) => {
       {/* [SECTION K] ABOUT PAGE CTA */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '8px' }}>
-          Ready to Grow Your Agency With Exclusive Leads?
+          Ready to Buy SEO Leads in USA?
         </h2>
-        <p style={{ fontFamily: F.body, fontSize: '14px', color: '#333', marginBottom: '24px' }}>
-          Join 5,000+ agencies who trust SEO Submit Web for their lead generation needs.
+        <p style={{ fontFamily: F.body, fontSize: '14px', color: '#333', marginBottom: '24px', maxWidth: '700px', margin: '0 auto 24px' }}>
+          Grow your agency with verified SEO leads for digital marketing agencies in USA. Start receiving exclusive leads that help you book more meetings, win more clients, and increase revenue.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button onClick={() => navigate('/contact')} style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-            VIEW LEAD SAMPLES
+          <button onClick={() => navigate('/seo-leads')} style={{ background: C.blue, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
+            Buy SEO Leads Now
           </button>
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
-            CONTACT US
+            Request Free Sample
           </button>
         </div>
       </section>

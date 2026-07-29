@@ -80,7 +80,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
               marginBottom: '16px',
               display: 'inline-block',
             }}>
-              EXCLUSIVE SEO LEADS
+              BUY EXCLUSIVE SEO LEADS IN USA
             </div>
             <h1 style={{
               fontFamily: F.display,
@@ -90,7 +90,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
               lineHeight: 1.15,
               marginBottom: '14px',
             }}>
-              High-Intent <span style={{ color: C.yellow }}>SEO Leads</span> Delivered Directly to Your Agency
+              Buy Exclusive <span style={{ color: C.yellow }}>SEO Leads in USA</span> That Actually Convert
             </h1>
             <p style={{
               fontFamily: F.body,
@@ -100,7 +100,7 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
               marginBottom: '24px',
               maxWidth: '540px',
             }}>
-              Direct client queries from validated companies actively seeking search optimization, local SEO, content strategies, and ranking optimization.
+              Looking to Buy SEO Leads in USA that generate real sales? SEO Submit Web provides exclusive, verified, and high-intent SEO Leads in USA that are never shared with multiple agencies. Whether you're an SEO agency, freelancer, or digital marketing company, our leads are designed to help you close more clients and grow faster.
             </p>
 
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
@@ -124,10 +124,10 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
 
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/contact')} style={{ background: C.yellow, color: C.navy, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 24px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-                VIEW LEAD SAMPLES
+                Buy SEO Leads in USA
               </button>
-              <button onClick={() => onViewPricing && onViewPricing('SEO Leads')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
-                VIEW PRICING
+              <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.yellow, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 24px', border: `2px solid ${C.yellow}`, cursor: 'pointer', borderRadius: 0 }}>
+                Get Free Consultation
               </button>
 
             </div>
@@ -166,31 +166,37 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
-      {/* [B] WHAT ARE SEO LEADS */}
+      {/* [B] WHY CHOOSE SEO SUBMIT WEB */}
       <SectionWrapper bg={C.white}>
-        <Eyebrow label="WHAT YOU GET" />
+        <Eyebrow label="WHY CHOOSE US" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          What Exactly Are Our SEO Leads?
+          Why Choose SEO Submit Web?
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 0.8fr', gap: '32px' }}>
           {/* Left Explanation */}
           <div>
-            <p style={{ fontFamily: F.body, fontSize: '13px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
-              Our SEO leads represent business owners and marketing heads who have completed a full audit request form and are looking for ranking, technical SEO, and link-building support. We do not recycle database directories. Each record is freshly captured in real time.
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '14px' }}>
+              Finding quality SEO prospects is difficult. That's why businesses choose SEO Submit Web to Buy Exclusive SEO Leads in USA that are manually verified and delivered exclusively to one agency.
             </p>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#444', lineHeight: 1.7, marginBottom: '20px' }}>
+              Unlike shared databases, our SEO Leads in USA come from businesses actively searching for SEO, website design, and digital marketing services. This means less time chasing cold prospects and more time closing high-value clients.
+            </p>
+
+            <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '14px' }}>We Provide:</h3>
             <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: '12px' }}>
               {[
-                'First & Last Name',
-                'Verified Email Address',
-                'Direct Phone Number',
-                'Company Name & Niche',
-                'Website URL & Audited Problems',
-                'Monthly Marketing Budget',
-                'Decision Maker Role Checked',
-                'Geographic Location Filters',
+                'Buy SEO Leads in USA',
+                'Buy Exclusive SEO Leads in USA',
+                'SEO Leads in USA',
+                'Best SEO Leads in USA',
+                'Website Design Leads in USA',
+                'Web Design Leads USA',
+                'Appointment Set Leads',
+                'Digital Marketing Leads',
+                'Local Business Leads',
               ].map((bullet) => (
-                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: C.navy, fontFamily: F.body }}>
+                <div key={bullet} className="reveal" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12.5px', color: C.navy, fontFamily: F.body, fontWeight: 600 }}>
                   <i className="ti ti-square-check" style={{ color: C.blue, fontSize: '16px' }} />
                   <span>{bullet}</span>
                 </div>
@@ -205,26 +211,25 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [C] WHY OUR SEO LEADS */}
+      {/* [C] OUR LEAD GENERATION SERVICES */}
       <SectionWrapper bg={C.lightBg}>
-        <Eyebrow label="KEY FEATURES" />
+        <Eyebrow label="OUR SERVICES" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          Why Agencies Trust Our SEO Leads
+          Our Lead Generation Services
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '16px' }}>
           {[
-            { icon: 'ti-bolt', title: 'Real-Time Delivery', desc: 'Leads are delivered via CRM webhook within 2 minutes of contact verification.' },
-            { icon: 'ti-shield-check', title: '100% Exclusive', desc: 'We never sell the same lead twice. The prospect details belong only to you.' },
-            { icon: 'ti-users', title: 'C-Level Only', desc: 'No gatekeepers. We filter records to connect directly with the CEO, Founder, or CMO.' },
-            { icon: 'ti-refresh', title: 'Invalid Replacement', desc: 'Disconnected phone? Wrong email? We replace it instantly without audit delays.' },
-            { icon: 'ti-device-laptop', title: 'Compliance Standards', desc: 'All leads are double opt-in and adhere to ACMA, GDPR, and CAN-SPAM standards.' },
-            { icon: 'ti-coin', title: 'Budget Verified', desc: 'We verify that the contact has set aside a budget matching your minimum tier.' },
+            { icon: 'ti-search', title: 'Buy SEO Leads in USA', desc: 'Purchase premium SEO Leads in USA from businesses actively looking for SEO services. Every lead is manually verified to improve conversion rates and maximize your ROI.' },
+            { icon: 'ti-shield-check', title: 'Buy Exclusive SEO Leads in USA', desc: 'Our exclusive lead generation system ensures that every lead is delivered only to your agency. No shared lists, no competition, and no wasted marketing budget.' },
+            { icon: 'ti-layout', title: 'Website Design Leads in USA', desc: 'Expand your web development business with qualified website design prospects looking for new websites or redesign services.' },
+            { icon: 'ti-device-laptop', title: 'Web Design Leads USA', desc: 'Receive fresh web design inquiries from businesses across the United States that need professional website development services.' },
+            { icon: 'ti-calendar-check', title: 'Appointment Set Leads', desc: 'Let our experts qualify prospects and schedule appointments with interested business owners so your sales team can focus on closing deals.' },
           ].map((item, idx) => (
-            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', padding: '20px' }}>
-              <i className={`ti ${item.icon}`} style={{ fontSize: '24px', color: C.blue, display: 'block', marginBottom: '12px' }} />
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '14px', color: C.navy, marginBottom: '6px' }}>{item.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#555', lineHeight: 1.6 }}>{item.desc}</p>
+            <div key={idx} className="reveal" style={{ background: C.white, border: '1px solid #dde3f0', borderTop: `4px solid ${C.blue}`, padding: '20px', borderRadius: '4px' }}>
+              <i className={`ti ${item.icon}`} style={{ fontSize: '28px', color: C.blue, display: 'block', marginBottom: '12px' }} />
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{item.title}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{item.desc}</p>
             </div>
           ))}
         </div>
@@ -308,35 +313,25 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </SectionWrapper>
 
-      {/* [E] HOW SEO LEADS WORK */}
+      {/* [E] WHY AGENCIES CHOOSE OUR SEO LEADS */}
       <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '32px' }}>
-          Our SEO Lead Flow
+          Why Agencies Choose Our SEO Leads
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)', gap: '16px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: '16px', maxWidth: '1000px', margin: '0 auto' }}>
           {[
-            { step: '1', title: 'Lead Interested', desc: 'Prospect searches for SEO audits.' },
-            { step: '2', title: 'We Capture Data', desc: 'Prospect inputs their website and goals.' },
-            { step: '3', title: 'Quality Check', desc: 'We verify phone and C-Level credentials.' },
-            { step: '4', title: 'Real-Time Delivery', desc: 'Details route instantly to your inbox.' },
-            { step: '5', title: 'You Close The Deal', desc: 'Your sales team pitches and signs the contract.' },
-          ].map((item) => (
-            <div key={item.step} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                background: C.navy,
-                color: C.white,
-                fontFamily: F.display,
-                fontWeight: 900,
-                fontSize: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '12px',
-              }}>{item.step}</div>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '4px' }}>{item.title}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '11px', color: '#333', lineHeight: 1.5 }}>{item.desc}</p>
+            '✔ 100% Exclusive Leads',
+            '✔ No Shared Leads',
+            '✔ Verified Business Information',
+            '✔ High Intent Prospects',
+            '✔ Better Conversion Rates',
+            '✔ Fast Delivery',
+            '✔ USA-Focused Campaigns',
+            '✔ Dedicated Account Manager',
+            '✔ Affordable Pricing',
+          ].map((item, idx) => (
+            <div key={idx} className="reveal" style={{ background: C.navy, color: C.white, padding: '16px', borderRadius: '4px', textAlign: 'center' }}>
+              <span style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.yellow }}>{item}</span>
             </div>
           ))}
         </div>
@@ -346,23 +341,31 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
       <SectionWrapper bg={C.white}>
         <Eyebrow label="FAQ" />
         <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '26px', color: C.navy, marginBottom: '28px' }}>
-          Frequently Asked Questions About SEO Leads
+          Frequently Asked Questions
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '20px' }}>
           {[
-            { q: 'Are these leads exclusive to me only?', a: 'Yes. All our leads are sold exactly once. We do not distribute database listings.' },
-            { q: 'How fast are leads delivered?', a: 'Leads route instantly. Our automation transfers details to your CRM within 2 minutes.' },
-            { q: 'What if a lead has wrong contact info?', a: 'We verify phone and email. If wrong info slips through, we replace it instantly.' },
-            { q: 'Do you replace bad leads?', a: 'Yes. Any lead with disconnected lines or mismatched criteria gets replaced.' },
-            { q: 'What industries do the leads come from?', a: 'Local services, e-commerce, healthcare, construction, legal, and software developers.' },
-            { q: 'Are leads ACMA/GDPR compliant?', a: 'Yes. All campaigns utilize double opt-in checkboxes and transparent terms.' },
-            { q: 'Can I get leads for a specific city or country?', a: 'Yes. We offer targeting filters on our enterprise accounts.' },
-            { q: 'Is there a minimum order?', a: 'Our starter package begins at 20 leads per month.' },
+            {
+              q: 'What are SEO Leads in USA?',
+              a: 'SEO Leads in USA are businesses actively searching for search engine optimization services to improve their online visibility and website rankings.'
+            },
+            {
+              q: 'Can I Buy SEO Leads in USA?',
+              a: 'Yes. SEO Submit Web provides verified and exclusive Buy SEO Leads in USA packages that are delivered only to your business.'
+            },
+            {
+              q: 'Are the leads exclusive?',
+              a: 'Absolutely. We never resell the same lead to multiple agencies.'
+            },
+            {
+              q: 'Why are your Best SEO Leads in USA better?',
+              a: 'Our leads are manually verified, highly targeted, and generated from businesses actively looking for SEO and digital marketing services, resulting in higher conversion rates.'
+            }
           ].map((faq, idx) => (
-            <div key={idx} className="reveal" style={{ padding: '16px', borderLeft: `3px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left' }}>
-              <h4 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '13px', color: C.navy, marginBottom: '6px' }}>{faq.q}</h4>
-              <p style={{ fontFamily: F.body, fontSize: '12px', color: '#555', lineHeight: 1.6 }}>{faq.a}</p>
+            <div key={idx} className="reveal" style={{ padding: '20px', borderLeft: `4px solid ${C.yellow}`, background: C.lightBg, textAlign: 'left', borderRadius: '4px' }}>
+              <h3 style={{ fontFamily: F.display, fontWeight: 800, fontSize: '15px', color: C.navy, marginBottom: '8px' }}>{faq.q}</h3>
+              <p style={{ fontFamily: F.body, fontSize: '13px', color: '#4b5563', lineHeight: 1.6 }}>{faq.a}</p>
             </div>
           ))}
         </div>
@@ -378,90 +381,70 @@ export const SeoLeadsPage = ({ isMobile, onViewPricing }) => {
         </div>
       </section>
 
-      {/* [H2] SEO CONTENT SECTION */}
-            <SectionWrapper bg={C.white}>
-              <div style={{
-                display: 'grid',
-                flexDirection: 'column',
-                gap: '32px',
-                paddingTop: '16px',
-                paddingBottom: '16px',
-              }}>
-                <div>
-                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
-                    Why Agencies Choose to Buy SEO Leads
-                  </h2>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    If you are ready to grow your agency faster, buy SEO leads from SEOSubmitWeb — the trusted source for high-intent prospects since 2009.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    The smartest decision any digital agency can make today is to buy exclusive SEO leads that are verified, exclusive, and delivered by a partner with nearly a decade of proven results.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    Our SEO leads are not scraped from directories or pulled from outdated databases — they are actively generated prospects looking for SEO services right now.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                   Stop wasting your sales team's time on cold outreach — buy SEO leads that are already interested, already searching, and already ready to talk.
-                  </p>
-                </div>
-      
-                <div>
-                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
-                    Exclusive SEO Leads That Give You an Edge
-                  </h2>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    When you buy exclusive SEO leads through SEOSubmitWeb, you eliminate the single biggest problem in lead generation — competing with five other agencies for the same contact.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    At SEOSubmitWeb, every client who chooses to buy exclusive SEO leads gets prospects that belong to them alone — sourced fresh, delivered fast, and never resold.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
-                    The difference between agencies that grow and agencies that stall is simple — the ones that grow buy SEO leads from a source they can trust.
-                  </p>
-                </div>
-      
-                <div>
-                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
-                    Verified Leads Built for Agency Growth
-                  </h2>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    Thousands of consultants and agencies have chosen to buy SEO leads from SEOSubmitWeb because quality, exclusivity, and consistency are never optional for us — they are standard.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                  SEO leads from SEOSubmitWeb come pre-qualified and appointment-ready, allowing your team to spend less time prospecting and more time closing deals that matter.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6 }}>
-                   Whether you are a solo consultant or a growing agency, when you buy exclusive SEO leads from SEOSubmitWeb you get a pipeline built on real demand — not recycled hope.
-                  </p>
-                </div>
-                <div>
-                  <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '18px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
-                    Scale Faster With SEOSubmitWeb
-                  </h2>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                    We have been generating premium SEO leads since 2009, and every year we get better at identifying the prospects most likely to convert into long-term clients for your business.
-                  </p>
-                  <p style={{ fontFamily: F.body, fontSize: '13px', color: '#555', lineHeight: 1.6, marginBottom: '12px' }}>
-                  Buy exclusive SEO leads from SEOSubmitWeb and experience the difference genuine exclusivity makes — one lead, one buyer, zero competition.
-                  </p> 
-                </div>
-              </div>
-            </SectionWrapper>
+      {/* [H2] SEO CONTENT & WHO CAN BENEFIT SECTION */}
+      <SectionWrapper bg={C.white}>
+        <div style={{
+          display: 'grid',
+          flexDirection: 'column',
+          gap: '32px',
+          paddingTop: '16px',
+          paddingBottom: '16px',
+        }}>
+          <div>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              Why Buy SEO Leads in USA From Us?
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#555', lineHeight: 1.7, marginBottom: '14px' }}>
+              At SEO Submit Web, we understand that agencies need quality over quantity. That's why every Buy SEO Leads in USA package is built around verified businesses that are actively searching for digital marketing services.
+            </p>
+            <p style={{ fontFamily: F.body, fontSize: '13.5px', color: '#555', lineHeight: 1.7, marginBottom: '24px' }}>
+              Our Best SEO Leads in USA help agencies reduce acquisition costs while increasing conversion rates. Whether you're looking for SEO projects, web design clients, or digital marketing contracts, our exclusive lead generation system gives you a competitive advantage.
+            </p>
+          </div>
 
-      {/* [H] BOTTOM CTA */}
-      <section style={{ background: C.yellow, padding: '40px 24px', textAlign: 'center' }}>
-        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '24px', color: C.navy, marginBottom: '8px' }}>
-          Ready to Buy Exclusive SEO Leads?
+          <div>
+            <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '22px', color: C.navy, marginBottom: '16px', lineHeight: 1.3 }}>
+              Who Can Benefit?
+            </h2>
+            <p style={{ fontFamily: F.body, fontSize: '14px', color: '#4b5563', marginBottom: '16px', fontWeight: 600 }}>
+              Suitable For:
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '12px' }}>
+              {[
+                'SEO Agencies',
+                'Digital Marketing Agencies',
+                'Website Design Companies',
+                'Freelancers',
+                'PPC Agencies',
+                'Local Marketing Consultants',
+                'Website Developers',
+                'SaaS Agencies',
+                'Startup Marketing Teams',
+              ].map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: C.lightBg, padding: '12px 16px', borderRadius: '4px', borderLeft: `3px solid ${C.blue}` }}>
+                  <i className="ti ti-check" style={{ color: C.blue, fontSize: '16px' }} />
+                  <span style={{ fontFamily: F.display, fontWeight: 700, fontSize: '13px', color: C.navy }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* [H] FINAL CTA SECTION */}
+      <section style={{ background: C.yellow, padding: '48px 24px', textAlign: 'center' }}>
+        <h2 className="reveal" style={{ fontFamily: F.display, fontWeight: 900, fontSize: '28px', color: C.navy, marginBottom: '8px' }}>
+          Ready to Buy Exclusive SEO Leads in USA?
         </h2>
-        <p style={{ fontFamily: F.body, fontSize: '13px', color: '#333', marginBottom: '20px' }}>
-          Claim your territory and start receiving verified SEO inquiries within 24 hours.
+        <p style={{ fontFamily: F.body, fontSize: '14px', color: '#333', marginBottom: '24px', maxWidth: '650px', margin: '0 auto 24px' }}>
+          Grow your agency with verified, high-converting business leads delivered directly to your inbox.
         </p>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/contact')} style={{ background: C.navy, color: C.white, fontFamily: F.display, fontWeight: 800, fontSize: '12px', letterSpacing: '1px', padding: '14px 28px', border: 'none', cursor: 'pointer', borderRadius: 0 }}>
-            GET FREE LEADS →
+            Buy SEO Leads in USA
           </button>
           <button onClick={() => navigate('/contact')} style={{ background: 'transparent', color: C.navy, fontFamily: F.display, fontWeight: 700, fontSize: '12px', letterSpacing: '1px', padding: '12px 28px', border: `2px solid ${C.navy}`, cursor: 'pointer', borderRadius: 0 }}>
-            DISCUSS INTEGRATION
+            Get Started Today
           </button>
 
         </div>

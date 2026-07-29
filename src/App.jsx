@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
-// CMS sub-application (lazy loaded — zero impact on public bundle)
+// CMS sub-application (lazy loaded)
 const CMSRoot = lazy(() => import('./admin/CMSRoot'));
 
 // Layout & Common Components
@@ -11,8 +11,7 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import ScrollToTopOnMount from './components/ScrollToTopOnMount';
 import RouteTitle from './components/RouteTitle';
 import ExitIntentPopup from './components/ExitIntentPopup';
-// 👇 1. YAHAN IMPORT KARIYE
-import WhatsAppButton from './components/WhatsAppButton'; 
+import WhatsAppButton from './components/WhatsAppButton';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -21,8 +20,13 @@ import SeoLeadsPage from './pages/SeoLeadsPage';
 import WebDesignLeadsPage from './pages/WebDesignLeadsPage';
 import AppointmentLeadsPage from './pages/AppointmentLeadsPage';
 import BlogPage from './pages/BlogPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 import TestimonialsPage from './pages/TestimonialsPage';
 import ContactPage from './pages/ContactPage';
+
+// Admin Panel Pages
+import AdminLoginPage from './adminPanel/AdminLoginPage';
+import AdminDashboardPage from './adminPanel/AdminDashboardPage';
 
 // Modals
 import { PricingModal } from './modals/PricingModal';
@@ -32,6 +36,71 @@ import { C } from './styles/tokens';
 
 // Utilities
 import { handleFormSubmit } from './utils/formHandler';
+
+function AppContent({ isMobile, isPricingModalOpen, setIsPricingModalOpen, defaultLeadType, handleOpenPricingModal }) {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname.startsWith('/cms');
+
+  if (isAdminRoute) {
+    return (
+      <Routes>
+        <Route path="/admin" element={<AdminLoginPage />} />
+        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+        <Route
+          path="/cms/*"
+          element={
+            <Suspense fallback={null}>
+              <CMSRoot />
+            </Suspense>
+          }
+        />
+        <Route path="*" element={<Navigate to="/admin" replace />} />
+      </Routes>
+    );
+  }
+
+  return (
+    <div style={{
+      margin: 0,
+      padding: 0,
+      background: C.navy,
+      minHeight: '100vh',
+      width: '100%',
+      overflowX: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      <Navbar isMobile={isMobile} />
+      
+      <main style={{ flex: 1, width: '100%' }}>
+        <Routes>
+          <Route path="/" element={<HomePage isMobile={isMobile} />} />
+          <Route path="/about" element={<AboutPage isMobile={isMobile} />} />
+          <Route path="/seo-leads" element={<SeoLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
+          <Route path="/web-design-leads" element={<WebDesignLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
+          <Route path="/appointment-leads" element={<AppointmentLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
+          <Route path="/blog" element={<BlogPage isMobile={isMobile} />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage isMobile={isMobile} />} />
+          <Route path="/testimonials" element={<TestimonialsPage isMobile={isMobile} />} />
+          <Route path="/contact" element={<ContactPage isMobile={isMobile} />} />
+        </Routes>
+      </main>
+
+      <Footer isMobile={isMobile} />
+      <ScrollToTopButton />
+      <ExitIntentPopup onSubmit={(data) => handleFormSubmit(data, 'Exit Intent Popup - Lead Request')} />
+
+      <PricingModal 
+        isOpen={isPricingModalOpen} 
+        onClose={() => setIsPricingModalOpen(false)} 
+        defaultLeadType={defaultLeadType} 
+        isMobile={isMobile} 
+      />
+
+      <WhatsAppButton />
+    </div>
+  );
+}
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
@@ -131,58 +200,13 @@ function App() {
     <BrowserRouter>
       <ScrollToTopOnMount />
       <RouteTitle />
-      <div style={{
-        margin: 0,
-        padding: 0,
-        background: C.navy,
-        minHeight: '100vh',
-        width: '100%',
-        overflowX: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-      }}>
-        <Navbar isMobile={isMobile} />
-        
-        <main style={{ flex: 1, width: '100%' }}>
-          <Routes>
-            <Route path="/" element={<HomePage isMobile={isMobile} />} />
-            <Route path="/about" element={<AboutPage isMobile={isMobile} />} />
-            <Route path="/seo-leads" element={<SeoLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
-            <Route path="/web-design-leads" element={<WebDesignLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
-            <Route path="/appointment-leads" element={<AppointmentLeadsPage isMobile={isMobile} onViewPricing={handleOpenPricingModal} />} />
-            <Route path="/blog" element={<BlogPage isMobile={isMobile} />} />
-            <Route path="/testimonials" element={<TestimonialsPage isMobile={isMobile} />} />
-            <Route path="/contact" element={<ContactPage isMobile={isMobile} />} />
-
-            {/* ── CMS sub-application ─────────────────────────────────────────────
-                Completely isolated. Public Navbar/Footer/etc are NOT rendered.
-                All /cms/* routes are handled inside CMSRoot.
-            ─────────────────────────────────────────────────────────────────── */}
-            <Route
-              path="/cms/*"
-              element={
-                <Suspense fallback={null}>
-                  <CMSRoot />
-                </Suspense>
-              }
-            />
-          </Routes>
-        </main>
-
-        <Footer isMobile={isMobile} />
-        <ScrollToTopButton />
-        <ExitIntentPopup onSubmit={(data) => handleFormSubmit(data, 'Exit Intent Popup - Lead Request')} />
-
-        <PricingModal 
-          isOpen={isPricingModalOpen} 
-          onClose={() => setIsPricingModalOpen(false)} 
-          defaultLeadType={defaultLeadType} 
-          isMobile={isMobile} 
-        />
-
-        {/* 👇 2. YAHAN BUTTON DAAL DIYA (TAKI HAR PAGE PE DIKHE) */}
-        <WhatsAppButton />
-      </div>
+      <AppContent
+        isMobile={isMobile}
+        isPricingModalOpen={isPricingModalOpen}
+        setIsPricingModalOpen={setIsPricingModalOpen}
+        defaultLeadType={defaultLeadType}
+        handleOpenPricingModal={handleOpenPricingModal}
+      />
     </BrowserRouter>
   );
 }

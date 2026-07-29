@@ -1,326 +1,271 @@
 /**
  * src/services/blogService.js
  *
- * All CRUD and query operations for the `blogs`, `categories`, `tags`,
- * and `blog_tag_relations` tables.
- *
- * RLS enforces read-only access for anonymous users (published only).
- * Authenticated users can create, update, and delete.
- *
- * Usage:
- *   import { getPublishedBlogs, getBlogBySlug } from '../services/blogService';
+ * Direct Supabase Service Layer for Public and Admin Blog operations.
+ * NO dummy data. NO hardcoded arrays. Strictly Supabase.
  */
 
 import { supabase } from '../lib/supabase';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// BLOGS
-// ─────────────────────────────────────────────────────────────────────────────
+import { extractPublicId } from './cloudinaryService';
 
 /**
- * Fetch all published blogs ordered by published_at descending.
- * Safe for anonymous (public) callers — RLS restricts to published rows.
+ * Fetch published blogs from Supabase for the public Blog page.
+ * Ordered by newest first (created_at / published_at DESC).
+ * Filtered by category and search if provided.
  *
- * @param {{ limit?: number, offset?: number }} options
- * @returns {{ data: object[]|null, error: object|null, count: number|null }}
+ * @param {{ category?: string, search?: string, limit?: number }} options
+ * @returns {Promise<{ data: array, error: object|null }>}
  */
-export async function getPublishedBlogs({ limit = 10, offset = 0 } = {}) {
-  const { data, error, count } = await supabase
-    .from('blogs')
-    .select(
-      `
-      id,
-      title,
-      slug,
-      excerpt,
-      cover_image,
-      status,
-      featured,
-      seo_title,
-      seo_description,
-      author_name,
-      views,
-      published_at,
-      created_at,
-      categories ( id, name, slug )
-    `,
-      { count: 'exact' }
-    )
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .range(offset, offset + limit - 1);
+export async function getPublishedBlogs({ category = 'All', search = '', limit = 100 } = {}) {
+  try {
+    // 1. Fetch all rows from Supabase blogs table ordered by newest first
+    let query = supabase
+      .from('blogs')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-  return { data, error, count };
+    if (limit) {
+      query = query.limit(limit);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      console.error('[Supabase Error getPublishedBlogs]:', error);
+      return { data: [], error };
+    }
+
+    if (!data || !Array.isArray(data)) {
+      return { data: [], error: null };
+    }
+
+    // 2. Filter for Published status case-insensitively ('published', 'Published', or empty/null default)
+    let filtered = data.filter((b) => {
+      if (!b.status) return true; // Default to visible if status column is omitted
+      const st = String(b.status).trim().toLowerCase();
+      return st === 'published';
+    });
+
+    // 3. Category Filter
+    if (category && category !== 'All') {
+      const catTarget = category.trim().toLowerCase();
+      filtered = filtered.filter((b) => {
+        if (!b.category) return false;
+        return String(b.category).trim().toLowerCase() === catTarget;
+      });
+    }
+
+    // 4. Search Filter (by title, excerpt, or content)
+    if (search && search.trim()) {
+      const q = search.trim().toLowerCase();
+      filtered = filtered.filter((b) => {
+        const titleMatch = (b.title || '').toLowerCase().includes(q);
+        const excerptMatch = (b.excerpt || b.shortDescription || '').toLowerCase().includes(q);
+        const contentMatch = (b.content || '').toLowerCase().includes(q);
+        return titleMatch || excerptMatch || contentMatch;
+      });
+    }
+
+    return { data: filtered, error: null };
+  } catch (err) {
+    console.error('[blogService getPublishedBlogs catch]:', err);
+    return { data: [], error: err };
+  }
 }
 
 /**
- * Fetch featured published blogs.
- *
- * @param {{ limit?: number }} options
- * @returns {{ data: object[]|null, error: object|null }}
- */
-export async function getFeaturedBlogs({ limit = 3 } = {}) {
-  const { data, error } = await supabase
-    .from('blogs')
-    .select(
-      `
-      id,
-      title,
-      slug,
-      excerpt,
-      cover_image,
-      featured,
-      author_name,
-      published_at,
-      categories ( id, name, slug )
-    `
-    )
-    .eq('status', 'published')
-    .eq('featured', true)
-    .order('published_at', { ascending: false })
-    .limit(limit);
-
-  return { data, error };
-}
-
-/**
- * Fetch a single published blog post by its unique slug.
- * Also increments the view counter atomically via an RPC call.
+ * Fetch a single blog post by its slug from Supabase for Blog Detail Page.
  *
  * @param {string} slug
- * @returns {{ data: object|null, error: object|null }}
+ * @returns {Promise<{ data: object|null, error: object|null }>}
  */
 export async function getBlogBySlug(slug) {
-  // 1. Fetch full blog with relations
-  const { data, error } = await supabase
-    .from('blogs')
-    .select(
-      `
-      *,
-      categories ( id, name, slug ),
-      blog_tag_relations ( tags ( id, name, slug ) )
-    `
-    )
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single();
+  if (!slug) return { data: null, error: 'Slug is required' };
 
-  // 2. Increment view count (best-effort — ignore errors)
-  if (data?.id) {
-    await supabase.rpc('increment_blog_views', { blog_id: data.id }).then(
-      () => {},
-      () => {}
-    );
+  try {
+    // 1. Direct match on slug
+    const { data, error } = await supabase
+      .from('blogs')
+      .select('*')
+      .eq('slug', slug)
+      .maybeSingle();
+
+    if (data) {
+      return { data, error: null };
+    }
+
+    // 2. Case-insensitive fallback match
+    const { data: allBlogs } = await supabase.from('blogs').select('*');
+    if (allBlogs && Array.isArray(allBlogs)) {
+      const targetSlug = slug.toLowerCase().trim();
+      const match = allBlogs.find((b) => b.slug && b.slug.toLowerCase().trim() === targetSlug);
+      if (match) {
+        return { data: match, error: null };
+      }
+    }
+
+    return { data: null, error: error || { message: 'Blog post not found in Supabase' } };
+  } catch (err) {
+    return { data: null, error: err };
   }
-
-  return { data, error };
 }
 
 /**
- * Fetch all blogs (including drafts). Requires authenticated user.
+ * Fetch all blogs (both Published and Draft) for Admin Dashboard.
  *
- * @param {{ limit?: number, offset?: number }} options
- * @returns {{ data: object[]|null, error: object|null, count: number|null }}
+ * @returns {Promise<{ data: array, error: object|null }>}
  */
-export async function getAllBlogs({ limit = 20, offset = 0 } = {}) {
-  const { data, error, count } = await supabase
-    .from('blogs')
-    .select('*, categories ( id, name, slug )', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .range(offset, offset + limit - 1);
+export async function getAllBlogs() {
+  try {
+    const { data, error } = await supabase
+      .from('blogs')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-  return { data, error, count };
+    if (error) {
+      console.error('[Supabase Error getAllBlogs]:', error);
+      return { data: [], error };
+    }
+
+    return { data: data || [], error: null };
+  } catch (err) {
+    return { data: [], error: err };
+  }
 }
 
 /**
- * Create a new blog post. Requires authenticated user.
+ * Insert a new blog post into Supabase `blogs` table.
  *
- * @param {object} blogData – fields matching the blogs table schema
- * @returns {{ data: object|null, error: object|null }}
+ * @param {object} blogData
+ * @returns {Promise<{ data: object|null, error: object|null }>}
  */
 export async function createBlog(blogData) {
-  const { data, error } = await supabase
-    .from('blogs')
-    .insert([blogData])
-    .select()
-    .single();
+  try {
+    // Check slug uniqueness in Supabase
+    const { data: existing } = await supabase
+      .from('blogs')
+      .select('id')
+      .eq('slug', blogData.slug)
+      .maybeSingle();
 
-  return { data, error };
-}
+    if (existing) {
+      return { data: null, error: { message: 'A blog post with this slug already exists in Supabase.' } };
+    }
 
-/**
- * Update an existing blog post by id. Requires authenticated user.
- *
- * @param {string} id  – UUID of the blog to update
- * @param {object} updates – partial fields to update
- * @returns {{ data: object|null, error: object|null }}
- */
-export async function updateBlog(id, updates) {
-  const { data, error } = await supabase
-    .from('blogs')
-    .update({ ...updates, updated_at: new Date().toISOString() })
-    .eq('id', id)
-    .select()
-    .single();
+    const isPublished = blogData.status === 'published' || blogData.status === 'Published';
+    const coverImage = blogData.cover_image || blogData.image || '';
+    const publicId = blogData.cloudinary_public_id || blogData.publicId || extractPublicId(coverImage) || '';
 
-  return { data, error };
-}
+    const payload = {
+      title: blogData.title,
+      slug: blogData.slug,
+      category: blogData.category || 'SEO',
+      excerpt: blogData.excerpt || blogData.shortDescription || '',
+      content: blogData.content || '',
+      cover_image: coverImage,
+      cloudinary_public_id: publicId,
+      seo_title: blogData.seo_title || blogData.metaTitle || blogData.title,
+      seo_description: blogData.seo_description || blogData.metaDescription || blogData.excerpt || '',
+      status: isPublished ? 'published' : 'draft',
+      author_name: blogData.author_name || 'SEO Submit Web',
+      published_at: isPublished ? new Date().toISOString() : null,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
 
-/**
- * Soft-delete (set status = 'draft') or hard-delete a blog.
- * Default is soft-delete to avoid accidental permanent deletion.
- *
- * @param {string}  id        – UUID of the blog
- * @param {boolean} hardDelete – if true, permanently removes the row
- * @returns {{ error: object|null }}
- */
-export async function deleteBlog(id, hardDelete = false) {
-  if (hardDelete) {
-    const { error } = await supabase.from('blogs').delete().eq('id', id);
-    return { error };
+    let { data, error } = await supabase
+      .from('blogs')
+      .insert([payload])
+      .select()
+      .single();
+
+    // Fallback if schema does not have `cloudinary_public_id` column
+    if (error && error.message && error.message.includes('cloudinary_public_id')) {
+      delete payload.cloudinary_public_id;
+      const res = await supabase
+        .from('blogs')
+        .insert([payload])
+        .select()
+        .single();
+      data = res.data;
+      error = res.error;
+    }
+
+    return { data, error };
+  } catch (err) {
+    return { data: null, error: err };
   }
-
-  const { error } = await supabase
-    .from('blogs')
-    .update({ status: 'draft', updated_at: new Date().toISOString() })
-    .eq('id', id);
-  return { error };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// CATEGORIES
-// ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Fetch all categories (public read).
- *
- * @returns {{ data: object[]|null, error: object|null }}
- */
-export async function getCategories() {
-  const { data, error } = await supabase
-    .from('categories')
-    .select('*')
-    .order('name', { ascending: true });
-
-  return { data, error };
 }
 
 /**
- * Create a new category. Requires authenticated user.
+ * Update an existing blog post in Supabase.
  *
- * @param {{ name: string, slug: string, description?: string }} categoryData
- * @returns {{ data: object|null, error: object|null }}
+ * @param {string} id
+ * @param {object} blogData
+ * @returns {Promise<{ data: object|null, error: object|null }>}
  */
-export async function createCategory(categoryData) {
-  const { data, error } = await supabase
-    .from('categories')
-    .insert([categoryData])
-    .select()
-    .single();
+export async function updateBlog(id, blogData) {
+  try {
+    const isPublished = blogData.status === 'published' || blogData.status === 'Published';
+    const coverImage = blogData.cover_image || blogData.image || '';
+    const publicId = blogData.cloudinary_public_id || blogData.publicId || extractPublicId(coverImage) || '';
 
-  return { data, error };
-}
+    const payload = {
+      title: blogData.title,
+      slug: blogData.slug,
+      category: blogData.category,
+      excerpt: blogData.excerpt || blogData.shortDescription || '',
+      content: blogData.content || '',
+      cover_image: coverImage,
+      cloudinary_public_id: publicId,
+      seo_title: blogData.seo_title || blogData.metaTitle || blogData.title,
+      seo_description: blogData.seo_description || blogData.metaDescription || blogData.excerpt || '',
+      status: isPublished ? 'published' : 'draft',
+      author_name: blogData.author_name || 'SEO Submit Web',
+      published_at: isPublished ? (blogData.published_at || new Date().toISOString()) : null,
+      updated_at: new Date().toISOString(),
+    };
 
-// ─────────────────────────────────────────────────────────────────────────────
-// TAGS
-// ─────────────────────────────────────────────────────────────────────────────
+    let { data, error } = await supabase
+      .from('blogs')
+      .update(payload)
+      .eq('id', id)
+      .select()
+      .single();
 
-/**
- * Fetch all tags (public read).
- *
- * @returns {{ data: object[]|null, error: object|null }}
- */
-export async function getTags() {
-  const { data, error } = await supabase
-    .from('tags')
-    .select('*')
-    .order('name', { ascending: true });
+    if (error && error.message && error.message.includes('cloudinary_public_id')) {
+      delete payload.cloudinary_public_id;
+      const res = await supabase
+        .from('blogs')
+        .update(payload)
+        .eq('id', id)
+        .select()
+        .single();
+      data = res.data;
+      error = res.error;
+    }
 
-  return { data, error };
-}
-
-/**
- * Create a new tag. Requires authenticated user.
- *
- * @param {{ name: string, slug: string }} tagData
- * @returns {{ data: object|null, error: object|null }}
- */
-export async function createTag(tagData) {
-  const { data, error } = await supabase
-    .from('tags')
-    .insert([tagData])
-    .select()
-    .single();
-
-  return { data, error };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// BLOG ↔ TAG RELATIONS
-// ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Attach tags to a blog post.
- * Replaces all existing tag relations for that blog.
- *
- * @param {string}   blogId  – UUID of the blog
- * @param {string[]} tagIds  – array of tag UUIDs to attach
- * @returns {{ error: object|null }}
- */
-export async function setBlogTags(blogId, tagIds) {
-  // Remove existing relations first
-  const { error: deleteError } = await supabase
-    .from('blog_tag_relations')
-    .delete()
-    .eq('blog_id', blogId);
-
-  if (deleteError) return { error: deleteError };
-
-  if (!tagIds || tagIds.length === 0) return { error: null };
-
-  const rows = tagIds.map((tagId) => ({ blog_id: blogId, tag_id: tagId }));
-
-  const { error: insertError } = await supabase
-    .from('blog_tag_relations')
-    .insert(rows);
-
-  return { error: insertError };
+    return { data, error };
+  } catch (err) {
+    return { data: null, error: err };
+  }
 }
 
 /**
- * Get all tags for a specific blog post.
+ * Delete a blog post from Supabase.
  *
- * @param {string} blogId
- * @returns {{ data: object[]|null, error: object|null }}
+ * @param {string} id
+ * @returns {Promise<{ error: object|null }>}
  */
-export async function getBlogTags(blogId) {
-  const { data, error } = await supabase
-    .from('blog_tag_relations')
-    .select('tags ( id, name, slug )')
-    .eq('blog_id', blogId);
+export async function deleteBlog(id) {
+  try {
+    const { error } = await supabase
+      .from('blogs')
+      .delete()
+      .eq('id', id);
 
-  return { data: data?.map((r) => r.tags) ?? null, error };
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// SEARCH
-// ─────────────────────────────────────────────────────────────────────────────
-
-/**
- * Full-text search across published blogs (title + excerpt + content).
- *
- * @param {string} query  – search term
- * @param {{ limit?: number }} options
- * @returns {{ data: object[]|null, error: object|null }}
- */
-export async function searchBlogs(query, { limit = 10 } = {}) {
-  const { data, error } = await supabase
-    .from('blogs')
-    .select('id, title, slug, excerpt, cover_image, author_name, published_at')
-    .eq('status', 'published')
-    .or(`title.ilike.%${query}%,excerpt.ilike.%${query}%`)
-    .order('published_at', { ascending: false })
-    .limit(limit);
-
-  return { data, error };
+    return { error };
+  } catch (err) {
+    return { error: err };
+  }
 }
